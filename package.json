@@ -1,5 +1,5 @@
 {
-  "name": "home-site",
+  "name": "ecommerce-nextui-template",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,36 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.1"
+    "@nextui-org/button": "2.0.18",
+    "@nextui-org/card": "^2.0.22",
+    "@nextui-org/input": "2.1.6",
+    "@nextui-org/link": "2.0.19",
+    "@nextui-org/navbar": "2.0.19",
+    "@nextui-org/switch": "2.0.18",
+    "@nextui-org/system": "^2.0.11",
+    "@nextui-org/theme": "^2.1.11",
+    "@react-aria/ssr": "^3.8.0",
+    "@react-aria/visually-hidden": "^3.8.6",
+    "clsx": "^2.0.0",
+    "geist": "^1.0.0",
+    "next": "14.0.1",
+    "next-themes": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.1"
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.2.34",
+    "@types/react-dom": "^18.2.14",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.1",
+    "postcss": "^8.4.31",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
   }
 }
