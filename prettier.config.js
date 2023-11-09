@@ -1,11 +1,10 @@
 /** @type {import("prettier").Config} */
-const config = {
+module.exports = {
     tabWidth: 4,
     singleQuote: false,
     printWidth: 96,
     singleAttributePerLine: true,
     plugins: ["prettier-plugin-tailwindcss"],
-    tailwindFunctions: ["clsx", "twMerge", "cn", "tv", "tw"]
+    tailwindFunctions: ["clsx", "twMerge", "cn", "tv", "tw"],
+    tailwindConfig: "./tailwind.config.ts"
 };
-
-export default config;
