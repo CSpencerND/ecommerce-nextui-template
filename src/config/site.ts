@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "Store Name",
     description: "Store Description",
-
+    logo: "Acme",
     navItems: [
         {
             label: "Home",
