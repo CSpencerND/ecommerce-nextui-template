@@ -1,5 +1,6 @@
 import { nextui } from "@nextui-org/react";
-import typography from "@tailwindcss/typography"
+import typography from "@tailwindcss/typography";
+import daisyui from "daisyui";
 
 // import { customDarkColors } from "./theme"
 
@@ -25,6 +26,7 @@ const config: Config = {
     plugins: [
         typography,
         nextui(),
+        daisyui,
         // nextui({
         //     themes: {
         //         dark: {
@@ -33,5 +35,10 @@ const config: Config = {
         //     }
         // }),
     ],
+    daisyui: {
+        themes: false,
+        styled: false,
+        logs: false,
+    },
 };
 export default config;

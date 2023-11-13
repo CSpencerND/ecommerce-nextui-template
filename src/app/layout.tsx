@@ -2,7 +2,7 @@ import { Header } from "@/components/header";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config";
-import { cn } from "@/lib";
+import { cn } from "@nextui-org/react";
 
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
@@ -27,14 +27,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className="dark"
             style={{ colorScheme: "dark" }}
         >
-            <body className={cn(
-                "min-h-screen bg-background text-foreground",
-                GeistSans.className
-            )}>
+            <body
+                className={cn(
+                    "min-h-screen bg-background text-foreground",
+                    GeistSans.className,
+                )}
+            >
                 <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-                    <div className="relative flex flex-col h-screen">
+                    <div className="relative flex h-screen flex-col">
                         <Header />
-                        <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+                        <main className="container mx-auto max-w-5xl flex-grow px-6 pt-16">
                             {children}
                         </main>
                     </div>
