@@ -27,13 +27,14 @@ const config: Config = {
         typography,
         nextui(),
         daisyui,
-        // nextui({
-        //     themes: {
-        //         dark: {
-        //             colors: customDarkColors
-        //         }
-        //     }
-        // }),
+        nextui({
+            addCommonColors: true,
+            // themes: {
+            //     dark: {
+            //         colors: customDarkColors
+            //     }
+            // }
+        }),
     ],
     daisyui: {
         themes: false,

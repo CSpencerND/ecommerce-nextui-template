@@ -11,7 +11,7 @@ const banner = faker.image.urlLoremFlickr({ category: "computer" });
 export async function Hero() {
     return (
         <div className="flex flex-col items-center gap-8 lg:flex-row">
-            <div className="prose relative isolate flex flex-col items-center  text-center dark:prose-invert">
+            <div className="prose relative isolate flex flex-col items-center text-center dark:prose-invert">
                 <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
                     {headline}
                 </h1>
@@ -24,7 +24,7 @@ export async function Hero() {
                 </Button>
                 <div
                     aria-hidden="true"
-                    className=" absolute -z-10 h-full w-full bg-gradient-radial from-primary to-secondary opacity-30 blur-3xl"
+                    className=" absolute -z-10 h-3/4 w-full bg-gradient-to-b from-secondary to-cyan-600/60 opacity-40 blur-3xl"
                 />
             </div>
 
