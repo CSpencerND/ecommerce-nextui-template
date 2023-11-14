@@ -8,7 +8,11 @@ const nextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "placeholder.com"
+                hostname: "via.placeholder.com"
+            },
+            {
+                protocol: "https",
+                hostname: "picsum.photos"
             }
         ]
     }

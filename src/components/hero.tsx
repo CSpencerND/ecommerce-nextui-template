@@ -9,8 +9,7 @@ import { faker } from "@faker-js/faker";
 export async function Hero() {
     const headline = faker.company.catchPhrase();
     const descriptor = faker.lorem.paragraph();
-    const banner = faker.image.urlLoremFlickr({
-        category: "abstract",
+    const banner = faker.image.urlPicsumPhotos({
         width: 800,
         height: 450,
     });
