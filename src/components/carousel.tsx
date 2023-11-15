@@ -93,7 +93,8 @@ export function Carousel({ children, numSlides, showControls = false }: Carousel
                         size="sm"
                         variant="flat"
                         isIconOnly
-                        className="max-lg:hidden"
+                        className="divide-x divide-content2 rounded-[10px] border border-content2 max-lg:hidden"
+                        radius="sm"
                     >
                         <Button onPress={() => emblaApi?.scrollPrev()}>
                             <ChevronLeft size={20} />
