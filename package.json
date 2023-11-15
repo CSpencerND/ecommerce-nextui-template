@@ -21,13 +21,17 @@
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@react-aria/ssr": "^3.9.0",
     "@react-aria/visually-hidden": "^3.8.7",
+    "embla-carousel-react": "8.0.0-rc14",
+    "embla-carousel-wheel-gestures": "8.0.0-rc05",
     "framer-motion": "^10.16.4",
     "geist": "^1.1.0",
+    "keen-slider": "^6.8.6",
     "lucide-react": "^0.292.0",
     "next": "14.0.1",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",

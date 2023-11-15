@@ -1,18 +1,20 @@
-import NextImage from "next/image";
-import { Image } from "@nextui-org/image";
+"use client";
+
 import { Button } from "@nextui-org/button";
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
 
 import { ArrowRight } from "lucide-react";
 
-import { faker } from "@faker-js/faker";
+import { useFaker } from "@/faker/faker-store";
+import { useHydrated } from "@/hooks/use-hydrated";
 
-export async function Hero() {
-    const headline = faker.company.catchPhrase();
-    const descriptor = faker.lorem.paragraph();
-    const banner = faker.image.urlPicsumPhotos({
-        width: 800,
-        height: 450,
-    });
+export function Hero() {
+    useFaker((s) => s.setHero());
+    const { headline, descriptor, banner } = useFaker((s) => s.hero);
+
+    const hydrated = useHydrated();
+    if (!hydrated) return null;
 
     return (
         <div className="relative flex flex-col items-center gap-8 lg:flex-row">
@@ -40,7 +42,7 @@ export async function Hero() {
                 alt="banner"
                 width={800}
                 height={450}
-                classNames={{img: "object-cover object-center h-full" }}
+                classNames={{ img: "object-cover object-center h-full" }}
             />
         </div>
     );
