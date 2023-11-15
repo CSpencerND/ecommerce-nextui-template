@@ -1,10 +1,7 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
+import { Button, ButtonGroup } from "@nextui-org/button";
 import { Card, CardFooter } from "@nextui-org/card";
-
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -16,16 +13,12 @@ import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 import { cn } from "@nextui-org/react";
 
-export type CarouselProps = {
-    title: string;
-    items: {
-        image: string;
-        name: string;
-        alt?: string;
-    }[];
+export type CarouselProps = React.PropsWithChildren & {
+    numSlides: number;
+    showControls?: boolean;
 };
 
-export function Carousel({ title, items }: CarouselProps) {
+export function Carousel({ children, numSlides, showControls = false }: CarouselProps) {
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { align: "center", skipSnaps: true, containScroll: false, loop: true },
         [WheelGesturesPlugin()],
@@ -64,10 +57,6 @@ export function Carousel({ title, items }: CarouselProps) {
 
     return (
         <>
-            <div className="prose dark:prose-invert">
-                <h1>{title}</h1>
-            </div>
-
             <Card
                 tabIndex={0}
                 onKeyDown={onKeyboardScroll}
@@ -75,73 +64,72 @@ export function Carousel({ title, items }: CarouselProps) {
                 ref={emblaRef}
                 disableAnimation
             >
-                <ul className="flex">
-                    {items.map(({ image, name, alt }, i) => (
-                        <Card
-                            key={i}
-                            data-slideindex={i}
-                            tabIndex={0}
-                            as="li"
-                            isFooterBlurred
-                            radius="sm"
-                            className="relative mx-1.5 min-w-0 max-w-full flex-none !transition-none focus-visible:ring-2 focus-visible:ring-primary"
-                            disableAnimation
-                            shadow="none"
-                        >
-                            <Image
-                                as={NextImage}
-                                src={image}
-                                alt={alt ?? name}
-                                width={192}
-                                height={192}
-                                className="object-cover object-center"
-                                radius="sm"
-                            />
-                            <CardFooter className="prose absolute bottom-1 z-10 ml-1 w-[calc(100%_-_8px)] truncate rounded-md border-1 border-white/20 bg-black/30 py-1 shadow-small dark:prose-invert">
-                                <h4>{name}</h4>
-                            </CardFooter>
-                        </Card>
-                    ))}
-                </ul>
+                <ul className="flex">{children}</ul>
             </Card>
-            <div className="relative flex w-full max-w-prose flex-row items-center justify-center lg:justify-evenly">
-                <Card
-                    aria-hidden="true"
-                    className="flex h-fit w-fit flex-row items-center gap-2 rounded-xl bg-content1 p-1.5"
-                    disableAnimation
-                >
-                    {items.map((_, i) => (
-                        <Button
-                            isIconOnly
-                            size="sm"
-                            key={i}
-                            onPress={() => emblaApi?.scrollTo(i)}
-                            className={cn(
-                                "transition-color relative h-1 rounded-full bg-content4 py-0.5",
-                                currentSlide === i && "bg-foreground",
-                            )}
-                        />
-                    ))}
-                </Card>
-                <div className="flex gap-3 max-lg:hidden">
-                    <Button
-                        isIconOnly
+            {showControls ? (
+                <div className="relative flex w-full max-w-prose flex-row items-center justify-center lg:justify-evenly">
+                    {/* PERF: Refactor this with Pagination component */}
+                    <Card
+                        aria-hidden="true"
+                        className="flex h-fit w-fit flex-row items-center gap-2 rounded-xl bg-content1 p-1.5"
+                        disableAnimation
+                    >
+                        {Array(numSlides)
+                            .fill(null)
+                            .map((_, i) => (
+                                <Button
+                                    isIconOnly
+                                    size="sm"
+                                    key={i}
+                                    onPress={() => emblaApi?.scrollTo(i)}
+                                    className={cn(
+                                        "transition-color relative h-1 rounded-full bg-content4 py-0.5",
+                                        currentSlide === i && "bg-foreground",
+                                    )}
+                                />
+                            ))}
+                    </Card>
+                    <ButtonGroup
                         size="sm"
                         variant="flat"
-                        onPress={() => emblaApi?.scrollPrev()}
-                    >
-                        <ChevronLeft size={20} />
-                    </Button>
-                    <Button
                         isIconOnly
-                        size="sm"
-                        variant="flat"
-                        onPress={() => emblaApi?.scrollNext()}
+                        className="max-lg:hidden"
                     >
-                        <ChevronRight size={20} />
-                    </Button>
+                        <Button onPress={() => emblaApi?.scrollPrev()}>
+                            <ChevronLeft size={20} />
+                        </Button>
+                        <Button onPress={() => emblaApi?.scrollNext()}>
+                            <ChevronRight size={20} />
+                        </Button>
+                    </ButtonGroup>
                 </div>
-            </div>
+            ) : null}
         </>
+    );
+}
+
+export type CarouselItemProps = React.PropsWithChildren & {
+    title?: string;
+};
+
+export function CarouselItem({ children, title }: CarouselItemProps) {
+    return (
+        <Card
+            tabIndex={0}
+            as="li"
+            isFooterBlurred
+            radius="sm"
+            className="relative mx-1.5 min-w-0 max-w-full flex-none !transition-none focus-visible:ring-2 focus-visible:ring-primary"
+            disableAnimation
+            shadow="none"
+        >
+            {children}
+
+            {title ? (
+                <CardFooter className="prose absolute bottom-1 z-10 ml-1 w-[calc(100%_-_8px)] truncate rounded-md border-1 border-white/20 bg-black/30 py-1 shadow-small dark:prose-invert">
+                    <h4>{title}</h4>
+                </CardFooter>
+            ) : null}
+        </Card>
     );
 }
