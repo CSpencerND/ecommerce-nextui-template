@@ -1,7 +1,6 @@
 "use client";
 
-import { Carousel, CarouselItem } from "@/components/carousel";
-// import { Carousel } from "@/components/nuka-carousel";
+import { Carousel } from "@/components/carousel-scratch";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
@@ -15,6 +14,31 @@ export function Featured() {
 
     const hydrated = useHydrated();
     if (!hydrated) return null;
+
+    return (
+        <>
+            <div className="prose dark:prose-invert">
+                <h1>Featured</h1>
+            </div>
+            <Carousel
+                numSlides={featuredItems.length}
+                loop
+            >
+                {featuredItems.map(({ image, name }, i) => (
+                    <Image
+                        onDragStart={(e) => e.preventDefault()}
+                        key={i}
+                        as={NextImage}
+                        src={image}
+                        alt={name}
+                        width={192}
+                        height={192}
+                        classNames={{ wrapper: "h-full w-full" }}
+                    />
+                ))}
+            </Carousel>
+        </>
+    );
 
     // return (
     //     <>
@@ -41,31 +65,4 @@ export function Featured() {
     //         </div>
     //     </>
     // );
-
-    return (
-        <>
-            <div className="prose dark:prose-invert">
-                <h1>Featured</h1>
-            </div>
-
-            <Carousel numSlides={featuredItems.length} showControls>
-                {featuredItems.map(({ image, name }, i) => (
-                    <CarouselItem
-                        key={i}
-                        title={name}
-                    >
-                        <Image
-                            as={NextImage}
-                            src={image}
-                            alt={name}
-                            width={192}
-                            height={192}
-                            className="object-cover object-center"
-                            radius="sm"
-                        />
-                    </CarouselItem>
-                ))}
-            </Carousel>
-        </>
-    );
 }
