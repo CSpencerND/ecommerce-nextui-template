@@ -59,9 +59,6 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.0.2)(react-dom@18.2.0)(react@18.2.0)
-  nuka-carousel:
-    specifier: ^7.0.0
-    version: 7.0.0(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -4364,17 +4361,6 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /nuka-carousel@7.0.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-KE0WV1MuE4Gq6ynL8P3qJH2rGq/DkJ0ej+ezo0IuZp4oklV8WNqu6P6O1utJqihHLGoEuFppq5wlHSHfhdCHXA==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      react: '>=18.0.0'
-      react-dom: '>=18.0.0'
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}

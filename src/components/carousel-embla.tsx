@@ -14,11 +14,14 @@ import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { cn } from "@nextui-org/react";
 
 export type CarouselProps = React.PropsWithChildren & {
+    className?: string;
     numSlides: number;
     showControls?: boolean;
 };
 
-export function Carousel({ children, numSlides, showControls = false }: CarouselProps) {
+export function Carousel(props: CarouselProps) {
+    const { children, className, numSlides, showControls } = props;
+
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { align: "center", skipSnaps: true, containScroll: false, loop: true },
         [WheelGesturesPlugin()],
@@ -64,11 +67,10 @@ export function Carousel({ children, numSlides, showControls = false }: Carousel
                 ref={emblaRef}
                 disableAnimation
             >
-                <ul className="flex">{children}</ul>
+                <ul className={cn("flex", className)}>{children}</ul>
             </Card>
             {showControls ? (
                 <div className="relative flex w-full max-w-prose flex-row items-center justify-center lg:justify-evenly">
-                    {/* PERF: Refactor this with Pagination component */}
                     <Card
                         aria-hidden="true"
                         className="flex h-fit w-fit flex-row items-center gap-2 rounded-xl bg-content1 p-1.5"
