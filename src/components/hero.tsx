@@ -17,8 +17,8 @@ export function Hero() {
     if (!hydrated) return null;
 
     return (
-        <div className="relative flex flex-col items-center gap-8 lg:flex-row">
-            <div className="prose relative isolate flex flex-col items-center text-center dark:prose-invert lg:max-w-[50ch] lg:items-start lg:text-left">
+        <div className="relative flex flex-col items-center gap-y-8 lg:gap-12 lg:flex-row">
+            <div className="prose relative isolate flex flex-col items-center text-center dark:prose-invert lg:items-start lg:text-left">
                 <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
                     {headline}
                 </h1>
