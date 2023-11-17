@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export function getFeaturedItems() {
+function getFeaturedItems() {
     const getProduct = () => ({
         name: faker.commerce.product(),
         image: faker.image.urlPicsumPhotos({
@@ -18,9 +18,9 @@ export function getFeaturedItems() {
     };
 }
 
-export type FeaturedItems = ReturnType<typeof getFeaturedItems>;
+type FeaturedData = ReturnType<typeof getFeaturedItems>;
 
-export function getHero() {
+function getHero() {
     return {
         headline: faker.company.catchPhrase(),
         descriptor: faker.lorem.paragraph(),
@@ -31,4 +31,7 @@ export function getHero() {
     };
 }
 
-export type Hero = ReturnType<typeof getHero>;
+type HeroData = ReturnType<typeof getHero>;
+
+export { getFeaturedItems, getHero };
+export type { FeaturedData, HeroData };
