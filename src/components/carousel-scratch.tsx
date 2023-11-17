@@ -6,9 +6,10 @@ import { Pagination } from "@nextui-org/pagination";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { useHydrated } from "@/hooks/use-hydrated";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { cn } from "@nextui-org/react";
+import { motion } from "framer-motion";
 import { create } from "zustand";
 
 export type CarouselStore = {
@@ -39,18 +40,31 @@ export type CarouselProps = {
 };
 
 export function Carousel({ children, className, numSlides, loop }: CarouselProps) {
+    const [width, setWidth] = useState(0);
+    const carousel = useRef<React.ElementRef<typeof motion.div>>(null);
+
     const setNumSlides = useCarousel((s) => s.setNumSlides);
     useMemo(() => setNumSlides(numSlides), [numSlides, setNumSlides]);
 
-    const hydrated = useHydrated();
-    if (!hydrated) return null;
+    useEffect(() => {
+        if (!carousel.current) return;
+        setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    }, []);
 
     return (
-        <Card className="max-w-prose rounded-xlarge">
+        <Card
+            as={motion.div}
+            className="max-w-prose rounded-xlarge"
+            ref={carousel}
+        >
             <CardBody
                 id="carousel"
-                as="ul"
-                className={cn("flex-row gap-3 overflow-hidden cursor-grab active:cursor-grabbing", className)}
+                as={motion.ul}
+                drag="x"
+                dragConstraints={{ right: 0, left: -width - 12 }}
+                whileHover={{ cursor: "grab" }}
+                whileTap={{ cursor: "grabbing" }}
+                className={cn("flex-row gap-3 overflow-visible", className)}
             >
                 {children.map((child, i) => (
                     <CarouselItem key={i}>{child}</CarouselItem>
@@ -71,12 +85,12 @@ export function CarouselItem({ children }: CarouselItemProps) {
 
     return (
         <Card
-            as="li"
+            as={motion.li}
             shadow="none"
-            className="flex-none"
-            style={{
+            className="min-w-fit flex-none"
+            initial={false}
+            animate={{
                 translate: `calc(-${100 * currentSlideIndex}% - ${12 * currentSlideIndex}px)`,
-                transition: "translate 300ms ease-in-out",
             }}
         >
             {children}
@@ -110,6 +124,9 @@ export function CarouselControls({ loop }: CarouselControlsProps) {
             scrollNext();
         }
     };
+
+    const hydrated = useHydrated();
+    if (!hydrated) return null;
 
     return (
         <>
@@ -147,6 +164,9 @@ export function CarouselPagination({ loop }: CarouselPaginationProps) {
     const numSlides = useCarousel((s) => s.numSlides);
     const setCurrentSlideIndex = useCarousel((s) => s.setCurrentSlideIndex);
     const currentSlideNumber = useCarousel((s) => s.getCurrentSlideNumber());
+
+    const hydrated = useHydrated();
+    if (!hydrated) return null;
 
     return (
         <Pagination

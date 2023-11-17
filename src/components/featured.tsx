@@ -33,7 +33,6 @@ export function Featured() {
                         alt={name}
                         width={192}
                         height={192}
-                        classNames={{ wrapper: "h-full w-full" }}
                     />
                 ))}
             </Carousel>
