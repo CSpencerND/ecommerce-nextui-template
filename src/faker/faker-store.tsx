@@ -1,21 +1,26 @@
+// TODO: Delete this file
+
 "use client";
 
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-import { getFeaturedItems, getHero, type FeaturedItems, type Hero } from "./faker-functions";
+import { getFeaturedItems, getHero, type FeaturedData, type HeroData } from "./faker-functions";
 
 type FakerStore = {
-    hero: Hero;
+    hero: HeroData;
     setHero: () => void;
-    featuredItems: FeaturedItems;
+    featuredItems: FeaturedData;
     setFeaturedItems: () => void;
 };
 
+/**
+ * @deprecated Fetch from api instead
+ */
 export const useFaker = create(
     persist<FakerStore>(
         (set, get) => ({
-            hero: {} as Hero,
+            hero: {} as HeroData,
             setHero: () => {
                 if (isSessionStorageAvailable()) {
                     const hero = get().hero;
@@ -24,7 +29,7 @@ export const useFaker = create(
                 }
             },
 
-            featuredItems: {} as FeaturedItems,
+            featuredItems: {} as FeaturedData,
             setFeaturedItems: () => {
                 if (isSessionStorageAvailable()) {
                     const featuredItems = get().featuredItems;
