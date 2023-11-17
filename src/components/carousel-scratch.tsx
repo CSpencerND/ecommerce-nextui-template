@@ -56,6 +56,7 @@ export function Carousel({ children, className, numSlides, loop }: CarouselProps
             as={motion.div}
             className="max-w-prose rounded-xlarge"
             ref={carousel}
+            disableAnimation
         >
             <CardBody
                 id="carousel"
@@ -86,7 +87,9 @@ export function CarouselItem({ children }: CarouselItemProps) {
     return (
         <Card
             as={motion.li}
+            disableAnimation
             shadow="none"
+            isFooterBlurred
             className="min-w-fit flex-none"
             initial={false}
             animate={{
@@ -94,6 +97,12 @@ export function CarouselItem({ children }: CarouselItemProps) {
             }}
         >
             {children}
+
+            {/* {title ? ( */}
+            {/*     <CardFooter className="prose absolute bottom-1 z-10 ml-1 w-[calc(100%_-_8px)] truncate rounded-md border-1 border-white/20 bg-black/30 py-1 shadow-small dark:prose-invert"> */}
+            {/*         <h4>{title}</h4> */}
+            {/*     </CardFooter> */}
+            {/* ) : null} */}
         </Card>
     );
 }

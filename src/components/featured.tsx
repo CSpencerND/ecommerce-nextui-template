@@ -1,6 +1,6 @@
 "use client";
 
-import { Carousel } from "@/components/carousel-scratch";
+import { Carousel, CarouselItem } from "@/components/carousel-embla";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
@@ -17,23 +17,29 @@ export function Featured() {
 
     return (
         <>
-            <div className="prose dark:prose-invert">
+            <header className="prose dark:prose-invert">
                 <h1>Featured</h1>
-            </div>
+            </header>
             <Carousel
                 numSlides={featuredItems.length}
                 loop
+                showControls
             >
                 {featuredItems.map(({ image, name }, i) => (
-                    <Image
-                        onDragStart={(e) => e.preventDefault()}
+                    <CarouselItem
                         key={i}
-                        as={NextImage}
-                        src={image}
-                        alt={name}
-                        width={192}
-                        height={192}
-                    />
+                        index={i}
+                        title={name}
+                    >
+                        <Image
+                            onDragStart={(e) => e.preventDefault()}
+                            as={NextImage}
+                            src={image}
+                            alt={name}
+                            width={192}
+                            height={192}
+                        />
+                    </CarouselItem>
                 ))}
             </Carousel>
         </>
