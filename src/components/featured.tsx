@@ -51,7 +51,7 @@ export function Featured() {
                 <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent max-lg:hidden">
                     {copy.adjective}
                 </h1>
-                <p className="">{copy.description}</p>
+                <p className="max-lg:text-center">{copy.description}</p>
                 <Button
                     color="primary"
                     variant="shadow"
