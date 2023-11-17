@@ -1,10 +1,13 @@
-export default function Home() {
+import type { CollectionData } from "@/faker/faker-functions";
+
+export default async function CollectionsPage() {
+    const data = await fetch("http://localhost:3000/api/collection");
+    const { name, description, items } = (await data.json()) as CollectionData;
+
     return (
-        <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-            <div className="inline-block max-w-lg text-center justify-center prose dark:prose-invert">
-                <h1>Hello, Collections Page!</h1>
-            </div>
-        </section>
+        <div className="prose inline-block max-w-lg justify-center text-center dark:prose-invert">
+            <h1>{name}</h1>
+            <p>{description}</p>
+        </div>
     );
 }
-
