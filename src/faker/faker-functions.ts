@@ -33,5 +33,26 @@ function getHero() {
 
 type HeroData = ReturnType<typeof getHero>;
 
-export { getFeaturedItems, getHero };
-export type { FeaturedData, HeroData };
+function getCollection() {
+    const getProduct = () => ({
+        name: faker.commerce.product(),
+        description: faker.commerce.productDescription,
+        image: faker.image.urlPicsumPhotos({
+            height: 256,
+            width: 256,
+        }),
+    });
+
+    return {
+        collection: {
+            name: faker.commerce.department(),
+            description: faker.commerce.productDescription(),
+            items: faker.helpers.multiple(getProduct, { count: 9 }),
+        },
+    };
+}
+
+type CollectionData = ReturnType<typeof getCollection>;
+
+export { getCollection, getFeaturedItems, getHero };
+export type { CollectionData, FeaturedData, HeroData };
