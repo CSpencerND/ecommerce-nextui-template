@@ -9,10 +9,16 @@ export function getFeaturedItems() {
         }),
     });
 
-    return faker.helpers.multiple(getProduct, { count: 7 });
+    return {
+        items: faker.helpers.multiple(getProduct, { count: 7 }),
+        copy: {
+            adjective: faker.commerce.productAdjective(),
+            description: faker.commerce.productDescription(),
+        },
+    };
 }
 
-export type FeaturedItems = ReturnType<typeof getFeaturedItems>
+export type FeaturedItems = ReturnType<typeof getFeaturedItems>;
 
 export function getHero() {
     return {
@@ -25,4 +31,4 @@ export function getHero() {
     };
 }
 
-export type Hero = ReturnType<typeof getHero>
+export type Hero = ReturnType<typeof getHero>;
