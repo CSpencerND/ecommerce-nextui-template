@@ -1,23 +1,17 @@
-"use client";
-
 import { Carousel, CarouselItem } from "@/components/carousel-embla";
 import { Button } from "@nextui-org/button";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { useFaker } from "@/faker/faker-store";
-import { useHydrated } from "@/hooks/use-hydrated";
+import type { FeaturedData } from "@/faker/faker-functions";
 
-export function Featured() {
-    useFaker((s) => s.setFeaturedItems());
-    const { copy, items } = useFaker((s) => s.featuredItems);
-
-    const hydrated = useHydrated();
-    if (!hydrated) return null;
+export async function Featured() {
+    const data = await fetch("http://localhost:3000/api/featured");
+    const { copy, items } = (await data.json()) as FeaturedData;
 
     return (
-        <div className="flex flex-col lg:flex-row gap-x-12">
+        <div className="flex flex-col gap-x-12 lg:flex-row">
             <div className="prose text-center dark:prose-invert lg:hidden">
                 <h1 className="pb-4">{copy.adjective}</h1>
             </div>
@@ -35,7 +29,6 @@ export function Featured() {
                         title={name}
                     >
                         <Image
-                            onDragStart={(e) => e.preventDefault()}
                             as={NextImage}
                             src={image}
                             alt={name}

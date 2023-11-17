@@ -1,23 +1,17 @@
-"use client";
-
 import { Button } from "@nextui-org/button";
+import { ArrowRight } from "lucide-react";
+
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { ArrowRight } from "lucide-react";
+import type { HeroData } from "@/faker/faker-functions";
 
-import { useFaker } from "@/faker/faker-store";
-import { useHydrated } from "@/hooks/use-hydrated";
-
-export function Hero() {
-    useFaker((s) => s.setHero());
-    const { headline, descriptor, banner } = useFaker((s) => s.hero);
-
-    const hydrated = useHydrated();
-    if (!hydrated) return null;
+export async function Hero() {
+    const data = await fetch("http://localhost:3000/api/hero");
+    const { headline, descriptor, banner } = (await data.json()) as HeroData;
 
     return (
-        <div className="relative flex flex-col items-center gap-y-8 lg:gap-12 lg:flex-row">
+        <div className="relative flex flex-col items-center gap-y-8 lg:flex-row lg:gap-12">
             <div className="prose relative isolate flex flex-col items-center text-center dark:prose-invert lg:items-start lg:text-left">
                 <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
                     {headline}
@@ -42,7 +36,6 @@ export function Hero() {
                 alt="banner"
                 width={800}
                 height={450}
-                classNames={{ img: "object-cover object-center h-full" }}
             />
         </div>
     );
