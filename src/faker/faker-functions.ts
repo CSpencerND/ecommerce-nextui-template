@@ -44,11 +44,9 @@ function getCollection() {
     });
 
     return {
-        collection: {
-            name: faker.commerce.department(),
-            description: faker.commerce.productDescription(),
-            items: faker.helpers.multiple(getProduct, { count: 9 }),
-        },
+        name: faker.commerce.department(),
+        description: faker.commerce.productDescription(),
+        items: faker.helpers.multiple(getProduct, { count: 9 }),
     };
 }
 
