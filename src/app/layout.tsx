@@ -1,7 +1,7 @@
 import { Header } from "@/components/header";
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/config";
+import { siteConfig } from "@/site.config";
 import { cn } from "@nextui-org/react";
 
 import { GeistSans } from "geist/font/sans";

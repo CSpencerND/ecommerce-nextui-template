@@ -10,7 +10,7 @@ import {
     NavbarMenuToggle,
 } from "@nextui-org/navbar";
 
-import { siteConfig } from "@/config";
+import { siteConfig } from "@/site.config";
 
 const menuItems = [
     "Profile",
