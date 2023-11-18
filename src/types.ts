@@ -4,4 +4,4 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
     size?: number;
 };
 
-export type { SiteConfig } from "@/config"
+export type { SiteConfig } from "@/site.config"
