@@ -1,6 +1,7 @@
 import { nextui } from "@nextui-org/react";
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
+import plugin from "tailwindcss/plugin";
 
 // import { customDarkColors } from "./theme"
 
@@ -37,6 +38,19 @@ const config: Config = {
             //         colors: customDarkColors
             //     }
             // }
+        }),
+        plugin(function({ addUtilities }) {
+            addUtilities({
+                ".h-screen-d": {
+                    height: ["100vh", "100dvh"],
+                },
+                ".h-screen-s": {
+                    height: ["100vh", "100svh"],
+                },
+                ".h-screen-l": {
+                    height: ["100vh", "100lvh"],
+                },
+            });
         }),
     ],
     daisyui: {
