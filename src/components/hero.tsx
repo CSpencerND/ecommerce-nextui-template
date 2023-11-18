@@ -4,10 +4,12 @@ import { ArrowRight } from "lucide-react";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
+import { API_URL } from "@/site.config";
+
 import type { HeroData } from "@/faker/faker-functions";
 
 export async function Hero() {
-    const data = await fetch("http://localhost:3000/api/hero");
+    const data = await fetch(`${API_URL}/hero`);
     const { headline, descriptor, banner } = (await data.json()) as HeroData;
 
     return (

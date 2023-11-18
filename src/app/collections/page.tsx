@@ -1,7 +1,9 @@
+import { API_URL } from "@/site.config";
+
 import type { CollectionData } from "@/faker/faker-functions";
 
 export default async function CollectionsPage() {
-    const data = await fetch("http://localhost:3000/api/collection");
+    const data = await fetch(`${API_URL}/collection`);
     const { name, description, items } = (await data.json()) as CollectionData;
 
     return (

@@ -4,10 +4,12 @@ import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
+import { API_URL } from "@/site.config";
+
 import type { FeaturedData } from "@/faker/faker-functions";
 
 export async function Featured() {
-    const data = await fetch("http://localhost:3000/api/featured");
+    const data = await fetch(`${API_URL}/featured`);
     const { copy, items } = (await data.json()) as FeaturedData;
 
     return (

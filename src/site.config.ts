@@ -2,10 +2,10 @@ const PORT = 3000;
 const URL = "https://ecommerce-nextui-template.vercel.app";
 
 const NODE_ENV = process.env.NODE_ENV;
-const API_URL = NODE_ENV !== "production" ? `${URL}/api` : `http://localhost:${PORT}/api`;
+
+export const API_URL = NODE_ENV === "production" ? `${URL}/api` : `http://localhost:${PORT}/api`;
 
 export const siteConfig = {
-    apiURL: API_URL,
     name: "Store Name",
     description: "Store Description",
     logo: "Acme",
