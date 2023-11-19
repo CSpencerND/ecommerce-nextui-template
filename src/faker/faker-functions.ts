@@ -4,8 +4,8 @@ function getFeaturedItems() {
     const getProduct = () => ({
         name: faker.commerce.product(),
         image: faker.image.urlPicsumPhotos({
-            height: 256,
-            width: 256,
+            height: 192,
+            width: 192,
         }),
     });
 
@@ -38,8 +38,8 @@ function getCollection() {
         name: faker.commerce.product(),
         description: faker.commerce.productDescription,
         image: faker.image.urlPicsumPhotos({
-            height: 256,
-            width: 256,
+            height: 192,
+            width: 192,
         }),
     });
 
