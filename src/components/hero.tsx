@@ -1,4 +1,5 @@
 import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
 
 import { Image } from "@nextui-org/image";
@@ -20,11 +21,13 @@ export async function Hero() {
                 </h1>
                 <p>{descriptor}</p>
                 <Button
+                    href="/collections"
+                    as={Link}
                     color="primary"
                     variant="shadow"
                 >
+                    Get Started
                     <ArrowRight size={16} />
-                    <span>Get Started</span>
                 </Button>
                 <div
                     aria-hidden="true"
