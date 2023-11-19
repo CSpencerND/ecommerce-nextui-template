@@ -37,10 +37,14 @@ function getCollection() {
     const getProduct = () => ({
         name: faker.commerce.product(),
         description: faker.commerce.productDescription,
-        image: faker.image.urlPicsumPhotos({
-            height: 192,
-            width: 192,
-        }),
+        image: faker.helpers.multiple(
+            () =>
+                faker.image.urlPicsumPhotos({
+                    height: 192,
+                    width: 192,
+                }),
+            { count: 3 },
+        ),
     });
 
     return {

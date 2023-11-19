@@ -33,7 +33,7 @@ export default async function CollectionsPage() {
                         <CardBody className="relative">
                             <Image
                                 as={NextImage}
-                                src={item.image}
+                                src={item.image[0]}
                                 alt={item.name}
                                 width={192}
                                 height={192}
