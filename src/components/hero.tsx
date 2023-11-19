@@ -41,6 +41,7 @@ export async function Hero() {
                 alt="banner"
                 width={800}
                 height={450}
+                classNames={{ wrapper: "flex-none basis-1/2" }}
             />
         </div>
     );
