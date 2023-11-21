@@ -1,20 +1,16 @@
 "use client";
 
-import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { useHydrated } from "@/hooks/use-hydrated";
-
+import { motion, type Variants } from "framer-motion";
 import { forwardRef } from "react";
 
-const animationVariants: Variants = {
-    initial: {
-        opacity: 0,
-        y: -24,
-    },
+import { useHydrated } from "@/hooks/use-hydrated";
+
+const fadeInUp: Variants = {
     animate: (i: number) => ({
         opacity: 1,
         y: 0,
         transition: {
-            delay: 0.05 * i,
+            delay: 0.075 * i,
         },
     }),
 };
@@ -29,17 +25,16 @@ export const MotionListItem = forwardRef(
         if (!hydrated) return null;
 
         return (
-            <AnimatePresence>
-                <motion.li
-                    ref={ref}
-                    variants={animationVariants}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true }}
-                    custom={props.index}
-                    {...props}
-                />
-            </AnimatePresence>
+            <motion.li
+                ref={ref}
+                variants={fadeInUp}
+                initial={false}
+                style={{ opacity: 0, y: -24 }}
+                whileInView="animate"
+                viewport={{ once: true }}
+                custom={props.index}
+                {...props}
+            />
         );
     },
 );
