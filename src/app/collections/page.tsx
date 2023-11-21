@@ -27,7 +27,7 @@ export default async function CollectionsPage() {
                         key={i}
                         index={i}
                         isFooterBlurred
-                        disableAnimation
+                        isPressable
                         className="rounded-xlarge !transition-none"
                     >
                         <CardBody className="relative">
@@ -37,6 +37,7 @@ export default async function CollectionsPage() {
                                 alt={item.name}
                                 width={192}
                                 height={192}
+                                className="bg-stripe-gradient bg-content4"
                             />
                             <CardFooter className="absolute bottom-4 z-10 ml-1 w-[calc(100%_-_32px)] truncate rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small">
                                 <h3 className="text-medium font-bold">{item.name}</h3>
