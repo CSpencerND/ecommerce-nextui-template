@@ -109,7 +109,7 @@ export function CarouselItem({ children, className, title, index }: CarouselItem
             {children}
 
             {title ? (
-                <CardFooter className="absolute bottom-1 z-10 ml-1 w-[calc(100%_-_8px)] rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small">
+                <CardFooter className="absolute bottom-1 z-10 ml-1 w-[calc(100%_-_8px)] rounded-medium border-1 border-white/20 bg-white/10 py-1 shadow-small">
                     <h3 className="truncate text-medium font-bold">{title}</h3>
                 </CardFooter>
             ) : null}
