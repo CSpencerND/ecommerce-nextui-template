@@ -14,8 +14,7 @@ import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 import { cn } from "@nextui-org/react";
 
-export type CarouselProps = {
-    children: React.ReactNode[];
+export type CarouselProps = React.PropsWithChildren & {
     className?: string;
     numSlides: number;
     loop?: boolean;
@@ -63,7 +62,7 @@ export function Carousel(props: CarouselProps) {
             aria-label="Carousel Container"
             ref={emblaRef}
             onKeyDown={onKeyboardScroll}
-            className="max-w-prose overflow-hidden rounded-xlarge bg-content1 p-3 shadow-medium"
+            className="max-w-prose overflow-hidden rounded-xlarge bg-content1 p-3 py-6 shadow-medium"
         >
             <ul
                 id="carousel"
@@ -92,11 +91,12 @@ export function Carousel(props: CarouselProps) {
 }
 
 export type CarouselItemProps = React.PropsWithChildren & {
+    className?: string;
     title?: string;
     index: number;
 };
 
-export function CarouselItem({ children, title, index }: CarouselItemProps) {
+export function CarouselItem({ children, className, title, index }: CarouselItemProps) {
     return (
         <Card
             aria-label={`Carousel Item ${index + 1}`}
@@ -104,7 +104,7 @@ export function CarouselItem({ children, title, index }: CarouselItemProps) {
             disableAnimation
             shadow="none"
             isFooterBlurred
-            className="min-w-fit flex-none !transition-none"
+            className={cn("min-w-fit flex-none !transition-none", className)}
         >
             {children}
 

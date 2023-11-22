@@ -1,12 +1,12 @@
-import { Section } from "@/components/section";
 import { Button } from "@nextui-org/button";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { MotionListItem } from "./components";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import { API_URL } from "@/site.config";
+import { section } from "@/components/primitives";
 
 import type { CollectionData } from "@/faker/faker-functions";
 
@@ -15,7 +15,7 @@ export default async function CollectionsPage() {
     const { name, description, items } = (await data.json()) as CollectionData;
 
     return (
-        <Section>
+        <section className={section()}>
             <header className="prose px-6 dark:prose-invert max-lg:text-center">
                 <h1>{name}</h1>
                 <p>{description}</p>
@@ -37,7 +37,7 @@ export default async function CollectionsPage() {
                                 alt={item.name}
                                 width={192}
                                 height={192}
-                                className="bg-stripe-gradient bg-content4"
+                                className="bg-content4 bg-stripe-gradient"
                             />
                             <CardFooter className="absolute bottom-4 z-10 ml-1 w-[calc(100%_-_32px)] truncate rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small">
                                 <h3 className="text-medium font-bold">{item.name}</h3>
@@ -71,7 +71,7 @@ export default async function CollectionsPage() {
                     </Card>
                 ))}
             </menu>
-        </Section>
+        </section>
     );
 }
 

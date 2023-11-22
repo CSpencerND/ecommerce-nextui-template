@@ -6,6 +6,7 @@ import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import { API_URL } from "@/site.config";
+import { section, title } from "@/components/primitives";
 
 import type { HeroData } from "@/faker/faker-functions";
 
@@ -14,11 +15,9 @@ export async function Hero() {
     const { headline, descriptor, banner } = (await data.json()) as HeroData;
 
     return (
-        <div className="relative flex flex-col items-center gap-y-8 lg:flex-row lg:gap-12">
-            <div className="prose relative isolate flex flex-col items-center text-center dark:prose-invert lg:items-start lg:text-left">
-                <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
-                    {headline}
-                </h1>
+        <section className={section({ row: "lg" })}>
+            <div className="prose relative isolate flex basis-3/4 flex-col items-center text-center dark:prose-invert lg:items-start lg:text-left">
+                <h1 className={title()}>{headline}</h1>
                 <p>{descriptor}</p>
                 <Button
                     href="/collections"
@@ -41,8 +40,8 @@ export async function Hero() {
                 alt="banner"
                 width={800}
                 height={450}
-                classNames={{ wrapper: "flex-none basis-1/2" }}
+                className="rounded-xlarge"
             />
-        </div>
+        </section>
     );
 }
