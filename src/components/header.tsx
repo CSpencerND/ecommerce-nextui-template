@@ -13,25 +13,15 @@ import {
 
 import { siteConfig } from "@/site.config";
 
-const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-];
-
 type HeaderProps = {};
 
 export const Header: React.FC<HeaderProps> = () => (
     <Navbar isBordered>
-        <NavbarContent>
-            <NavbarBrand>
+        <NavbarBrand>
+            <Link
+                href="/"
+                color="foreground"
+            >
                 {siteConfig.logo ? (
                     <Image
                         src={siteConfig.logo}
@@ -40,37 +30,26 @@ export const Header: React.FC<HeaderProps> = () => (
                 ) : (
                     <h1 className="text-2xl font-bold">{siteConfig.name}</h1>
                 )}
-            </NavbarBrand>
-        </NavbarContent>
-
+            </Link>
+        </NavbarBrand>
         <NavbarContent
             className="flex gap-4 max-lg:hidden"
             justify="center"
         >
-            <NavbarItem>
-                <Link
-                    color="foreground"
-                    href="#"
+            {siteConfig.navItems.map(({ label, href }, i) => (
+                <NavbarItem
+                    key={i}
+                    /* isActive={false} */
                 >
-                    Features
-                </Link>
-            </NavbarItem>
-            <NavbarItem isActive>
-                <Link
-                    href="#"
-                    aria-current="page"
-                >
-                    Customers
-                </Link>
-            </NavbarItem>
-            <NavbarItem>
-                <Link
-                    color="foreground"
-                    href="#"
-                >
-                    Integrations
-                </Link>
-            </NavbarItem>
+                    <Link
+                        color="foreground"
+                        href="#"
+                        /* aria-current="page" */
+                    >
+                        {label}
+                    </Link>
+                </NavbarItem>
+            ))}
         </NavbarContent>
         <NavbarContent justify="end">
             <NavbarItem className="flex">
@@ -89,13 +68,13 @@ export const Header: React.FC<HeaderProps> = () => (
             <NavbarMenuToggle className="lg:hidden" />
         </NavbarContent>
         <NavbarMenu>
-            {menuItems.map((item, index) => (
-                <NavbarMenuItem key={`${item}-${index}`}>
+            {siteConfig.navMenuItems.map(({ label, href }, i) => (
+                <NavbarMenuItem key={`${label}-${i}`}>
                     <Link
                         color={
-                            index === 2
+                            i === 2
                                 ? "primary"
-                                : index === menuItems.length - 1
+                                : i === siteConfig.navMenuItems.length - 1
                                   ? "danger"
                                   : "foreground"
                         }
@@ -103,7 +82,7 @@ export const Header: React.FC<HeaderProps> = () => (
                         href="#"
                         size="lg"
                     >
-                        {item}
+                        {label}
                     </Link>
                 </NavbarMenuItem>
             ))}
