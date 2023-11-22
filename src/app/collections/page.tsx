@@ -6,7 +6,9 @@ import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import { API_URL } from "@/site.config";
-import { section } from "@/components/primitives";
+
+import { section, title } from "@/components/primitives";
+import { cn } from "@nextui-org/react";
 
 import type { CollectionData } from "@/faker/faker-functions";
 
@@ -17,10 +19,10 @@ export default async function CollectionsPage() {
     return (
         <section className={section()}>
             <header className="prose px-6 dark:prose-invert max-lg:text-center">
-                <h1>{name}</h1>
+                <h1 className={title()}>{name}</h1>
                 <p>{description}</p>
             </header>
-            <menu className="grid h-full max-h-fit max-w-fit grid-cols-1 place-items-center gap-3 sm:grid-cols-2 md:grid-cols-3">
+            <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
                 {items.map((item, i) => (
                     <Card
                         as={MotionListItem}
@@ -39,13 +41,20 @@ export default async function CollectionsPage() {
                                 height={192}
                                 className="bg-content4 bg-stripe-gradient"
                             />
-                            <CardFooter className="absolute bottom-4 z-10 ml-1 w-[calc(100%_-_32px)] truncate rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small">
-                                <h3 className="text-medium font-bold">{item.name}</h3>
+                            <CardFooter className="absolute bottom-4 z-10 ml-1 w-[calc(100%_-_32px)] rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small">
+                                <h3 className="truncate text-medium font-bold">{item.name}</h3>
                             </CardFooter>
                         </CardBody>
-                        <footer className="flex flex-col gap-3 px-3 pb-3">
+                        <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
                             {/* <h3 className="px-3 text-medium font-bold">{item.name}</h3> */}
-                            <menu className="flex flex-row justify-center gap-3">
+                            <menu
+                                className={cn(
+                                    "flex flex-row justify-between overflow-x-scroll p-1",
+                                    "[&>*]:max-sm:h-6",
+                                    "[&>*]:max-sm:w-6",
+                                    "[&>*]:max-sm:min-w-0",
+                                )}
+                            >
                                 <Button
                                     size="sm"
                                     radius="full"
@@ -74,5 +83,3 @@ export default async function CollectionsPage() {
         </section>
     );
 }
-
-// {/* <div className="prose mx-auto w-fit justify-center text-center dark:prose-invert"> */}
