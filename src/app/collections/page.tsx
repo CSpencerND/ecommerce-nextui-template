@@ -21,7 +21,7 @@ export default async function CollectionsDirectoryPage() {
                 <h1 className={title()}>Collection Directory</h1>
             </header>
             <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
-                {collections.map((c, i) => (
+                {collections.map(({image, name}, i) => (
                     <Card
                         as={MotionListItem}
                         key={i}
@@ -33,8 +33,8 @@ export default async function CollectionsDirectoryPage() {
                         <Link href="/collections/[slug]">
                             <Image
                                 as={NextImage}
-                                src={c.image}
-                                alt={c.name}
+                                src={image}
+                                alt={name}
                                 width={192}
                                 height={192}
                                 className="bg-content4 bg-stripe-gradient"
@@ -44,7 +44,7 @@ export default async function CollectionsDirectoryPage() {
                                 style={{ width: "calc(100% - 0.5rem)" }}
                             >
                                 <h3 className="mx-auto truncate text-large font-bold">
-                                    {c.name}
+                                    {name}
                                 </h3>
                             </CardFooter>
                         </Link>
