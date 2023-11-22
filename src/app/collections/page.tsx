@@ -41,39 +41,24 @@ export default async function CollectionsPage() {
                                 height={192}
                                 className="bg-content4 bg-stripe-gradient"
                             />
-                            <CardFooter className="absolute bottom-4 z-10 ml-1 w-[calc(100%_-_32px)] rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small">
+                            <CardFooter
+                                className="absolute bottom-4 z-10 ml-1 rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small"
+                                style={{ width: "calc(100% - 2rem)" }}
+                            >
                                 <h3 className="truncate text-medium font-bold">{item.name}</h3>
                             </CardFooter>
                         </CardBody>
                         <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
-                            <menu
-                                className={cn(
-                                    "flex flex-row justify-between overflow-x-scroll p-1",
-                                    "[&>*]:max-sm:min-w-0",
-                                    "[&>*]:max-sm:w-6",
-                                    "[&>*]:max-sm:h-6",
-                                )}
-                            >
-                                <Button
-                                    size="sm"
-                                    radius="full"
-                                    isIconOnly
-                                />
-                                <Button
-                                    size="sm"
-                                    radius="full"
-                                    isIconOnly
-                                />
-                                <Button
-                                    size="sm"
-                                    radius="full"
-                                    isIconOnly
-                                />
-                                <Button
-                                    size="sm"
-                                    radius="full"
-                                    isIconOnly
-                                />
+                            <menu className="flex flex-row justify-between overflow-x-scroll p-1">
+                                {[...Array(4)].map((_, i) => (
+                                    <Button
+                                        key={i}
+                                        size="sm"
+                                        radius="full"
+                                        isIconOnly
+                                        className="max-sm:h-6 max-sm:w-6 max-sm:min-w-0"
+                                    />
+                                ))}
                             </menu>
                         </footer>
                     </Card>
