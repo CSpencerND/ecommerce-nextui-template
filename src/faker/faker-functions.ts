@@ -56,5 +56,19 @@ function getCollection() {
 
 type CollectionData = ReturnType<typeof getCollection>;
 
-export { getCollection, getFeaturedItems, getHero };
-export type { CollectionData, FeaturedData, HeroData };
+function getCollectionDirectory() {
+    const getCollection = () => ({
+        name: faker.commerce.department(),
+        image: faker.image.urlPicsumPhotos({
+            height: 192,
+            width: 192,
+        }),
+    });
+
+    return faker.helpers.multiple(getCollection, { count: 6 });
+}
+
+type CollectionDirectoryData = ReturnType<typeof getCollectionDirectory>;
+
+export { getCollection, getCollectionDirectory, getFeaturedItems, getHero };
+export type { CollectionData, CollectionDirectoryData, FeaturedData, HeroData };
