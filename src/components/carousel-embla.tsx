@@ -193,7 +193,7 @@ export function CarouselPagination(props: CarouselPaginationProps) {
             page={currentSlideIndex + 1}
             onChange={(i: number) => (setSlide ? setSlide(i - 1) : {})}
             classNames={{
-                item: "relative after:absolute after:h-2 after:w-2 after:bg-content1 after:rounded-full text-transparent",
+                item: "relative bg-content2 after:absolute after:h-2 after:w-2 after:bg-content1 after:rounded-full text-transparent",
                 cursor: "text-transparent rounded-full w-2 h-2 ml-3 bg-default-600",
             }}
         />
