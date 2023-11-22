@@ -46,13 +46,12 @@ export default async function CollectionsPage() {
                             </CardFooter>
                         </CardBody>
                         <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
-                            {/* <h3 className="px-3 text-medium font-bold">{item.name}</h3> */}
                             <menu
                                 className={cn(
                                     "flex flex-row justify-between overflow-x-scroll p-1",
-                                    "[&>*]:max-sm:h-6",
-                                    "[&>*]:max-sm:w-6",
                                     "[&>*]:max-sm:min-w-0",
+                                    "[&>*]:max-sm:w-6",
+                                    "[&>*]:max-sm:h-6",
                                 )}
                             >
                                 <Button
