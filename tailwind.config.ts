@@ -3,7 +3,7 @@ import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
 import plugin from "tailwindcss/plugin";
 
-// import { customDarkColors } from "./theme"
+import { themeColorsDark, themeColorsDim, themeColorsLight } from "./src/theme";
 
 import type { Config } from "tailwindcss";
 
@@ -29,17 +29,19 @@ const config: Config = {
     darkMode: "class",
     plugins: [
         typography,
-        nextui(),
-        daisyui,
         nextui({
             addCommonColors: true,
-            // themes: {
-            //     dark: {
-            //         colors: customDarkColors
-            //     }
-            // }
+            themes: {
+                dark: {
+                    colors: themeColorsDark,
+                },
+                light: {
+                    colors: themeColorsLight,
+                },
+                dim: themeColorsDim,
+            },
         }),
-        plugin(function({ addUtilities }) {
+        plugin(function ({ addUtilities }) {
             addUtilities({
                 ".h-screen-d": {
                     height: ["100vh", "100dvh"],
@@ -53,10 +55,5 @@ const config: Config = {
             });
         }),
     ],
-    daisyui: {
-        themes: false,
-        styled: false,
-        logs: false,
-    },
 };
 export default config;
