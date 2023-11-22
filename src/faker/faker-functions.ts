@@ -2,16 +2,26 @@ import { faker } from "@faker-js/faker";
 
 import { API_URL, NODE_ENV } from "@/site.config";
 
-export async function getFakeData(callback: () => unknown, apiSlug: string) {
+export const fakerFunctions = {
+    hero: getHero,
+    featured: getFeaturedItems,
+    collection: getCollection,
+    "collection-directory": getCollectionDirectory,
+} as const;
+
+export type ApiType = {
+    [K in keyof typeof fakerFunctions]: ReturnType<(typeof fakerFunctions)[K]>;
+};
+
+export async function getFakeData<T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> {
     if (NODE_ENV === "development") {
         const data = await fetch(`${API_URL}/${apiSlug}`);
-        return await data.json();
-    } else {
-        return callback();
+        return data.json();
     }
+    return fakerFunctions[apiSlug]() as ApiType[T];
 }
 
-function getFeaturedItems() {
+export function getFeaturedItems() {
     const getProduct = () => ({
         name: faker.commerce.product(),
         image: faker.image.urlPicsumPhotos({
@@ -29,9 +39,7 @@ function getFeaturedItems() {
     };
 }
 
-type FeaturedData = ReturnType<typeof getFeaturedItems>;
-
-function getHero() {
+export function getHero() {
     return {
         headline: faker.company.catchPhrase(),
         descriptor: faker.lorem.paragraph(),
@@ -42,12 +50,10 @@ function getHero() {
     };
 }
 
-type HeroData = ReturnType<typeof getHero>;
-
-function getCollection() {
+export function getCollection() {
     const getProduct = () => ({
         name: faker.commerce.product(),
-        description: faker.commerce.productDescription,
+        description: faker.commerce.productDescription(),
         image: faker.helpers.multiple(
             () =>
                 faker.image.urlPicsumPhotos({
@@ -65,9 +71,7 @@ function getCollection() {
     };
 }
 
-type CollectionData = ReturnType<typeof getCollection>;
-
-function getCollectionDirectory() {
+export function getCollectionDirectory() {
     const getCollection = () => ({
         name: faker.commerce.department(),
         image: faker.image.urlPicsumPhotos({
@@ -78,8 +82,3 @@ function getCollectionDirectory() {
 
     return faker.helpers.multiple(getCollection, { count: 6 });
 }
-
-type CollectionDirectoryData = ReturnType<typeof getCollectionDirectory>;
-
-export { getCollection, getCollectionDirectory, getFeaturedItems, getHero };
-export type { CollectionData, CollectionDirectoryData, FeaturedData, HeroData };

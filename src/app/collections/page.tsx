@@ -1,3 +1,4 @@
+import { section, title } from "@/components/primitives";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 import { MotionListItem } from "./components";
@@ -5,18 +6,10 @@ import { MotionListItem } from "./components";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { getCollectionDirectory, getFakeData } from "@/faker/faker-functions";
-
-import { section, title } from "@/components/primitives";
-
-import type { CollectionDirectoryData } from "@/faker/faker-functions";
+import { getFakeData } from "@/faker/faker-functions";
 
 export default async function CollectionsDirectoryPage() {
-
-    const collections: CollectionDirectoryData = await getFakeData(
-        getCollectionDirectory,
-        "collection-directory",
-    );
+    const collections = await getFakeData("collection-directory");
 
     return (
         <section className={section()}>
