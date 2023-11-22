@@ -1,14 +1,17 @@
+import { faker } from "@faker-js/faker";
+
 const PORT = 3000;
 const URL = "https://ecommerce-nextui-template.vercel.app";
 
 export const NODE_ENV = process.env.NODE_ENV;
 
-export const API_URL = NODE_ENV === "production" ? `${URL}/api` : `http://localhost:${PORT}/api`;
+export const API_URL =
+    NODE_ENV === "production" ? `${URL}/api` : `http://localhost:${PORT}/api`;
 
 export const siteConfig = {
-    name: "Store Name",
+    name: faker.science.chemicalElement().name,
     description: "Store Description",
-    logo: "Acme",
+    logo: "",
     navItems: [
         {
             label: "Home",

@@ -1,4 +1,5 @@
 import { Button } from "@nextui-org/button";
+import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";
 import {
     Navbar,
@@ -31,7 +32,14 @@ export const Header: React.FC<HeaderProps> = () => (
     <Navbar isBordered>
         <NavbarContent>
             <NavbarBrand>
-                <p className="text-2xl font-bold">{siteConfig.logo}</p>
+                {siteConfig.logo ? (
+                    <Image
+                        src={siteConfig.logo}
+                        alt="Company Logo"
+                    />
+                ) : (
+                    <h1 className="text-2xl font-bold">{siteConfig.name}</h1>
+                )}
             </NavbarBrand>
         </NavbarContent>
 
@@ -88,8 +96,8 @@ export const Header: React.FC<HeaderProps> = () => (
                             index === 2
                                 ? "primary"
                                 : index === menuItems.length - 1
-                                ? "danger"
-                                : "foreground"
+                                  ? "danger"
+                                  : "foreground"
                         }
                         className="w-full"
                         href="#"
