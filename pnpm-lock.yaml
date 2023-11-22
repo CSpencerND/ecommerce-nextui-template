@@ -38,6 +38,9 @@ dependencies:
   '@react-aria/visually-hidden':
     specifier: ^3.8.7
     version: 3.8.7(react@18.2.0)
+  color2k:
+    specifier: ^2.0.2
+    version: 2.0.2
   embla-carousel-react:
     specifier: 8.0.0-rc14
     version: 8.0.0-rc14(react@18.2.0)

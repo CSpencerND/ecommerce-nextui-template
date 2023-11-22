@@ -20,6 +20,7 @@
     "@nextui-org/theme": "^2.1.17",
     "@react-aria/ssr": "^3.9.0",
     "@react-aria/visually-hidden": "^3.8.7",
+    "color2k": "^2.0.2",
     "embla-carousel-react": "8.0.0-rc14",
     "embla-carousel-wheel-gestures": "8.0.0-rc05",
     "framer-motion": "^10.16.5",
