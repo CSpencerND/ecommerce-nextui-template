@@ -4,14 +4,14 @@ import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { API_URL } from "@/site.config";
+import { getFakeData, getFeaturedItems } from "@/faker/faker-functions";
+
 import { section, title } from "@/components/primitives";
 
 import type { FeaturedData } from "@/faker/faker-functions";
 
 export async function Featured() {
-    const data = await fetch(`${API_URL}/featured`);
-    const { copy, items } = (await data.json()) as FeaturedData;
+    const { copy, items }: FeaturedData = await getFakeData(getFeaturedItems, "featured")
 
     return (
         <section className={section({ row: "lg" })}>

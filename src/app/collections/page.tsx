@@ -5,15 +5,18 @@ import { MotionListItem } from "./components";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { API_URL } from "@/site.config";
+import { getCollectionDirectory, getFakeData } from "@/faker/faker-functions";
 
 import { section, title } from "@/components/primitives";
 
 import type { CollectionDirectoryData } from "@/faker/faker-functions";
 
 export default async function CollectionsDirectoryPage() {
-    const data = await fetch(`${API_URL}/collection-directory`);
-    const collections = (await data.json()) as CollectionDirectoryData;
+
+    const collections: CollectionDirectoryData = await getFakeData(
+        getCollectionDirectory,
+        "collection-directory",
+    );
 
     return (
         <section className={section()}>
@@ -21,7 +24,7 @@ export default async function CollectionsDirectoryPage() {
                 <h1 className={title()}>Collection Directory</h1>
             </header>
             <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
-                {collections.map(({image, name}, i) => (
+                {collections.map(({ image, name }, i) => (
                     <Card
                         as={MotionListItem}
                         key={i}

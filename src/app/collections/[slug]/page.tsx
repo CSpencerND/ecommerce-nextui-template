@@ -5,15 +5,14 @@ import { MotionListItem } from "../components";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { API_URL } from "@/site.config";
+import { getFakeData, getCollection } from "@/faker/faker-functions";
 
 import { section, title } from "@/components/primitives";
 
 import type { CollectionData } from "@/faker/faker-functions";
 
 export default async function CollectionsPage() {
-    const data = await fetch(`${API_URL}/collection`);
-    const { name, description, items } = (await data.json()) as CollectionData;
+    const { name, description, items }: CollectionData = await getFakeData(getCollection, "collection")
 
     return (
         <section className={section()}>

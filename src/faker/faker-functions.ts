@@ -1,5 +1,16 @@
 import { faker } from "@faker-js/faker";
 
+import { API_URL, NODE_ENV } from "@/site.config";
+
+export async function getFakeData(callback: () => unknown, apiSlug: string) {
+    if (NODE_ENV === "development") {
+        const data = await fetch(`${API_URL}/${apiSlug}`);
+        return await data.json();
+    } else {
+        return callback();
+    }
+}
+
 function getFeaturedItems() {
     const getProduct = () => ({
         name: faker.commerce.product(),

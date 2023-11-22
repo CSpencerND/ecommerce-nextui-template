@@ -5,14 +5,14 @@ import { ArrowRight } from "lucide-react";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { API_URL } from "@/site.config";
+import { getFakeData, getHero } from "@/faker/faker-functions";
+
 import { section, title } from "@/components/primitives";
 
 import type { HeroData } from "@/faker/faker-functions";
 
 export async function Hero() {
-    const data = await fetch(`${API_URL}/hero`);
-    const { headline, descriptor, banner } = (await data.json()) as HeroData;
+    const { headline, descriptor, banner }: HeroData = await getFakeData(getHero, "hero")
 
     return (
         <section className={section({ row: "lg" })}>

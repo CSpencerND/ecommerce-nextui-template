@@ -1,7 +1,7 @@
 const PORT = 3000;
 const URL = "https://ecommerce-nextui-template.vercel.app";
 
-const NODE_ENV = process.env.NODE_ENV;
+export const NODE_ENV = process.env.NODE_ENV;
 
 export const API_URL = NODE_ENV === "production" ? `${URL}/api` : `http://localhost:${PORT}/api`;
 
