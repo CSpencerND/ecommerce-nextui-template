@@ -37,6 +37,13 @@ const config: Config = {
                 },
                 light: {
                     colors: themeColorsLight,
+                    layout: {
+                        boxShadow: {
+                            small: "0px 0px 5px 0px rgb(0 0 0 / 0.02), 0px 2px 10px 0px rgb(0 0 0 / 0.06)",
+                            medium: "0px 0px 15px 0px rgb(0 0 0 / 0.03), 0px 2px 30px 0px rgb(0 0 0 / 0.08)",
+                            large: "0px 0px 30px 0px rgb(0 0 0 / 0.04), 0px 30px 60px 0px rgb(0 0 0 / 0.12)",
+                        },
+                    },
                 },
                 dim: themeColorsDim,
             },
