@@ -1,3 +1,4 @@
+import { ThemeSwitch } from "@/components/theme-switch";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";
@@ -64,6 +65,9 @@ export const Header: React.FC<HeaderProps> = () => (
                 >
                     Sign Up
                 </Button>
+            </NavbarItem>
+            <NavbarItem className="grid place-items-center">
+                <ThemeSwitch />
             </NavbarItem>
             <NavbarMenuToggle className="lg:hidden" />
         </NavbarContent>
