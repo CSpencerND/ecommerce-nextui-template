@@ -142,16 +142,30 @@ export const themeColorsDark: ThemeColors = {
     },
 };
 
+const main = {
+    50: "rgb(245 245 247)",
+    100: "rgb(225 225 228)",
+    200: "rgb(210 210 214)",
+    300: "rgb(180 180 185)",
+    400: "rgb(145 145 151)",
+    500: "rgb(113 113 121)",
+    600: "rgb(83 83 90)",
+    700: "rgb(65 65 71)",
+    800: "rgb(45 45 50)",
+    900: "rgb(28 28 32)",
+    950: "rgb(16 16 19)",
+};
+
 export const themeColorsDim: ConfigTheme = {
     extend: "dark",
     colors: {
-        background: common.zinc[900],
-        foreground: common.zinc[50],
-        content1: common.zinc[800],
-        content2: common.zinc[700],
-        content3: common.zinc[600],
-        content4: common.zinc[500],
-        divider: common.zinc[800],
+        background: main[950],
+        foreground: main[50],
+        content1: main[900],
+        content2: main[800],
+        content3: main[700],
+        content4: main[600],
+        divider: main[500],
     },
 };
 
