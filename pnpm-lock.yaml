@@ -54,8 +54,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0(next@14.0.3)
   lucide-react:
-    specifier: ^0.292.0
-    version: 0.292.0(react@18.2.0)
+    specifier: ^0.293.0
+    version: 0.293.0(react@18.2.0)
   next:
     specifier: 14.0.3
     version: 14.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -83,8 +83,8 @@ devDependencies:
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.5)
   '@types/node':
-    specifier: ^20.9.4
-    version: 20.9.4
+    specifier: ^20.10.0
+    version: 20.10.0
   '@types/react':
     specifier: ^18.2.38
     version: 18.2.38
@@ -98,8 +98,8 @@ devDependencies:
     specifier: ^2.0.0
     version: 2.0.0
   daisyui:
-    specifier: ^4.4.2
-    version: 4.4.2(postcss@8.4.31)
+    specifier: ^4.4.6
+    version: 4.4.6(postcss@8.4.31)
   eslint:
     specifier: ^8.54.0
     version: 8.54.0
@@ -2648,8 +2648,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/node@20.9.4:
-    resolution: {integrity: sha512-wmyg8HUhcn6ACjsn8oKYjkN/zUzQeNtMy44weTJSM6p4MMzEOuKbA3OjJ267uPCOW7Xex9dyrNTful8XTQYoDA==}
+  /@types/node@20.10.0:
+    resolution: {integrity: sha512-D0WfRmU9TQ8I9PFx9Yc+EBHw+vSpIub4IDvQivcp26PtPrdMGAq5SDcpXEo/epqa/DXotVpekHiLNTg3iaKXBQ==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -3105,8 +3105,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /daisyui@4.4.2(postcss@8.4.31):
-    resolution: {integrity: sha512-Ecg5loskj9dkaAnTSK5Xn5jb24TqDlQIg/NJ025jCkw2S/zw12btjvLgY2Sv5Ws1DFVoVBRs3XYXyojZG7zVnw==}
+  /daisyui@4.4.6(postcss@8.4.31):
+    resolution: {integrity: sha512-Zum9dWsYufduID4IfwI1h/+qQIuoXBpVaG9l/rOlLOVbCmpvE7LQK/GDYE7YOT8NDXHOH+EqMqT8uzGqlbTFig==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
@@ -4330,8 +4330,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-react@0.292.0(react@18.2.0):
-    resolution: {integrity: sha512-rRgUkpEHWpa5VCT66YscInCQmQuPCB1RFRzkkxMxg4b+jaL0V12E3riWWR2Sh5OIiUhCwGW/ZExuEO4Az32E6Q==}
+  /lucide-react@0.293.0(react@18.2.0):
+    resolution: {integrity: sha512-g3AN0EYITCpAjNgLHrKrFWvIJzZy0Y9OPBaonyKw1cM+nZE6piOM+TiuQdYfha7oa76TMiDaWXQHE44CEqsrzw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
