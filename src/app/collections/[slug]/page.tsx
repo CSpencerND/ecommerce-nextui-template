@@ -31,9 +31,9 @@ export default async function CollectionPage() {
                         index={i}
                         isFooterBlurred
                         isPressable
-                        className="rounded-xlarge !transition-none"
+                        className={card.root({ radius: "xl" })}
                     >
-                        <CardBody className="relative">
+                        <CardBody>
                             <Image
                                 as={NextImage}
                                 src={item.image[0]}

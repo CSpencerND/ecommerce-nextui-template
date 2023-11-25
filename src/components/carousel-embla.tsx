@@ -12,7 +12,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { type EmblaCarouselType } from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-import { cardFooter } from "@/styles/product-card";
+import card from "@/styles/product-card";
 import { cn } from "@nextui-org/react";
 
 export type CarouselProps = React.PropsWithChildren & {
@@ -105,12 +105,12 @@ export function CarouselItem({ children, className, title, index }: CarouselItem
             disableAnimation
             shadow="none"
             isFooterBlurred
-            className={cn("min-w-fit flex-none !transition-none", className)}
+            className={card.root({ isCarouselItem: true, class: className })}
         >
             {children}
 
             {title ? (
-                <CardFooter className={cardFooter()}>
+                <CardFooter className={card.footer()}>
                     <h3 className="truncate text-medium font-bold text-white">{title}</h3>
                 </CardFooter>
             ) : null}

@@ -26,7 +26,7 @@ export default async function CollectionDirectoryPage() {
                         index={i}
                         isFooterBlurred
                         isPressable
-                        className="relative rounded-2xl !transition-none"
+                        className={card.root()}
                     >
                         <Link href="/collections/[slug]">
                             <Image
