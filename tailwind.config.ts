@@ -1,6 +1,5 @@
 import { nextui } from "@nextui-org/react";
 import typography from "@tailwindcss/typography";
-import daisyui from "daisyui";
 import plugin from "tailwindcss/plugin";
 
 import { themeColorsDark, themeColorsDim, themeColorsLight } from "./src/theme";
