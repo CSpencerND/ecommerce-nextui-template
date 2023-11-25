@@ -8,7 +8,9 @@ import NextImage from "next/image";
 
 import { getFakeData } from "@/faker/faker-functions";
 
-export default async function CollectionsPage() {
+import card from "@/styles/product-card";
+
+export default async function CollectionPage() {
     const { name, description, items } = await getFakeData("collection");
 
     return (
@@ -34,13 +36,11 @@ export default async function CollectionsPage() {
                                 alt={item.name}
                                 width={192}
                                 height={192}
-                                className="bg-content4 bg-stripe-gradient"
+                                className={card.image()}
+                                isZoomed
                             />
-                            <CardFooter
-                                className="absolute bottom-4 z-10 ml-1 rounded-medium border-1 border-white/20 bg-black/30 py-1 shadow-small"
-                                style={{ width: "calc(100% - 2rem)" }}
-                            >
-                                <h3 className="truncate text-medium font-bold">{item.name}</h3>
+                            <CardFooter className={card.footer({ hasPadding: true })}>
+                                <h3>{item.name}</h3>
                             </CardFooter>
                         </CardBody>
                         <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
