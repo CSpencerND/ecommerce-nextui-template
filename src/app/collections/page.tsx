@@ -39,9 +39,7 @@ export default async function CollectionDirectoryPage() {
                                 isZoomed
                             />
                             <CardFooter className={card.footer()}>
-                                <h3 className="mx-auto truncate text-large font-bold">
-                                    {name}
-                                </h3>
+                                <h3 className="text-large">{name}</h3>
                             </CardFooter>
                         </Link>
                     </Card>

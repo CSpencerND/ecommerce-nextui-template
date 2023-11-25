@@ -5,7 +5,7 @@ import { siteConfig } from "@/site.config";
 import { cn } from "@nextui-org/react";
 
 import { GeistSans } from "geist/font/sans";
-import "./globals.css";
+import "@/styles/globals.css";
 
 import type { Metadata } from "next";
 

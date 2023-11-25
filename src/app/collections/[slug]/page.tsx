@@ -10,6 +10,10 @@ import { getFakeData } from "@/faker/faker-functions";
 
 import card from "@/styles/product-card";
 
+/**
+ * TODO: Radio can take different color for each button; should be easy;
+ */
+
 export default async function CollectionPage() {
     const { name, description, items } = await getFakeData("collection");
 

@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import card from "@/styles/product-card";
+import { cardImage } from "@/styles/product-card";
 
 import type { ApiType } from "@/faker/faker-functions";
 
@@ -34,7 +34,7 @@ export function Featured({ copy, items }: ApiType["featured"]) {
                             alt={name}
                             width={192}
                             height={192}
-                            className={card.image()}
+                            className={cardImage()}
                         />
                     </CarouselItem>
                 ))}
