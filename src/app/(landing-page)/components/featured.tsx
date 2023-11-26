@@ -40,10 +40,7 @@ export function Featured({ copy, items }: ApiType["featured"]) {
                 ))}
             </Carousel>
 
-            <div className="prose flex flex-col items-center justify-center dark:prose-invert max-lg:hidden lg:items-start lg:text-left">
-                <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
-                    {copy.adjective}
-                </h1>
+            <div className="prose flex flex-col items-center justify-center dark:prose-invert lg:hidden lg:items-start lg:text-left">
                 <p className="max-lg:text-center">{copy.description}</p>
                 <Button
                     color="primary"
@@ -54,12 +51,14 @@ export function Featured({ copy, items }: ApiType["featured"]) {
                 </Button>
             </div>
 
-            <div className="prose flex flex-col items-center justify-center dark:prose-invert lg:hidden lg:items-start lg:text-left">
+            <div className="prose flex flex-col items-start dark:prose-invert max-lg:hidden">
+                <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
+                    {copy.adjective}
+                </h1>
                 <p className="max-lg:text-center">{copy.description}</p>
                 <Button
                     color="primary"
                     variant="shadow"
-                    className="lg:self-end"
                 >
                     See More
                 </Button>
