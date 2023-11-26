@@ -5,10 +5,6 @@ import { cache } from "react";
 
 import { API_URL, NODE_ENV } from "@/site.config";
 
-export const preloadFakeData = (route: keyof ApiType) => {
-    void getFakeData(route)
-}
-
 export const fakerFunctions = {
     hero: getHero,
     featured: getFeaturedItems,
@@ -19,6 +15,10 @@ export const fakerFunctions = {
 export type ApiType = {
     [K in keyof typeof fakerFunctions]: ReturnType<(typeof fakerFunctions)[K]>;
 };
+
+export const preloadFakeData = (route: keyof ApiType) => {
+    void getFakeData(route)
+}
 
 export const getFakeData = cache(
     async <T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> => {
