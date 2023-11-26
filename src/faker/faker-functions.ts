@@ -17,8 +17,8 @@ export type ApiType = {
 };
 
 export const preloadFakeData = (route: keyof ApiType) => {
-    void getFakeData(route)
-}
+    void getFakeData(route);
+};
 
 export const getFakeData = cache(
     async <T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> => {
@@ -29,6 +29,17 @@ export const getFakeData = cache(
         return fakerFunctions[apiSlug]() as ApiType[T];
     },
 );
+
+export function getHero() {
+    return {
+        headline: faker.company.catchPhrase(),
+        descriptor: faker.lorem.paragraph(),
+        banner: faker.image.urlPicsumPhotos({
+            width: 800,
+            height: 450,
+        }),
+    };
+}
 
 export function getFeaturedItems() {
     const getProduct = () => ({
@@ -47,22 +58,22 @@ export function getFeaturedItems() {
         },
     };
 }
-
-export function getHero() {
-    return {
-        headline: faker.company.catchPhrase(),
-        descriptor: faker.lorem.paragraph(),
-        banner: faker.image.urlPicsumPhotos({
-            width: 800,
-            height: 450,
+export function getCollectionDirectory() {
+    const getCollection = () => ({
+        name: faker.commerce.department(),
+        image: faker.image.urlPicsumPhotos({
+            height: 192,
+            width: 192,
         }),
-    };
-}
+    });
 
+    return faker.helpers.multiple(getCollection, { count: 6 });
+}
 export function getCollection() {
     const getProduct = () => ({
         name: faker.commerce.product(),
         description: faker.commerce.productDescription(),
+        colors: faker.helpers.multiple(() => faker.color.rgb(), { count: 3 }),
         image: faker.helpers.multiple(
             () =>
                 faker.image.urlPicsumPhotos({
@@ -78,16 +89,4 @@ export function getCollection() {
         description: faker.commerce.productDescription(),
         items: faker.helpers.multiple(getProduct, { count: 9 }),
     };
-}
-
-export function getCollectionDirectory() {
-    const getCollection = () => ({
-        name: faker.commerce.department(),
-        image: faker.image.urlPicsumPhotos({
-            height: 192,
-            width: 192,
-        }),
-    });
-
-    return faker.helpers.multiple(getCollection, { count: 6 });
 }

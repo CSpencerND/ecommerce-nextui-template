@@ -3,11 +3,11 @@
 import { Button } from "@nextui-org/button";
 import { Radio, RadioGroup } from "@nextui-org/radio";
 
-type SwatchProps = {
+type ColorSwatchProps = {
     colors: string[];
 };
 
-export function ColorSwatch() {
+export function ColorSwatch({ colors }: ColorSwatchProps) {
     return (
         <RadioGroup
             as="menu"
@@ -19,7 +19,7 @@ export function ColorSwatch() {
                     "justify-around flex-nowrap gap-0.5 overflow-x-scroll p-1 scrollbar-hide",
             }}
         >
-            {[...Array(4)].map((_, i) => (
+            {colors.map((c, i) => (
                 <Radio
                     key={i}
                     value={i.toString()}
@@ -27,9 +27,12 @@ export function ColorSwatch() {
                     defaultChecked
                     color="default"
                     classNames={{
-                        wrapper: "bg-blue-500 hover:bg-opacity-80 h-7 w-7 sm:h-8 sm:w-8",
+                        wrapper: "hover:bg-opacity-80 h-7 w-7 sm:h-8 sm:w-8",
                         base: "grid place-items-center",
                         control: "bg-transparent",
+                    }}
+                    style={{
+                        backgroundColor: colors[i]
                     }}
                 />
             ))}
