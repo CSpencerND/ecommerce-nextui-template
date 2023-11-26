@@ -1,6 +1,6 @@
-import { ColorSwatch } from "@.c/components/color-swatch";
-import { MotionListItem } from "@.c/components/motion";
 import { section, title } from "@/components/primitives";
+import { ColorSwatch } from "@collections/components/color-swatch";
+import { MotionListItem } from "@collections/components/motion";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 
@@ -10,10 +10,6 @@ import NextImage from "next/image";
 import { getFakeData } from "@/faker/faker-functions";
 
 import card from "@/styles/product-card";
-
-/**
- * TODO: Radio can take different color for each button; should be easy;
- */
 
 export default async function CollectionPage() {
     const { name, description, items } = await getFakeData("collection");
@@ -49,7 +45,7 @@ export default async function CollectionPage() {
                             </CardFooter>
                         </CardBody>
                         <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
-                            <ColorSwatch />
+                            <ColorSwatch colors={item.colors} />
                         </footer>
                     </Card>
                 ))}

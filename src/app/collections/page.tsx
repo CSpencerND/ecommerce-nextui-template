@@ -1,5 +1,5 @@
-import { MotionListItem } from "@.c/components/motion";
 import { section, title } from "@/components/primitives";
+import { MotionListItem } from "@collections/components/motion";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
