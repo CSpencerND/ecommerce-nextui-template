@@ -1,3 +1,4 @@
+import { ColorSwatch } from "@.c/components/color-swatch";
 import { MotionListItem } from "@.c/components/motion";
 import { section, title } from "@/components/primitives";
 import { Button } from "@nextui-org/button";
@@ -48,17 +49,7 @@ export default async function CollectionPage() {
                             </CardFooter>
                         </CardBody>
                         <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
-                            <menu className="flex flex-row justify-between overflow-x-scroll p-1 scrollbar-hide">
-                                {[...Array(4)].map((_, i) => (
-                                    <Button
-                                        key={i}
-                                        size="sm"
-                                        radius="full"
-                                        isIconOnly
-                                        className="max-sm:h-6 max-sm:w-6 max-sm:min-w-0"
-                                    />
-                                ))}
-                            </menu>
+                            <ColorSwatch />
                         </footer>
                     </Card>
                 ))}
