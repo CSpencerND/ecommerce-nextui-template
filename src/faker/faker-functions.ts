@@ -5,6 +5,11 @@ import { cache } from "react";
 
 import { API_URL, NODE_ENV } from "@/site.config";
 
+/**
+ * Client
+ * Helper for fetching data on the client
+ */
+
 export const fakerFunctions = {
     hero: getHero,
     featured: getFeaturedItems,
@@ -29,6 +34,11 @@ export const getFakeData = cache(
         return fakerFunctions[apiSlug]() as ApiType[T];
     },
 );
+
+/**
+ * Server
+ * Use in api routes to fetch data
+ */
 
 export function getHero() {
     return {
@@ -58,6 +68,7 @@ export function getFeaturedItems() {
         },
     };
 }
+
 export function getCollectionDirectory() {
     const getCollection = () => ({
         name: faker.commerce.department(),
@@ -69,6 +80,7 @@ export function getCollectionDirectory() {
 
     return faker.helpers.multiple(getCollection, { count: 6 });
 }
+
 export function getCollection() {
     const getProduct = () => ({
         name: faker.commerce.product(),
