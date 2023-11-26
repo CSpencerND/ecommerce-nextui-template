@@ -19,7 +19,7 @@ export const cardRoot = tv({
 
 export const cardFooter = tv({
     base: [
-        "absolute z-10 ml-1 rounded-medium border-1 border-white/20 bg-white/10 py-1 shadow-small",
+        "absolute z-10 ml-1 rounded-[10px] border-1 border-white/20 bg-white/10 py-1 shadow-small",
         "[&>h3]:truncate [&>h3]:text-medium [&>h3]:font-bold [&>h3]:text-white",
     ],
     variants: {
