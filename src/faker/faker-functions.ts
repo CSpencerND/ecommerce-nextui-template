@@ -85,14 +85,14 @@ export function getCollection() {
     const getProduct = () => ({
         name: faker.commerce.product(),
         description: faker.commerce.productDescription(),
-        colors: faker.helpers.multiple(() => faker.color.rgb(), { count: 3 }),
+        colors: faker.helpers.multiple(() => faker.color.rgb(), { count: 4 }),
         image: faker.helpers.multiple(
             () =>
                 faker.image.urlPicsumPhotos({
                     height: 192,
                     width: 192,
                 }),
-            { count: 3 },
+            { count: 4 },
         ),
     });
 
