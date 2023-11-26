@@ -1,3 +1,8 @@
+/**
+ * NOTE: This isn't currently in use
+ * Holding on to this for posterity
+ */
+
 "use client";
 
 import { Button, ButtonGroup } from "@nextui-org/button";
