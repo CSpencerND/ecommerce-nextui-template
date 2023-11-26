@@ -7,6 +7,8 @@ type RouteParams = {
     };
 };
 
+export const runtime = "edge";
+
 export async function GET(_req: Request, { params }: RouteParams) {
     const getData = fakerFunctions[params.slug];
     const data = getData();
