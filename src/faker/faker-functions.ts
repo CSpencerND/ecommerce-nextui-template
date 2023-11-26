@@ -1,6 +1,13 @@
+import "server-only";
+
 import { faker } from "@faker-js/faker";
+import { cache } from "react";
 
 import { API_URL, NODE_ENV } from "@/site.config";
+
+export const preloadFakeData = (route: keyof ApiType) => {
+    void getFakeData(route)
+}
 
 export const fakerFunctions = {
     hero: getHero,
@@ -13,13 +20,15 @@ export type ApiType = {
     [K in keyof typeof fakerFunctions]: ReturnType<(typeof fakerFunctions)[K]>;
 };
 
-export async function getFakeData<T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> {
-    if (NODE_ENV === "development") {
-        const data = await fetch(`${API_URL}/${apiSlug}`);
-        return data.json();
-    }
-    return fakerFunctions[apiSlug]() as ApiType[T];
-}
+export const getFakeData = cache(
+    async <T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> => {
+        if (NODE_ENV === "development") {
+            const data = await fetch(`${API_URL}/${apiSlug}`);
+            return data.json();
+        }
+        return fakerFunctions[apiSlug]() as ApiType[T];
+    },
+);
 
 export function getFeaturedItems() {
     const getProduct = () => ({

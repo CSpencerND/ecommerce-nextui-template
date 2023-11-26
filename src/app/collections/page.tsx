@@ -1,7 +1,7 @@
+import { MotionListItem } from "@.c/components/motion";
 import { section, title } from "@/components/primitives";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
-import { MotionListItem } from "./components";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";

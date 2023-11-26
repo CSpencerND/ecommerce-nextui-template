@@ -1,15 +1,18 @@
-import { Featured } from "@/components/featured";
-import { Hero } from "@/components/hero";
+import { Suspense } from "react";
+import { Featured } from "./components/featured";
+import { Hero } from "./components/hero";
 
-import { getFakeData } from "@/faker/faker-functions";
+import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
-export default async function Home() {
-    const [hero, featured] = await Promise.all([getFakeData("hero"), getFakeData("featured")]);
+export default async function HomePage() {
+    preloadFakeData("hero");
+    const heroData = await getFakeData("hero");
+    const featuredData = await getFakeData("featured");
 
     return (
         <>
-            <Hero {...hero} />
-            <Featured {...featured} />
+            <Hero {...heroData} />
+            <Featured {...featuredData} />
         </>
     );
 }
