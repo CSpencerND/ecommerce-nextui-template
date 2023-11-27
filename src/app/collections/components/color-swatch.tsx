@@ -1,8 +1,9 @@
 "use client";
 
 import { RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
-import { VisuallyHidden } from "@nextui-org/react";
+import { VisuallyHidden, cn } from "@nextui-org/react";
 import { focusVisibleClasses } from "@nextui-org/theme";
+import { SmoothCorners } from "react-smooth-corners";
 
 export function ColorSwatchGroup(props: RadioGroupProps) {
     return (
@@ -13,7 +14,7 @@ export function ColorSwatchGroup(props: RadioGroupProps) {
             size="lg"
             classNames={{
                 wrapper: [
-                    "flex-nowrap justify-between overflow-x-hidden",
+                    "flex-nowrap justify-between overflow-x-scroll overflow-y-hidden",
                     "rounded-large bg-content2 scrollbar-hide",
                     "p-1.5 gap-1.5",
                     ...focusVisibleClasses.concat("focus-visible:outline-none"),
@@ -39,15 +40,31 @@ export function ColorSwatch({ color, isSquare, ...props }: ColorSwatchProps) {
                 <input {...getInputProps()} />
             </VisuallyHidden>
             <span
-                {...getWrapperProps({
-                    className: [
-                        "aspect-square h-7 w-7 sm:h-8 sm:w-8",
-                        "group-data-[selected=true]:border-large",
-                        isSquare && "rounded-icon",
-                    ],
-                    style: { backgroundColor: color },
-                })}
-            />
+                className={cn(
+                    "group-data-[selected=true]:border-medium border-primary rounded-[9px]",
+                    "aspect-square h-8 w-8 sm:h-9 sm:w-9",
+                    "grid place-items-center",
+                )}
+            >
+                <SmoothCorners
+                    corners="5.6128"
+                    borderRadius="7px"
+                    style={{ backgroundColor: color }}
+                    {...getWrapperProps({
+                        className: ["border-0", "aspect-square h-6 w-6 sm:h-7 sm:w-7", isSquare && "rounded-icon"],
+                    })}
+                />
+            </span>
+            {/* <span */}
+            {/*     {...getWrapperProps({ */}
+            {/*         className: [ */}
+            {/*             "aspect-square h-7 w-7 sm:h-8 sm:w-8", */}
+            {/*             "group-data-[selected=true]:border-large", */}
+            {/*             isSquare && "rounded-icon", */}
+            {/*         ], */}
+            {/*         style: { backgroundColor: color }, */}
+            {/*     })} */}
+            {/* /> */}
         </Component>
     );
 }
