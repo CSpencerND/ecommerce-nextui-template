@@ -1,13 +1,37 @@
 "use client";
 
 import { RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
-import { VisuallyHidden, cn } from "@nextui-org/react";
-import { focusVisibleClasses } from "@nextui-org/theme";
 import { SmoothCorners } from "react-smooth-corners";
+
+import { VisuallyHidden, cn } from "@nextui-org/react";
+import { focusVisibleClasses, tv } from "@nextui-org/theme";
+import { create } from "zustand";
 
 import { useProduct } from "./use-product";
 
-export function ColorSwatchGroup(props: RadioGroupProps) {
+const swatch = tv({
+    base: [
+        "flex-nowrap justify-between overflow-y-hidden overflow-x-scroll",
+        "bg-content2 scrollbar-hide",
+        "gap-1.5 p-1.5",
+        ...focusVisibleClasses.concat("focus-visible:outline-none"),
+    ],
+    variants: {
+        isSquared: {
+            true: "rounded-large",
+            false: "rounded-full",
+        },
+    },
+    defaultVariants: {
+        isSquared: false,
+    },
+});
+
+export type ColorSwatchGroupProps = RadioGroupProps & {
+    isSquared?: boolean;
+};
+
+export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps) {
     const setIndex = useProduct((s) => s.setIndex);
     const selectedIndex = useProduct((s) => s.selectedIndex);
 
@@ -20,14 +44,7 @@ export function ColorSwatchGroup(props: RadioGroupProps) {
             orientation="horizontal"
             size="lg"
             onValueChange={(v) => setIndex(v)}
-            classNames={{
-                wrapper: [
-                    "flex-nowrap justify-between overflow-x-scroll overflow-y-hidden",
-                    "rounded-large bg-content2 scrollbar-hide",
-                    "p-1.5 gap-1.5",
-                    ...focusVisibleClasses.concat("focus-visible:outline-none"),
-                ],
-            }}
+            classNames={{ wrapper: swatch({ isSquared: isSquared }) }}
             {...props}
         />
     );
@@ -36,10 +53,10 @@ export function ColorSwatchGroup(props: RadioGroupProps) {
 type ColorSwatchProps = Omit<RadioProps, "color"> & {
     color: string;
     /** @description false squircle */
-    isSquare?: boolean;
+    isSquared?: boolean;
 };
 
-export function ColorSwatch({ color, isSquare, ...props }: ColorSwatchProps) {
+export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
     const { Component, getBaseProps, getWrapperProps, getInputProps } = useRadio(props);
 
     return (
@@ -52,11 +69,12 @@ export function ColorSwatch({ color, isSquare, ...props }: ColorSwatchProps) {
                     "border-primary group-data-[selected=true]:border-medium",
                     "aspect-square h-8 w-8 sm:h-9 sm:w-9",
                     "grid place-items-center",
-                    isSquare ? "rounded-[calc(15.625%+2px)]" : "rounded-full",
+                    isSquared ? "rounded-[calc(15.625%+2px)]" : "rounded-full",
                 )}
             >
-                {isSquare ? (
+                {isSquared ? (
                     <SmoothCorners
+                        // NOTE: when css paint api is widely supported, change corners to 5
                         corners="7"
                         borderRadius="15.625%"
                         style={{ backgroundColor: color }}
@@ -76,16 +94,6 @@ export function ColorSwatch({ color, isSquare, ...props }: ColorSwatchProps) {
                     />
                 )}
             </span>
-            {/* <span */}
-            {/*     {...getWrapperProps({ */}
-            {/*         className: [ */}
-            {/*             "aspect-square h-7 w-7 sm:h-8 sm:w-8", */}
-            {/*             "group-data-[selected=true]:border-large", */}
-            {/*             isSquare && "rounded-icon", */}
-            {/*         ], */}
-            {/*         style: { backgroundColor: color }, */}
-            {/*     })} */}
-            {/* /> */}
         </Component>
     );
 }
