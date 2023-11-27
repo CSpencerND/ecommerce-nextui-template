@@ -5,7 +5,6 @@ import { SmoothCorners } from "react-smooth-corners";
 
 import { VisuallyHidden, cn } from "@nextui-org/react";
 import { focusVisibleClasses, tv } from "@nextui-org/theme";
-import { create } from "zustand";
 
 import { useProduct } from "./use-product";
 

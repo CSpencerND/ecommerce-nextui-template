@@ -2,6 +2,7 @@ import { section, title } from "@/components/primitives";
 import { ColorSwatchGroup, ColorSwatch } from "@collections/components/color-swatch";
 import { MotionListItem } from "@collections/components/motion";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
+import { ProductPreview } from "@collections/components/product-image";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
@@ -30,27 +31,34 @@ export default async function CollectionPage() {
                         className={card.root({ radius: "xl" })}
                     >
                         <CardBody>
-                            <Image
-                                as={NextImage}
-                                src={item.image[0]}
-                                alt={item.name}
-                                width={192}
-                                height={192}
-                                className={card.image()}
-                                isZoomed
+                            <ProductPreview
+                                images={item.images}
+                                altTag={item.name}
                             />
+                            {/* <Image */}
+                            {/*     as={NextImage} */}
+                            {/*     src={item.images[0]} */}
+                            {/*     alt={item.name} */}
+                            {/*     width={192} */}
+                            {/*     height={192} */}
+                            {/*     className={card.image()} */}
+                            {/*     isZoomed */}
+                            {/* /> */}
                             <CardFooter className={card.footer({ hasPadding: true })}>
                                 <h3>{item.name}</h3>
                             </CardFooter>
                         </CardBody>
                         <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
-                            <ColorSwatchGroup defaultValue={item.colors[0]}>
+                            <ColorSwatchGroup
+                                defaultValue={item.colors[0]}
+                                isSquared
+                            >
                                 {item.colors.map((color, c) => (
                                     <ColorSwatch
                                         key={c}
-                                        value={color}
+                                        value={c.toString()}
                                         color={color}
-                                        isSquare
+                                        isSquared
                                     />
                                 ))}
                             </ColorSwatchGroup>
