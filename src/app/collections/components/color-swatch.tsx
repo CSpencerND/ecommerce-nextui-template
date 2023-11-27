@@ -1,9 +1,8 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
-import { Radio, RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
-import { VisuallyHidden, cn } from "@nextui-org/react";
-import { focusVisibleClasses, radio } from "@nextui-org/theme";
+import { RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
+import { VisuallyHidden } from "@nextui-org/react";
+import { focusVisibleClasses } from "@nextui-org/theme";
 
 export function ColorSwatchGroup(props: RadioGroupProps) {
     return (
@@ -14,7 +13,7 @@ export function ColorSwatchGroup(props: RadioGroupProps) {
             size="lg"
             classNames={{
                 wrapper: [
-                    "flex-nowrap justify-between overflow-x-scroll",
+                    "flex-nowrap justify-between overflow-x-hidden",
                     "rounded-large bg-content2 scrollbar-hide",
                     "p-1.5 gap-1.5",
                     ...focusVisibleClasses.concat("focus-visible:outline-none"),
@@ -22,37 +21,17 @@ export function ColorSwatchGroup(props: RadioGroupProps) {
             }}
             {...props}
         />
-        //     {colors.map((color, i) => (
-        //         <Radio
-        //             key={i}
-        //             value={i.toString()}
-        //             defaultValue={i.toString()}
-        //             defaultChecked
-        //             color="default"
-        //             classNames={{
-        //                 wrapper: "hover:bg-opacity-80 h-7 w-7 sm:h-8 sm:w-8",
-        //                 base: "grid place-items-center",
-        //                 control: "bg-transparent",
-        //             }}
-        //         />
-        //     ))}
-        // </RadioGroup>
     );
 }
 
 type ColorSwatchProps = Omit<RadioProps, "color"> & {
     color: string;
+    /** @description false squircle */
+    isSquare?: boolean;
 };
 
-export function ColorSwatch({ color, ...props }: ColorSwatchProps) {
-    const {
-        Component,
-        isSelected,
-        getBaseProps,
-        getWrapperProps,
-        getInputProps,
-        getControlProps,
-    } = useRadio(props);
+export function ColorSwatch({ color, isSquare, ...props }: ColorSwatchProps) {
+    const { Component, getBaseProps, getWrapperProps, getInputProps } = useRadio(props);
 
     return (
         <Component {...getBaseProps()}>
@@ -61,12 +40,14 @@ export function ColorSwatch({ color, ...props }: ColorSwatchProps) {
             </VisuallyHidden>
             <span
                 {...getWrapperProps({
-                    className: "aspect-square h-7 w-7 sm:h-8 sm:w-8 rounded-lg",
+                    className: [
+                        "aspect-square h-7 w-7 sm:h-8 sm:w-8",
+                        "group-data-[selected=true]:border-large",
+                        isSquare && "rounded-icon",
+                    ],
                     style: { backgroundColor: color },
                 })}
-            >
-                <span {...getControlProps()} />
-            </span>
+            />
         </Component>
     );
 }
