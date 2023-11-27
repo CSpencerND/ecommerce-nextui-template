@@ -47,7 +47,7 @@ const config: Config = {
                 dim: themeColorsDim,
             },
         }),
-        plugin(function ({ addUtilities }) {
+        plugin(function({ addUtilities }) {
             addUtilities({
                 ".h-screen-d": {
                     height: ["100vh", "100dvh"],
@@ -57,6 +57,9 @@ const config: Config = {
                 },
                 ".h-screen-l": {
                     height: ["100vh", "100lvh"],
+                },
+                ".outline-debug": {
+                    outline: "1px solid red",
                 },
             });
         }),
