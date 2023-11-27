@@ -4,8 +4,9 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/site.config";
 import { cn } from "@nextui-org/react";
 
-import { GeistSans } from "geist/font/sans";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 import "@/styles/globals.css";
+import { GeistSans } from "geist/font/sans";
 
 import type { Metadata } from "next";
 
@@ -34,13 +35,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 )}
             >
                 <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-                    <div className="relative flex h-screen-s flex-col">
+                    <div className="relative flex flex-col h-screen-s">
                         <Header />
                         <main className="container mx-auto max-w-5xl flex-grow space-y-24 px-6 py-16">
                             {children}
                         </main>
                     </div>
                 </Providers>
+                <TailwindIndicator />
             </body>
         </html>
     );
