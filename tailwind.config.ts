@@ -22,6 +22,7 @@ const config: Config = {
             },
             borderRadius: {
                 xlarge: "26px",
+                icon: "22.37%"
             },
         },
     },
