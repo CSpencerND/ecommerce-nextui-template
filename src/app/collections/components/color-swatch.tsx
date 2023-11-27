@@ -41,13 +41,13 @@ export function ColorSwatch({ color, isSquare, ...props }: ColorSwatchProps) {
             </VisuallyHidden>
             <span
                 className={cn(
-                    "group-data-[selected=true]:border-medium border-primary rounded-[9px]",
+                    "group-data-[selected=true]:border-medium border-primary rounded-[11px]",
                     "aspect-square h-8 w-8 sm:h-9 sm:w-9",
                     "grid place-items-center",
                 )}
             >
                 <SmoothCorners
-                    corners="5.6128"
+                    corners="5"
                     borderRadius="7px"
                     style={{ backgroundColor: color }}
                     {...getWrapperProps({
