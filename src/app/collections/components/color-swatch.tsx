@@ -75,7 +75,6 @@ const swatchGroupWrapper = tv({
     base: [
         "flex-nowrap justify-between overflow-y-hidden overflow-x-scroll",
         "gap-1.5 bg-content2 p-1.5 scrollbar-hide",
-        ...focusVisibleClasses.concat("focus-visible:outline-none"),
     ],
     variants: {
         isSquared: {

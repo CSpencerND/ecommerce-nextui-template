@@ -22,7 +22,7 @@ const config: Config = {
             },
             borderRadius: {
                 xlarge: "26px",
-                icon: "22.37%"
+                icon: "22.37%",
             },
         },
     },
@@ -48,7 +48,7 @@ const config: Config = {
                 dim: themeColorsDim,
             },
         }),
-        plugin(function({ addUtilities }) {
+        plugin(function ({ addUtilities, addVariant }) {
             addUtilities({
                 ".h-screen-d": {
                     height: ["100vh", "100dvh"],
@@ -63,7 +63,10 @@ const config: Config = {
                     outline: "1px solid red",
                 },
             });
+            /** HACK: Experimental - May not work as expected */
+            addVariant("focus-visible-within", "&:has(:focus-visible)");
         }),
     ],
 };
+
 export default config;
