@@ -1,16 +1,17 @@
 "use client";
 
-import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
-
-import { Image, type ImageProps } from "@nextui-org/image";
+import { Card, CardBody, CardFooter } from "@nextui-org/card";
+import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import card from "@/styles/product-card";
+import { motion } from "framer-motion";
 
-import { motion, type Variants } from "framer-motion";
-import { forwardRef } from "react";
+import type { CardProps } from "@nextui-org/card";
+import type { ImageProps } from "@nextui-org/image";
+import type { MotionProps, Variants } from "framer-motion";
 
-import { useHydrated } from "@/hooks/use-hydrated";
+// import { useHydrated } from "@/hooks/use-hydrated";
 
 const fadeInUp: Variants = {
     animate: (i: number) => ({
@@ -22,11 +23,12 @@ const fadeInUp: Variants = {
     }),
 };
 
-export type ProductPreviewCardProps = CardProps & {
-    index: number;
-}
+export type ProductPreviewCardProps = CardProps &
+    MotionProps & {
+        index: number;
+    };
 
-export function ProductPreviewCard({index, ...props}: ProductPreviewCardProps) {
+export function ProductPreviewCard({ index, ...props }: ProductPreviewCardProps) {
     // const hydrated = useHydrated();
     // if (!hydrated) return null;
 
