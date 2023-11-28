@@ -51,9 +51,8 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
             >
                 {isSquared ? (
                     <SmoothCorners
-                        // NOTE: when css paint api is widely supported, change corners to 5
-                        corners="7"
-                        borderRadius="15.625%"
+                        corners="5"
+                        borderRadius="22.37%"
                         style={{ backgroundColor: color }}
                         {...getWrapperProps({
                             className: swatch({ isSquared: isSquared }),
@@ -113,7 +112,7 @@ const swatchIndicator = tv({
     variants: {
         isSquared: {
             false: "rounded-full",
-            true: "rounded-[calc(15.625%+2px)]",
+            true: "rounded-[calc(22.37%+2px)]",
         },
     },
     defaultVariants: {
