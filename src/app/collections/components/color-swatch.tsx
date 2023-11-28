@@ -3,36 +3,18 @@
 import { RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
 import { SmoothCorners } from "react-smooth-corners";
 
-import { VisuallyHidden, cn } from "@nextui-org/react";
+import { VisuallyHidden } from "@nextui-org/react";
 import { focusVisibleClasses, tv } from "@nextui-org/theme";
 
-import { useProduct } from "./use-product";
-
-const swatch = tv({
-    base: [
-        "flex-nowrap justify-between overflow-y-hidden overflow-x-scroll",
-        "bg-content2 scrollbar-hide",
-        "gap-1.5 p-1.5",
-        ...focusVisibleClasses.concat("focus-visible:outline-none"),
-    ],
-    variants: {
-        isSquared: {
-            true: "rounded-large",
-            false: "rounded-full",
-        },
-    },
-    defaultVariants: {
-        isSquared: false,
-    },
-});
+import { useSwatch } from "./use-product";
 
 export type ColorSwatchGroupProps = RadioGroupProps & {
     isSquared?: boolean;
 };
 
 export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps) {
-    const setIndex = useProduct((s) => s.setIndex);
-    const selectedIndex = useProduct((s) => s.selectedIndex);
+    const setIndex = useSwatch((s) => s.setIndex);
+    const selectedIndex = useSwatch((s) => s.selectedIndex);
 
     // console.log(selectedIndex)
 
@@ -43,7 +25,7 @@ export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps)
             orientation="horizontal"
             size="lg"
             onValueChange={(v) => setIndex(v)}
-            classNames={{ wrapper: swatch({ isSquared: isSquared }) }}
+            classNames={{ wrapper: swatchGroupWrapper({ isSquared: isSquared }) }}
             {...props}
         />
     );
@@ -51,7 +33,7 @@ export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps)
 
 type ColorSwatchProps = Omit<RadioProps, "color"> & {
     color: string;
-    /** @description false squircle */
+    /** @description a false squircle shape */
     isSquared?: boolean;
 };
 
@@ -64,12 +46,8 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
                 <input {...getInputProps()} />
             </VisuallyHidden>
             <span
-                className={cn(
-                    "border-primary group-data-[selected=true]:border-medium",
-                    "aspect-square h-8 w-8 sm:h-9 sm:w-9",
-                    "grid place-items-center",
-                    isSquared ? "rounded-[calc(15.625%+2px)]" : "rounded-full",
-                )}
+                aria-hidden="true"
+                className={swatchIndicator({ isSquared: isSquared })}
             >
                 {isSquared ? (
                     <SmoothCorners
@@ -78,17 +56,14 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
                         borderRadius="15.625%"
                         style={{ backgroundColor: color }}
                         {...getWrapperProps({
-                            className: [
-                                "border-0",
-                                "aspect-square h-6 w-6 sm:h-7 sm:w-7 rounded-icon",
-                            ],
+                            className: swatch({ isSquared: isSquared }),
                         })}
                     />
                 ) : (
                     <span
                         style={{ backgroundColor: color }}
                         {...getWrapperProps({
-                            className: ["border-0", "aspect-square h-6 w-6 sm:h-7 sm:w-7"],
+                            className: swatch({ isSquared: isSquared }),
                         })}
                     />
                 )}
@@ -96,3 +71,52 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
         </Component>
     );
 }
+
+const swatchGroupWrapper = tv({
+    base: [
+        "flex-nowrap justify-between overflow-y-hidden overflow-x-scroll",
+        "gap-1.5 bg-content2 p-1.5 scrollbar-hide",
+        ...focusVisibleClasses.concat("focus-visible:outline-none"),
+    ],
+    variants: {
+        isSquared: {
+            false: "rounded-full",
+            true: "rounded-large",
+        },
+    },
+    defaultVariants: {
+        isSquared: false,
+    },
+});
+
+const swatch = tv({
+    base: "aspect-square h-6 w-6 border-0 sm:h-7 sm:w-7",
+    variants: {
+        isSquared: {
+            false: "rounded-full",
+            true: "rounded-icon",
+        },
+    },
+    defaultVariants: {
+        isSquared: false,
+    },
+});
+
+const swatchIndicator = tv({
+    base: [
+        "grid place-items-center",
+        "aspect-square h-8 w-8 sm:h-9 sm:w-9",
+        "shadow-inner shadow-foreground/20",
+        "border-medium border-primary border-opacity-0",
+        "transition-opacity group-data-[selected=true]:border-opacity-100",
+    ],
+    variants: {
+        isSquared: {
+            false: "rounded-full",
+            true: "rounded-[calc(15.625%+2px)]",
+        },
+    },
+    defaultVariants: {
+        isSquared: false,
+    },
+});
