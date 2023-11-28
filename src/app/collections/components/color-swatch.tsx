@@ -24,6 +24,7 @@ export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps)
             aria-label="Select A Color"
             orientation="horizontal"
             size="lg"
+            defaultValue="0"
             onValueChange={(v) => setIndex(v)}
             classNames={{ wrapper: swatchGroupWrapper({ isSquared: isSquared }) }}
             {...props}
@@ -33,7 +34,6 @@ export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps)
 
 type ColorSwatchProps = Omit<RadioProps, "color"> & {
     color: string;
-    /** @description a false squircle shape */
     isSquared?: boolean;
 };
 

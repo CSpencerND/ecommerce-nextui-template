@@ -1,15 +1,13 @@
 import { section, title } from "@/components/primitives";
-import { ColorSwatchGroup, ColorSwatch } from "@collections/components/color-swatch";
-import { MotionListItem } from "@collections/components/motion";
-import { Card, CardBody, CardFooter } from "@nextui-org/card";
-import { ProductPreview } from "@collections/components/product-image";
+import { ColorSwatch, ColorSwatchGroup } from "@collections/components/color-swatch";
 
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
+import {
+    ProductPreviewCard,
+    ProductPreviewCardBody,
+    ProductPreviewCardFooter,
+} from "@collections/components/product-preview-card";
 
 import { getFakeData } from "@/faker/faker-functions";
-
-import card from "@/styles/product-card";
 
 export default async function CollectionPage() {
     const { name, description, items } = await getFakeData("collection");
@@ -21,38 +19,19 @@ export default async function CollectionPage() {
                 <p>{description}</p>
             </header>
             <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
+                {/* PERF: The `ProductPreviewCard` may need to become a context provider */}
                 {items.map((item, i) => (
-                    <Card
-                        as={MotionListItem}
+                    <ProductPreviewCard
                         key={i}
                         index={i}
-                        isFooterBlurred
-                        isPressable
-                        className={card.root({ radius: "xl" })}
                     >
-                        <CardBody>
-                            <ProductPreview
-                                images={item.images}
-                                altTag={item.name}
-                            />
-                            {/* <Image */}
-                            {/*     as={NextImage} */}
-                            {/*     src={item.images[0]} */}
-                            {/*     alt={item.name} */}
-                            {/*     width={192} */}
-                            {/*     height={192} */}
-                            {/*     className={card.image()} */}
-                            {/*     isZoomed */}
-                            {/* /> */}
-                            <CardFooter className={card.title({ hasPadding: true })}>
-                                <h3>{item.name}</h3>
-                            </CardFooter>
-                        </CardBody>
-                        <footer className="flex flex-col justify-center gap-3 px-3 pb-3">
-                            <ColorSwatchGroup
-                                defaultValue={item.colors[0]}
-                                isSquared
-                            >
+                        <ProductPreviewCardBody
+                            title={item.name}
+                            alt={item.name}
+                            images={item.images}
+                        />
+                        <ProductPreviewCardFooter>
+                            <ColorSwatchGroup isSquared>
                                 {item.colors.map((color, c) => (
                                     <ColorSwatch
                                         key={c}
@@ -62,8 +41,8 @@ export default async function CollectionPage() {
                                     />
                                 ))}
                             </ColorSwatchGroup>
-                        </footer>
-                    </Card>
+                        </ProductPreviewCardFooter>
+                    </ProductPreviewCard>
                 ))}
             </menu>
         </section>

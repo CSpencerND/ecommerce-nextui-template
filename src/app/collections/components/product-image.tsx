@@ -34,24 +34,3 @@ export function ProductPreview({images, altTag, ...props}: ProductPreviewProps) 
         />
     );
 }
-
-
-                        {/* <CardBody> */}
-                        {/*     {items.map((item, j) => ( */}
-                        {/*         <> */}
-                        {/*             <Image */}
-                        {/*                 key={j} */}
-                        {/*                 as={NextImage} */}
-                        {/*                 src={item.image[0]} */}
-                        {/*                 alt={item.name} */}
-                        {/*                 width={192} */}
-                        {/*                 height={192} */}
-                        {/*                 className={card.image()} */}
-                        {/*                 isZoomed */}
-                        {/*             /> */}
-                        {/*             <CardFooter className={card.footer({ hasPadding: true })}> */}
-                        {/*                 <h3>{item.name}</h3> */}
-                        {/*             </CardFooter> */}
-                        {/*         </> */}
-                        {/*     ))} */}
-                        {/* </CardBody> */}

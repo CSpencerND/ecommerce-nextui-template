@@ -19,6 +19,10 @@ export type MotionListItemProps = React.ComponentProps<typeof motion.li> & {
     index: number;
 };
 
+/**
+ * @deprecated It's been built-in to the ProductPreviewCard
+ * @link ../components/product-preview-card.tsx
+ */
 export const MotionListItem = forwardRef(
     (props: MotionListItemProps, ref: React.Ref<HTMLLIElement>) => {
         const hydrated = useHydrated();
