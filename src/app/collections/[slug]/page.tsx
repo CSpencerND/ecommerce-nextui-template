@@ -44,7 +44,7 @@ export default async function CollectionPage() {
                             {/*     className={card.image()} */}
                             {/*     isZoomed */}
                             {/* /> */}
-                            <CardFooter className={card.footer({ hasPadding: true })}>
+                            <CardFooter className={card.title({ hasPadding: true })}>
                                 <h3>{item.name}</h3>
                             </CardFooter>
                         </CardBody>

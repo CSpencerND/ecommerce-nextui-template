@@ -38,7 +38,7 @@ export default async function CollectionDirectoryPage() {
                                 className={card.image()}
                                 isZoomed
                             />
-                            <CardFooter className={card.footer()}>
+                            <CardFooter className={card.title()}>
                                 <h3 className="text-large">{name}</h3>
                             </CardFooter>
                         </Link>

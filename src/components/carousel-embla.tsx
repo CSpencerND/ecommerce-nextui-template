@@ -110,7 +110,7 @@ export function CarouselItem({ children, className, title, index }: CarouselItem
             {children}
 
             {title ? (
-                <CardFooter className={card.footer()}>
+                <CardFooter className={card.title()}>
                     <h3 className="truncate text-medium font-bold text-white">{title}</h3>
                 </CardFooter>
             ) : null}
