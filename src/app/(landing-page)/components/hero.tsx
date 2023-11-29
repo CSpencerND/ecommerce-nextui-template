@@ -36,7 +36,7 @@ export function Hero({ headline, descriptor, banner }: ApiType["hero"]) {
                 width={800}
                 height={450}
                 priority
-                className="rounded-xlarge"
+                className="rounded-xlarge max-lg:max-w-prose"
             />
         </section>
     );
