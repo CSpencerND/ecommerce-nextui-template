@@ -3,8 +3,7 @@
 import { RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
 import { SmoothCorners } from "react-smooth-corners";
 
-import { VisuallyHidden } from "@nextui-org/react";
-import { focusVisibleClasses, tv } from "@nextui-org/theme";
+import { VisuallyHidden, tv } from "@nextui-org/react";
 
 import { useSwatch } from "./use-product";
 
