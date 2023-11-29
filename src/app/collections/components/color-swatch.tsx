@@ -5,17 +5,15 @@ import { SmoothCorners } from "react-smooth-corners";
 
 import { VisuallyHidden, tv } from "@nextui-org/react";
 
-import { useSwatch } from "./use-product";
+import { useProductPreview } from "@collections/components/product-preview-store";
 
 export type ColorSwatchGroupProps = RadioGroupProps & {
     isSquared?: boolean;
 };
 
 export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps) {
-    const setIndex = useSwatch((s) => s.setIndex);
-    const selectedIndex = useSwatch((s) => s.selectedIndex);
-
-    // console.log(selectedIndex)
+    const activeIndex = useProductPreview((s) => s.activeIndex);
+    const setActiveIndex = useProductPreview((s) => s.setActiveIndex);
 
     return (
         <RadioGroup
@@ -23,8 +21,8 @@ export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps)
             aria-label="Select A Color"
             orientation="horizontal"
             size="lg"
-            defaultValue="0"
-            onValueChange={(v) => setIndex(v)}
+            defaultValue={activeIndex}
+            onValueChange={(v) => setActiveIndex(v)}
             classNames={{ wrapper: swatchGroupWrapper({ isSquared: isSquared }) }}
             {...props}
         />

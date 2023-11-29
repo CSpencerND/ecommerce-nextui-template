@@ -1,7 +1,7 @@
 import { section, title } from "@/components/primitives";
-import { MotionListItem } from "@collections/components/motion";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
+import { CollectionPreviewCard } from "./components/product-preview";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
@@ -20,8 +20,7 @@ export default async function CollectionDirectoryPage() {
             </header>
             <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
                 {collections.map(({ image, name }, i) => (
-                    <Card
-                        as={MotionListItem}
+                    <CollectionPreviewCard
                         key={i}
                         index={i}
                         isFooterBlurred
@@ -42,7 +41,7 @@ export default async function CollectionDirectoryPage() {
                                 <h3 className="text-large">{name}</h3>
                             </CardFooter>
                         </Link>
-                    </Card>
+                    </CollectionPreviewCard>
                 ))}
             </menu>
         </section>

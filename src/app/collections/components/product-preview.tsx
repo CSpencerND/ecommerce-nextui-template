@@ -1,17 +1,19 @@
 "use client";
 
+import { ProductPreviewProvider, useProductPreview } from "./product-preview-store";
+
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import card from "@/styles/product-card";
 import { motion } from "framer-motion";
+import { useHydrated } from "@/hooks/use-hydrated";
 
 import type { CardProps } from "@nextui-org/card";
 import type { ImageProps } from "@nextui-org/image";
 import type { MotionProps, Variants } from "framer-motion";
-
-// import { useHydrated } from "@/hooks/use-hydrated";
+import type { ProductPreviewCardProps } from "./product-preview-store";
 
 const fadeInUp: Variants = {
     animate: (i: number) => ({
@@ -23,14 +25,31 @@ const fadeInUp: Variants = {
     }),
 };
 
-export type ProductPreviewCardProps = CardProps &
-    MotionProps & {
-        index: number;
-    };
+export { ProductPreviewProvider as ProductPreview };
 
-export function ProductPreviewCard({ index, ...props }: ProductPreviewCardProps) {
-    // const hydrated = useHydrated();
-    // if (!hydrated) return null;
+export function CollectionPreviewCard(props: ProductPreviewCardProps) {
+    const hydrated = useHydrated();
+    if (!hydrated) return null;
+
+    return (
+        <Card
+            as={motion.li}
+            variants={fadeInUp}
+            initial={false}
+            style={{ opacity: 0, y: -24 }}
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={props.index}
+            isFooterBlurred
+            isPressable
+            className={card.root({ radius: "xl" })}
+            {...props}
+        />
+    );
+}
+
+export function ProductPreviewCard(props: CardProps & MotionProps) {
+    const index = useProductPreview((s) => s.index);
 
     return (
         <Card
@@ -49,21 +68,17 @@ export function ProductPreviewCard({ index, ...props }: ProductPreviewCardProps)
     );
 }
 
-export type ProductPreviewCardBodyProps = ImageProps & {
-    images: string[];
-    title: string;
-};
-
-export function ProductPreviewCardBody(props: ProductPreviewCardBodyProps) {
-    const { images, alt, title } = props;
-    const selectedImage = 0;
+export function ProductPreviewBody(props: ImageProps) {
+    const images = useProductPreview((s) => s.images);
+    const title = useProductPreview((s) => s.title);
+    const activeIndex = Number(useProductPreview((s) => s.activeIndex));
 
     return (
         <CardBody>
             <Image
                 as={NextImage}
-                src={images[selectedImage]}
-                alt={alt}
+                src={images[activeIndex]}
+                alt={title}
                 width={192}
                 height={192}
                 className={card.image()}
@@ -78,7 +93,7 @@ export function ProductPreviewCardBody(props: ProductPreviewCardBodyProps) {
     );
 }
 
-export function ProductPreviewCardFooter(props: React.ComponentPropsWithoutRef<"footer">) {
+export function ProductPreviewFooter(props: React.ComponentPropsWithoutRef<"footer">) {
     return (
         <footer
             className="flex flex-col justify-center gap-3 px-3 pb-3"
