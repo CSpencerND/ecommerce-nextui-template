@@ -5,11 +5,12 @@ import { Link } from "@nextui-org/link";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { getFakeData } from "@/faker/faker-functions";
+import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 import { card, grid, prose, section, title } from "@/styles";
 
 export default async function CollectionDirectoryPage() {
+    preloadFakeData("collection-directory");
     const collections = await getFakeData("collection-directory");
 
     return (
