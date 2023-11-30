@@ -5,7 +5,7 @@ import { SmoothCorners } from "react-smooth-corners";
 
 import { VisuallyHidden, tv } from "@nextui-org/react";
 
-import { useProductPreview } from "@collections/components/product-preview-store";
+import { useProductPreview } from "./product-preview-store";
 
 export type ColorSwatchGroupProps = RadioGroupProps & {
     isSquared?: boolean;

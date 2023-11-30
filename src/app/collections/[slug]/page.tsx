@@ -1,11 +1,11 @@
-import { ColorSwatch, ColorSwatchGroup } from "@collections/components/color-swatch";
+import { ColorSwatch, ColorSwatchGroup } from "./components/color-swatch";
 
 import {
     ProductPreview,
     ProductPreviewBody,
     ProductPreviewCard,
     ProductPreviewFooter,
-} from "@collections/components/product-preview";
+} from "./components/product-preview";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
