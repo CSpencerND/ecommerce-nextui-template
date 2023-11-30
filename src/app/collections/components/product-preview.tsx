@@ -6,9 +6,10 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import card from "@/styles/product-card";
-import { motion } from "framer-motion";
 import { useHydrated } from "@/hooks/use-hydrated";
+import { motion } from "framer-motion";
+
+import { card } from "@/styles";
 
 import type { CardProps } from "@nextui-org/card";
 import type { ImageProps } from "@nextui-org/image";

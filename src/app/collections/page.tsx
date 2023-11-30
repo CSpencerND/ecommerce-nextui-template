@@ -1,26 +1,26 @@
-import { section, title } from "@/components/primitives";
+import { MotionListItem } from "@/components/motion";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
-import { CollectionPreviewCard } from "./components/product-preview";
 
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import { getFakeData } from "@/faker/faker-functions";
 
-import card from "@/styles/product-card";
+import { card, grid, prose, section, title } from "@/styles";
 
 export default async function CollectionDirectoryPage() {
     const collections = await getFakeData("collection-directory");
 
     return (
         <section className={section()}>
-            <header className="prose px-6 dark:prose-invert max-lg:text-center">
+            <header className={prose({ class: "px-6 max-lg:text-center" })}>
                 <h1 className={title()}>Collection Directory</h1>
             </header>
-            <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
+            <menu className={grid()}>
                 {collections.map(({ image, name }, i) => (
-                    <CollectionPreviewCard
+                    <Card
+                        as={MotionListItem}
                         key={i}
                         index={i}
                         isFooterBlurred
@@ -41,7 +41,7 @@ export default async function CollectionDirectoryPage() {
                                 <h3 className="text-large">{name}</h3>
                             </CardFooter>
                         </Link>
-                    </CollectionPreviewCard>
+                    </Card>
                 ))}
             </menu>
         </section>

@@ -1,18 +1,10 @@
 import { tv } from "tailwind-variants";
 
-export const section = tv({
-    base: "flex flex-col items-center justify-center gap-8",
-    variants: {
-        row: {
-            sm: "sm:flex-row",
-            md: "md:flex-row",
-            lg: "lg:flex-row",
-        },
-    },
+export const prose = tv({
+    base: "prose dark:prose-invert prose-headings:m-0",
 });
 
 export const title = tv({
-    base: "m-0",
     variants: {
         color: {
             violet: "from-[#FF1CF7] to-[#b249f8]",
@@ -25,7 +17,7 @@ export const title = tv({
         },
     },
     defaultVariants: {
-        color: "fg"
+        color: "fg",
     },
     compoundVariants: [
         {

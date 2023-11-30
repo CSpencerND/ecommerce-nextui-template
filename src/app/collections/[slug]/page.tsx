@@ -1,16 +1,18 @@
-import { section, title } from "@/components/primitives";
 import { ColorSwatch, ColorSwatchGroup } from "@collections/components/color-swatch";
 
 import {
     ProductPreview,
-    ProductPreviewCard,
     ProductPreviewBody,
+    ProductPreviewCard,
     ProductPreviewFooter,
 } from "@collections/components/product-preview";
 
-import { getFakeData } from "@/faker/faker-functions";
+import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
+
+import { section, title } from "@/styles";
 
 export default async function CollectionPage() {
+    preloadFakeData("collection");
     const { name, description, items } = await getFakeData("collection");
 
     return (

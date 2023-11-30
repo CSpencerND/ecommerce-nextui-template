@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { Featured } from "./components/featured";
 import { Hero } from "./components/hero";
 

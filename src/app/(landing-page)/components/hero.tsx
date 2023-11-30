@@ -1,4 +1,3 @@
-import { section, title } from "@/components/primitives";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
@@ -6,12 +5,18 @@ import { ArrowRight } from "lucide-react";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
+import { prose, section, title } from "@/styles";
+
 import type { ApiType } from "@/faker/faker-functions";
 
 export function Hero({ headline, descriptor, banner }: ApiType["hero"]) {
     return (
         <section className={section({ row: "lg" })}>
-            <div className="prose relative isolate flex basis-3/4 flex-col items-center text-center dark:prose-invert lg:items-start lg:text-left">
+            <div
+                className={prose({
+                    class: "relative isolate flex basis-3/4 flex-col items-center text-center lg:items-start lg:text-left",
+                })}
+            >
                 <h1 className={title()}>{headline}</h1>
                 <p>{descriptor}</p>
                 <Button

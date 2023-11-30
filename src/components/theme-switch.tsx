@@ -7,17 +7,14 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { useIsSSR } from "@react-aria/ssr";
 import { useTheme } from "next-themes";
 
-import clsx from "clsx";
+import { cn } from "@nextui-org/system";
 
 export interface ThemeSwitchProps {
     className?: string;
     classNames?: SwitchProps["classNames"];
 }
 
-export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
-    className,
-    classNames,
-}) => {
+export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className, classNames }) => {
     const { theme, setTheme } = useTheme();
     const isSSR = useIsSSR();
 
@@ -25,26 +22,20 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
         theme === "light" ? setTheme("dark") : setTheme("light");
     };
 
-    const {
-        Component,
-        slots,
-        isSelected,
-        getBaseProps,
-        getInputProps,
-        getWrapperProps,
-    } = useSwitch({
-        isSelected: theme === "light" || isSSR,
-        "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
-        onChange,
-    });
+    const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } =
+        useSwitch({
+            isSelected: theme === "light" || isSSR,
+            "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+            onChange,
+        });
 
     return (
         <Component
             {...getBaseProps({
-                className: clsx(
-                    "px-px transition-opacity hover:opacity-80 cursor-pointer",
+                className: cn(
+                    "cursor-pointer px-px transition-opacity hover:opacity-80",
                     className,
-                    classNames?.base
+                    classNames?.base,
                 ),
             })}
         >
@@ -54,9 +45,9 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
             <div
                 {...getWrapperProps()}
                 className={slots.wrapper({
-                    class: clsx(
+                    class: cn(
                         [
-                            "w-auto h-auto",
+                            "h-auto w-auto",
                             "bg-transparent",
                             "rounded-lg",
                             "flex items-center justify-center",
@@ -66,13 +57,16 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
                             "px-0",
                             "mx-0",
                         ],
-                        classNames?.wrapper
+                        classNames?.wrapper,
                     ),
                 })}
             >
-                {!isSelected || isSSR ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />}
+                {!isSelected || isSSR ? (
+                    <SunFilledIcon size={22} />
+                ) : (
+                    <MoonFilledIcon size={22} />
+                )}
             </div>
         </Component>
     );
 };
-
