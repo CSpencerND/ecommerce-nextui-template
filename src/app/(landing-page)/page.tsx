@@ -1,17 +1,119 @@
-import { Featured } from "./components/featured";
-import { Hero } from "./components/hero";
+import { Carousel, CarouselItem } from "@/components/carousel-embla";
+import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/link";
+import { ArrowRight } from "lucide-react";
+
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
+
+import { prose, section, title } from "@/styles";
+import { cardImage } from "@/styles/product-card";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 export default async function HomePage() {
     preloadFakeData("hero");
-    const heroData = await getFakeData("hero");
-    const featuredData = await getFakeData("featured");
+    const { banner, headline, descriptor } = await getFakeData("hero");
+    const { copy, items } = await getFakeData("featured");
 
     return (
         <>
-            <Hero {...heroData} />
-            <Featured {...featuredData} />
+            <section className={section({ row: "lg" })}>
+                <div
+                    className={prose({
+                        class: "relative isolate flex basis-3/4 flex-col items-center text-center lg:items-start lg:text-left",
+                    })}
+                >
+                    <h1 className={title()}>{headline}</h1>
+                    <p>{descriptor}</p>
+                    <Button
+                        href="/collections"
+                        as={Link}
+                        color="primary"
+                        variant="shadow"
+                    >
+                        Get Started
+                        <ArrowRight size={16} />
+                    </Button>
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -z-10 h-3/4 w-full transform-gpu bg-gradient-to-b from-secondary to-cyan-600/60 opacity-40 blur-3xl"
+                    />
+                </div>
+
+                <Image
+                    as={NextImage}
+                    src={banner}
+                    alt="banner"
+                    width={800}
+                    height={450}
+                    loading="eager"
+                    priority
+                    className="rounded-xlarge max-lg:max-w-prose"
+                />
+            </section>
+
+            <section className={section({ row: "lg" })}>
+                <div className={prose({ class: "text-center lg:hidden" })}>
+                    <h1 className={title()}>{copy.adjective}</h1>
+                </div>
+
+                <Carousel
+                    numSlides={items.length}
+                    loop
+                    showControls
+                    className="lg:max-w-6xl"
+                >
+                    {items.map(({ image, name }, i) => (
+                        <CarouselItem
+                            key={i}
+                            index={i}
+                            title={name}
+                        >
+                            <Image
+                                as={NextImage}
+                                src={image}
+                                alt={name}
+                                width={192}
+                                height={192}
+                                className={cardImage()}
+                            />
+                        </CarouselItem>
+                    ))}
+                </Carousel>
+
+                <div
+                    className={prose({
+                        class: "flex flex-col items-center justify-center lg:hidden lg:items-start lg:text-left",
+                    })}
+                >
+                    <p className="max-lg:text-center">{copy.description}</p>
+                    <Button
+                        color="primary"
+                        variant="shadow"
+                        className="lg:self-end"
+                    >
+                        See More
+                    </Button>
+                </div>
+
+                <div
+                    className={prose({
+                        class: "flex flex-col items-start max-lg:hidden",
+                    })}
+                >
+                    <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
+                        {copy.adjective}
+                    </h1>
+                    <p className="max-lg:text-center">{copy.description}</p>
+                    <Button
+                        color="primary"
+                        variant="shadow"
+                    >
+                        See More
+                    </Button>
+                </div>
+            </section>
         </>
     );
 }
