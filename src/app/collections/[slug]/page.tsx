@@ -1,15 +1,14 @@
-import { ColorSwatch, ColorSwatchGroup } from "./components/color-swatch";
-
 import {
-    ProductPreview,
     ProductPreviewBody,
     ProductPreviewCard,
     ProductPreviewFooter,
 } from "./components/product-preview";
 
+import { ColorSwatch, ColorSwatchGroup } from "./components/color-swatch";
+
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
-import { section, title } from "@/styles";
+import { grid, section, title } from "@/styles";
 
 export default async function CollectionPage() {
     preloadFakeData("collection");
@@ -21,31 +20,29 @@ export default async function CollectionPage() {
                 <h1 className={title()}>{name}</h1>
                 <p>{description}</p>
             </header>
-            <menu className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-6">
-                {items.map((item, i) => (
-                    <ProductPreview
+            <menu className={grid()}>
+                {items.map(({ name, images, colors }, i) => (
+                    <ProductPreviewCard
                         key={i}
                         index={i}
-                        title={item.name}
-                        alt={item.name}
-                        images={item.images}
                     >
-                        <ProductPreviewCard>
-                            <ProductPreviewBody />
-                            <ProductPreviewFooter>
-                                <ColorSwatchGroup isSquared>
-                                    {item.colors.map((color, c) => (
-                                        <ColorSwatch
-                                            key={c}
-                                            value={c.toString()}
-                                            color={color}
-                                            isSquared
-                                        />
-                                    ))}
-                                </ColorSwatchGroup>
-                            </ProductPreviewFooter>
-                        </ProductPreviewCard>
-                    </ProductPreview>
+                        <ProductPreviewBody
+                            images={images}
+                            title={name}
+                        />
+                        <ProductPreviewFooter>
+                            <ColorSwatchGroup isSquared>
+                                {colors.map((color, c) => (
+                                    <ColorSwatch
+                                        key={c}
+                                        value={c.toString()}
+                                        color={color}
+                                        isSquared
+                                    />
+                                ))}
+                            </ColorSwatchGroup>
+                        </ProductPreviewFooter>
+                    </ProductPreviewCard>
                 ))}
             </menu>
         </section>
