@@ -38,6 +38,9 @@ dependencies:
   '@react-aria/visually-hidden':
     specifier: ^3.8.7
     version: 3.8.7(react@18.2.0)
+  '@react-hookz/web':
+    specifier: ^23.1.0
+    version: 23.1.0(react-dom@18.2.0)(react@18.2.0)
   color2k:
     specifier: ^2.0.2
     version: 2.0.2
@@ -2656,6 +2659,25 @@ packages:
       '@react-types/shared': 3.22.0(react@18.2.0)
       '@swc/helpers': 0.5.3
       react: 18.2.0
+    dev: false
+
+  /@react-hookz/deep-equal@1.0.4:
+    resolution: {integrity: sha512-N56fTrAPUDz/R423pag+n6TXWbvlBZDtTehaGFjK0InmN+V2OFWLE/WmORhmn6Ce7dlwH5+tQN1LJFw3ngTJVg==}
+    dev: false
+
+  /@react-hookz/web@23.1.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fvbURdsa1ukttbLR1ASE/XmqXP09vZ1PiCYppYeR1sNMzCrdkG0iBnjxniFSVjJ8gIw2fRs6nqMTbeBz2uAkuA==}
+    peerDependencies:
+      js-cookie: ^3.0.5
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    peerDependenciesMeta:
+      js-cookie:
+        optional: true
+    dependencies:
+      '@react-hookz/deep-equal': 1.0.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@react-stately/checkbox@3.6.0(react@18.2.0):
