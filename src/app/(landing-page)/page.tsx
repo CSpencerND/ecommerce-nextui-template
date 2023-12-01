@@ -13,8 +13,13 @@ import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 export default async function HomePage() {
     preloadFakeData("hero");
-    const { banner, headline, descriptor } = await getFakeData("hero");
-    const { copy, items } = await getFakeData("featured");
+    const getHeroData = getFakeData("hero");
+    const getFeaturedData = getFakeData("featured");
+
+    const [heroData, featuredData] = await Promise.all([getHeroData, getFeaturedData]);
+
+    const { descriptor, banner, headline } = heroData;
+    const { items, copy } = featuredData;
 
     return (
         <>
@@ -41,16 +46,16 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <Image
-                    as={NextImage}
-                    src={banner}
-                    alt="banner"
-                    width={800}
-                    height={450}
-                    loading="eager"
-                    priority
-                    className="rounded-xlarge max-lg:max-w-prose"
-                />
+                <div>
+                    <NextImage
+                        src={banner}
+                        alt="banner"
+                        width={800}
+                        height={450}
+                        priority
+                        className="rounded-xlarge max-lg:max-w-prose"
+                    />
+                </div>
             </section>
 
             <section className={section({ row: "lg" })}>

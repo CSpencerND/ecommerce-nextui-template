@@ -1,5 +1,6 @@
 import {
     ProductPreviewBody,
+    ProductPreviewImages,
     ProductPreviewCard,
     ProductPreviewFooter,
 } from "./components/product-preview";
@@ -26,10 +27,14 @@ export default async function CollectionPage() {
                         key={i}
                         index={i}
                     >
-                        <ProductPreviewBody
-                            images={images}
-                            title={name}
-                        />
+                        <ProductPreviewBody title={name}>
+                            <ProductPreviewImages
+                                images={images.map((image) => ({
+                                    src: image,
+                                    alt: `Product Image ${i}`,
+                                }))}
+                            />
+                        </ProductPreviewBody>
                         <ProductPreviewFooter>
                             <ColorSwatchGroup isSquared>
                                 {colors.map((color, c) => (

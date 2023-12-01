@@ -5,13 +5,10 @@ import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
 import { Image, type ImageProps } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import {
-    ProductPreviewProvider,
-    useProductPreview,
-} from "./product-preview-context";
+import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
+import { ProductPreviewProvider, useProductPreview } from "./product-preview-context";
 
 import { card } from "@/styles";
-import { useHydrated } from "@/hooks/use-hydrated"
 
 export type ProductPreviewCardProps = CardProps & MotionListItemProps;
 
@@ -31,35 +28,42 @@ export function ProductPreviewCard(props: ProductPreviewCardProps) {
     );
 }
 
+export type ProductPreviewImageProps = {
+    images: { src: string; alt: string }[];
+};
+
+export function ProductPreviewImages({ images }: ProductPreviewImageProps) {
+    const { activeIndex } = useProductPreview();
+
+    const imageComponents = useDeepCompareMemo(() => {
+        return images.map((image, i) => (
+            <Image
+                key={i}
+                as={NextImage}
+                src={image.src}
+                alt={image.alt}
+                width={192}
+                height={192}
+                className={card.image()}
+                isZoomed
+            />
+        ));
+    }, [images]);
+
+    return imageComponents[activeIndex] ?? null;
+}
+
 export type ProductPreviewBodyProps = ImageProps & {
-    images: string[];
     title?: string;
 };
 
-export function ProductPreviewBody({ images, title, ...props }: ProductPreviewBodyProps) {
-    const { activeIndex } = useProductPreview();
-
-    const hydrated = useHydrated()
-    if (!hydrated) return null
-
+export function ProductPreviewBody({ title, children }: ProductPreviewBodyProps) {
     return (
         <CardBody>
-            <Image
-                as={NextImage}
-                src={images[activeIndex]}
-                alt={title}
-                width={192}
-                height={192}
-                removeWrapper
-                isBlurred
-                className={card.image()}
-                {...props}
-            />
-            {title ? (
-                <CardFooter className={card.title({ hasPadding: true })}>
-                    <h3>{title}</h3>
-                </CardFooter>
-            ) : null}
+            {children}
+            <CardFooter className={card.title({ hasPadding: true })}>
+                <h3>{title}</h3>
+            </CardFooter>
         </CardBody>
     );
 }
