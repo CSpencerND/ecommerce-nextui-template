@@ -4,7 +4,7 @@ export const cardRoot = tv({
     base: "!transition-none",
     variants: {
         isCarouselItem: {
-            true: "min-w-fit flex-none",
+            true: "box-content flex-none",
         },
         radius: {
             lg: "rounded-2xl",

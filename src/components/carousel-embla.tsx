@@ -69,7 +69,7 @@ export function Carousel(props: CarouselProps) {
                 id="carousel"
                 aria-label="Carousel"
                 className={cn(
-                    "flex flex-row space-x-3 px-3 hover:cursor-grab active:cursor-grabbing",
+                    "inline-flex space-x-3 px-3 hover:cursor-grab active:cursor-grabbing",
                     className,
                 )}
             >
