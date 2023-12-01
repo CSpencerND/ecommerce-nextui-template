@@ -50,8 +50,9 @@ export default async function HomePage() {
                     <NextImage
                         src={banner}
                         alt="banner"
-                        width={800}
-                        height={450}
+                        width={698}
+                        height={393}
+                        sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
                         priority
                         className="rounded-xlarge sm:max-w-prose"
                     />
@@ -81,6 +82,7 @@ export default async function HomePage() {
                                 alt={name}
                                 width={192}
                                 height={192}
+                                sizes="192px"
                                 className={cardImage()}
                             />
                         </CarouselItem>
