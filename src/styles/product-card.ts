@@ -4,7 +4,7 @@ export const cardRoot = tv({
     base: "!transition-none",
     variants: {
         isCarouselItem: {
-            true: "box-content flex-none w-48 h-auto",
+            true: "box-content flex-none",
         },
         radius: {
             lg: "rounded-2xl",
@@ -35,10 +35,7 @@ export const cardTitle = tv({
 });
 
 export const cardImage = tv({
-    base: "w-full h-auto aspect-square",
-    variants: {
-        bgTransparent: "data-[loaded=true]:bg-stripe-gradient"
-    }
+    base: "data-[loaded=true]:bg-stripe-gradient",
 });
 
 export const card = {

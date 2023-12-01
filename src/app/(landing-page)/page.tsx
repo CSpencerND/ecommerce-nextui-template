@@ -3,8 +3,7 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
 
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
+import Image from "next/image";
 
 import { prose, section, title } from "@/styles";
 import { cardImage } from "@/styles/product-card";
@@ -47,7 +46,7 @@ export default async function HomePage() {
                 </div>
 
                 <div>
-                    <NextImage
+                    <Image
                         src={banner}
                         alt="banner"
                         width={698}
@@ -77,7 +76,6 @@ export default async function HomePage() {
                             title={name}
                         >
                             <Image
-                                as={NextImage}
                                 src={image}
                                 alt={name}
                                 width={192}

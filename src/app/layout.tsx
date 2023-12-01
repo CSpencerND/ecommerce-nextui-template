@@ -8,7 +8,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator";
 import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
     title: {
@@ -20,6 +20,11 @@ export const metadata: Metadata = {
         icon: "/favicon.ico",
     },
 };
+
+export const viewport: Viewport = {
+    themeColor: "rgb(0 0 0 / 0.6)",
+    interactiveWidget: "overlays-content",
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
