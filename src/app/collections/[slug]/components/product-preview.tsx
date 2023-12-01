@@ -11,6 +11,7 @@ import {
 } from "./product-preview-context";
 
 import { card } from "@/styles";
+import { useHydrated } from "@/hooks/use-hydrated"
 
 export type ProductPreviewCardProps = CardProps & MotionListItemProps;
 
@@ -38,6 +39,9 @@ export type ProductPreviewBodyProps = ImageProps & {
 export function ProductPreviewBody({ images, title, ...props }: ProductPreviewBodyProps) {
     const { activeIndex } = useProductPreview();
 
+    const hydrated = useHydrated()
+    if (!hydrated) return null
+
     return (
         <CardBody>
             <Image
@@ -46,8 +50,9 @@ export function ProductPreviewBody({ images, title, ...props }: ProductPreviewBo
                 alt={title}
                 width={192}
                 height={192}
+                removeWrapper
+                isBlurred
                 className={card.image()}
-                isZoomed
                 {...props}
             />
             {title ? (
