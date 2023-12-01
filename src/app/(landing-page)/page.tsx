@@ -53,7 +53,7 @@ export default async function HomePage() {
                         width={800}
                         height={450}
                         priority
-                        className="rounded-xlarge max-lg:max-w-prose"
+                        className="rounded-xlarge sm:max-w-prose"
                     />
                 </div>
             </section>
