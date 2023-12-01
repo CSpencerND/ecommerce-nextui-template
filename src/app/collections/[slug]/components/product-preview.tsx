@@ -7,7 +7,6 @@ import NextImage from "next/image";
 
 import {
     ProductPreviewProvider,
-    // useInitProductPreviewState,
     useProductPreview,
 } from "./product-preview-context";
 
