@@ -7,7 +7,7 @@ import NextImage from "next/image";
 
 import {
     ProductPreviewProvider,
-    useInitProductPreviewState,
+    // useInitProductPreviewState,
     useProductPreview,
 } from "./product-preview-context";
 
@@ -17,7 +17,6 @@ export type ProductPreviewCardProps = CardProps & MotionListItemProps;
 
 export function ProductPreviewCard(props: ProductPreviewCardProps) {
     const { className, children } = props;
-    const context = useInitProductPreviewState();
 
     return (
         <Card
@@ -27,7 +26,7 @@ export function ProductPreviewCard(props: ProductPreviewCardProps) {
             className={card.root({ radius: "xl", className })}
             {...props}
         >
-            <ProductPreviewProvider value={context}>{children}</ProductPreviewProvider>
+            <ProductPreviewProvider>{children}</ProductPreviewProvider>
         </Card>
     );
 }
