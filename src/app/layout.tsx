@@ -21,10 +21,12 @@ export const metadata: Metadata = {
     },
 };
 
-export const viewport: Viewport = {
-    themeColor: "rgb(0 0 0 / 0.6)",
-    interactiveWidget: "overlays-content",
-}
+// export const viewport: Viewport = {
+//     themeColor: [
+//         { media: "(prefers-color-scheme: dark)", color: "#000000" },
+//         { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+//     ],
+// };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
