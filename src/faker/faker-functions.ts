@@ -15,6 +15,7 @@ export const fakerFunctions = {
     featured: getFeaturedItems,
     collection: getCollection,
     "collection-directory": getCollectionDirectory,
+    product: getProduct,
 } as const;
 
 export type ApiType = {
@@ -100,5 +101,23 @@ export function getCollection() {
         name: faker.commerce.department(),
         description: faker.commerce.productDescription(),
         items: faker.helpers.multiple(getProduct, { count: 9 }),
+    };
+}
+
+export function getProduct() {
+    return {
+        name: faker.commerce.product(),
+        description: faker.commerce.productDescription(),
+        colors: faker.helpers.multiple(() => faker.color.rgb(), { count: 4 }),
+        sizes: ["XS", "SM", "MD", "LG", "XL", "2X", "3X", "4X"],
+        price: faker.commerce.price({ symbol: "$" }),
+        images: faker.helpers.multiple(
+            () =>
+                faker.image.urlPicsumPhotos({
+                    height: 192,
+                    width: 192,
+                }),
+            { count: 4 },
+        ),
     };
 }
