@@ -75,7 +75,11 @@ export function Carousel(props: CarouselProps) {
             >
                 {children}
             </ul>
-            <CarouselFooter show={showControls}>
+            <footer
+                aria-label="Carousel Control Panel"
+                className="flex h-14 justify-center gap-6 pt-6 data-[hidden=true]:hidden"
+                data-hidden={!showControls}
+            >
                 <CarouselPagination
                     numSlides={numSlides}
                     currentSlideIndex={currentSlide}
@@ -86,7 +90,7 @@ export function Carousel(props: CarouselProps) {
                     scrollPrevSlide={emblaApi?.scrollPrev}
                     scrollNextSlide={emblaApi?.scrollNext}
                 />
-            </CarouselFooter>
+            </footer>
         </div>
     );
 }
@@ -115,25 +119,6 @@ export function CarouselItem({ children, className, title, index }: CarouselItem
                 </CardFooter>
             ) : null}
         </Card>
-    );
-}
-
-export type CarouselFooterProps = React.PropsWithChildren & {
-    show?: boolean;
-};
-
-export function CarouselFooter({ show, children }: CarouselFooterProps) {
-    const hydrated = useHydrated();
-    if (!hydrated) return null;
-
-    if (!show) return null;
-    return (
-        <footer
-            aria-label="Carousel Control Panel"
-            className="flex justify-center gap-6 pt-6"
-        >
-            {children}
-        </footer>
     );
 }
 
