@@ -1,9 +1,7 @@
 import { MotionListItem } from "@/components/motion";
+import { PreviewImage } from "@/components/preview-image";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
-
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
@@ -29,14 +27,9 @@ export default async function CollectionDirectoryPage() {
                         className={card.root()}
                     >
                         <Link href="/collections/[slug]">
-                            <Image
-                                as={NextImage}
+                            <PreviewImage
                                 src={image}
                                 alt={name}
-                                width={192}
-                                height={192}
-                                className={card.image()}
-                                isZoomed
                             />
                             <CardFooter className={card.title()}>
                                 <h3 className="text-large">{name}</h3>

@@ -1,9 +1,8 @@
 "use client";
 
 import { MotionListItem, type MotionListItemProps } from "@/components/motion";
+import { PreviewImage } from "@/components/preview-image";
 import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
-import { Image, type ImageProps } from "@nextui-org/image";
-import NextImage from "next/image";
 
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
 import { ProductPreviewProvider, useProductPreview } from "./product-preview-context";
@@ -37,15 +36,10 @@ export function ProductPreviewImages({ images }: ProductPreviewImageProps) {
 
     const imageComponents = useDeepCompareMemo(() => {
         return images.map((image, i) => (
-            <Image
+            <PreviewImage
                 key={i}
-                as={NextImage}
                 src={image.src}
                 alt={image.alt}
-                width={192}
-                height={192}
-                className={card.image()}
-                isZoomed
             />
         ));
     }, [images]);
@@ -53,7 +47,7 @@ export function ProductPreviewImages({ images }: ProductPreviewImageProps) {
     return imageComponents[activeIndex] ?? null;
 }
 
-export type ProductPreviewBodyProps = ImageProps & {
+export type ProductPreviewBodyProps = React.PropsWithChildren & {
     title?: string;
 };
 
