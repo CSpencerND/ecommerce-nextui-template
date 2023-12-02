@@ -10,7 +10,7 @@ export function PreviewImage({ src, alt, ...props }: ImageProps) {
             alt={alt}
             width={192}
             height={192}
-            sizes="192px"
+            sizes="144, (min-width: 376px) 192px"
             className={cardImage()}
             isZoomed
             {...props}
