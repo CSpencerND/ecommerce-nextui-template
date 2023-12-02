@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
+
 import { MotionListItem, type MotionListItemProps } from "@/components/motion";
 import { PreviewImage } from "@/components/preview-image";
 import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
 
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
+import { useParams } from "next/navigation";
 import { ProductPreviewProvider, useProductPreview } from "./product-preview-context";
 
 import { card } from "@/styles";
@@ -48,12 +51,19 @@ export function ProductPreviewImages({ images }: ProductPreviewImageProps) {
 }
 
 export type ProductPreviewBodyProps = React.PropsWithChildren & {
+    slug: string;
     title?: string;
 };
 
-export function ProductPreviewBody({ title, children }: ProductPreviewBodyProps) {
+export function ProductPreviewBody({ slug, title, children }: ProductPreviewBodyProps) {
+    const params = useParams();
+    const collectionSlug = Object.values(params)[0]
+
     return (
-        <CardBody>
+        <CardBody
+            as={Link}
+            href={`/collections/${collectionSlug}/${slug.toLowerCase()}`}
+        >
             {children}
             <CardFooter className={card.title({ hasPadding: true })}>
                 <h3>{title}</h3>

@@ -27,7 +27,7 @@ export default async function CollectionPage() {
                         key={i}
                         index={i}
                     >
-                        <ProductPreviewBody title={name}>
+                        <ProductPreviewBody title={name} slug={name}>
                             <ProductPreviewImages
                                 images={images.map((image) => ({
                                     src: image,

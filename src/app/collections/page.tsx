@@ -26,7 +26,7 @@ export default async function CollectionDirectoryPage() {
                         isPressable
                         className={card.root()}
                     >
-                        <Link href="/collections/[slug]">
+                        <Link href={`/collections/${name.toLowerCase()}`}>
                             <PreviewImage
                                 src={image}
                                 alt={name}

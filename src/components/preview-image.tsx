@@ -1,5 +1,5 @@
 import { cardImage } from "@/styles/product-card";
-import { Image, ImageProps } from "@nextui-org/react";
+import { Image, type ImageProps } from "@nextui-org/react";
 import NextImage from "next/image";
 
 export function PreviewImage({ src, alt, ...props }: ImageProps) {
