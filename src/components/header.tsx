@@ -53,10 +53,10 @@ export const Header: React.FC<HeaderProps> = () => (
             ))}
         </NavbarContent>
         <NavbarContent justify="end">
-            <NavbarItem className="flex">
+            <NavbarItem className="flex max-sm:hidden">
                 <Link href="#">Login</Link>
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem className="max-sm:hidden">
                 <Button
                     as={Link}
                     color="primary"
