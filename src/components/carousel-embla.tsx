@@ -143,6 +143,8 @@ export type CarouselControlsProps = {
 };
 
 export function CarouselControls({ scrollPrevSlide, scrollNextSlide }: CarouselControlsProps) {
+    if (!scrollNextSlide || !scrollPrevSlide) return null;
+
     return (
         <>
             <ButtonGroup
@@ -154,14 +156,14 @@ export function CarouselControls({ scrollPrevSlide, scrollNextSlide }: CarouselC
             >
                 <Button
                     aria-label="Go To Previous Slide"
-                    onPress={() => (scrollPrevSlide ? scrollPrevSlide() : {})}
+                    onPress={scrollPrevSlide}
                     className="bg-content2 shadow-sm hover:bg-content4"
                 >
                     <ChevronLeft size={14} />
                 </Button>
                 <Button
                     aria-label="Go To Next Slide"
-                    onPress={() => (scrollNextSlide ? scrollNextSlide() : {})}
+                    onPress={scrollNextSlide}
                     className="bg-content2 shadow-sm hover:bg-content4"
                 >
                     <ChevronRight size={14} />
