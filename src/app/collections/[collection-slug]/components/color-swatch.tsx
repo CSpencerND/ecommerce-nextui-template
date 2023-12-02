@@ -1,6 +1,6 @@
 "use client";
 
-import { RadioGroup, RadioGroupProps, RadioProps, useRadio } from "@nextui-org/radio";
+import { RadioGroup, useRadio, type RadioGroupProps, type RadioProps } from "@nextui-org/radio";
 import { SmoothCorners } from "react-smooth-corners";
 
 import { VisuallyHidden, tv } from "@nextui-org/react";
@@ -100,7 +100,7 @@ const swatchIndicator = tv({
     base: [
         "grid place-items-center",
         "aspect-square h-8 w-8 sm:h-9 sm:w-9",
-        "shadow-inner shadow-foreground/20",
+        // "shadow-inner shadow-foreground/20",
         "border-medium border-primary border-opacity-0",
         "transition-opacity group-data-[selected=true]:border-opacity-100",
     ],

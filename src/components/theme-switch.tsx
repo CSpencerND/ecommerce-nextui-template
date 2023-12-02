@@ -1,7 +1,7 @@
 "use client";
 
 import { MoonFilledIcon, SunFilledIcon } from "@/components/icons";
-import { SwitchProps, useSwitch } from "@nextui-org/switch";
+import { type SwitchProps, useSwitch } from "@nextui-org/switch";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 import { useIsSSR } from "@react-aria/ssr";

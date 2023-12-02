@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IconSvgProps } from "@/types";
+import type { IconSvgProps } from "@/types";
 
 export const Squircle: React.FC<IconSvgProps> = ({ }) => (
     <svg
