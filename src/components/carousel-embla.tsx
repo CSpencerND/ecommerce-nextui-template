@@ -75,7 +75,7 @@ export function Carousel(props: CarouselProps) {
             >
                 {children}
             </ul>
-            <footer
+            <div
                 aria-label="Carousel Control Panel"
                 className="flex h-14 justify-center gap-6 pt-6 data-[hidden=true]:hidden"
                 data-hidden={!showControls}
@@ -90,7 +90,7 @@ export function Carousel(props: CarouselProps) {
                     scrollPrevSlide={emblaApi?.scrollPrev}
                     scrollNextSlide={emblaApi?.scrollNext}
                 />
-            </footer>
+            </div>
         </div>
     );
 }
