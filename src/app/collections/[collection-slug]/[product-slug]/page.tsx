@@ -7,7 +7,6 @@ import NextImage from "next/image";
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 import { card, prose, section } from "@/styles";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 export default async function ProductPage() {
     preloadFakeData("product");
@@ -15,7 +14,7 @@ export default async function ProductPage() {
 
     return (
         <section className={section()}>
-            <Card className="">
+            <Card className="rounded-xlarge">
                 <CardBody className="space-y-6">
                     <div className="w-full">
                         <Image
