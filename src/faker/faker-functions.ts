@@ -114,8 +114,8 @@ export function getProduct() {
         images: faker.helpers.multiple(
             () =>
                 faker.image.urlPicsumPhotos({
-                    height: 192,
-                    width: 192,
+                    height: 384,
+                    width: 384,
                 }),
             { count: 4 },
         ),
