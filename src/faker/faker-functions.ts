@@ -109,7 +109,7 @@ export function getProduct() {
         name: faker.commerce.product(),
         description: faker.commerce.productDescription(),
         colors: faker.helpers.multiple(() => faker.color.rgb(), { count: 4 }),
-        sizes: ["XS", "SM", "MD", "LG", "XL", "2X", "3X", "4X"],
+        sizes: ["xs", "sm", "md", "lg", "xl", "2x", "3x", "4x"],
         price: faker.commerce.price({ symbol: "$" }),
         images: faker.helpers.multiple(
             () =>
