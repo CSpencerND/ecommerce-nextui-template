@@ -30,19 +30,18 @@ export function ProductPreviewCard(props: ProductPreviewCardProps) {
     );
 }
 
-export type ProductPreviewImageProps = {
-    images: { src: string; alt: string }[];
+export type ProductImageListProps = {
+    images: React.ComponentPropsWithRef<typeof PreviewImage>[];
 };
 
-export function ProductPreviewImages({ images }: ProductPreviewImageProps) {
+export function ProductImageList({ images }: ProductImageListProps) {
     const { activeIndex } = useProductPreview();
 
     const imageComponents = useDeepCompareMemo(() => {
         return images.map((image, i) => (
             <PreviewImage
                 key={i}
-                src={image.src}
-                alt={image.alt}
+                {...image}
             />
         ));
     }, [images]);

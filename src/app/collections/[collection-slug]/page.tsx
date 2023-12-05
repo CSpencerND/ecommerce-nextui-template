@@ -1,6 +1,6 @@
 import {
     ProductPreviewBody,
-    ProductPreviewImages,
+    ProductImageList,
     ProductPreviewCard,
     ProductPreviewFooter,
 } from "./components/product-preview";
@@ -28,7 +28,7 @@ export default async function CollectionPage() {
                         index={i}
                     >
                         <ProductPreviewBody title={name} slug={name}>
-                            <ProductPreviewImages
+                            <ProductImageList
                                 images={images.map((image) => ({
                                     src: image,
                                     alt: `Product Image ${i}`,
