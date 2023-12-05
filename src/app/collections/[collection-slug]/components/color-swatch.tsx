@@ -42,16 +42,15 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
             </VisuallyHidden>
             <span
                 aria-hidden="true"
+                style={{ backgroundColor: color }}
+                {...getWrapperProps({
+                    className: swatch({ isSquared: isSquared }),
+                })}
+            />
+            <span
+                aria-hidden="true"
                 className={swatchIndicator({ isSquared: isSquared })}
-            >
-                <span
-                    aria-hidden="true"
-                    style={{ backgroundColor: color }}
-                    {...getWrapperProps({
-                        className: swatch({ isSquared: isSquared }),
-                    })}
-                />
-            </span>
+            />
         </Component>
     );
 }
@@ -59,7 +58,7 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
 const swatchGroupWrapper = tv({
     base: [
         "flex-nowrap justify-between overflow-y-hidden overflow-x-scroll",
-        "gap-1.5 bg-content2 p-1.5 scrollbar-hide",
+        "bg-content2 p-2.5 scrollbar-hide",
     ],
     variants: {
         isSquared: {
@@ -73,7 +72,20 @@ const swatchGroupWrapper = tv({
 });
 
 const swatch = tv({
-    base: "aspect-square h-6 w-6 border-0 sm:h-7 sm:w-7",
+    /** focus ring is handled by `swatchIndicator` */
+    base: ["aspect-square h-6 w-6 border-0 sm:h-7 sm:w-7"],
+    /** only displays ring if selected */
+    // base: [
+    //     "aspect-square h-6 w-6 border-0 sm:h-7 sm:w-7",
+    //     "ring-primary ring-offset-1 ring-offset-content2",
+    //     "group-data-[selected=true]:ring-2",
+    // ],
+    /** displays default ring if not selected */
+    // base: [
+    //     "aspect-square h-6 w-6 border-0 sm:h-7 sm:w-7",
+    //     "ring-default ring-2 ring-offset-1 ring-offset-content2",
+    //     "group-data-[selected=true]:ring-primary",
+    // ],
     variants: {
         isSquared: {
             false: "rounded-full",
@@ -87,11 +99,12 @@ const swatch = tv({
 
 const swatchIndicator = tv({
     base: [
-        "grid place-items-center",
-        "aspect-square h-8 w-8 sm:h-9 sm:w-9",
-        // "shadow-inner shadow-foreground/20",
+        "absolute inset-[5px]",
         "border-medium border-primary border-opacity-0",
-        "transition-opacity group-data-[selected=true]:border-opacity-100",
+        "transform-gpu transition-colors-opacity",
+        "group-data-[selected=true]:border-opacity-100",
+        "aspect-square h-auto w-[calc(100%-10px)]",
+        // "shadow-inner shadow-foreground/20",
     ],
     variants: {
         isSquared: {
