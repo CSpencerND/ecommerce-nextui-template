@@ -10,7 +10,7 @@ export type ColorSwatchGroupProps = RadioGroupProps & {
     isSquared?: boolean;
 };
 
-export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps) {
+export function ColorSwatchGroup({ isSquared, className, ...props }: ColorSwatchGroupProps) {
     const { getActiveIndexAsString, setActiveIndex } = useProductPreview();
 
     return (
@@ -21,7 +21,9 @@ export function ColorSwatchGroup({ isSquared, ...props }: ColorSwatchGroupProps)
             size="lg"
             defaultValue={getActiveIndexAsString()}
             onValueChange={(v) => setActiveIndex(Number(v))}
-            classNames={{ wrapper: swatchGroupWrapper({ isSquared: isSquared }) }}
+            classNames={{
+                wrapper: swatchGroupWrapper({ isSquared: isSquared, class: className }),
+            }}
             {...props}
         />
     );
