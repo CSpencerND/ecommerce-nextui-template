@@ -1,7 +1,6 @@
 "use client";
 
 import { RadioGroup, useRadio, type RadioGroupProps, type RadioProps } from "@nextui-org/radio";
-import { SmoothCorners } from "react-smooth-corners";
 
 import { VisuallyHidden, tv } from "@nextui-org/react";
 
@@ -45,23 +44,13 @@ export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
                 aria-hidden="true"
                 className={swatchIndicator({ isSquared: isSquared })}
             >
-                {isSquared ? (
-                    <SmoothCorners
-                        corners="5"
-                        borderRadius="22.37%"
-                        style={{ backgroundColor: color }}
-                        {...getWrapperProps({
-                            className: swatch({ isSquared: isSquared }),
-                        })}
-                    />
-                ) : (
-                    <span
-                        style={{ backgroundColor: color }}
-                        {...getWrapperProps({
-                            className: swatch({ isSquared: isSquared }),
-                        })}
-                    />
-                )}
+                <span
+                    aria-hidden="true"
+                    style={{ backgroundColor: color }}
+                    {...getWrapperProps({
+                        className: swatch({ isSquared: isSquared }),
+                    })}
+                />
             </span>
         </Component>
     );
