@@ -1,14 +1,17 @@
 "use client";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { cn } from "@nextui-org/system";
 import { useState } from "react";
 
 type ColorSelectProps = {
     colors: string[];
     isSquared?: boolean;
+    noWrap?: boolean;
+    className?: string;
 };
 
-export function ColorSelect({ colors, isSquared, ...props }: ColorSelectProps) {
+export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelectProps) {
     const [value, setValue] = useState(colors[0]);
 
     return (
@@ -20,8 +23,8 @@ export function ColorSelect({ colors, isSquared, ...props }: ColorSelectProps) {
                 if (value) setValue(value);
             }}
             isSquared={isSquared}
-            className="max-sm:flex-wrap"
-            {...props}
+            noWrap={noWrap}
+            className={cn("max-sm:flex-wrap", className)}
         >
             {colors.map((color) => (
                 <ToggleGroupItem
