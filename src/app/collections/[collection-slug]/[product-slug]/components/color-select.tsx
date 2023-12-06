@@ -2,6 +2,7 @@
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useState } from "react";
+import { useProductImageGroup } from "./product-image-group-context";
 
 type ColorSelectProps = {
     colors: string[];
@@ -11,6 +12,7 @@ type ColorSelectProps = {
 };
 
 export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelectProps) {
+    const { setActiveIndex } = useProductImageGroup();
     const [value, setValue] = useState(colors[0]);
 
     return (
@@ -19,17 +21,21 @@ export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelec
             size="sm"
             value={value}
             onValueChange={(value) => {
-                if (value) setValue(value);
+                if (!value) return;
+                setValue(value);
             }}
             isSquared={isSquared}
             noWrap={noWrap}
             className={className}
         >
-            {colors.map((color) => (
+            {colors.map((color, i) => (
                 <ToggleGroupItem
                     aria-label={color}
                     key={color}
                     value={color}
+                    onClick={() => {
+                        setActiveIndex(i);
+                    }}
                     style={{ backgroundColor: color }}
                 />
             ))}
