@@ -3,7 +3,8 @@
 import Link from "next/link";
 
 import { MotionListItem, type MotionListItemProps } from "@/components/motion";
-import { PreviewImage } from "@/components/preview-image";
+import { ProductImage } from "@/components/preview-image";
+import { ProductImageGroup } from "../[product-slug]/components/product-image-group";
 import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
 
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
@@ -31,7 +32,7 @@ export function ProductPreviewCard(props: ProductPreviewCardProps) {
 }
 
 export type ProductImageListProps = {
-    images: React.ComponentPropsWithRef<typeof PreviewImage>[];
+    images: React.ComponentPropsWithRef<typeof ProductImage>[];
 };
 
 export function ProductImageList({ images }: ProductImageListProps) {
@@ -39,7 +40,7 @@ export function ProductImageList({ images }: ProductImageListProps) {
 
     const imageComponents = useDeepCompareMemo(() => {
         return images.map((image, i) => (
-            <PreviewImage
+            <ProductImage
                 key={i}
                 {...image}
             />

@@ -1,14 +1,13 @@
-import { ProductImageList } from "../components/product-preview";
 import { ProductProvider } from "./components/product-provider";
+import { ProductImageGroup } from "./components/product-image-group";
 
-import { SizeSelect } from "./components/size-select";
 import { ColorSelect } from "./components/color-select";
+import { SizeSelect } from "./components/size-select";
 
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
-
 import { prose, section } from "@/styles";
 
 export default async function ProductPage() {
@@ -20,7 +19,7 @@ export default async function ProductPage() {
             <Card className="max-w-4xl rounded-xlarge">
                 <CardBody className="gap-6 max-md:max-w-min md:flex-row md:items-center md:p-6">
                     <ProductProvider>
-                        <ProductImageList
+                        <ProductImageGroup
                             images={images.map((image, i) => ({
                                 src: image,
                                 alt: `Product Image ${i}`,
@@ -32,6 +31,7 @@ export default async function ProductPage() {
                                 sizes: "100vw",
                             }))}
                         />
+
                         <div className="flex basis-0 flex-col gap-6">
                             <div className={prose()}>
                                 <h2 className="pb-6">{name}</h2>
