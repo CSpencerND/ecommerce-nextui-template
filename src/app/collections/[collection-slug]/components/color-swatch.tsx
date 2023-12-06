@@ -10,6 +10,9 @@ export type ColorSwatchGroupProps = RadioGroupProps & {
     isSquared?: boolean;
 };
 
+/**
+ * @deprecated use `ToggleGroup` instead
+ */
 export function ColorSwatchGroup({ isSquared, className, ...props }: ColorSwatchGroupProps) {
     const { getActiveIndexAsString, setActiveIndex } = useProductPreview();
 
@@ -34,6 +37,9 @@ type ColorSwatchProps = Omit<RadioProps, "color"> & {
     isSquared?: boolean;
 };
 
+/**
+ * @deprecated use `ToggleGroupItem` instead
+ */
 export function ColorSwatch({ color, isSquared, ...props }: ColorSwatchProps) {
     const { Component, getBaseProps, getWrapperProps, getInputProps } = useRadio(props);
 
