@@ -1,5 +1,6 @@
 import { nextui } from "@nextui-org/react";
 import typography from "@tailwindcss/typography";
+import container from "@tailwindcss/container-queries";
 import plugin from "tailwindcss/plugin";
 
 import { themeColorsDark, themeColorsDim, themeColorsLight } from "./src/theme";
@@ -25,6 +26,7 @@ const config: Config = {
                 icon: "22.37%",
             },
         },
+        /** NOTE: @update will not be needed on the next update */
         size: {
             "0": "0px",
             px: "1px",
@@ -65,6 +67,7 @@ const config: Config = {
     },
     darkMode: "class",
     plugins: [
+        container,
         typography,
         nextui({
             addCommonColors: true,
@@ -87,6 +90,7 @@ const config: Config = {
         }),
         plugin(function ({ addUtilities, matchUtilities, addVariant, theme }) {
             addUtilities({
+                /** NOTE: @update will not be needed on the next update */
                 ".h-screen-d": {
                     height: ["100vh", "100dvh"],
                 },
@@ -102,6 +106,7 @@ const config: Config = {
             });
 
             matchUtilities(
+                /** NOTE: @update will not be needed on the next update */
                 {
                     size: (value) => ({
                         width: value,

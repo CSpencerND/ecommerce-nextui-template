@@ -23,6 +23,7 @@
     "@react-aria/ssr": "^3.9.0",
     "@react-aria/visually-hidden": "^3.8.7",
     "@react-hookz/web": "^23.1.0",
+    "@tailwindcss/container-queries": "^0.1.1",
     "color2k": "^2.0.2",
     "embla-carousel-react": "8.0.0-rc15",
     "embla-carousel-wheel-gestures": "8.0.0-rc05",
