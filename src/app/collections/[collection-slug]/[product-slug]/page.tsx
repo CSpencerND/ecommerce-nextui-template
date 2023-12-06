@@ -1,12 +1,13 @@
+import { ProductImageList } from "../components/product-preview";
+import { ProductProvider } from "./components/product-provider";
+
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
-
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
-import { card, prose, section } from "@/styles";
+import { prose, section } from "@/styles";
 
 export default async function ProductPage() {
     preloadFakeData("product");
@@ -16,55 +17,87 @@ export default async function ProductPage() {
         <section className={section()}>
             <Card className="max-w-4xl rounded-xlarge">
                 <CardBody className="gap-6 max-md:max-w-min md:flex-row md:items-center md:p-6">
-                    <Image
-                        as={NextImage}
-                        src={images[0]}
-                        alt={name}
-                        width={384}
-                        height={384}
-                        classNames={{ wrapper: "flex-none", img: card.image() }}
-                        sizes="100vw"
-                    />
-                    <div className="flex flex-col gap-6 basis-0">
-                        <div className={prose()}>
-                            <h2 className="pb-6">{name}</h2>
-                            <p>{description}</p>
-                            <p>{price}</p>
-                        </div>
+                    <ProductProvider>
+                        <ProductImageList
+                            images={images.map((image, i) => ({
+                                src: image,
+                                alt: `Product Image ${i}`,
+                                width: 384,
+                                height: 384,
+                                classNames: {
+                                    wrapper: "flex-none max-sm:w-[calc(93vw-24px)] max-w-96",
+                                },
+                                sizes: "100vw",
+                            }))}
+                        />
+                        <div className="flex basis-0 flex-col gap-6">
+                            <div className={prose()}>
+                                <h2 className="pb-6">{name}</h2>
+                                <p>{description}</p>
+                                <p>{price}</p>
+                            </div>
 
-                        {/** TODO: Obviously will be ColorSwatch */}
-                        <div className="inline-flex gap-3">
-                            {colors.map((color, i) => (
+                            <ToggleGroup
+                                /**
+                                 * TODO: Try to figure out a way to not be a able to toggle it off.
+                                 * ie: Always have one selected.
+                                 * Maybe: If toggled off, the last one is automatically toggled back on.
+                                 */
+                                type="single"
+                                defaultValue={colors[0]}
+                                size="sm"
+                                isSquared
+                            >
+                                {colors.map((color) => (
+                                    <ToggleGroupItem
+                                        key={color}
+                                        value={color}
+                                        style={{ backgroundColor: color }}
+                                    >
+                                        <span className="sr-only">{color}</span>
+                                    </ToggleGroupItem>
+                                ))}
+                            </ToggleGroup>
+
+                            <ToggleGroup
+                                /**
+                                 * TODO:
+                                 * Try to figure out a way to not be a able to toggle it off.
+                                 * ie: Always have one selected.
+                                 * Maybe: If toggled off, the last one is automatically toggled back on.
+                                 */
+                                /**
+                                 * PERF:
+                                 * Also, adapt this to the product previews,
+                                 * and deprecate the other color swatch component.
+                                 */
+                                type="single"
+                                defaultValue={sizes[0]}
+                                size="sm"
+                                isSquared
+                                className="max-sm:flex-wrap"
+                            >
+                                {sizes.map((size) => (
+                                    <ToggleGroupItem
+                                        key={size}
+                                        value={size}
+                                    >
+                                        {size}
+                                    </ToggleGroupItem>
+                                ))}
+                            </ToggleGroup>
+
+                            <div className="inline-flex max-w-min gap-3 [&>*]:flex-1">
+                                <Button color="primary">Buy Now</Button>
                                 <Button
-                                    key={i}
-                                    size="sm"
-                                    isIconOnly
-                                    style={{ backgroundColor: color }}
+                                    color="primary"
+                                    variant="bordered"
                                 >
-                                    <span className="sr-only">{color}</span>
+                                    Add To Bag
                                 </Button>
-                            ))}
+                            </div>
                         </div>
-
-                        {/** TODO: Change this to RadioGroup */}
-                        <div className="inline-flex gap-3">
-                            {sizes.map((size, i) => (
-                                <Button
-                                    key={i}
-                                    size="sm"
-                                    variant="flat"
-                                    isIconOnly
-                                >
-                                    {size.toLowerCase()}
-                                </Button>
-                            ))}
-                        </div>
-
-                        <div className="inline-flex gap-3 max-w-min [&>*]:flex-1">
-                            <Button color="primary">Buy Now</Button>
-                            <Button color="primary" variant="bordered">Add To Bag</Button>
-                        </div>
-                    </div>
+                    </ProductProvider>
                 </CardBody>
             </Card>
         </section>
