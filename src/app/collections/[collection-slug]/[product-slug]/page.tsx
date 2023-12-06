@@ -1,7 +1,9 @@
 import { ProductImageList } from "../components/product-preview";
 import { ProductProvider } from "./components/product-provider";
 
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { SizeSelect } from "./components/size-select";
+import { ColorSelect } from "./components/color-select";
+
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 
@@ -37,55 +39,15 @@ export default async function ProductPage() {
                                 <p>{price}</p>
                             </div>
 
-                            <ToggleGroup
-                                /**
-                                 * TODO: Try to figure out a way to not be a able to toggle it off.
-                                 * ie: Always have one selected.
-                                 * Maybe: If toggled off, the last one is automatically toggled back on.
-                                 */
-                                type="single"
-                                defaultValue={colors[0]}
-                                size="sm"
+                            <ColorSelect
                                 isSquared
-                            >
-                                {colors.map((color) => (
-                                    <ToggleGroupItem
-                                        key={color}
-                                        value={color}
-                                        style={{ backgroundColor: color }}
-                                    >
-                                        <span className="sr-only">{color}</span>
-                                    </ToggleGroupItem>
-                                ))}
-                            </ToggleGroup>
+                                colors={colors}
+                            />
 
-                            <ToggleGroup
-                                /**
-                                 * TODO:
-                                 * Try to figure out a way to not be a able to toggle it off.
-                                 * ie: Always have one selected.
-                                 * Maybe: If toggled off, the last one is automatically toggled back on.
-                                 */
-                                /**
-                                 * PERF:
-                                 * Also, adapt this to the product previews,
-                                 * and deprecate the other color swatch component.
-                                 */
-                                type="single"
-                                defaultValue={sizes[0]}
-                                size="sm"
+                            <SizeSelect
                                 isSquared
-                                className="max-sm:flex-wrap"
-                            >
-                                {sizes.map((size) => (
-                                    <ToggleGroupItem
-                                        key={size}
-                                        value={size}
-                                    >
-                                        {size}
-                                    </ToggleGroupItem>
-                                ))}
-                            </ToggleGroup>
+                                sizes={sizes}
+                            />
 
                             <div className="inline-flex max-w-min gap-3 [&>*]:flex-1">
                                 <Button color="primary">Buy Now</Button>
