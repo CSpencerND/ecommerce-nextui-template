@@ -5,7 +5,7 @@ import {
     ProductPreviewFooter,
 } from "./components/product-preview";
 
-import { ColorSwatch, ColorSwatchGroup } from "./components/color-swatch";
+import { ColorSelect } from "./[product-slug]/components/color-select";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
@@ -27,7 +27,10 @@ export default async function CollectionPage() {
                         key={i}
                         index={i}
                     >
-                        <ProductPreviewBody title={name} slug={name}>
+                        <ProductPreviewBody
+                            title={name}
+                            slug={name}
+                        >
                             <ProductImageList
                                 images={images.map((image) => ({
                                     src: image,
@@ -36,16 +39,12 @@ export default async function CollectionPage() {
                             />
                         </ProductPreviewBody>
                         <ProductPreviewFooter>
-                            <ColorSwatchGroup isSquared>
-                                {colors.map((color, c) => (
-                                    <ColorSwatch
-                                        key={c}
-                                        value={c.toString()}
-                                        color={color}
-                                        isSquared
-                                    />
-                                ))}
-                            </ColorSwatchGroup>
+                            <ColorSelect
+                                colors={colors}
+                                isSquared
+                                noWrap
+                                className="@[146px]/footer:justify-between bg-content2"
+                            />
                         </ProductPreviewFooter>
                     </ProductPreviewCard>
                 ))}

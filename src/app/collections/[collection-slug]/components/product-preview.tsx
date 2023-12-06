@@ -11,6 +11,7 @@ import { useParams } from "next/navigation";
 import { ProductPreviewProvider, useProductPreview } from "./product-preview-context";
 
 import { card } from "@/styles";
+import { cn } from "@nextui-org/system";
 
 export type ProductPreviewCardProps = CardProps & MotionListItemProps;
 
@@ -56,7 +57,7 @@ export type ProductPreviewBodyProps = React.PropsWithChildren & {
 
 export function ProductPreviewBody({ slug, title, children }: ProductPreviewBodyProps) {
     const params = useParams();
-    const collectionSlug = Object.values(params)[0]
+    const collectionSlug = Object.values(params)[0];
 
     return (
         <CardBody
@@ -74,7 +75,7 @@ export function ProductPreviewBody({ slug, title, children }: ProductPreviewBody
 export function ProductPreviewFooter(props: React.ComponentPropsWithoutRef<"footer">) {
     return (
         <footer
-            className="flex flex-col justify-center gap-3 px-3 pb-3"
+            className={cn("flex flex-col justify-center gap-3 px-3 pb-3 @container/footer", props.className)}
             {...props}
         />
     );
