@@ -1,7 +1,6 @@
 "use client";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { cn } from "@nextui-org/system";
 import { useState } from "react";
 
 type ColorSelectProps = {
@@ -24,7 +23,7 @@ export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelec
             }}
             isSquared={isSquared}
             noWrap={noWrap}
-            className={cn("max-sm:flex-wrap", className)}
+            className={className}
         >
             {colors.map((color) => (
                 <ToggleGroupItem

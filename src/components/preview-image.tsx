@@ -1,8 +1,9 @@
-import { cardImage } from "@/styles/product-card";
 import { Image, type ImageProps } from "@nextui-org/react";
 import NextImage from "next/image";
 
-export function PreviewImage({ src, alt, ...props }: ImageProps) {
+import { cardImage } from "@/styles/product-card";
+
+export function ProductImage({ src, alt, ...props }: ImageProps) {
     return (
         <Image
             as={NextImage}
