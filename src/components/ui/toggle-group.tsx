@@ -14,15 +14,22 @@ const ToggleGroupContext = React.createContext<VariantProps<typeof toggleVariant
 });
 
 type ToggleGroupProps = React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> &
-    VariantProps<typeof toggleVariants>;
+    VariantProps<typeof toggleVariants> & {
+        noWrap?: boolean;
+    };
 
 const ToggleGroup = React.forwardRef<
     React.ElementRef<typeof ToggleGroupPrimitive.Root>,
     ToggleGroupProps
->(({ className, variant, size, isSquared, children, ...props }, ref) => (
+>(({ className, variant, size, isSquared, noWrap, children, ...props }, ref) => (
     <ToggleGroupPrimitive.Root
         ref={ref}
-        className={cn("flex items-center gap-3", className)}
+        className={cn(
+            "flex items-center gap-2",
+            noWrap ? "!flex-nowrap overflow-x-scroll p-2" : "",
+            isSquared ? "rounded-large" : "rounded-full",
+            className,
+        )}
         {...props}
     >
         <ToggleGroupContext.Provider value={{ variant, size, isSquared }}>
