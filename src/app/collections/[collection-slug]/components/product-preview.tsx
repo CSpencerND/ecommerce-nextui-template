@@ -22,7 +22,6 @@ export function ProductPreviewCard(props: ProductPreviewCardProps) {
         <Card
             as={MotionListItem}
             isFooterBlurred
-            isPressable
             className={card.root({ radius: "xl", className })}
             {...props}
         >
