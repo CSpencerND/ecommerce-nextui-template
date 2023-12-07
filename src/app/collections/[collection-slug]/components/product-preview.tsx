@@ -3,13 +3,10 @@
 import Link from "next/link";
 
 import { MotionListItem, type MotionListItemProps } from "@/components/motion";
-import { ProductImage } from "@/components/preview-image";
-import { ProductImageGroup } from "../[product-slug]/components/product-image-group";
 import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
 
-import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
 import { useParams } from "next/navigation";
-import { ProductPreviewProvider, useProductPreview } from "./product-preview-context";
+import { ProductImageGroupProvider } from "../[product-slug]/components/product-image-group-context";
 
 import { card } from "@/styles";
 import { cn } from "@nextui-org/system";
@@ -26,28 +23,9 @@ export function ProductPreviewCard(props: ProductPreviewCardProps) {
             className={card.root({ radius: "xl", className })}
             {...props}
         >
-            <ProductPreviewProvider>{children}</ProductPreviewProvider>
+            <ProductImageGroupProvider>{children}</ProductImageGroupProvider>
         </Card>
     );
-}
-
-export type ProductImageListProps = {
-    images: React.ComponentPropsWithRef<typeof ProductImage>[];
-};
-
-export function ProductImageList({ images }: ProductImageListProps) {
-    const { activeIndex } = useProductPreview();
-
-    const imageComponents = useDeepCompareMemo(() => {
-        return images.map((image, i) => (
-            <ProductImage
-                key={i}
-                {...image}
-            />
-        ));
-    }, [images]);
-
-    return imageComponents[activeIndex] ?? null;
 }
 
 export type ProductPreviewBodyProps = React.PropsWithChildren & {
@@ -75,7 +53,10 @@ export function ProductPreviewBody({ slug, title, children }: ProductPreviewBody
 export function ProductPreviewFooter(props: React.ComponentPropsWithoutRef<"footer">) {
     return (
         <footer
-            className={cn("flex flex-col justify-center gap-3 px-3 pb-3 @container/footer", props.className)}
+            className={cn(
+                "@container/footer flex flex-col justify-center gap-3 px-3 pb-3",
+                props.className,
+            )}
             {...props}
         />
     );

@@ -1,11 +1,10 @@
+import { ColorSelect } from "./[product-slug]/components/color-select";
+import { ProductImageGroup } from "./[product-slug]/components/product-image-group";
 import {
     ProductPreviewBody,
-    ProductImageList,
     ProductPreviewCard,
     ProductPreviewFooter,
 } from "./components/product-preview";
-
-import { ColorSelect } from "./[product-slug]/components/color-select";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
@@ -31,7 +30,7 @@ export default async function CollectionPage() {
                             title={name}
                             slug={name}
                         >
-                            <ProductImageList
+                            <ProductImageGroup
                                 images={images.map((image) => ({
                                     src: image,
                                     alt: `Product Image ${i}`,
