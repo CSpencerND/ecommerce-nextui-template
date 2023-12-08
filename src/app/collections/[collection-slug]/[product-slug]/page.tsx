@@ -16,7 +16,7 @@ export default async function ProductPage({ searchParams }: { searchParams: any 
 
     return (
         <section className={section()}>
-            <Card className="rounded-2xlarge max-w-4xl">
+            <Card className="!rounded-2xlarge max-w-4xl">
                 <CardBody className="gap-6 p-6 max-md:max-w-min md:flex-row md:items-center">
                     <ProductProvider>
                         <ProductImageGroup
