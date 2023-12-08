@@ -36,7 +36,7 @@ export default async function ProductPage() {
                             <div className={prose()}>
                                 <h2 className="pb-6">{name}</h2>
                                 <p>{description}</p>
-                                <p>{price}</p>
+                                <p className="font-bold">{price}</p>
                             </div>
 
                             <ColorSelect
