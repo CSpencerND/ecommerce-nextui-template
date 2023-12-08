@@ -3,6 +3,8 @@ import NextImage from "next/image";
 
 import { cn } from "@nextui-org/react";
 
+import { isImageUnoptimized } from "@/site.config";
+
 export function ProductImage({ src, alt, className, ...props }: ImageProps) {
     return (
         <Image
@@ -14,6 +16,7 @@ export function ProductImage({ src, alt, className, ...props }: ImageProps) {
             sizes="144, (min-width: 376px) 192px"
             className={cn("data-[loaded=true]:bg-stripe-gradient", className)}
             isZoomed
+            unoptimized={isImageUnoptimized}
             {...props}
         />
     );

@@ -1,5 +1,10 @@
 import { faker } from "@faker-js/faker";
 
+/**
+ * WARNING: Leave this true for testing purposes. Switch it to false for production.
+ */
+export const isImageUnoptimized: boolean = true;
+
 const PORT = 3000;
 const URL = "https://ecommerce-nextui-template.vercel.app";
 
