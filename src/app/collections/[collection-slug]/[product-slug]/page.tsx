@@ -49,7 +49,7 @@ export default async function ProductPage() {
                                 sizes={sizes}
                             />
 
-                            <div className="inline-flex max-w-min gap-3 [&>*]:flex-1">
+                            <div className="inline-flex max-w-min gap-3 [&>*]:flex-1 [&>*]:font-semibold">
                                 <Button
                                     color="primary"
                                     variant="shadow"
