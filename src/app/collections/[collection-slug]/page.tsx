@@ -40,10 +40,12 @@ export default async function CollectionPage() {
                         <ProductPreviewFooter>
                             <ColorSelect
                                 colors={colors}
-                                buttonSize="sm"
-                                isSquared
                                 noWrap
-                                className="@[146px]/footer:justify-between gap-4 bg-content2 shadow-small"
+                                classNames={{
+                                    tabList:
+                                        "@[146px]/footer:justify-between gap-3 bg-content2 shadow-small rounded-large p-2 w-full",
+                                    tab: "size-7",
+                                }}
                             />
                         </ProductPreviewFooter>
                     </ProductPreviewCard>

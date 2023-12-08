@@ -1,49 +1,59 @@
 "use client";
 
-import {
-    ToggleGroup,
-    ToggleGroupItem,
-    type ToggleGroupItemProps,
-} from "@/components/ui/toggle-group";
-
-import { useState } from "react";
-
-import { cn } from "@nextui-org/system";
+import { Tab, Tabs } from "@nextui-org/tabs";
+import Link from "next/link";
 
 type SizeSelectProps = {
     sizes: string[];
-    isSquared?: boolean;
-    buttonSize?: ToggleGroupItemProps["size"];
+    sizeParams: string;
     className?: string;
 };
 
-export function SizeSelect(props: SizeSelectProps) {
-    const { sizes, isSquared, buttonSize = "default", className } = props;
+export function SizeSelect({ sizes, sizeParams }: SizeSelectProps) {
+    let currentSelection: string | undefined;
 
-    const [value, setValue] = useState(sizes[0]);
+    if (!sizeParams) {
+        currentSelection = sizes[0];
+    } else {
+        currentSelection = sizeParams;
+    }
+
+    const newSearchParams = new URLSearchParams({ size: sizeParams ?? sizes[0] ?? "" });
 
     return (
-        <ToggleGroup
-            type="single"
-            size={buttonSize}
-            value={value}
-            onValueChange={(value) => {
-                if (!value) return;
-                setValue(value);
+        <Tabs
+            as="menu"
+            aria-label="Select A Size"
+            items={sizes}
+            selectedKey={`?${newSearchParams}`}
+            defaultSelectedKey={`?${newSearchParams}`}
+            classNames={{
+                tabList: "!flex-wrap bg-transparent",
+                cursor: "!bg-transparent !rounded-icon ring-1 ring-primary ring-offset-2 ring-offset-content2",
+                tab: "bg-default font-medium !rounded-icon size-8 aspect-square",
             }}
-            isSquared={isSquared}
-            className={cn("max-sm:flex-wrap", className)}
-            {...props}
         >
-            {sizes.map((size) => (
-                <ToggleGroupItem
-                    key={size}
-                    value={size}
-                    className="ring-offset-content1"
-                >
-                    {size}
-                </ToggleGroupItem>
-            ))}
-        </ToggleGroup>
+            {sizes.map((size) => {
+                const sizeParams = new URLSearchParams({ size: size });
+
+                return (
+                    <Tab
+                        as={Link}
+                        key={`?${sizeParams}`}
+                        title={size}
+                        href={`?${sizeParams}`}
+                    />
+                );
+            })}
+        </Tabs>
     );
+
+    /** Incredibly simplified version */
+    // return (
+    //     <menu className="inline-flex gap-1.5 flex-wrap">
+    //         {sizes.map((size) => (
+    //             <Button key={size} size="sm" isIconOnly as={Link} href="/">{size}</Button>
+    //         ))}
+    //     </menu>
+    // )
 }

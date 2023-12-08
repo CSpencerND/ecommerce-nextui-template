@@ -1,10 +1,6 @@
 "use client";
 
-import {
-    ToggleGroup,
-    ToggleGroupItem,
-    type ToggleGroupItemProps,
-} from "@/components/ui/toggle-group";
+import { Tab, Tabs, type TabsProps } from "@nextui-org/tabs";
 
 import { useState } from "react";
 import { useProductImageGroup } from "./product-image-group-context";
@@ -13,43 +9,42 @@ import type { Colors } from "@/types";
 
 type ColorSelectProps = {
     colors: Colors;
-    isSquared?: boolean;
     noWrap?: boolean;
-    buttonSize?: ToggleGroupItemProps["size"];
-    className?: string;
+    classNames?: TabsProps["classNames"];
 };
 
 export function ColorSelect(props: ColorSelectProps) {
-    const { colors, isSquared, noWrap, buttonSize = "default", className } = props;
+    const { colors, noWrap, classNames } = props;
 
     const { setActiveIndex } = useProductImageGroup();
-    const [value, setValue] = useState(colors[0]?.name);
 
     return (
-        <ToggleGroup
-            type="single"
-            size={buttonSize}
-            value={value}
-            onValueChange={(value) => {
-                if (!value) return;
-                setValue(value);
+        <Tabs
+            as="menu"
+            aria-label="Select A Color"
+            items={colors}
+            classNames={{
+                base: classNames?.base,
+                panel: classNames?.panel,
+                tabList: ["bg-transparent", noWrap ? "" : "!flex-wrap", classNames?.tabList],
+                cursor: [
+                    "!bg-transparent !rounded-icon ring-1 ring-primary ring-offset-2 ring-offset-content2",
+                    classNames?.tabList,
+                ],
+                tab: [
+                    "ring-1 ring-default size-8 aspect-square !rounded-icon",
+                    classNames?.tab,
+                ],
             }}
-            isSquared={isSquared}
-            noWrap={noWrap}
-            className={className}
-            {...props}
+            onSelectionChange={(key) => setActiveIndex(Number(key))}
         >
-            {colors.map(({ name, code }, i) => (
-                <ToggleGroupItem
-                    aria-label={name}
+            {colors.map((color, i) => (
+                <Tab
                     key={i}
-                    value={name}
-                    onClick={() => {
-                        setActiveIndex(i);
-                    }}
-                    style={{ backgroundColor: code }}
+                    className=""
+                    style={{ backgroundColor: color.code }}
                 />
             ))}
-        </ToggleGroup>
+        </Tabs>
     );
 }
