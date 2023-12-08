@@ -142,14 +142,14 @@ export function CarouselControls({ scrollPrevSlide, scrollNextSlide }: CarouselC
                 <Button
                     aria-label="Go To Previous Slide"
                     onPress={scrollPrevSlide}
-                    className="bg-content2 shadow-sm hover:bg-content4"
+                    className="bg-content2 shadow-sm hover:bg-content3"
                 >
                     <ChevronLeft size={14} />
                 </Button>
                 <Button
                     aria-label="Go To Next Slide"
                     onPress={scrollNextSlide}
-                    className="bg-content2 shadow-sm hover:bg-content4"
+                    className="bg-content2 shadow-sm hover:bg-content3"
                 >
                     <ChevronRight size={14} />
                 </Button>
