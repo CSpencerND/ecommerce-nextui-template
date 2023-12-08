@@ -1,5 +1,5 @@
 import { MotionListItem } from "@/components/motion";
-import { PreviewImage } from "@/components/preview-image";
+import { ProductImage } from "@/components/product-image";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
@@ -27,7 +27,7 @@ export default async function CollectionDirectoryPage() {
                         className={card.root()}
                     >
                         <Link href={`/collections/${name.toLowerCase()}`}>
-                            <PreviewImage
+                            <ProductImage
                                 src={image}
                                 alt={name}
                             />

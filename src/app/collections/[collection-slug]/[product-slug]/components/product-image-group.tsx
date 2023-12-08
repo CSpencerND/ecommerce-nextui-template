@@ -1,6 +1,6 @@
 "use client"
 
-import { ProductImage } from "@/components/preview-image";
+import { ProductImage } from "@/components/product-image";
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
 import { useProductImageGroup } from "./product-image-group-context";
 
