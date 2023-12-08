@@ -9,7 +9,7 @@ const toggleVariants = tv({
     base: [
         "inline-flex aspect-square items-center justify-center",
         "transform-gpu text-small font-medium transition",
-        "ring-2 ring-primary/0 ring-offset-1 ring-offset-content1",
+        "ring-2 ring-primary/0 ring-offset-1 ring-offset-default",
         "data-[state=on]:ring-primary/100",
         "focus-visible:outline-none focus-visible:ring-primary/100",
         "focus-visible:ring-offset-2 focus-visible:ring-offset-primary-500",
