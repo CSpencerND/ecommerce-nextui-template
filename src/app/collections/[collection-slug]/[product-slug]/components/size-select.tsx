@@ -32,6 +32,7 @@ export function SizeSelect({ sizes, isSquared, ...props }: SizeSelectProps) {
                 <ToggleGroupItem
                     key={size}
                     value={size}
+                    className="ring-offset-content1"
                 >
                     {size}
                 </ToggleGroupItem>
