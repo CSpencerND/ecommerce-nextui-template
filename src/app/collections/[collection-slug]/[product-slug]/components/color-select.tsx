@@ -1,7 +1,6 @@
 "use client";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { useQueryString } from "@/hooks/use-query-string";
 import { useState } from "react";
 import { useProductImageGroup } from "./product-image-group-context";
 
@@ -18,8 +17,6 @@ export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelec
     const { setActiveIndex } = useProductImageGroup();
     const [value, setValue] = useState(colors[0]?.name);
 
-    const { updatePathname } = useQueryString("color", value);
-
     return (
         <ToggleGroup
             type="single"
@@ -28,7 +25,6 @@ export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelec
             onValueChange={(value) => {
                 if (!value) return;
                 setValue(value);
-                updatePathname();
             }}
             isSquared={isSquared}
             noWrap={noWrap}
