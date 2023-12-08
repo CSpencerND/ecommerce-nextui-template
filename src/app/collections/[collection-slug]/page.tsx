@@ -40,9 +40,10 @@ export default async function CollectionPage() {
                         <ProductPreviewFooter>
                             <ColorSelect
                                 colors={colors}
+                                buttonSize="sm"
                                 isSquared
                                 noWrap
-                                className="@[146px]/footer:justify-between shadow-small"
+                                className="@[146px]/footer:justify-between gap-4 bg-content2 shadow-small"
                             />
                         </ProductPreviewFooter>
                     </ProductPreviewCard>

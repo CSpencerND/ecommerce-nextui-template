@@ -1,5 +1,5 @@
-import { ProductProvider } from "./components/product-provider";
 import { ProductImageGroup } from "./components/product-image-group";
+import { ProductProvider } from "./components/product-provider";
 
 import { ColorSelect } from "./components/color-select";
 import { SizeSelect } from "./components/size-select";
@@ -50,10 +50,15 @@ export default async function ProductPage() {
                             />
 
                             <div className="inline-flex max-w-min gap-3 [&>*]:flex-1">
-                                <Button color="primary">Buy Now</Button>
                                 <Button
                                     color="primary"
-                                    variant="bordered"
+                                    variant="shadow"
+                                >
+                                    Buy Now
+                                </Button>
+                                <Button
+                                    color="primary"
+                                    variant="solid"
                                 >
                                     Add To Bag
                                 </Button>

@@ -1,6 +1,11 @@
 "use client";
 
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+    ToggleGroup,
+    ToggleGroupItem,
+    type ToggleGroupItemProps,
+} from "@/components/ui/toggle-group";
+
 import { useState } from "react";
 import { useProductImageGroup } from "./product-image-group-context";
 
@@ -10,17 +15,20 @@ type ColorSelectProps = {
     colors: Colors;
     isSquared?: boolean;
     noWrap?: boolean;
+    buttonSize?: ToggleGroupItemProps["size"];
     className?: string;
 };
 
-export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelectProps) {
+export function ColorSelect(props: ColorSelectProps) {
+    const { colors, isSquared, noWrap, buttonSize = "default", className } = props;
+
     const { setActiveIndex } = useProductImageGroup();
     const [value, setValue] = useState(colors[0]?.name);
 
     return (
         <ToggleGroup
             type="single"
-            size="sm"
+            size={buttonSize}
             value={value}
             onValueChange={(value) => {
                 if (!value) return;
@@ -29,8 +37,9 @@ export function ColorSelect({ colors, isSquared, noWrap, className }: ColorSelec
             isSquared={isSquared}
             noWrap={noWrap}
             className={className}
+            {...props}
         >
-            {colors.map(({name, code}, i) => (
+            {colors.map(({ name, code }, i) => (
                 <ToggleGroupItem
                     aria-label={name}
                     key={i}
