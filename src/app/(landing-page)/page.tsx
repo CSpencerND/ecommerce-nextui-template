@@ -9,6 +9,7 @@ import { prose, section, title } from "@/styles";
 import { cardImage } from "@/styles/product-card";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
+import { isImageUnoptimized } from "@/site.config";
 
 export default async function HomePage() {
     preloadFakeData("hero");
@@ -47,6 +48,7 @@ export default async function HomePage() {
 
                 <div>
                     <Image
+                        unoptimized={isImageUnoptimized}
                         src={banner}
                         alt="banner"
                         width={698}
@@ -76,6 +78,7 @@ export default async function HomePage() {
                             title={name}
                         >
                             <Image
+                                unoptimized={isImageUnoptimized}
                                 src={image}
                                 alt={name}
                                 width={192}
