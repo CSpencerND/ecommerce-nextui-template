@@ -28,11 +28,11 @@ export const preloadFakeData = (route: keyof ApiType) => {
 
 export const getFakeData = cache(
     async <T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> => {
-        if (NODE_ENV === "development") {
+        // if (NODE_ENV === "development") {
             const data = await fetch(`${API_URL}/${apiSlug}`);
             return data.json();
-        }
-        return fakerFunctions[apiSlug]() as ApiType[T];
+        // }
+        // return fakerFunctions[apiSlug]() as ApiType[T];
     },
 );
 
