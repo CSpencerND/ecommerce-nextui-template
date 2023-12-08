@@ -1,5 +1,3 @@
-import "server-only";
-
 import { API_URL, NODE_ENV } from "@/site.config";
 import { faker } from "@faker-js/faker";
 import { cache } from "react";
