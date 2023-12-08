@@ -1,9 +1,8 @@
 import "server-only";
 
+import { API_URL, NODE_ENV } from "@/site.config";
 import { faker } from "@faker-js/faker";
 import { cache } from "react";
-
-import { API_URL, NODE_ENV } from "@/site.config";
 
 /**
  * Client
@@ -108,7 +107,26 @@ export function getProduct() {
     return {
         name: faker.commerce.product(),
         description: faker.commerce.productDescription(),
-        colors: faker.helpers.multiple(() => faker.color.rgb(), { count: 4 }),
+
+        colors: [
+            {
+                name: "purple",
+                code: "#BD93F9"
+            },
+            {
+                name: "cyan",
+                code: "#8BE9FD"
+            },
+            {
+                name: "white",
+                code: "#F8F8F2"
+            },
+            {
+                name: "black",
+                code: "#090901"
+            }
+        ],
+
         sizes: ["xs", "sm", "md", "lg", "xl", "2x", "3x", "4x", "5xl"],
         price: faker.commerce.price({ symbol: "$" }),
         images: faker.helpers.multiple(
