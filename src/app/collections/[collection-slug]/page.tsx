@@ -42,7 +42,7 @@ export default async function CollectionPage() {
                                 colors={colors}
                                 isSquared
                                 noWrap
-                                className="@[146px]/footer:justify-between bg-content2"
+                                className="@[146px]/footer:justify-between shadow-small"
                             />
                         </ProductPreviewFooter>
                     </ProductPreviewCard>

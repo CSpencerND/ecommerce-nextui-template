@@ -24,9 +24,9 @@ const toggleVariants = tv({
             ],
         },
         size: {
-            sm: "h-7",
-            default: "h-8",
-            lg: "h-9",
+            sm: "max-sm:h-6 h-7",
+            default: "max-sm:h-7 h-8",
+            lg: "max-sm:h-8 h-9",
         },
         isSquared: {
             false: "rounded-full",
