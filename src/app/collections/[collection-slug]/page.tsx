@@ -44,7 +44,7 @@ export default async function CollectionPage() {
                                 classNames={{
                                     tabList:
                                         "@[146px]/footer:justify-between gap-3 bg-content2 shadow-small rounded-large p-2 w-full",
-                                    tab: "size-7",
+                                    tab: "size-6 sm:size-7",
                                 }}
                             />
                         </ProductPreviewFooter>
