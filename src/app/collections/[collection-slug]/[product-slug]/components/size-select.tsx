@@ -1,59 +1,58 @@
 "use client";
 
-import { Tab, Tabs } from "@nextui-org/tabs";
+import { Button } from "@nextui-org/button";
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import Link from "next/link";
+
+import { useQueryParams } from "@/hooks/use-query-params";
+import { cn } from "@nextui-org/system";
+
+import type { SearchParams } from "@/types";
 
 type SizeSelectProps = {
     sizes: string[];
-    sizeParams: string;
+    searchParams: SearchParams<"color" | "size">;
     className?: string;
 };
 
-export function SizeSelect({ sizes, sizeParams }: SizeSelectProps) {
-    let currentSelection: string | undefined;
-
-    if (!sizeParams) {
-        currentSelection = sizes[0];
-    } else {
-        currentSelection = sizeParams;
-    }
-
-    const newSearchParams = new URLSearchParams({ size: sizeParams ?? sizes[0] ?? "" });
+export function SizeSelect({ sizes, searchParams }: SizeSelectProps) {
+    const { createQueryString } = useQueryParams();
 
     return (
-        <Tabs
-            as="menu"
+        <ToggleGroup.Root
             aria-label="Select A Size"
-            items={sizes}
-            selectedKey={`?${newSearchParams}`}
-            defaultSelectedKey={`?${newSearchParams}`}
-            classNames={{
-                tabList: "!flex-wrap bg-transparent",
-                cursor: "!bg-transparent !rounded-icon ring-1 ring-primary ring-offset-2 ring-offset-content2",
-                tab: "bg-default font-medium !rounded-icon size-8 aspect-square",
-            }}
+            type="single"
+            className="inline-flex flex-wrap gap-2"
         >
             {sizes.map((size) => {
-                const sizeParams = new URLSearchParams({ size: size });
+                const queryString = "?" + createQueryString("size", size);
+                const isActive = searchParams.size === size;
 
                 return (
-                    <Tab
-                        as={Link}
-                        key={`?${sizeParams}`}
-                        title={size}
-                        href={`?${sizeParams}`}
-                    />
+                    <ToggleGroup.Item
+                        key={size}
+                        value={size}
+                        asChild
+                    >
+                        <Button
+                            as={Link}
+                            href={queryString}
+                            replace
+                            scroll={false}
+                            size="sm"
+                            isIconOnly
+                            className={cn(
+                                "!rounded-icon",
+                                "ring-2 ring-primary/0 !transition",
+                                "ring-offset-1 ring-offset-content2",
+                                isActive && "ring-primary/100",
+                            )}
+                        >
+                            {size}
+                        </Button>
+                    </ToggleGroup.Item>
                 );
             })}
-        </Tabs>
+        </ToggleGroup.Root>
     );
-
-    /** Incredibly simplified version */
-    // return (
-    //     <menu className="inline-flex gap-1.5 flex-wrap">
-    //         {sizes.map((size) => (
-    //             <Button key={size} size="sm" isIconOnly as={Link} href="/">{size}</Button>
-    //         ))}
-    //     </menu>
-    // )
 }

@@ -1,7 +1,7 @@
 import { ProductImageGroup } from "./components/product-image-group";
 import { ProductProvider } from "./components/product-provider";
 
-import { ColorSelect } from "./components/color-select";
+import { ColorSelect } from "./components/color-select-withparams";
 import { SizeSelect } from "./components/size-select";
 
 import { Button } from "@nextui-org/button";
@@ -10,13 +10,19 @@ import { Card, CardBody } from "@nextui-org/card";
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 import { prose, section } from "@/styles";
 
-export default async function ProductPage({ searchParams }: { searchParams: any }) {
+import type { SearchParams } from "@/types";
+
+type ProductPageProps = {
+    searchParams: SearchParams<"color" | "size">;
+};
+
+export default async function ProductPage({ searchParams }: ProductPageProps) {
     preloadFakeData("product");
     const { name, description, images, sizes, colors, price } = await getFakeData("product");
 
     return (
         <section className={section()}>
-            <Card className="!rounded-2xlarge max-w-4xl">
+            <Card className="max-w-4xl !rounded-2xlarge">
                 <CardBody className="gap-6 p-6 max-md:max-w-min md:flex-row md:items-center">
                     <ProductProvider>
                         <ProductImageGroup
@@ -39,11 +45,14 @@ export default async function ProductPage({ searchParams }: { searchParams: any 
                                 <p className="font-bold">{price}</p>
                             </div>
 
-                            <ColorSelect colors={colors} />
+                            <ColorSelect
+                                colors={colors}
+                                searchParams={searchParams}
+                            />
 
                             <SizeSelect
                                 sizes={sizes}
-                                sizeParams={searchParams.size}
+                                searchParams={searchParams}
                             />
 
                             <div className="inline-flex max-w-min gap-3 [&>*]:flex-1 [&>*]:font-semibold">
