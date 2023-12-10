@@ -1,4 +1,4 @@
-import { API_URL, NODE_ENV } from "@/site.config";
+import { API_URL } from "@/site.config";
 import { faker } from "@faker-js/faker";
 import { cache } from "react";
 import { fakerColors, fakerSizes } from "./faker-constants";
@@ -26,11 +26,8 @@ export const preloadFakeData = (route: keyof ApiType) => {
 
 export const getFakeData = cache(
     async <T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> => {
-        if (NODE_ENV === "development") {
-            const data = await fetch(`${API_URL}/${apiSlug}`);
-            return data.json();
-        }
-        return fakerFunctions[apiSlug]() as ApiType[T];
+        const data = await fetch(`${API_URL}/${apiSlug}`);
+        return data.json();
     },
 );
 
