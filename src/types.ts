@@ -6,3 +6,5 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 export type { SiteConfig } from "@/site.config";
 export type Colors = ApiType["product"]["colors"];
+export type Sizes = ApiType["product"]["sizes"];
+export type SearchParams<Key extends string> = Record<Key, string | string[] | undefined>;
