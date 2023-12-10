@@ -1,11 +1,11 @@
 import { Header } from "@/components/header";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/site.config";
-import { cn } from "@nextui-org/react";
 
-import { TailwindIndicator } from "@/components/tailwind-indicator";
 import "@/styles/globals.css";
+import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
 import type { Metadata, Viewport } from "next";
@@ -32,15 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html
             lang="en"
-            className="dark"
+            className={`${GeistSans.variable} ${GeistMono.variable} dark`}
             style={{ colorScheme: "dark" }}
         >
-            <body
-                className={cn(
-                    "min-h-screen bg-background text-foreground",
-                    GeistSans.className,
-                )}
-            >
+            <body className="min-h-screen bg-background text-foreground">
                 <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
                     <div className="relative flex flex-col h-screen-s">
                         <Header />
