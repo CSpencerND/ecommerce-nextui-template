@@ -1,8 +1,12 @@
 "use client";
 
 import { MoonFilledIcon, SunFilledIcon } from "@/components/icons";
-import { type SwitchProps, useSwitch } from "@nextui-org/switch";
+import { useSwitch, type SwitchProps } from "@nextui-org/switch";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
+
+import { Button } from "@nextui-org/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/dropdown";
+import { SunMoonIcon, PaletteIcon } from "lucide-react";
 
 import { useIsSSR } from "@react-aria/ssr";
 import { useTheme } from "next-themes";
@@ -10,11 +14,14 @@ import { useTheme } from "next-themes";
 import { cn } from "@nextui-org/system";
 
 export interface ThemeSwitchProps {
+    type?: "binary" | "menu";
     className?: string;
     classNames?: SwitchProps["classNames"];
 }
 
-export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className, classNames }) => {
+export function ThemeSwitch(props: ThemeSwitchProps) {
+    const { type = "binary", className, classNames } = props;
+
     const { theme, setTheme } = useTheme();
     const isSSR = useIsSSR();
 
@@ -29,44 +36,87 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ className, classNames 
             onChange,
         });
 
-    return (
-        <Component
-            {...getBaseProps({
-                className: cn(
-                    "cursor-pointer px-px transition-opacity hover:opacity-80",
-                    className,
-                    classNames?.base,
-                ),
-            })}
-        >
-            <VisuallyHidden>
-                <input {...getInputProps()} />
-            </VisuallyHidden>
-            <div
-                {...getWrapperProps()}
-                className={slots.wrapper({
-                    class: cn(
-                        [
-                            "h-auto w-auto",
-                            "bg-transparent",
-                            "rounded-lg",
-                            "flex items-center justify-center",
-                            "group-data-[selected=true]:bg-transparent",
-                            "!text-default-500",
-                            "pt-px",
-                            "px-0",
-                            "mx-0",
-                        ],
-                        classNames?.wrapper,
+    if (type === "binary") {
+        return (
+            <Component
+                {...getBaseProps({
+                    className: cn(
+                        "cursor-pointer px-px transition-opacity hover:opacity-80",
+                        className,
+                        classNames?.base,
                     ),
                 })}
             >
-                {!isSelected || isSSR ? (
-                    <SunFilledIcon size={22} />
-                ) : (
-                    <MoonFilledIcon size={22} />
-                )}
-            </div>
-        </Component>
-    );
-};
+                <VisuallyHidden>
+                    <input {...getInputProps()} />
+                </VisuallyHidden>
+                <div
+                    {...getWrapperProps()}
+                    className={slots.wrapper({
+                        class: cn(
+                            [
+                                "h-auto w-auto",
+                                "bg-transparent",
+                                "rounded-lg",
+                                "flex items-center justify-center",
+                                "group-data-[selected=true]:bg-transparent",
+                                "!text-default-500",
+                                "pt-px",
+                                "px-0",
+                                "mx-0",
+                            ],
+                            classNames?.wrapper,
+                        ),
+                    })}
+                >
+                    {!isSelected || isSSR ? (
+                        <SunFilledIcon size={22} />
+                    ) : (
+                        <MoonFilledIcon size={22} />
+                    )}
+                </div>
+            </Component>
+        );
+    }
+
+    return !isSSR ? (
+        <Dropdown
+            placement="bottom-end"
+            className="min-w-0"
+        >
+            <DropdownTrigger>
+                <Button
+                    variant="light"
+                    isIconOnly
+                    aria-label="Open Theme Menu"
+                >
+                    <PaletteIcon size={22} />
+                </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+                aria-label="Choose A Theme"
+                onAction={(key) => setTheme(key.toString())}
+                className="[&>*>*]:gap-4"
+            >
+                <DropdownItem
+                    key="light"
+                    startContent={<SunFilledIcon size={22} />}
+                >
+                    Light
+                </DropdownItem>
+                <DropdownItem
+                    key="dim"
+                    startContent={<SunMoonIcon size={22} />}
+                >
+                    Dim
+                </DropdownItem>
+                <DropdownItem
+                    key="dark"
+                    startContent={<MoonFilledIcon size={22} />}
+                >
+                    Dark
+                </DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+    ) : null;
+}

@@ -143,28 +143,28 @@ export const themeColorsDark: ThemeColors = {
 };
 
 const woodsmoke = {
-    50: "#efeffe",
-    100: "#d2d3e4",
-    200: "#b4b7cc",
-    300: "#989ab5",
-    400: "#7a7d9e",
-    500: "#616385",
-    600: "#4b4d68",
-    700: "#36374c",
-    800: "#1f2130",
-    900: "#0a0a17",
+    50: "#F6F7F9",
+    100: "#E7E8EE",
+    200: "#CACCD8",
+    300: "#ACB0C3",
+    400: "#8F94AE",
+    500: "#717898",
+    600: "#585D79",
+    700: "#404459",
+    800: "#292B38",
+    900: "#111218",
 };
 
 export const themeColorsDim: ConfigTheme = {
     extend: "dark",
     colors: {
         background: woodsmoke[900],
-        foreground: woodsmoke[50],
         content1: woodsmoke[800],
         content2: woodsmoke[700],
         content3: woodsmoke[600],
         content4: woodsmoke[500],
         divider: woodsmoke[400],
+        foreground: woodsmoke[50],
     },
 };
 
