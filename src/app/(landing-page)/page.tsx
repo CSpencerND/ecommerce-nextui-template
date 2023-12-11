@@ -3,10 +3,10 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
 
+import { ProductImage } from "@/components/product-image";
 import Image from "next/image";
 
 import { prose, section, title } from "@/styles";
-import { cardImage } from "@/styles/product-card";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 import { isImageUnoptimized } from "@/site.config";
@@ -77,14 +77,10 @@ export default async function HomePage() {
                             index={i}
                             title={name}
                         >
-                            <Image
-                                unoptimized={isImageUnoptimized}
+                            <ProductImage
                                 src={image}
                                 alt={name}
-                                width={192}
-                                height={192}
                                 sizes="192px"
-                                className={cardImage()}
                             />
                         </CarouselItem>
                     ))}
