@@ -1,8 +1,7 @@
 import { ProductProvider } from "./components/product-provider";
 
 import { ProductImageGroup } from "@/components/product-image";
-import { ColorSelector } from "../components/color-selector";
-import { SizeSelector } from "./components/size-selector";
+import { ColorSelector, SizeSelector } from "@/components/selectors";
 
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";

@@ -1,5 +1,5 @@
 import { ProductImageGroup } from "@/components/product-image";
-import { ColorSelectorPreview } from "./components/color-selector";
+import { ColorSelector } from "@/components/selectors";
 import {
     ProductPreviewBody,
     ProductPreviewCard,
@@ -34,14 +34,12 @@ export default async function CollectionPage() {
                                 images={images.map((image) => ({
                                     src: image,
                                     alt: `Product Image ${i}`,
-                                    size: "preview"
+                                    size: "preview",
                                 }))}
                             />
                         </ProductPreviewBody>
                         <ProductPreviewFooter>
-                            <ColorSelectorPreview
-                                colors={colors}
-                            />
+                            <ColorSelector colors={colors} />
                         </ProductPreviewFooter>
                     </ProductPreviewCard>
                 ))}
