@@ -34,6 +34,7 @@ export default async function CollectionPage() {
                                 images={images.map((image) => ({
                                     src: image,
                                     alt: `Product Image ${i}`,
+                                    size: "preview"
                                 }))}
                             />
                         </ProductPreviewBody>

@@ -29,12 +29,10 @@ export default async function ProductPage({ searchParams }: ProductPageProps) {
                             images={images.map((image, i) => ({
                                 src: image,
                                 alt: `Product Image ${i}`,
-                                width: 384,
-                                height: 384,
                                 classNames: {
                                     wrapper: "flex-none max-md:w-[calc(100vw-96px)] max-w-sm",
                                 },
-                                sizes: "279px, (min-width: 376px) 332px, (min-width: 429px) 384px",
+                                size: "full",
                             }))}
                         />
 

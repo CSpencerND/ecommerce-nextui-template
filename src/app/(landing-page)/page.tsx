@@ -80,6 +80,8 @@ export default async function HomePage() {
                             <ProductImage
                                 src={image}
                                 alt={name}
+                                width={192}
+                                height={192}
                                 sizes="192px"
                             />
                         </CarouselItem>
