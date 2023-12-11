@@ -6,7 +6,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 import { Button } from "@nextui-org/button";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/dropdown";
-import { SunMoonIcon, PaletteIcon } from "lucide-react";
+import { SunMoonIcon, PaletteIcon, CheckIcon } from "lucide-react";
 
 import { useIsSSR } from "@react-aria/ssr";
 import { useTheme } from "next-themes";
@@ -79,10 +79,11 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
         );
     }
 
-    return !isSSR ? (
+    return (
         <Dropdown
             placement="bottom-end"
             className="min-w-0"
+            classNames={{ content: "bg-opacity-60 backdrop-blur-lg backdrop-saturate-150" }}
         >
             <DropdownTrigger>
                 <Button
@@ -96,27 +97,30 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
             <DropdownMenu
                 aria-label="Choose A Theme"
                 onAction={(key) => setTheme(key.toString())}
-                className="[&>*>*]:gap-4"
+                classNames={{ list: "[&>*]:gap-4" }}
             >
                 <DropdownItem
                     key="light"
                     startContent={<SunFilledIcon size={22} />}
+                    endContent={theme === "light" && <CheckIcon size={22} />}
                 >
                     Light
                 </DropdownItem>
                 <DropdownItem
                     key="dim"
                     startContent={<SunMoonIcon size={22} />}
+                    endContent={theme === "dim" && <CheckIcon size={22} />}
                 >
                     Dim
                 </DropdownItem>
                 <DropdownItem
                     key="dark"
                     startContent={<MoonFilledIcon size={22} />}
+                    endContent={theme === "dark" && <CheckIcon size={22} />}
                 >
                     Dark
                 </DropdownItem>
             </DropdownMenu>
         </Dropdown>
-    ) : null;
+    );
 }
