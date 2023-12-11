@@ -1,4 +1,4 @@
 export * from "./primitives";
 export { default as card } from "./product-card";
-export * from "./selection";
+export * from "./selector";
 export * from "./typography";

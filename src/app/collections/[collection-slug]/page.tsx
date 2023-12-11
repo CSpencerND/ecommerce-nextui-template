@@ -1,5 +1,5 @@
-import { ColorSelect } from "./[product-slug]/components/color-select";
 import { ProductImageGroup } from "@/components/product-image";
+import { ColorSelectorPreview } from "./components/color-selector";
 import {
     ProductPreviewBody,
     ProductPreviewCard,
@@ -39,14 +39,8 @@ export default async function CollectionPage() {
                             />
                         </ProductPreviewBody>
                         <ProductPreviewFooter>
-                            <ColorSelect
+                            <ColorSelectorPreview
                                 colors={colors}
-                                noWrap
-                                classNames={{
-                                    tabList:
-                                        "@[146px]/footer:justify-between gap-3 bg-content2 shadow-small rounded-large p-2 w-full",
-                                    tab: "size-6 sm:size-7",
-                                }}
                             />
                         </ProductPreviewFooter>
                     </ProductPreviewCard>

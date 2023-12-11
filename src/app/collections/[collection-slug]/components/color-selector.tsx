@@ -13,12 +13,12 @@ import { selector } from "@/styles";
 
 import type { Colors, SearchParams } from "@/types";
 
-type ColorSelectProps = {
+type ColorSelectorProps = {
     colors: Colors;
     searchParams: SearchParams<"color" | "size">;
 };
 
-export function ColorSelect({ colors, searchParams }: ColorSelectProps) {
+export function ColorSelector({ colors, searchParams }: ColorSelectorProps) {
     const { setActiveIndex } = useProductImageGroup();
     const { createQueryString } = useQueryParams();
 
@@ -55,6 +55,56 @@ export function ColorSelect({ colors, searchParams }: ColorSelectProps) {
                                 isIconOnly
                                 onPress={() => setActiveIndex(i)}
                                 className={selector.item({ active: isActive, bordered: true })}
+                                style={{ backgroundColor: code }}
+                            >
+                                <VisuallyHidden>{name}</VisuallyHidden>
+                            </Button>
+                        </ToggleGroup.Item>
+                    );
+                })}
+            </menu>
+        </ToggleGroup.Root>
+    );
+}
+
+type ColorSelectorPreviewProps = {
+    colors: Colors;
+};
+
+export function ColorSelectorPreview({ colors }: ColorSelectorPreviewProps) {
+    const { activeIndex, setActiveIndex } = useProductImageGroup();
+
+    return (
+        <ToggleGroup.Root
+            asChild
+            aria-label="Select A Color"
+            type="single"
+        >
+            <menu
+                className={selector.group({
+                    noWrap: true,
+                    class: "gap-3 rounded-large bg-content2 p-2 shadow-small @[146px]/footer:justify-between",
+                })}
+            >
+                {colors.map(({ name, code }, i) => {
+                    const isActive = i === activeIndex;
+
+                    return (
+                        <ToggleGroup.Item
+                            key={name}
+                            value={name}
+                            asChild
+                        >
+                            <Button
+                                key={name}
+                                isIconOnly
+                                size="sm"
+                                onPress={() => setActiveIndex(i)}
+                                className={selector.item({
+                                    active: isActive,
+                                    bordered: true,
+                                    class: "size-6 sm:size-7",
+                                })}
                                 style={{ backgroundColor: code }}
                             >
                                 <VisuallyHidden>{name}</VisuallyHidden>

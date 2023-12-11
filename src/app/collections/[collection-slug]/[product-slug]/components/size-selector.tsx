@@ -6,16 +6,16 @@ import Link from "next/link";
 
 import { useQueryParams } from "@/hooks/use-query-params";
 
-import { selection } from "@/styles";
+import { selector } from "@/styles";
 
 import type { SearchParams } from "@/types";
 
-type SizeSelectProps = {
+type SizeSelectorProps = {
     sizes: string[];
     searchParams: SearchParams<"color" | "size">;
 };
 
-export function SizeSelect({ sizes, searchParams }: SizeSelectProps) {
+export function SizeSelector({ sizes, searchParams }: SizeSelectorProps) {
     const { createQueryString } = useQueryParams();
 
     return (
@@ -24,7 +24,7 @@ export function SizeSelect({ sizes, searchParams }: SizeSelectProps) {
             aria-label="Select A Size"
             type="single"
         >
-            <menu className={selection.group()}>
+            <menu className={selector.group()}>
                 {sizes.map((size) => {
                     const queryString = "?" + createQueryString("size", size);
                     const isActive = searchParams.size === size;
@@ -42,7 +42,7 @@ export function SizeSelect({ sizes, searchParams }: SizeSelectProps) {
                                 scroll={false}
                                 size="sm"
                                 isIconOnly
-                                className={selection.item({ active: isActive })}
+                                className={selector.item({ active: isActive })}
                             >
                                 {size}
                             </Button>

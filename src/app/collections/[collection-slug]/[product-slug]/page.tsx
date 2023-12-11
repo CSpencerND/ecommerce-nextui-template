@@ -1,8 +1,8 @@
 import { ProductProvider } from "./components/product-provider";
 
 import { ProductImageGroup } from "@/components/product-image";
-import { ColorSelect } from "./components/color-select-withparams";
-import { SizeSelect } from "./components/size-select";
+import { ColorSelector } from "../components/color-selector";
+import { SizeSelector } from "./components/size-selector";
 
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
@@ -43,12 +43,12 @@ export default async function ProductPage({ searchParams }: ProductPageProps) {
                                 <p className="font-bold">{price}</p>
                             </div>
 
-                            <ColorSelect
+                            <ColorSelector
                                 colors={colors}
                                 searchParams={searchParams}
                             />
 
-                            <SizeSelect
+                            <SizeSelector
                                 sizes={sizes}
                                 searchParams={searchParams}
                             />
