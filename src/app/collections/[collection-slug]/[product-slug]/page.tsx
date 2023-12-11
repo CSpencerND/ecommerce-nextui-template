@@ -1,6 +1,6 @@
-import { ProductImageGroup } from "./components/product-image-group";
 import { ProductProvider } from "./components/product-provider";
 
+import { ProductImageGroup } from "@/components/product-image";
 import { ColorSelect } from "./components/color-select-withparams";
 import { SizeSelect } from "./components/size-select";
 

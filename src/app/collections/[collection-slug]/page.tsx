@@ -1,5 +1,5 @@
 import { ColorSelect } from "./[product-slug]/components/color-select";
-import { ProductImageGroup } from "./[product-slug]/components/product-image-group";
+import { ProductImageGroup } from "@/components/product-image";
 import {
     ProductPreviewBody,
     ProductPreviewCard,

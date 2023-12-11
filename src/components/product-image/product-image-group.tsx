@@ -1,8 +1,8 @@
 "use client"
 
-import { ProductImage } from "@/components/product-image";
+import { ProductImage, useProductImageGroup } from ".";
+
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
-import { useProductImageGroup } from "./product-image-group-context";
 
 export type ProductImageGroupProps = {
     images: React.ComponentPropsWithRef<typeof ProductImage>[];

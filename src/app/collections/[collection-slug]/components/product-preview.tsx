@@ -6,7 +6,7 @@ import { MotionListItem, type MotionListItemProps } from "@/components/motion";
 import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
 
 import { useParams } from "next/navigation";
-import { ProductImageGroupProvider } from "../[product-slug]/components/product-image-group-context";
+import { ProductImageGroupProvider } from "@/components/product-image";
 
 import { card } from "@/styles";
 import { cn } from "@nextui-org/system";

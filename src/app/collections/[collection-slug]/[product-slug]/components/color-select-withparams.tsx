@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web/esm/useMountEffect";
-import { useProductImageGroup } from "./product-image-group-context";
+import { useProductImageGroup } from "@/components/product-image";
 
 import selection from "@/styles/selection";
 

@@ -2,8 +2,7 @@
 
 import { Tab, Tabs, type TabsProps } from "@nextui-org/tabs";
 
-import { useState } from "react";
-import { useProductImageGroup } from "./product-image-group-context";
+import { useProductImageGroup } from "@/components/product-image";
 
 import type { Colors } from "@/types";
 
