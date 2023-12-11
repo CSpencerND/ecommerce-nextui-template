@@ -9,7 +9,7 @@ import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web/esm/useMountEffect";
 import { useProductImageGroup } from "@/components/product-image";
 
-import selection from "@/styles/selection";
+import { selection } from "@/styles";
 
 import type { Colors, SearchParams } from "@/types";
 

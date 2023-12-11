@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useQueryParams } from "@/hooks/use-query-params";
 
-import selection from "@/styles/selection";
+import { selection } from "@/styles";
 
 import type { SearchParams } from "@/types";
 
