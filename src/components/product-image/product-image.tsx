@@ -11,10 +11,15 @@ const imageSizes = {
 };
 
 type ProductImageProps = ImageProps & {
+    /** @prop Will apply `sizes`, `width`, and `height` */
     size?: "preview" | "full";
+    /** @prop Use when image bg is transparent */
+    bgStripe?: boolean;
 };
 
-export function ProductImage({ src, alt, size, className, ...props }: ProductImageProps) {
+export function ProductImage(props: ProductImageProps) {
+    const { src, alt, size, bgStripe, className } = props;
+
     const getDimensions = (axis: "width" | "height") => {
         switch (size) {
             case "preview":
@@ -34,7 +39,7 @@ export function ProductImage({ src, alt, size, className, ...props }: ProductIma
             width={getDimensions("width")}
             height={getDimensions("height")}
             sizes={size ? imageSizes[size] : props.sizes}
-            className={cn("data-[loaded=true]:bg-stripe-gradient", className)}
+            className={cn(bgStripe && "data-[loaded=true]:bg-stripe-gradient", className)}
             isZoomed
             unoptimized={isImageUnoptimized}
             {...props}
