@@ -80,7 +80,7 @@ export function ColorSelector({ colors, searchParams }: ColorSelectorProps) {
             <menu
                 className={selector.group({
                     noWrap: true,
-                    class: "gap-3 rounded-large bg-content2 p-2 shadow-small @[146px]/footer:justify-between",
+                    class: "gap-3 rounded-large bg-content2 p-2 shadow-small @[146px]:justify-between",
                 })}
             >
                 {colors.map(({ name, code }, i) => {

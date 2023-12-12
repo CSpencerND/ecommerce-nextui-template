@@ -42,9 +42,9 @@ export default async function CollectionPage({ params }: { params: { slug: strin
                                     <h3>{name}</h3>
                                 </CardFooter>
                             </CardBody>
-                            <footer className="flex flex-col justify-center gap-3 px-3 pb-3 @container/footer">
+                            <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
                                 <ColorSelector colors={colors} />
-                            </footer>
+                            </div>
                         </ProductImageGroupProvider>
                     </Card>
                 ))}
