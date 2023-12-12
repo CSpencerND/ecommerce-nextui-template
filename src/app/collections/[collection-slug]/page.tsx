@@ -8,9 +8,14 @@ import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 import { card, grid, prose, section, title } from "@/styles";
 
-export default async function CollectionPage({ params }: { params: { slug: string } }) {
+type CollectionPageProps = {
+    params: { "collection-slug": string };
+};
+
+export default async function CollectionPage({ params }: CollectionPageProps) {
     preloadFakeData("collection");
     const { name, description, items } = await getFakeData("collection");
+    const slug = params["collection-slug"];
 
     return (
         <section className={section()}>
@@ -29,7 +34,7 @@ export default async function CollectionPage({ params }: { params: { slug: strin
                         <ProductImageGroupProvider>
                             <CardBody
                                 as={Link}
-                                href={`/collections/${params.slug}/${name.toLowerCase()}`}
+                                href={`/collections/${slug}/${name.toLowerCase()}`}
                             >
                                 <ProductImageGroup
                                     images={images.map((image, j) => ({
