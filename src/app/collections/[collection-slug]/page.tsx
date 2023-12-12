@@ -7,6 +7,7 @@ import Link from "next/link";
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 import { card, grid, prose, section, title } from "@/styles";
+import { focusVisibleClasses } from "@nextui-org/theme";
 
 type CollectionPageProps = {
     params: { "collection-slug": string };
@@ -29,12 +30,13 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                         key={i}
                         as={MotionListItem}
                         isFooterBlurred
-                        className={card.root({ radius: "xl" })}
+                        className={card.root({ radius: "xl", class: "overflow-visible" })}
                     >
                         <ProductImageGroupProvider>
                             <CardBody
                                 as={Link}
                                 href={`/collections/${slug}/${name.toLowerCase()}`}
+                                className="focus-visible:focus-ring rounded-xlarge"
                             >
                                 <ProductImageGroup
                                     images={images.map((image, j) => ({
