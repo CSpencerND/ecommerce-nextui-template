@@ -7,7 +7,6 @@ import Link from "next/link";
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
 import { card, grid, prose, section, title } from "@/styles";
-import { focusVisibleClasses } from "@nextui-org/theme";
 
 type CollectionPageProps = {
     params: { "collection-slug": string };
