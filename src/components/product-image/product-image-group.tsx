@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { ProductImage } from "@/components/product-image";
+import { ProductImage, useProductImageGroup, type ProductImageProps } from ".";
+
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
-import { useProductImageGroup } from "./product-image-group-context";
 
-export type ProductImageGroupProps = React.PropsWithChildren & {
-    images: React.ComponentPropsWithRef<typeof ProductImage>[];
+export type ProductImageGroupProps = {
+    images: ProductImageProps[];
 };
 
-export function ProductImageGroup({ images, children }: ProductImageGroupProps) {
+export function ProductImageGroup({ images }: ProductImageGroupProps) {
     const { activeIndex } = useProductImageGroup();
 
     const imageComponents = useDeepCompareMemo(() => {

@@ -1,8 +1,7 @@
-import { ProductImageGroup } from "./components/product-image-group";
 import { ProductProvider } from "./components/product-provider";
 
-import { ColorSelect } from "./components/color-select-withparams";
-import { SizeSelect } from "./components/size-select";
+import { ProductImageGroup } from "@/components/product-image";
+import { ColorSelector, SizeSelector } from "@/components/selectors";
 
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
@@ -29,12 +28,10 @@ export default async function ProductPage({ searchParams }: ProductPageProps) {
                             images={images.map((image, i) => ({
                                 src: image,
                                 alt: `Product Image ${i}`,
-                                width: 384,
-                                height: 384,
                                 classNames: {
                                     wrapper: "flex-none max-md:w-[calc(100vw-96px)] max-w-sm",
                                 },
-                                sizes: "100vw",
+                                size: "full",
                             }))}
                         />
 
@@ -45,12 +42,12 @@ export default async function ProductPage({ searchParams }: ProductPageProps) {
                                 <p className="font-bold">{price}</p>
                             </div>
 
-                            <ColorSelect
+                            <ColorSelector
                                 colors={colors}
                                 searchParams={searchParams}
                             />
 
-                            <SizeSelect
+                            <SizeSelector
                                 sizes={sizes}
                                 searchParams={searchParams}
                             />

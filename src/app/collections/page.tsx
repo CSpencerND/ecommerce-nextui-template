@@ -30,6 +30,7 @@ export default async function CollectionDirectoryPage() {
                             <ProductImage
                                 src={image}
                                 alt={name}
+                                size="preview"
                             />
                             <CardFooter className={card.title()}>
                                 <h3 className="text-large">{name}</h3>

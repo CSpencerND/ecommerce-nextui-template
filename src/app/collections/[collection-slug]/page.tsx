@@ -1,54 +1,58 @@
-import { ColorSelect } from "./[product-slug]/components/color-select";
-import { ProductImageGroup } from "./[product-slug]/components/product-image-group";
-import {
-    ProductPreviewBody,
-    ProductPreviewCard,
-    ProductPreviewFooter,
-} from "./components/product-preview";
+import { MotionListItem } from "@/components/motion";
+import { ProductImageGroup, ProductImageGroupProvider } from "@/components/product-image";
+import { ColorSelector } from "@/components/selectors";
+import { Card, CardBody, CardFooter } from "@nextui-org/card";
+import Link from "next/link";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
-import { grid, section, title } from "@/styles";
+import { card, grid, prose, section, title } from "@/styles";
 
-export default async function CollectionPage() {
+type CollectionPageProps = {
+    params: { "collection-slug": string };
+};
+
+export default async function CollectionPage({ params }: CollectionPageProps) {
     preloadFakeData("collection");
     const { name, description, items } = await getFakeData("collection");
+    const slug = params["collection-slug"];
 
     return (
         <section className={section()}>
-            <header className="prose px-6 dark:prose-invert max-lg:text-center">
+            <header className={prose({ class: "prose-invert px-6 max-lg:text-center" })}>
                 <h1 className={title()}>{name}</h1>
                 <p>{description}</p>
             </header>
             <menu className={grid()}>
                 {items.map(({ name, images, colors }, i) => (
-                    <ProductPreviewCard
+                    <Card
                         key={i}
-                        index={i}
+                        as={MotionListItem}
+                        isFooterBlurred
+                        className={card.root({ radius: "xl", class: "overflow-visible" })}
                     >
-                        <ProductPreviewBody
-                            title={name}
-                            slug={name}
-                        >
-                            <ProductImageGroup
-                                images={images.map((image) => ({
-                                    src: image,
-                                    alt: `Product Image ${i}`,
-                                }))}
-                            />
-                        </ProductPreviewBody>
-                        <ProductPreviewFooter>
-                            <ColorSelect
-                                colors={colors}
-                                noWrap
-                                classNames={{
-                                    tabList:
-                                        "@[146px]/footer:justify-between gap-3 bg-content2 shadow-small rounded-large p-2 w-full",
-                                    tab: "size-6 sm:size-7",
-                                }}
-                            />
-                        </ProductPreviewFooter>
-                    </ProductPreviewCard>
+                        <ProductImageGroupProvider>
+                            <CardBody
+                                as={Link}
+                                href={`/collections/${slug}/${name.toLowerCase()}`}
+                                className="focus-visible:focus-ring rounded-xlarge !outline-offset-[-10px]"
+                            >
+                                <ProductImageGroup
+                                    images={images.map((image, j) => ({
+                                        src: image,
+                                        alt: `Product Image ${j}`,
+                                        size: "preview",
+                                    }))}
+                                />
+                                <CardFooter className={card.title({ hasPadding: true })}>
+                                    <h3>{name}</h3>
+                                </CardFooter>
+                            </CardBody>
+                            <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
+                                <ColorSelector colors={colors} />
+                            </div>
+                        </ProductImageGroupProvider>
+                    </Card>
                 ))}
             </menu>
         </section>

@@ -142,30 +142,29 @@ export const themeColorsDark: ThemeColors = {
     },
 };
 
-const main = {
-    50: "rgb(245 245 247)",
-    100: "rgb(225 225 228)",
-    200: "rgb(210 210 214)",
-    300: "rgb(180 180 185)",
-    400: "rgb(145 145 151)",
-    500: "rgb(113 113 121)",
-    600: "rgb(83 83 90)",
-    700: "rgb(65 65 71)",
-    800: "rgb(45 45 50)",
-    900: "rgb(28 28 32)",
-    950: "rgb(16 16 19)",
+const woodsmoke = {
+    50: "#F6F7F9",
+    100: "#E7E8EE",
+    200: "#CACCD8",
+    300: "#ACB0C3",
+    400: "#8F94AE",
+    500: "#717898",
+    600: "#585D79",
+    700: "#404459",
+    800: "#292B38",
+    900: "#111218",
 };
 
 export const themeColorsDim: ConfigTheme = {
     extend: "dark",
     colors: {
-        background: main[950],
-        foreground: main[50],
-        content1: main[900],
-        content2: main[800],
-        content3: main[700],
-        content4: main[600],
-        divider: main[500],
+        background: woodsmoke[900],
+        content1: woodsmoke[800],
+        content2: woodsmoke[700],
+        content3: woodsmoke[600],
+        content4: woodsmoke[500],
+        divider: woodsmoke[400],
+        foreground: woodsmoke[50],
     },
 };
 
