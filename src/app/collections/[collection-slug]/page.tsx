@@ -1,47 +1,52 @@
-import { ProductImageGroup } from "@/components/product-image";
+import { MotionListItem } from "@/components/motion";
+import { ProductImageGroup, ProductImageGroupProvider } from "@/components/product-image";
 import { ColorSelector } from "@/components/selectors";
-import {
-    ProductPreviewBody,
-    ProductPreviewCard,
-    ProductPreviewFooter,
-} from "./components/product-preview";
+import { Card, CardBody, CardFooter } from "@nextui-org/card";
+import Link from "next/link";
 
 import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
 
-import { grid, section, title } from "@/styles";
+import { card, grid, prose, section, title } from "@/styles";
 
-export default async function CollectionPage() {
+export default async function CollectionPage({ params }: { params: { slug: string } }) {
     preloadFakeData("collection");
     const { name, description, items } = await getFakeData("collection");
 
     return (
         <section className={section()}>
-            <header className="prose px-6 dark:prose-invert max-lg:text-center">
+            <header className={prose({ class: "prose-invert px-6 max-lg:text-center" })}>
                 <h1 className={title()}>{name}</h1>
                 <p>{description}</p>
             </header>
             <menu className={grid()}>
                 {items.map(({ name, images, colors }, i) => (
-                    <ProductPreviewCard
+                    <Card
                         key={i}
-                        index={i}
+                        as={MotionListItem}
+                        isFooterBlurred
+                        className={card.root({ radius: "xl" })}
                     >
-                        <ProductPreviewBody
-                            title={name}
-                            slug={name}
-                        >
-                            <ProductImageGroup
-                                images={images.map((image) => ({
-                                    src: image,
-                                    alt: `Product Image ${i}`,
-                                    size: "preview",
-                                }))}
-                            />
-                        </ProductPreviewBody>
-                        <ProductPreviewFooter>
-                            <ColorSelector colors={colors} />
-                        </ProductPreviewFooter>
-                    </ProductPreviewCard>
+                        <ProductImageGroupProvider>
+                            <CardBody
+                                as={Link}
+                                href={`/collections/${params.slug}/${name.toLowerCase()}`}
+                            >
+                                <ProductImageGroup
+                                    images={images.map((image, j) => ({
+                                        src: image,
+                                        alt: `Product Image ${j}`,
+                                        size: "preview",
+                                    }))}
+                                />
+                                <CardFooter className={card.title({ hasPadding: true })}>
+                                    <h3>{name}</h3>
+                                </CardFooter>
+                            </CardBody>
+                            <footer className="flex flex-col justify-center gap-3 px-3 pb-3 @container/footer">
+                                <ColorSelector colors={colors} />
+                            </footer>
+                        </ProductImageGroupProvider>
+                    </Card>
                 ))}
             </menu>
         </section>

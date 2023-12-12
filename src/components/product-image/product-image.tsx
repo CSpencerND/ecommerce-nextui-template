@@ -10,7 +10,7 @@ const imageSizes = {
     full: "279px, (min-width: 376px) 332px, (min-width: 429px) 384px",
 };
 
-type ProductImageProps = ImageProps & {
+export type ProductImageProps = ImageProps & {
     /** @prop Will apply `sizes`, `width`, and `height` */
     size?: "preview" | "full";
     /** @prop Use when image bg is transparent */
