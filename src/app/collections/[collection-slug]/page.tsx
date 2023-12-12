@@ -36,7 +36,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                             <CardBody
                                 as={Link}
                                 href={`/collections/${slug}/${name.toLowerCase()}`}
-                                className="focus-visible:focus-ring rounded-xlarge"
+                                className="focus-visible:focus-ring rounded-xlarge !outline-offset-[-10px]"
                             >
                                 <ProductImageGroup
                                     images={images.map((image, j) => ({
