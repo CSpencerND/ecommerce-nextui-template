@@ -108,6 +108,13 @@ const config: Config = {
                 ".outline-debug": {
                     outline: "1px solid red",
                 },
+                ".focus-ring": {
+                    zIndex: "10",
+                    outline: "2px solid transparent",
+                    outlineOffset: "2px",
+                    outlineWidth: "2px",
+                    outlineColor: "hsl(var(--nextui-focus) / var(--nextui-focus-opacity, 1))",
+                },
             });
 
             matchUtilities(
