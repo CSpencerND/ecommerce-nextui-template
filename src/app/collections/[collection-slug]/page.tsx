@@ -4,7 +4,7 @@ import { ColorSelector } from "@/components/selectors";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Link from "next/link";
 
-import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
+import { getFakeData } from "@/faker/faker-functions";
 
 import { card, grid, prose, section, title } from "@/styles";
 
@@ -13,8 +13,7 @@ type CollectionPageProps = {
 };
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
-    preloadFakeData("collection");
-    const { name, description, items } = await getFakeData("collection");
+    const { name, description, products } = await getFakeData("collection");
     const slug = params["collection-slug"];
 
     return (
@@ -24,7 +23,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                 <p>{description}</p>
             </header>
             <menu className={grid()}>
-                {items.map(({ name, images, colors }, i) => (
+                {products.map(({ name, images, colors }, i) => (
                     <Card
                         key={i}
                         as={MotionListItem}

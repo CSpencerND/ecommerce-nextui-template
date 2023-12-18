@@ -6,7 +6,7 @@ import { ColorSelector, SizeSelector } from "@/components/selectors";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 
-import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
+import { getFakeData } from "@/faker/faker-functions";
 import { prose, section } from "@/styles";
 
 import type { SearchParams } from "@/types";
@@ -16,7 +16,6 @@ type ProductPageProps = {
 };
 
 export default async function ProductPage({ searchParams }: ProductPageProps) {
-    preloadFakeData("product");
     const { name, description, images, sizes, colors, price } = await getFakeData("product");
 
     return (

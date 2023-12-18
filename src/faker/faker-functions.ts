@@ -1,6 +1,5 @@
 import { API_URL } from "@/site.config";
 import { faker } from "@faker-js/faker";
-import { cache } from "react";
 import { fakerColors, fakerSizes } from "./faker-constants";
 
 /**
@@ -10,7 +9,7 @@ import { fakerColors, fakerSizes } from "./faker-constants";
 
 export const fakerFunctions = {
     hero: getHero,
-    featured: getFeaturedItems,
+    featured: getFeatured,
     collection: getCollection,
     "collection-directory": getCollectionDirectory,
     product: getProduct,
@@ -20,16 +19,10 @@ export type ApiType = {
     [K in keyof typeof fakerFunctions]: ReturnType<(typeof fakerFunctions)[K]>;
 };
 
-export const preloadFakeData = (route: keyof ApiType) => {
-    void getFakeData(route);
-};
-
-export const getFakeData = cache(
-    async <T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> => {
-        const data = await fetch(`${API_URL}/${apiSlug}`);
-        return data.json();
-    },
-);
+export async function getFakeData<T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> {
+    const data = await fetch(`${API_URL}/${apiSlug}`);
+    return data.json();
+}
 
 /**
  * Server
@@ -47,17 +40,19 @@ export function getHero() {
     };
 }
 
-export function getFeaturedItems() {
-    const getProduct = () => ({
-        name: faker.commerce.product(),
-        image: faker.image.urlPicsumPhotos({
-            height: 192,
-            width: 192,
-        }),
-    });
-
+export function getFeatured() {
     return {
-        items: faker.helpers.multiple(getProduct, { count: 7 }),
+        items: faker.helpers.multiple(
+            () => ({
+                id: faker.commerce.isbn({ separator: "", variant: 10 }),
+                name: faker.commerce.product(),
+                image: faker.image.urlPicsumPhotos({
+                    height: 192,
+                    width: 192,
+                }),
+            }),
+            { count: 7 },
+        ),
         copy: {
             adjective: faker.commerce.productAdjective(),
             description: faker.commerce.productDescription(),
@@ -66,41 +61,31 @@ export function getFeaturedItems() {
 }
 
 export function getCollectionDirectory() {
-    const getCollection = () => ({
-        name: faker.commerce.department(),
-        image: faker.image.urlPicsumPhotos({
-            height: 192,
-            width: 192,
+    return faker.helpers.multiple(
+        () => ({
+            id: faker.commerce.isbn({ separator: "", variant: 10 }),
+            name: faker.commerce.department(),
+            image: faker.image.urlPicsumPhotos({
+                height: 192,
+                width: 192,
+            }),
         }),
-    });
-
-    return faker.helpers.multiple(getCollection, { count: 6 });
+        { count: 6 },
+    );
 }
 
-export function getCollection() {
-    const getProduct = () => ({
-        name: faker.commerce.product(),
-        description: faker.commerce.productDescription(),
-        colors: fakerColors,
-        images: faker.helpers.multiple(
-            () =>
-                faker.image.urlPicsumPhotos({
-                    height: 192,
-                    width: 192,
-                }),
-            { count: 4 },
-        ),
-    });
-
+function getCollection() {
     return {
+        id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.department(),
         description: faker.commerce.productDescription(),
-        items: faker.helpers.multiple(getProduct, { count: 9 }),
+        products: faker.helpers.multiple(getProduct, { count: 9 }),
     };
 }
 
-export function getProduct() {
+function getProduct() {
     return {
+        id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.product(),
         description: faker.commerce.productDescription(),
         colors: fakerColors,

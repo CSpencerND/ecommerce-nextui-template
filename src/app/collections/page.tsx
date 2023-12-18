@@ -3,12 +3,11 @@ import { ProductImage } from "@/components/product-image";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
-import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
+import { getFakeData } from "@/faker/faker-functions";
 
 import { card, grid, prose, section, title } from "@/styles";
 
 export default async function CollectionDirectoryPage() {
-    preloadFakeData("collection-directory");
     const collections = await getFakeData("collection-directory");
 
     return (

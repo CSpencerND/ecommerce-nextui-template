@@ -8,11 +8,10 @@ import Image from "next/image";
 
 import { prose, section, title } from "@/styles";
 
-import { getFakeData, preloadFakeData } from "@/faker/faker-functions";
+import { getFakeData } from "@/faker/faker-functions";
 import { isImageUnoptimized } from "@/site.config";
 
 export default async function HomePage() {
-    preloadFakeData("hero");
     const getHeroData = getFakeData("hero");
     const getFeaturedData = getFakeData("featured");
 
