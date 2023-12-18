@@ -4,7 +4,7 @@ import { ColorSelector } from "@/components/selectors";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Link from "next/link";
 
-import { getFakeData } from "@/faker/faker-functions";
+import { getCollection } from "@/app/actions";
 
 import { card, grid, prose, section, title } from "@/styles";
 
@@ -13,7 +13,7 @@ type CollectionPageProps = {
 };
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
-    const { name, description, products } = await getFakeData("collection");
+    const { name, description, products } = await getCollection();
     const slug = params["collection-slug"];
 
     return (
@@ -34,7 +34,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                             <CardBody
                                 as={Link}
                                 href={`/collections/${slug}/${name.toLowerCase()}`}
-                                className="focus-visible:focus-ring rounded-xlarge !outline-offset-[-10px]"
+                                className="rounded-xlarge !outline-offset-[-10px] focus-visible:focus-ring"
                             >
                                 <ProductImageGroup
                                     images={images.map((image, j) => ({

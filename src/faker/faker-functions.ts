@@ -1,9 +1,18 @@
 import { API_URL } from "@/site.config";
 import { faker } from "@faker-js/faker";
+import uniqBy from "lodash.uniqby";
 import { fakerColors, fakerSizes } from "./faker-constants";
-import { getMultiple } from "./faker-utils";
 
-// INFO: Client - Helper for fetching data on the client
+/**
+ * @description Helper that fetches fake data and filters out duplicates
+ * @extends `faker.helpers.multiple`
+ */
+function getMultiple<T>(fn: () => T, comparator: keyof T, count: number): T[] {
+    const data = faker.helpers.multiple(fn, { count });
+    return uniqBy(data, comparator);
+}
+
+// INFO: Client - Helper for fetching data on the client ////////////////////////////////////
 
 export const fakerFunctions = {
     hero: getHero,
@@ -22,9 +31,9 @@ export async function getFakeData<T extends keyof ApiType>(apiSlug: T): Promise<
     return data.json();
 }
 
-// INFO: Server - Use in api routes to fetch data
+// INFO: Server - Use in api routes to fetch data ///////////////////////////////////////////
 
-export function getHero() {
+function getHero() {
     return {
         headline: faker.company.catchPhrase(),
         descriptor: faker.lorem.paragraph(),
@@ -35,7 +44,7 @@ export function getHero() {
     };
 }
 
-export function getFeatured() {
+function getFeatured() {
     const getData = () => ({
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.product(),
@@ -54,7 +63,7 @@ export function getFeatured() {
     };
 }
 
-export function getCollectionDirectory() {
+function getCollectionDirectory() {
     const getData = () => ({
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.department(),
@@ -91,6 +100,9 @@ function getCollection() {
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.department(),
         description: faker.commerce.productDescription(),
-        products: getMultiple(getProduct, "name", 9),
     };
+}
+
+export function getCollectionProducts() {
+    return getMultiple(getProduct, "name", 3);
 }
