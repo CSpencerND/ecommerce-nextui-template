@@ -6,7 +6,7 @@ import { ColorSelector, SizeSelector } from "@/components/selectors";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 
-import { getFakeData } from "@/faker/faker-functions";
+import { getProduct } from "@/actions";
 import { prose, section } from "@/styles";
 
 import type { SearchParams } from "@/types";
@@ -16,7 +16,7 @@ type ProductPageProps = {
 };
 
 export default async function ProductPage({ searchParams }: ProductPageProps) {
-    const { name, description, images, sizes, colors, price } = await getFakeData("product");
+    const { name, description, images, sizes, colors, price } = await getProduct();
 
     return (
         <section className={section()}>

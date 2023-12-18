@@ -4,7 +4,7 @@ import { ColorSelector } from "@/components/selectors";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Link from "next/link";
 
-import { getCollection } from "@/app/actions";
+import { getCollection } from "@/actions";
 
 import { card, grid, prose, section, title } from "@/styles";
 

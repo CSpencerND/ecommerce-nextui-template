@@ -8,17 +8,14 @@ import Image from "next/image";
 
 import { prose, section, title } from "@/styles";
 
-import { getFakeData } from "@/faker/faker-functions";
+import { getHero, getFeatured } from "@/actions";
 import { isImageUnoptimized } from "@/site.config";
 
 export default async function HomePage() {
-    const getHeroData = getFakeData("hero");
-    const getFeaturedData = getFakeData("featured");
+    const [hero, featured] = await Promise.all([getHero(), getFeatured()]);
 
-    const [heroData, featuredData] = await Promise.all([getHeroData, getFeaturedData]);
-
-    const { descriptor, banner, headline } = heroData;
-    const { items, copy } = featuredData;
+    const { descriptor, banner, headline } = hero;
+    const { items, copy } = featured;
 
     return (
         <>
