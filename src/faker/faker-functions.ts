@@ -1,11 +1,9 @@
 import { API_URL } from "@/site.config";
 import { faker } from "@faker-js/faker";
 import { fakerColors, fakerSizes } from "./faker-constants";
+import { getMultiple } from "./faker-utils";
 
-/**
- * Client
- * Helper for fetching data on the client
- */
+// INFO: Client - Helper for fetching data on the client
 
 export const fakerFunctions = {
     hero: getHero,
@@ -24,10 +22,7 @@ export async function getFakeData<T extends keyof ApiType>(apiSlug: T): Promise<
     return data.json();
 }
 
-/**
- * Server
- * Use in api routes to fetch data
- */
+// INFO: Server - Use in api routes to fetch data
 
 export function getHero() {
     return {
@@ -41,18 +36,17 @@ export function getHero() {
 }
 
 export function getFeatured() {
+    const getData = () => ({
+        id: faker.commerce.isbn({ separator: "", variant: 10 }),
+        name: faker.commerce.product(),
+        image: faker.image.urlPicsumPhotos({
+            height: 192,
+            width: 192,
+        }),
+    });
+
     return {
-        items: faker.helpers.multiple(
-            () => ({
-                id: faker.commerce.isbn({ separator: "", variant: 10 }),
-                name: faker.commerce.product(),
-                image: faker.image.urlPicsumPhotos({
-                    height: 192,
-                    width: 192,
-                }),
-            }),
-            { count: 7 },
-        ),
+        items: getMultiple(getData, "name", 7),
         copy: {
             adjective: faker.commerce.productAdjective(),
             description: faker.commerce.productDescription(),
@@ -61,26 +55,16 @@ export function getFeatured() {
 }
 
 export function getCollectionDirectory() {
-    return faker.helpers.multiple(
-        () => ({
-            id: faker.commerce.isbn({ separator: "", variant: 10 }),
-            name: faker.commerce.department(),
-            image: faker.image.urlPicsumPhotos({
-                height: 192,
-                width: 192,
-            }),
-        }),
-        { count: 6 },
-    );
-}
-
-function getCollection() {
-    return {
+    const getData = () => ({
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.department(),
-        description: faker.commerce.productDescription(),
-        products: faker.helpers.multiple(getProduct, { count: 9 }),
-    };
+        image: faker.image.urlPicsumPhotos({
+            height: 192,
+            width: 192,
+        }),
+    });
+
+    return getMultiple(getData, "name", 6);
 }
 
 function getProduct() {
@@ -99,5 +83,14 @@ function getProduct() {
                 }),
             { count: 4 },
         ),
+    };
+}
+
+function getCollection() {
+    return {
+        id: faker.commerce.isbn({ separator: "", variant: 10 }),
+        name: faker.commerce.department(),
+        description: faker.commerce.productDescription(),
+        products: getMultiple(getProduct, "name", 9),
     };
 }
