@@ -14,7 +14,7 @@ type CollectionPageProps = {
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
     const { name, description, products } = await getCollection();
-    const slug = params["collection-slug"];
+    const collectionSlug = params["collection-slug"];
 
     return (
         <section className={section()}>
@@ -33,7 +33,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                         <ProductImageGroupProvider>
                             <CardBody
                                 as={Link}
-                                href={`/collections/${slug}/${name.toLowerCase()}`}
+                                href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
                                 className="rounded-xlarge !outline-offset-[-10px] focus-visible:focus-ring"
                             >
                                 <ProductImageGroup
