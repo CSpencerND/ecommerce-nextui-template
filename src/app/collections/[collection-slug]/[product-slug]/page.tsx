@@ -16,7 +16,8 @@ type ProductPageProps = {
 };
 
 export default async function ProductPage({ searchParams }: ProductPageProps) {
-    const { name, description, images, sizes, colors, price } = await getProduct();
+    const product = await getProduct();
+    const { name, description, images, sizes, colors, price } = product
 
     return (
         <section className={section()}>

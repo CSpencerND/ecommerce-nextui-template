@@ -13,8 +13,11 @@ type CollectionPageProps = {
 };
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
-    const { name, description, products } = await getCollection();
+    const collection = await getCollection()
+    const { name, description, products } = collection;
     const collectionSlug = params["collection-slug"];
+
+    console.log(JSON.stringify(collection, null, 4))
 
     return (
         <section className={section()}>

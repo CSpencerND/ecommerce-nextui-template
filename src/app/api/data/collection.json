@@ -1,0 +1,130 @@
+{
+    "id": "0547396503",
+    "name": "Beauty",
+    "description": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+    "products": [
+        {
+            "id": "0441034020",
+            "name": "Keyboard",
+            "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+            "colors": [
+                {
+                    "name": "purple",
+                    "code": "#BD93F9"
+                },
+                {
+                    "name": "cyan",
+                    "code": "#8BE9FD"
+                },
+                {
+                    "name": "white",
+                    "code": "#F8F8F2"
+                },
+                {
+                    "name": "black",
+                    "code": "#090901"
+                }
+            ],
+            "sizes": [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "2x",
+                "3x",
+                "4x",
+                "5x"
+            ],
+            "price": "$165.00",
+            "images": [
+                "https://picsum.photos/seed/K8T2EekgN8/384/384",
+                "https://picsum.photos/seed/RI1Je/384/384",
+                "https://picsum.photos/seed/5OAgdwFAr/384/384",
+                "https://picsum.photos/seed/mqBQ0IBAA/384/384"
+            ]
+        },
+        {
+            "id": "1443108340",
+            "name": "Gloves",
+            "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+            "colors": [
+                {
+                    "name": "purple",
+                    "code": "#BD93F9"
+                },
+                {
+                    "name": "cyan",
+                    "code": "#8BE9FD"
+                },
+                {
+                    "name": "white",
+                    "code": "#F8F8F2"
+                },
+                {
+                    "name": "black",
+                    "code": "#090901"
+                }
+            ],
+            "sizes": [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "2x",
+                "3x",
+                "4x",
+                "5x"
+            ],
+            "price": "$88.00",
+            "images": [
+                "https://picsum.photos/seed/Dhglsi2z/384/384",
+                "https://picsum.photos/seed/Ds8P7te/384/384",
+                "https://picsum.photos/seed/DXGUxq15t/384/384",
+                "https://picsum.photos/seed/MJHzFoX/384/384"
+            ]
+        },
+        {
+            "id": "0624820297",
+            "name": "Pizza",
+            "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+            "colors": [
+                {
+                    "name": "purple",
+                    "code": "#BD93F9"
+                },
+                {
+                    "name": "cyan",
+                    "code": "#8BE9FD"
+                },
+                {
+                    "name": "white",
+                    "code": "#F8F8F2"
+                },
+                {
+                    "name": "black",
+                    "code": "#090901"
+                }
+            ],
+            "sizes": [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "2x",
+                "3x",
+                "4x",
+                "5x"
+            ],
+            "price": "$711.00",
+            "images": [
+                "https://picsum.photos/seed/9GLW8quy/384/384",
+                "https://picsum.photos/seed/HDxWbbYW/384/384",
+                "https://picsum.photos/seed/7DKSdDJ/384/384",
+                "https://picsum.photos/seed/MCr5V/384/384"
+            ]
+        }
+    ]
+}
