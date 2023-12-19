@@ -1,6 +1,6 @@
 import { getFakeData } from "@/faker";
 import { getCollectionProducts } from "@/faker";
-import * as data from "@/app/api/data";
+import * as data from "./data";
 
 export async function getHero() {
     return await getFakeData("hero");

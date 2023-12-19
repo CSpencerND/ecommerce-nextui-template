@@ -14,13 +14,13 @@ import { useTheme } from "next-themes";
 import { cn } from "@nextui-org/system";
 
 export interface ThemeSwitchProps {
-    type?: "binary" | "menu";
+    type?: "toggle" | "menu";
     className?: string;
     classNames?: SwitchProps["classNames"];
 }
 
 export function ThemeSwitch(props: ThemeSwitchProps) {
-    const { type = "binary", className, classNames } = props;
+    const { type = "toggle", className, classNames } = props;
 
     const { theme, setTheme } = useTheme();
     const isSSR = useIsSSR();
@@ -36,7 +36,7 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
             onChange,
         });
 
-    if (type === "binary") {
+    if (type === "toggle") {
         return (
             <Component
                 {...getBaseProps({
@@ -91,7 +91,7 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
                     isIconOnly
                     aria-label="Open Theme Menu"
                 >
-                    <PaletteIcon size={22} />
+                    <PaletteIcon size={22} className="stroke-foreground-600" />
                 </Button>
             </DropdownTrigger>
             <DropdownMenu
