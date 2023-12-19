@@ -17,8 +17,6 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
     const { name, description, products } = collection;
     const collectionSlug = params["collection-slug"];
 
-    console.log(JSON.stringify(collection, null, 4))
-
     return (
         <section className={section()}>
             <header className={prose({ class: "prose-invert px-6 max-lg:text-center" })}>

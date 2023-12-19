@@ -17,10 +17,12 @@ export async function getProduct() {
     return await getFakeData("product");
 }
 
-export async function getProductByHandle(handle: string) {
+export async function getProductByHandle(slug: string) {
     if (!data.collection) throw new Error("Collection Not Found");
 
-    const product = data.collection.products.find((product) => product.name === handle);
+    const product = data.collection.products.find(
+        (product) => product.name.toLowerCase() === slug,
+    );
     if (!product) throw new Error("Product Not Found");
 
     return product;

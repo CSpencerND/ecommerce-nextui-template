@@ -6,18 +6,19 @@ import { ColorSelector, SizeSelector } from "@/components/selectors";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 
-import { getProduct } from "@/actions";
+import { getProductByHandle } from "@/actions";
 import { prose, section } from "@/styles";
 
 import type { SearchParams } from "@/types";
 
 type ProductPageProps = {
+    params: { "collection-slug": string; "product-slug": string };
     searchParams: SearchParams<"color" | "size">;
 };
 
-export default async function ProductPage({ searchParams }: ProductPageProps) {
-    const product = await getProduct();
-    const { name, description, images, sizes, colors, price } = product
+export default async function ProductPage({ params, searchParams }: ProductPageProps) {
+    const product = await getProductByHandle(params["product-slug"]);
+    const { name, description, images, sizes, colors, price } = product;
 
     return (
         <section className={section()}>
@@ -29,7 +30,8 @@ export default async function ProductPage({ searchParams }: ProductPageProps) {
                                 src: image,
                                 alt: `Product Image ${i}`,
                                 classNames: {
-                                    wrapper: "flex-none max-md:w-[calc(100vw-96px)] max-w-sm",
+                                    wrapper:
+                                        "flex-none max-md:w-[calc(100vw-96px)] max-w-sm ring-1 ring-default/40",
                                 },
                                 size: "full",
                             }))}
