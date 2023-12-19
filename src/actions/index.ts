@@ -1,5 +1,4 @@
-import { getFakeData } from "@/faker";
-import { getCollectionProducts } from "@/faker";
+import { getFakeData, getProductsByCollection } from "@/faker";
 import * as data from "./data";
 
 export async function getHero() {
@@ -18,12 +17,21 @@ export async function getProduct() {
     return await getFakeData("product");
 }
 
+export async function getProductByHandle(handle: string) {
+    if (!data.collection) throw new Error("Collection Not Found");
+
+    const product = data.collection.products.find((product) => product.name === handle);
+    if (!product) throw new Error("Product Not Found");
+
+    return product;
+}
+
 export async function getCollection() {
     if (data.collection) return data.collection;
 
     const [collection, products] = await Promise.all([
         getFakeData("collection"),
-        getCollectionProducts(),
+        getProductsByCollection(),
     ]);
 
     return {

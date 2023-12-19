@@ -103,6 +103,6 @@ function getCollection() {
     };
 }
 
-export function getCollectionProducts() {
+export function getProductsByCollection() {
     return getMultiple(getProduct, "name", 3);
 }
