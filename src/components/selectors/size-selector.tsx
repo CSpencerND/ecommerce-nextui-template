@@ -26,7 +26,7 @@ export function SizeSelector({ sizes, searchParams }: SizeSelectorProps) {
         >
             <menu className={selector.group()}>
                 {sizes.map((size) => {
-                    const queryString = "?" + createQueryString("size", size);
+                    const queryString = createQueryString({ name: "size", value: size });
                     const isActive = searchParams.size === size;
 
                     return (

@@ -37,7 +37,7 @@ export function ColorSelector({ colors, searchParams }: ColorSelectorProps) {
             >
                 <menu className={selector.group()}>
                     {colors.map(({ name, code }, i) => {
-                        const queryString = "?" + createQueryString("color", name);
+                        const queryString = createQueryString({ name: "color", value: name });
                         const isActive = searchParams.color === name;
 
                         return (
@@ -99,7 +99,7 @@ export function ColorSelector({ colors, searchParams }: ColorSelectorProps) {
                                 className={selector.item({
                                     active: isActive,
                                     bordered: true,
-                                    size: "xs"
+                                    size: "xs",
                                 })}
                                 style={{ backgroundColor: code }}
                             >
