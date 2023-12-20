@@ -1,10 +1,11 @@
 import { tv } from "tailwind-variants";
 
 export const prose = tv({
-    base: "prose dark:prose-invert prose-headings:m-0",
+    base: "prose dark:prose-invert prose-headings:m-0 prose-p:text-balance",
 });
 
 export const title = tv({
+    base: "text-balance",
     variants: {
         color: {
             violet: "from-[#FF1CF7] to-[#b249f8]",
