@@ -63,7 +63,7 @@ export function Carousel(props: CarouselProps) {
             aria-label="Carousel Container"
             ref={emblaRef}
             onKeyDown={onKeyboardScroll}
-            className="max-w-prose overflow-hidden rounded-xlarge bg-content1 p-3 py-6 shadow-medium"
+            className="max-w-prose overflow-clip rounded-xlarge bg-content1 p-3 py-6 shadow-medium"
         >
             <ul
                 id="carousel"
