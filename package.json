@@ -36,6 +36,7 @@
     "react-dom": "^18.2.0",
     "react-smooth-corners": "^1.0.4",
     "sharp": "^0.33.1",
+    "vaul": "^0.8.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
