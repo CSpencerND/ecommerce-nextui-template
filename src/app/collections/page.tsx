@@ -3,6 +3,8 @@ import { ProductImage } from "@/components/product-image";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
+import { Drawer } from "@/components/ui/drawer";
+
 import { getCollections } from "@/actions";
 
 import { card, grid, prose, section, title } from "@/styles";
@@ -13,6 +15,7 @@ export default async function CollectionDirectoryPage() {
     return (
         <section className={section()}>
             <header className={prose({ class: "px-6 max-lg:text-center" })}>
+                <Drawer />
                 <h1 className={title()}>Collection Directory</h1>
             </header>
             <menu className={grid()}>
