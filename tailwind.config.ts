@@ -59,6 +59,9 @@ const config: Config = {
             addUtilities({
                 ".outline-debug": {
                     outline: "1px solid red",
+                    "*": {
+                        outline: "1px solid red",
+                    },
                 },
                 ".focus-ring": {
                     zIndex: "10",
