@@ -57,16 +57,6 @@ const config: Config = {
         }),
         plugin(function ({ addUtilities, addVariant }) {
             addUtilities({
-                /** NOTE: @update will not be needed on the next update */
-                ".h-screen-d": {
-                    height: ["100vh", "100dvh"],
-                },
-                ".h-screen-s": {
-                    height: ["100vh", "100svh"],
-                },
-                ".h-screen-l": {
-                    height: ["100vh", "100lvh"],
-                },
                 ".outline-debug": {
                     outline: "1px solid red",
                 },

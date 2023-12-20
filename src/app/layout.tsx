@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         themes: ["light", "dark", "dim"],
                     }}
                 >
-                    <div className="relative flex flex-col h-screen-s">
+                    <div className="relative flex flex-col h-svh">
                         <Header />
                         <main className="container mx-auto max-w-5xl flex-grow space-y-24 px-6 py-16">
                             {children}
