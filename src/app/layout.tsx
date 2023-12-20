@@ -1,5 +1,5 @@
-import { Header } from "@/components/header";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { Header } from "@/components/global/header";
+import { TailwindIndicator } from "@/components/utility/tailwind-indicator";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/site.config";

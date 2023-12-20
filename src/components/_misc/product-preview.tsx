@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { MotionListItem, type MotionListItemProps } from "@/components/motion";
+import { MotionListItem, type MotionListItemProps } from "@/components/utility/motion";
 import { Card, CardBody, CardFooter, type CardProps } from "@nextui-org/card";
 
 import { ProductImageGroupProvider } from "@/components/product-image";

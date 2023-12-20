@@ -1,4 +1,4 @@
-import { ThemeSwitch } from "@/components/theme-switch";
+import { ThemeSwitch } from "@/components/global/theme-switch";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";

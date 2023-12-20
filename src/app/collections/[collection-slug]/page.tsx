@@ -1,4 +1,4 @@
-import { MotionListItem } from "@/components/motion";
+import { MotionListItem } from "@/components/utility/motion";
 import { ProductImageGroup, ProductImageGroupProvider } from "@/components/product-image";
 import { ColorSelector } from "@/components/selectors";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";

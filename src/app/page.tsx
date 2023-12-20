@@ -1,4 +1,4 @@
-import { Carousel, CarouselItem } from "@/components/carousel-embla";
+import { Carousel, CarouselItem } from "@/components/ui/carousel";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
