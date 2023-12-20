@@ -95,12 +95,11 @@ export function ColorSelector({ colors, searchParams }: ColorSelectorProps) {
                             <Button
                                 key={name}
                                 isIconOnly
-                                size="sm"
                                 onPress={() => setActiveIndex(i)}
                                 className={selector.item({
                                     active: isActive,
                                     bordered: true,
-                                    class: "size-6 sm:size-7",
+                                    size: "xs"
                                 })}
                                 style={{ backgroundColor: code }}
                             >

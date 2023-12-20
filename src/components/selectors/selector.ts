@@ -26,6 +26,9 @@ export const selectorItem = tv({
         bordered: {
             true: "ring-offset-default",
         },
+        size: {
+            xs: "!size-6 !min-w-0 sm:!size-7",
+        },
     },
 });
 
