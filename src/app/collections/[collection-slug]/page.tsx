@@ -1,8 +1,8 @@
-import { MotionListItem } from "@/components/utility/motion";
 import { ProductImageGroup, ProductImageGroupProvider } from "@/components/product-image";
+import { ProductLink } from "@/components/product/product-link";
 import { ColorSelector } from "@/components/selectors";
+import { MotionListItem } from "@/components/utility/motion";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
-import Link from "next/link";
 
 import { getCollection } from "@/actions";
 
@@ -13,7 +13,7 @@ type CollectionPageProps = {
 };
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
-    const collection = await getCollection()
+    const collection = await getCollection();
     const { name, description, products } = collection;
     const collectionSlug = params["collection-slug"];
 
@@ -33,8 +33,9 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                     >
                         <ProductImageGroupProvider>
                             <CardBody
-                                as={Link}
+                                as={ProductLink}
                                 href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
+                                data={products[i]}
                                 className="rounded-xlarge !outline-offset-[-10px] focus-visible:focus-ring"
                             >
                                 <ProductImageGroup
