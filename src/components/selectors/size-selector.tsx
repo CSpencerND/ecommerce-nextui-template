@@ -8,15 +8,13 @@ import { useQueryParams } from "@/hooks/use-query-params";
 
 import { selector } from ".";
 
-import type { SearchParams } from "@/types";
-
 type SizeSelectorProps = {
     sizes: string[];
-    searchParams: SearchParams<"color" | "size">;
 };
 
-export function SizeSelector({ sizes, searchParams }: SizeSelectorProps) {
-    const { createQueryString } = useQueryParams();
+export function SizeSelector({ sizes }: SizeSelectorProps) {
+    const { createQueryString, searchParams } = useQueryParams();
+    const sizeParams = searchParams.get("size");
 
     return (
         <ToggleGroup.Root
@@ -27,7 +25,7 @@ export function SizeSelector({ sizes, searchParams }: SizeSelectorProps) {
             <menu className={selector.group()}>
                 {sizes.map((size) => {
                     const queryString = createQueryString({ name: "size", value: size });
-                    const isActive = searchParams.size === size;
+                    const isActive = sizeParams === size;
 
                     return (
                         <ToggleGroup.Item
