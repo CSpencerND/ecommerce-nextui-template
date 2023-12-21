@@ -1,10 +1,11 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
 export function useQueryParams() {
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     const createQueryString = useCallback(
         (params: { name: string; value: string }) => {
@@ -17,15 +18,11 @@ export function useQueryParams() {
     );
 
     const setSearchParams = useCallback(
-        (params: { name: string; value: string } | null) => {
-            if (!params) {
-                return window.history.replaceState(null, "", null);
-            }
-
+        (params: { name: string; value: string }) => {
             const queryString = createQueryString(params);
-            window.history.replaceState(null, "", queryString);
+            router.push(queryString);
         },
-        [createQueryString],
+        [createQueryString, router],
     );
 
     return { createQueryString, searchParams, setSearchParams };
