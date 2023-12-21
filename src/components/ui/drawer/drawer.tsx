@@ -1,34 +1,49 @@
 "use client";
 
-import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
-import { Button } from "@nextui-org/button";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useDrawer } from ".";
 
-import { drawer, type DrawerBackdropVariantProps } from "./style";
 import { cn } from "@nextui-org/system";
+import { drawer } from "./style";
 
 const DrawerRoot = DrawerPrimitive.Root;
-const DrawerTrigger = DrawerPrimitive.Trigger;
+const DrawerBackdrop = DrawerPrimitive.Overlay;
+// const DrawerTrigger = DrawerPrimitive.Trigger;
 const DrawerPortal = DrawerPrimitive.Portal;
 const DrawerContent = DrawerPrimitive.Content;
 const DrawerTitle = DrawerPrimitive.Title;
-// const DrawerDescription = DrawerPrimitive.Description;
 // const DrawerClose = DrawerPrimitive.Close;
 
-export function Drawer() {
+function Drawer({ children }: React.PropsWithChildren) {
+    const router = useRouter();
+    const pathname = usePathname();
+
+    const isOpen = useDrawer((s) => s.isOpen);
+    const onClose = useDrawer((s) => s.onClose);
+
+    useEffect(() => {
+        window.addEventListener("popstate", onClose);
+
+        return () => {
+            window.removeEventListener("popstate", onClose);
+        };
+    }, [onClose]);
+
     return (
-        <DrawerRoot open>
-            <DrawerTrigger asChild>
-                <Button
-                    disableRipple
-                    disableAnimation
-                >
-                    Open Drawer
-                </Button>
-            </DrawerTrigger>
+        <DrawerRoot
+            open={isOpen}
+            onOpenChange={(open) => {
+                if (open === false) {
+                    onClose();
+                    router.replace(pathname);
+                }
+            }}
+        >
             <DrawerPortal>
-                <DrawerBackdrop variant="blur" />
+                <DrawerBackdrop className={drawer.backdrop()} />
                 <DrawerContent
                     className={cn(
                         "prose prose-sm prose-invert prose-headings:m-0",
@@ -43,25 +58,37 @@ export function Drawer() {
                             className="h-1 w-12 rounded-full bg-foreground-500 mix-blend-difference"
                         />
                     </div>
-                    <div className="mt-3 max-h-svh space-y-3 overflow-y-scroll">
-                        <DrawerTitle>Drawer Title</DrawerTitle>
-                        <div>Drawer Body</div>
-                        <div>Drawer Footer</div>
-                    </div>
+                    {children}
                 </DrawerContent>
             </DrawerPortal>
         </DrawerRoot>
     );
 }
 
-const DrawerBackdrop = React.forwardRef<
-    React.ElementRef<typeof DrawerPrimitive.Overlay>,
-    React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay> & DrawerBackdropVariantProps
->(({ className, variant, ...props }, ref) => (
-    <DrawerPrimitive.Overlay
-        ref={ref}
-        className={drawer.backdrop({ variant })}
-        {...props}
-    />
-));
-DrawerBackdrop.displayName = "DrawerBackdrop";
+function DrawerBody(props: React.ComponentPropsWithoutRef<"div">) {
+    return (
+        <div
+            className="mt-3 max-h-svh space-y-3 overflow-y-scroll"
+            {...props}
+        />
+    );
+}
+
+export { Drawer, DrawerBody, DrawerTitle };
+
+// type DrawerBackdropProps = DrawerBackdropVariantProps &
+//     React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>;
+// type DrawerBackdropRef = React.ElementRef<typeof DrawerPrimitive.Overlay>;
+
+// const DrawerBackdrop = forwardRef<DrawerBackdropRef, DrawerBackdropProps>(
+//     ({ className, variant, ...props }, ref) => {
+//         return (
+//             <DrawerPrimitive.Overlay
+//                 ref={ref}
+//                 className={drawer.backdrop({ variant })}
+//                 {...props}
+//             />
+//         );
+//     },
+// );
+// DrawerBackdrop.displayName = "DrawerBackdrop";
