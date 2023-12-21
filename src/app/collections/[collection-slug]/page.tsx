@@ -1,6 +1,6 @@
 import { ProductImageGroup, ProductImageGroupProvider } from "@/components/product-image";
 import { ProductLink } from "@/components/product/product-link";
-import { ColorSelector } from "@/components/selectors";
+import { ColorSelectorPreview } from "@/components/selectors";
 import { MotionListItem } from "@/components/utility/motion";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 
@@ -50,7 +50,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                                 </CardFooter>
                             </CardBody>
                             <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
-                                <ColorSelector colors={colors} />
+                                <ColorSelectorPreview colors={colors} />
                             </div>
                         </ProductImageGroupProvider>
                     </Card>

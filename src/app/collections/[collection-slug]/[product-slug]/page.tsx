@@ -1,4 +1,4 @@
-import { ProductProvider } from "./components/product-provider";
+import { ProductProvider } from "@/components/product/product-provider";
 
 import { ProductImageGroup } from "@/components/product-image";
 import { ColorSelector, SizeSelector } from "@/components/selectors";
@@ -44,15 +44,9 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
                                 <p className="font-bold">{price}</p>
                             </div>
 
-                            <ColorSelector
-                                colors={colors}
-                                searchParams={searchParams}
-                            />
+                            <ColorSelector colors={colors} />
 
-                            <SizeSelector
-                                sizes={sizes}
-                                searchParams={searchParams}
-                            />
+                            <SizeSelector sizes={sizes} />
 
                             <div className="inline-flex max-w-min gap-3 [&>*]:flex-1 [&>*]:font-semibold">
                                 <Button
