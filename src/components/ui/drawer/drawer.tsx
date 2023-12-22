@@ -1,23 +1,34 @@
 "use client";
 
+import { Button } from "@nextui-org/button";
+import { XIcon } from "lucide-react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
+import { useHydrated } from "@/hooks/use-hydrated";
+import { useIsMobile } from "@nextui-org/use-is-mobile";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDrawer } from ".";
 
+import { prose } from "@/styles";
 import { cn } from "@nextui-org/system";
 import { drawer } from "./style";
 
 const DrawerRoot = DrawerPrimitive.Root;
 const DrawerBackdrop = DrawerPrimitive.Overlay;
-// const DrawerTrigger = DrawerPrimitive.Trigger;
 const DrawerPortal = DrawerPrimitive.Portal;
 const DrawerContent = DrawerPrimitive.Content;
 const DrawerTitle = DrawerPrimitive.Title;
-// const DrawerClose = DrawerPrimitive.Close;
+const DrawerClose = DrawerPrimitive.Close;
 
-function Drawer({ children }: React.PropsWithChildren) {
+type DrawerProps = React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Root> & {
+    title?: string;
+    className?: string;
+};
+
+function Drawer({ children, title, className, ...props }: DrawerProps) {
+    const [snap, setSnap] = useState<number | string | null>(1);
+
     const router = useRouter();
     const pathname = usePathname();
 
@@ -32,6 +43,10 @@ function Drawer({ children }: React.PropsWithChildren) {
         };
     }, [onClose]);
 
+    const isMobile = useIsMobile();
+    const hydrated = useHydrated();
+    if (!hydrated || !isMobile) return null;
+
     return (
         <DrawerRoot
             open={isOpen}
@@ -41,54 +56,85 @@ function Drawer({ children }: React.PropsWithChildren) {
                     router.replace(pathname);
                 }
             }}
+            shouldScaleBackground
+            snapPoints={[0.725, 1]}
+            activeSnapPoint={snap}
+            setActiveSnapPoint={setSnap}
+            // closeThreshold={0.275}
+            {...props}
         >
             <DrawerPortal>
-                <DrawerBackdrop className={drawer.backdrop()} />
+                <DrawerBackdrop className={drawer.backdrop({ variant: "blur" })} />
                 <DrawerContent
                     className={cn(
-                        "prose prose-sm prose-invert prose-headings:m-0",
-                        "fixed inset-x-0 bottom-0 z-50",
-                        "flex h-fit max-w-none flex-col overflow-clip",
-                        "rounded-t-xlarge bg-content1 p-3 shadow-small",
+                        "fixed inset-x-0 bottom-0 z-50 mx-0.5",
+                        "flex max-h-[100svh-4rem] max-w-none flex-col overflow-clip",
+                        "rounded-t-xlarge bg-content1/80 shadow-small",
+                        className,
                     )}
                 >
-                    <div className="absolute inset-x-0 top-0 flex h-6 w-full items-center justify-center rounded-t-xlarge bg-content1/0">
-                        <div
-                            aria-hidden="true"
-                            className="h-1 w-12 rounded-full bg-foreground-500 mix-blend-difference"
-                        />
+                    <DrawerHeader title={title} />
+                    <div
+                        className={cn(
+                            "px-6 pb-6 pt-16 max-h-[100svh-4rem-3.5rem]",
+                            snap === 1 ? "overflow-y-scroll" : "overflow-clip",
+                        )}
+                    >
+                        {children}
                     </div>
-                    {children}
                 </DrawerContent>
             </DrawerPortal>
         </DrawerRoot>
     );
 }
 
-function DrawerBody(props: React.ComponentPropsWithoutRef<"div">) {
+type DrawerHeaderProps = {
+    title?: string;
+};
+
+function DrawerHeader({ title }: DrawerHeaderProps) {
     return (
-        <div
-            className="mt-3 max-h-svh space-y-3 overflow-y-scroll"
-            {...props}
-        />
+        <header
+            className={cn(
+                "fixed top-0 z-50 w-full px-6 pb-1",
+                "backdrop-blur-md backdrop-saturate-150",
+                "bg-inherit",
+                // "bg-content1/0",
+                // "bg-content1/80 border-b border-b-divider"
+            )}
+        >
+            <div className="flex flex-col items-center justify-center">
+                <div
+                    data-drawer-thumb=""
+                    className="py-2"
+                >
+                    <div
+                        aria-hidden="true"
+                        className="h-1 w-12 rounded-full bg-foreground-500 mix-blend-difference"
+                    />
+                </div>
+                {title && (
+                    <div className="flex w-full justify-between">
+                        <div className={prose({ sm: true })}>
+                            <DrawerTitle>{title}</DrawerTitle>
+                        </div>
+                        <DrawerClose asChild>
+                            <Button
+                                isIconOnly
+                                variant="light"
+                                size="sm"
+                            >
+                                <XIcon
+                                    size={22}
+                                    className="stroke-foreground-500"
+                                />
+                            </Button>
+                        </DrawerClose>
+                    </div>
+                )}
+            </div>
+        </header>
     );
 }
 
-export { Drawer, DrawerBody, DrawerTitle };
-
-// type DrawerBackdropProps = DrawerBackdropVariantProps &
-//     React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>;
-// type DrawerBackdropRef = React.ElementRef<typeof DrawerPrimitive.Overlay>;
-
-// const DrawerBackdrop = forwardRef<DrawerBackdropRef, DrawerBackdropProps>(
-//     ({ className, variant, ...props }, ref) => {
-//         return (
-//             <DrawerPrimitive.Overlay
-//                 ref={ref}
-//                 className={drawer.backdrop({ variant })}
-//                 {...props}
-//             />
-//         );
-//     },
-// );
-// DrawerBackdrop.displayName = "DrawerBackdrop";
+export { Drawer, DrawerTitle };
