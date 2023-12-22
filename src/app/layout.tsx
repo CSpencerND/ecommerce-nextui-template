@@ -42,7 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         themes: ["light", "dark", "dim"],
                     }}
                 >
-                    <div className="relative flex h-svh flex-col">
+                    <div
+                        className="relative flex h-svh flex-col"
+                        vaul-drawer-wrapper=""
+                    >
                         <Header />
                         <main className="container mx-auto max-w-5xl flex-grow space-y-24 px-6 py-16">
                             {children}
@@ -50,7 +53,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </div>
                     <ProductDrawer />
                 </Providers>
-                <TailwindIndicator />
             </body>
         </html>
     );
