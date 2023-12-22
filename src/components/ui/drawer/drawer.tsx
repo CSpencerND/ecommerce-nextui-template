@@ -1,34 +1,28 @@
 "use client";
 
 import { Button } from "@nextui-org/button";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { XIcon } from "lucide-react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
 import { useHydrated } from "@/hooks/use-hydrated";
 import { useIsMobile } from "@nextui-org/use-is-mobile";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDrawer } from ".";
 
 import { prose } from "@/styles";
 import { cn } from "@nextui-org/system";
-import { drawer } from "./style";
 
-const DrawerRoot = DrawerPrimitive.Root;
-const DrawerBackdrop = DrawerPrimitive.Overlay;
-const DrawerPortal = DrawerPrimitive.Portal;
-const DrawerContent = DrawerPrimitive.Content;
 const DrawerTitle = DrawerPrimitive.Title;
-const DrawerClose = DrawerPrimitive.Close;
+const DrawerDescription = DrawerPrimitive.Description;
 
 type DrawerProps = React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Root> & {
-    title?: string;
+    disableThumb?: boolean;
     className?: string;
 };
 
-function Drawer({ children, title, className, ...props }: DrawerProps) {
-    const [snap, setSnap] = useState<number | string | null>(1);
-
+function Drawer({ disableThumb, children, className, ...props }: DrawerProps) {
     const router = useRouter();
     const pathname = usePathname();
 
@@ -48,7 +42,7 @@ function Drawer({ children, title, className, ...props }: DrawerProps) {
     if (!hydrated || !isMobile) return null;
 
     return (
-        <DrawerRoot
+        <DrawerPrimitive.Root
             open={isOpen}
             onOpenChange={(open) => {
                 if (open === false) {
@@ -57,84 +51,112 @@ function Drawer({ children, title, className, ...props }: DrawerProps) {
                 }
             }}
             shouldScaleBackground
-            snapPoints={[0.725, 1]}
-            activeSnapPoint={snap}
-            setActiveSnapPoint={setSnap}
-            // closeThreshold={0.275}
             {...props}
         >
-            <DrawerPortal>
-                <DrawerBackdrop className={drawer.backdrop({ variant: "blur" })} />
-                <DrawerContent
+            <DrawerPrimitive.Portal>
+                <DrawerPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay/50" />
+                <DrawerPrimitive.Content
                     className={cn(
                         "fixed inset-x-0 bottom-0 z-50 mx-0.5",
                         "flex max-h-[calc(100svh-4rem)] max-w-none flex-col overflow-clip",
-                        "rounded-t-xlarge bg-content1/80 shadow-small",
+                        "rounded-t-xlarge bg-content1 shadow-small",
                         className,
                     )}
+                    /** NOTE: Might need to do something with `safe` or something */
+                    //  style={{}}
                 >
-                    <DrawerHeader title={title} />
-                    <div
-                        className={cn(
-                            "max-h-[calc(100svh-4rem-3.5rem)] px-6 pb-6 pt-16",
-                            snap === 1 ? "overflow-y-scroll" : "overflow-clip",
-                        )}
-                    >
-                        {children}
-                    </div>
-                </DrawerContent>
-            </DrawerPortal>
-        </DrawerRoot>
+                    {!disableThumb && <DrawerThumb />}
+                    {children}
+                </DrawerPrimitive.Content>
+            </DrawerPrimitive.Portal>
+        </DrawerPrimitive.Root>
     );
 }
 
-type DrawerHeaderProps = {
+function DrawerThumb({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
+    return (
+        <div className="flex justify-center py-2">
+            <div
+                aria-hidden="true"
+                className={cn(
+                    "h-1 w-12 rounded-full bg-foreground-500 mix-blend-difference",
+                    className,
+                )}
+                {...props}
+            />
+        </div>
+    );
+}
+
+function DrawerCloseButton(props: React.ComponentPropsWithoutRef<typeof Button>) {
+    return (
+        <DrawerPrimitive.Close asChild>
+            <Button
+                isIconOnly
+                variant="light"
+                size="sm"
+                {...props}
+            >
+                <XIcon
+                    size={22}
+                    className="stroke-foreground-500"
+                />
+            </Button>
+        </DrawerPrimitive.Close>
+    );
+}
+
+type DrawerHeaderProps = React.ComponentPropsWithoutRef<"header"> & {
     title?: string;
+    showCloseButton?: boolean;
 };
 
-function DrawerHeader({ title }: DrawerHeaderProps) {
+function DrawerHeader({ title, showCloseButton, className, ...props }: DrawerHeaderProps) {
     return (
         <header
-            className={cn(
-                "fixed top-0 z-50 w-full px-6 pb-1",
-                "backdrop-blur-md backdrop-saturate-150",
-                "bg-inherit",
-                // "bg-content1/0",
-                // "bg-content1/80 border-b border-b-divider"
-            )}
+            className={cn("min-h-6 px-6", className)}
+            {...props}
         >
-            <div className="flex flex-col items-center justify-center">
-                <div
-                    data-drawer-thumb=""
-                    className="py-2"
-                >
-                    <div
-                        aria-hidden="true"
-                        className="h-1 w-12 rounded-full bg-foreground-500 mix-blend-difference"
-                    />
-                </div>
-                {title && (
-                    <div className="flex w-full justify-between">
-                        <div className={prose({ sm: true })}>
-                            <DrawerTitle>{title}</DrawerTitle>
-                        </div>
-                        <DrawerClose asChild>
-                            <Button
-                                isIconOnly
-                                variant="light"
-                                size="sm"
-                            >
-                                <XIcon
-                                    size={22}
-                                    className="stroke-foreground-500"
-                                />
-                            </Button>
-                        </DrawerClose>
-                    </div>
-                )}
+            <div
+                className={prose({
+                    sm: true,
+                    class: "flex w-full justify-between pb-6",
+                })}
+            >
+                {title && <DrawerTitle>{title}</DrawerTitle>}
+                {showCloseButton && <DrawerCloseButton />}
+                {props.children}
             </div>
         </header>
     );
 }
 
-export { Drawer, DrawerTitle };
+function DrawerBody({ className, ...props }: React.ComponentPropsWithoutRef<"figure">) {
+    return (
+        <ScrollShadow size={80}>
+            <figure
+                className={cn("flex flex-col gap-3 overflow-y-scroll px-6 pt-1", className)}
+                {...props}
+            />
+        </ScrollShadow>
+    );
+}
+
+function DrawerFooter({ className, ...props }: React.ComponentPropsWithoutRef<"footer">) {
+    return (
+        <footer
+            className={cn("flex w-full flex-col gap-6 p-6", className)}
+            {...props}
+        />
+    );
+}
+
+export {
+    Drawer,
+    DrawerBody,
+    DrawerCloseButton,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+};
