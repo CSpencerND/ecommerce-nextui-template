@@ -68,7 +68,7 @@ function Drawer({ children, title, className, ...props }: DrawerProps) {
                 <DrawerContent
                     className={cn(
                         "fixed inset-x-0 bottom-0 z-50 mx-0.5",
-                        "flex max-h-[100svh-4rem] max-w-none flex-col overflow-clip",
+                        "flex max-h-[calc(100svh-4rem)] max-w-none flex-col overflow-clip",
                         "rounded-t-xlarge bg-content1/80 shadow-small",
                         className,
                     )}
@@ -76,7 +76,7 @@ function Drawer({ children, title, className, ...props }: DrawerProps) {
                     <DrawerHeader title={title} />
                     <div
                         className={cn(
-                            "px-6 pb-6 pt-16 max-h-[100svh-4rem-3.5rem]",
+                            "max-h-[calc(100svh-4rem-3.5rem)] px-6 pb-6 pt-16",
                             snap === 1 ? "overflow-y-scroll" : "overflow-clip",
                         )}
                     >
