@@ -9,7 +9,7 @@ import { useProductImageGroup } from "@/components/product-image";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web/esm/useMountEffect";
 
-import { selector } from ".";
+import { selector } from "./styles";
 
 import type { Colors } from "@/types";
 

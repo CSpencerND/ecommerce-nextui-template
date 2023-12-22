@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useQueryParams } from "@/hooks/use-query-params";
 
-import { selector } from ".";
+import { selector } from "./styles";
 
 type SizeSelectorProps = {
     sizes: string[];
