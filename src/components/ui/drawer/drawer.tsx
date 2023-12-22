@@ -23,11 +23,10 @@ type DrawerProps = React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Root> &
 };
 
 function Drawer({ disableThumb, children, className, ...props }: DrawerProps) {
-    const router = useRouter();
-    const pathname = usePathname();
-
     const isOpen = useDrawer((s) => s.isOpen);
     const onClose = useDrawer((s) => s.onClose);
+
+    const router = useRouter();
 
     useEffect(() => {
         window.addEventListener("popstate", onClose);
@@ -47,7 +46,7 @@ function Drawer({ disableThumb, children, className, ...props }: DrawerProps) {
             onOpenChange={(open) => {
                 if (open === false) {
                     onClose();
-                    router.replace(pathname);
+                    router.back();
                 }
             }}
             shouldScaleBackground
