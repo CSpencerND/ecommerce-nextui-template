@@ -10,7 +10,7 @@ export const prose = tv({
 });
 
 export const title = tv({
-    base: "text-balance",
+    base: "m-0",
     variants: {
         color: {
             violet: "from-[#FF1CF7] to-[#b249f8]",
