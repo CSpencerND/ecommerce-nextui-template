@@ -30,6 +30,7 @@ export function ProductDrawer() {
                         alt: `Product Image ${i}`,
                         size: "full",
                         bordered: true,
+                        isZoomed: false,
                     }))}
                 />
 
