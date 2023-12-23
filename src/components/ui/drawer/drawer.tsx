@@ -142,7 +142,7 @@ function DrawerBody({ className, ...props }: React.ComponentPropsWithoutRef<"fig
 function DrawerFooter({ className, ...props }: React.ComponentPropsWithoutRef<"footer">) {
     return (
         <footer
-            className={cn("flex w-full flex-col gap-6 px-6 pb-6 pt-3 shadow-small", className)}
+            className={cn("flex w-full flex-col px-6 pb-6 shadow-small", className)}
             {...props}
         />
     );
