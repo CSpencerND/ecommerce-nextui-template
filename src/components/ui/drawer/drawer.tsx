@@ -57,7 +57,7 @@ function Drawer({ disableThumb, children, className, ...props }: DrawerProps) {
                 <DrawerPrimitive.Content
                     className={cn(
                         "fixed inset-x-0 bottom-0 z-50 mx-0.5",
-                        "flex max-h-[calc(100dvh-3rem)] max-w-none flex-col overflow-clip",
+                        "flex max-h-[calc(100dvh-3rem)] flex-col overflow-clip",
                         "rounded-t-xlarge bg-content1 shadow-small",
                         className,
                     )}
@@ -142,7 +142,7 @@ function DrawerBody({ className, ...props }: React.ComponentPropsWithoutRef<"fig
 function DrawerFooter({ className, ...props }: React.ComponentPropsWithoutRef<"footer">) {
     return (
         <footer
-            className={cn("flex w-full flex-col gap-6 px-6 py-3 shadow-small", className)}
+            className={cn("flex w-full flex-col gap-6 px-6 pb-6 pt-3 shadow-small", className)}
             {...props}
         />
     );
@@ -155,5 +155,5 @@ export {
     DrawerDescription,
     DrawerFooter,
     DrawerHeader,
-    DrawerTitle
+    DrawerTitle,
 };

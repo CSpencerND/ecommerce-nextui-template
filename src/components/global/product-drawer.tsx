@@ -3,8 +3,10 @@
 import { ProductImageGroup } from "@/components/product-image";
 import { ProductProvider } from "@/components/product/product-provider";
 import { ColorSelector, SizeSelector } from "@/components/selectors";
+import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { Button } from "@nextui-org/button";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
+import { ChevronUpIcon } from "lucide-react";
 
 import {
     Drawer,
@@ -45,7 +47,7 @@ export function ProductDrawer() {
                         }))}
                     />
 
-                    <div className={prose({ sm: true, class: "pt-3 pb-6" })}>
+                    <div className={prose({ sm: true, class: "pb-6 pt-3" })}>
                         <div className="flex items-center justify-between *:m-0">
                             <DrawerTitle>{name}</DrawerTitle>
                             <p className="font-bold">{price}</p>
@@ -56,11 +58,31 @@ export function ProductDrawer() {
                         <DrawerDescription>{description}</DrawerDescription>
                     </div>
                 </DrawerBody>
-                <DrawerFooter>
-                    {/* Single accordion slider labeled `show options` or just `options` */}
-                    <ColorSelector colors={colors} />
-                    <SizeSelector sizes={sizes} />
-
+                <DrawerFooter className="*:p-0">
+                    <Accordion
+                        isCompact
+                        keepContentMounted
+                        showDivider={false}
+                        itemClasses={{
+                            content: "space-y-6 pt-6",
+                            trigger: "flex-col-reverse h-min p-0 gap-0",
+                            title: "text-small",
+                            indicator: "data-[open]:rotate-180",
+                        }}
+                    >
+                        <AccordionItem
+                            indicator={
+                                <ChevronUpIcon
+                                    size={22}
+                                    className="stroke-foreground-500 stroke-[3px]"
+                                />
+                            }
+                            // title="options"
+                        >
+                            <ColorSelector colors={colors} />
+                            <SizeSelector sizes={sizes} />
+                        </AccordionItem>
+                    </Accordion>
                     <VisuallyHidden>
                         <aside className="text-small">
                             {!selectedColor && !selectedSize ? (
