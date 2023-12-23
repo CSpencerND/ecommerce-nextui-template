@@ -7,9 +7,9 @@ import { Drawer as DrawerPrimitive } from "vaul";
 
 import { useHydrated } from "@/hooks/use-hydrated";
 import { useIsMobile } from "@nextui-org/use-is-mobile";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useDrawer } from ".";
+import { useDrawer } from "./drawer-store";
 
 import { prose } from "@/styles";
 import { cn } from "@nextui-org/system";
@@ -57,12 +57,10 @@ function Drawer({ disableThumb, children, className, ...props }: DrawerProps) {
                 <DrawerPrimitive.Content
                     className={cn(
                         "fixed inset-x-0 bottom-0 z-50 mx-0.5",
-                        "flex max-h-[calc(100svh-4rem)] max-w-none flex-col overflow-clip",
+                        "flex max-h-[calc(100dvh-3rem)] max-w-none flex-col overflow-clip",
                         "rounded-t-xlarge bg-content1 shadow-small",
                         className,
                     )}
-                    /** NOTE: Might need to do something with `safe` or something */
-                    //  style={{}}
                 >
                     {!disableThumb && <DrawerThumb />}
                     {children}
@@ -132,7 +130,7 @@ function DrawerHeader({ title, showCloseButton, className, ...props }: DrawerHea
 
 function DrawerBody({ className, ...props }: React.ComponentPropsWithoutRef<"figure">) {
     return (
-        <ScrollShadow size={80}>
+        <ScrollShadow>
             <figure
                 className={cn("flex flex-col gap-3 overflow-y-scroll px-6 pt-1", className)}
                 {...props}
@@ -144,7 +142,7 @@ function DrawerBody({ className, ...props }: React.ComponentPropsWithoutRef<"fig
 function DrawerFooter({ className, ...props }: React.ComponentPropsWithoutRef<"footer">) {
     return (
         <footer
-            className={cn("flex w-full flex-col gap-6 p-6", className)}
+            className={cn("flex w-full flex-col gap-6 px-6 py-3 shadow-small", className)}
             {...props}
         />
     );
@@ -157,5 +155,5 @@ export {
     DrawerDescription,
     DrawerFooter,
     DrawerHeader,
-    DrawerTitle,
+    DrawerTitle
 };

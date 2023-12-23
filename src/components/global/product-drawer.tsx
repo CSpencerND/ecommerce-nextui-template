@@ -45,8 +45,8 @@ export function ProductDrawer() {
                         }))}
                     />
 
-                    <div className={prose({ sm: true })}>
-                        <div className="flex items-center justify-between pt-3 *:m-0">
+                    <div className={prose({ sm: true, class: "pt-3 pb-6" })}>
+                        <div className="flex items-center justify-between *:m-0">
                             <DrawerTitle>{name}</DrawerTitle>
                             <p className="font-bold">{price}</p>
                         </div>
@@ -57,6 +57,7 @@ export function ProductDrawer() {
                     </div>
                 </DrawerBody>
                 <DrawerFooter>
+                    {/* Single accordion slider labeled `show options` or just `options` */}
                     <ColorSelector colors={colors} />
                     <SizeSelector sizes={sizes} />
 
@@ -77,7 +78,7 @@ export function ProductDrawer() {
                         </aside>
                     </VisuallyHidden>
 
-                    <div className="inline-flex max-w-min gap-3 *:flex-1 *:font-semibold">
+                    <div className="inline-flex gap-3 *:flex-1 *:font-semibold">
                         <Button
                             color="primary"
                             variant="shadow"
