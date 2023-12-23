@@ -40,10 +40,9 @@ export function ProductDrawer() {
                         images={images.map((image, i) => ({
                             src: image,
                             alt: `Product Image ${i}`,
-                            size: "full",
-                            bordered: true,
-                            isZoomed: false,
                         }))}
+                        size="full"
+                        isBordered
                     />
 
                     <div className={prose({ sm: true, class: "pb-6 pt-3" })}>

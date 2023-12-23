@@ -33,8 +33,8 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
                                     wrapper:
                                         "flex-none max-md:w-[calc(100vw-96px)] max-w-sm ring-1 ring-default/40",
                                 },
-                                size: "full",
                             }))}
+                            size="full"
                         />
 
                         <div className="flex basis-full flex-col gap-6">

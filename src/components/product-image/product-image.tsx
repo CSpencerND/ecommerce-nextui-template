@@ -17,7 +17,7 @@ export type ProductImageProps = ImageProps &
     };
 
 export function ProductImage(props: ProductImageProps) {
-    const { src, alt, size, bgStripe, bordered, className } = props;
+    const { src, alt, size, isBgStriped, isBordered, isZoomed, className } = props;
 
     const getDimensions = (axis: "width" | "height") => {
         switch (size) {
@@ -39,9 +39,9 @@ export function ProductImage(props: ProductImageProps) {
             height={getDimensions("height")}
             sizes={size ? imageSizes[size] : props.sizes}
             classNames={{
-                wrapper: imageWrapper({ bgStripe, bordered, className }),
+                wrapper: imageWrapper({ isBgStriped, isBordered, className }),
             }}
-            isZoomed
+            isZoomed={isZoomed}
             unoptimized={isImageUnoptimized}
             {...props}
         />
@@ -49,16 +49,15 @@ export function ProductImage(props: ProductImageProps) {
 }
 
 const imageWrapper = tv({
-    base: "",
     variants: {
         /** @prop Use when image bg is transparent */
-        bgStripe: {
+        isBgStriped: {
             true: "data-[loaded=true]:bg-stripe-gradient",
         },
-        bordered: {
+        isBordered: {
             true: "ring-1 ring-default/40",
         },
     },
 });
 
-type ProductImageVariants = VariantProps<typeof imageWrapper>;
+export type ProductImageVariants = VariantProps<typeof imageWrapper>;

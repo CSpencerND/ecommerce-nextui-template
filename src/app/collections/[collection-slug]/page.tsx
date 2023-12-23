@@ -42,8 +42,8 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                                     images={images.map((image, j) => ({
                                         src: image,
                                         alt: `Product Image ${j}`,
-                                        size: "preview",
                                     }))}
+                                    size="preview"
                                 />
                                 <CardFooter className={card.title({ hasPadding: true })}>
                                     <h3>{name}</h3>
