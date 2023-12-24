@@ -5,7 +5,7 @@ import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import Link from "next/link";
 
-import { useActiveImage } from "@/components/product-image";
+import { useActiveImage } from "@/components/product";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web/esm/useMountEffect";
 

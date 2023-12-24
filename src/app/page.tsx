@@ -1,14 +1,13 @@
+import { ProductImage } from "@/components/product";
 import { Carousel, CarouselItem } from "@/components/ui/carousel";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
-
-import { ProductImage } from "@/components/product-image";
 import Image from "next/image";
 
 import { prose, section, title } from "@/styles";
 
-import { getHero, getFeatured } from "@/actions";
+import { getFeatured, getHero } from "@/actions";
 import { isImageUnoptimized } from "@/site.config";
 
 export default async function HomePage() {

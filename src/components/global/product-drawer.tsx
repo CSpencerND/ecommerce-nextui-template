@@ -1,7 +1,6 @@
 "use client";
 
-import { ProductImageGroup } from "@/components/product-image";
-import { ProductProvider } from "@/components/product/product-provider";
+import { ProductImageGroup, ProductProvider } from "@/components/product";
 import { ColorSelector, SizeSelector } from "@/components/selectors";
 import { SingleSlider } from "@/components/ui/single-slider";
 import { Button } from "@nextui-org/button";

@@ -1,5 +1,5 @@
+import { ProductImage } from "@/components/product";
 import { MotionListItem } from "@/components/utility/motion";
-import { ProductImage } from "@/components/product-image";
 import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 

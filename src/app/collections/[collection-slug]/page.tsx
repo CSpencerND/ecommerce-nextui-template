@@ -1,4 +1,4 @@
-import { ActiveImageProvider, ProductImageGroup } from "@/components/product-image";
+import { ActiveImageProvider, ProductImageGroup } from "@/components/product";
 import { ProductLink } from "@/components/product/product-link";
 import { ColorSelectorPreview } from "@/components/selectors";
 import { MotionListItem } from "@/components/utility/motion";

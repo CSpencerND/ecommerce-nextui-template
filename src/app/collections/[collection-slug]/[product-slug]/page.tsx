@@ -1,6 +1,4 @@
-import { ProductProvider } from "@/components/product/product-provider";
-
-import { ProductImageGroup } from "@/components/product-image";
+import { ProductImageGroup, ProductProvider } from "@/components/product";
 import { ColorSelector, SizeSelector } from "@/components/selectors";
 
 import { Button } from "@nextui-org/button";
