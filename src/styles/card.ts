@@ -3,16 +3,12 @@ import { tv } from "tailwind-variants";
 const cardRoot = tv({
     base: "!transition-none",
     variants: {
-        isCarouselItem: {
-            true: "box-content flex-none",
-        },
         radius: {
             lg: "rounded-2xl",
             xl: "rounded-xlarge",
         },
     },
     defaultVariants: {
-        isCarouselItem: false,
         radius: "lg",
     },
 });

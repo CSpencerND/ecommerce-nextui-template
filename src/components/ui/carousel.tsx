@@ -108,7 +108,7 @@ export function CarouselItem({ children, className, title, index }: CarouselItem
             disableAnimation
             shadow="none"
             isFooterBlurred
-            className={card.root({ isCarouselItem: true, class: className })}
+            className={card.root({ class: ["box-content flex-none", className] })}
         >
             {children}
 
