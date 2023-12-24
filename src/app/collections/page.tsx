@@ -5,7 +5,7 @@ import { Link } from "@nextui-org/link";
 
 import { getCollections } from "@/actions";
 
-import { card, grid, prose, section, title } from "@/styles";
+import { card, grid, prose, section, heading } from "@/styles";
 
 export default async function CollectionDirectoryPage() {
     const collections = await getCollections();
@@ -13,7 +13,7 @@ export default async function CollectionDirectoryPage() {
     return (
         <section className={section()}>
             <header className={prose({ class: "px-6 max-lg:text-center" })}>
-                <h1 className={title()}>Collection Directory</h1>
+                <h1 className={heading()}>Collection Directory</h1>
             </header>
             <menu className={grid()}>
                 {collections.map(({ image, name }, i) => (

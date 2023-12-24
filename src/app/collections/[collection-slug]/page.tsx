@@ -6,7 +6,7 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 
 import { getCollection } from "@/actions";
 
-import { card, grid, prose, section, title } from "@/styles";
+import { card, grid, prose, section, heading } from "@/styles";
 
 type CollectionPageProps = {
     params: { "collection-slug": string };
@@ -20,7 +20,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
     return (
         <section className={section()}>
             <header className={prose({ class: "prose-invert px-6 max-lg:text-center" })}>
-                <h1 className={title()}>{name}</h1>
+                <h1 className={heading()}>{name}</h1>
                 <p>{description}</p>
             </header>
             <menu className={grid()}>

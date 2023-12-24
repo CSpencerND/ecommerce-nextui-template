@@ -9,7 +9,7 @@ export const prose = tv({
     },
 });
 
-export const title = tv({
+export const heading = tv({
     base: "m-0",
     variants: {
         color: {

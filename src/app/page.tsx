@@ -5,7 +5,7 @@ import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-import { prose, section, title } from "@/styles";
+import { prose, section, heading } from "@/styles";
 
 import { getFeatured, getHero } from "@/actions";
 import { isImageUnoptimized } from "@/site.config";
@@ -24,7 +24,7 @@ export default async function HomePage() {
                         class: "relative isolate flex basis-3/4 flex-col items-center text-center lg:items-start lg:text-left",
                     })}
                 >
-                    <h1 className={title()}>{headline}</h1>
+                    <h1 className={heading()}>{headline}</h1>
                     <p>{descriptor}</p>
                     <Button
                         href="/collections"
@@ -57,7 +57,7 @@ export default async function HomePage() {
 
             <section className={section({ row: "lg" })}>
                 <div className={prose({ class: "text-center lg:hidden" })}>
-                    <h1 className={title()}>{copy.adjective}</h1>
+                    <h1 className={heading()}>{copy.adjective}</h1>
                 </div>
 
                 <Carousel
