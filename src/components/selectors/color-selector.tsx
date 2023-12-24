@@ -5,7 +5,7 @@ import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import Link from "next/link";
 
-import { useProductImageGroup } from "@/components/product-image";
+import { useActiveImage } from "@/components/product-image";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web/esm/useMountEffect";
 
@@ -15,13 +15,15 @@ import type { Colors } from "@/types";
 
 type ColorSelectorProps = {
     colors: Colors;
+    className?: string;
 };
 
 export function ColorSelector({ colors }: ColorSelectorProps) {
-    const { setActiveIndex } = useProductImageGroup();
+    const { setActiveIndex } = useActiveImage();
     const { createQueryString, searchParams } = useQueryParams();
 
     const colorParams = searchParams.get("color");
+
     useMountEffect(() => {
         if (!searchParams || !colorParams) return;
         const i = colors.findIndex((color) => color.name === colorParams);
@@ -70,8 +72,8 @@ export function ColorSelector({ colors }: ColorSelectorProps) {
     );
 }
 
-export function ColorSelectorPreview({ colors }: ColorSelectorProps) {
-    const { activeIndex, setActiveIndex } = useProductImageGroup();
+export function ColorSelectorPreview({ colors, className }: ColorSelectorProps) {
+    const { activeIndex, setActiveIndex } = useActiveImage();
 
     return (
         <ToggleGroup.Root
@@ -82,7 +84,7 @@ export function ColorSelectorPreview({ colors }: ColorSelectorProps) {
             <menu
                 className={selector.group({
                     noWrap: true,
-                    class: "gap-3 rounded-large bg-content2 p-2 shadow-small @[146px]:justify-between",
+                    class: ["gap-3 rounded-large bg-content2 p-2 shadow-small", className],
                 })}
             >
                 {colors.map(({ name, code }, i) => {

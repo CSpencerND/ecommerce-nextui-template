@@ -1,33 +1,27 @@
 "use client";
 
 import { ProductImage } from "./product-image";
-import { useProductImageGroup } from "./product-image-group-context";
 
 import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
+import { useActiveImage } from "./active-image-context";
 
-import type { ProductImageProps, ProductImageVariants } from "./product-image";
+import type { ImageProps } from "@nextui-org/image";
+import type { ProductImageProps } from "./product-image";
 
-export type ProductImageGroupProps = ProductImageVariants & {
-    images: ProductImageProps[];
-    size?: "full" | "preview";
-    isZoomed?: boolean;
-    isBordered?: boolean;
-    isBgStriped?: boolean;
+export type ProductImageGroupProps = Omit<ProductImageProps, "src" | "alt"> & {
+    images: ImageProps[];
 };
 
-export function ProductImageGroup(props: ProductImageGroupProps) {
-    const { images, size, isBordered, isBgStriped, isZoomed } = props;
-    const { activeIndex } = useProductImageGroup();
+export function ProductImageGroup({ images, ...props }: ProductImageGroupProps) {
+    const { activeIndex } = useActiveImage();
 
     const imageComponents = useDeepCompareMemo(() => {
-        return images.map((image, i) => (
+        return images.map((image) => (
             <ProductImage
-                key={i}
-                isBordered={isBordered}
-                isBgStriped={isBgStriped}
-                isZoomed={isZoomed}
-                size={size}
-                {...image}
+                key={image.alt}
+                src={image.src}
+                alt={image.alt}
+                {...props}
             />
         ));
     }, [images]);

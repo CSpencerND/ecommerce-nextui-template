@@ -1,4 +1,4 @@
-import { ProductImageGroup, ProductImageGroupProvider } from "@/components/product-image";
+import { ActiveImageProvider, ProductImageGroup } from "@/components/product-image";
 import { ProductLink } from "@/components/product/product-link";
 import { ColorSelectorPreview } from "@/components/selectors";
 import { MotionListItem } from "@/components/utility/motion";
@@ -31,7 +31,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                         isFooterBlurred
                         className={card.root({ radius: "xl", class: "overflow-visible" })}
                     >
-                        <ProductImageGroupProvider>
+                        <ActiveImageProvider>
                             <CardBody
                                 as={ProductLink}
                                 href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
@@ -41,18 +41,22 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                                 <ProductImageGroup
                                     images={images.map((image, j) => ({
                                         src: image,
-                                        alt: `Product Image ${j}`,
+                                        alt: `Product Image ${j + 1}`,
                                     }))}
                                     size="preview"
+                                    isBordered
                                 />
                                 <CardFooter className={card.title({ hasPadding: true })}>
                                     <h3>{name}</h3>
                                 </CardFooter>
                             </CardBody>
                             <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
-                                <ColorSelectorPreview colors={colors} />
+                                <ColorSelectorPreview
+                                    colors={colors}
+                                    className="@[146px]:justify-between"
+                                />
                             </div>
-                        </ProductImageGroupProvider>
+                        </ActiveImageProvider>
                     </Card>
                 ))}
             </menu>

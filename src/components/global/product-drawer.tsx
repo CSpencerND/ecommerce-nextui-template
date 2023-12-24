@@ -39,7 +39,7 @@ export function ProductDrawer() {
                     <ProductImageGroup
                         images={images.map((image, i) => ({
                             src: image,
-                            alt: `Product Image ${i}`,
+                            alt: `Product Image ${i + 1}`,
                         }))}
                         size="full"
                         isBordered

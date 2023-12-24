@@ -35,6 +35,7 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
                                 },
                             }))}
                             size="full"
+                            isBordered
                         />
 
                         <div className="flex basis-full flex-col gap-6">

@@ -1,23 +1,22 @@
-import { Image, type ImageProps } from "@nextui-org/react";
+import { Image, type ImageProps } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import { isImageUnoptimized } from "@/site.config";
-
-import { tv, type VariantProps } from "tailwind-variants";
 
 const imageSizes = {
     preview: "144, (min-width: 376px) 192px",
     full: "279px, (min-width: 376px) 332px, (min-width: 429px) 384px",
 };
 
-export type ProductImageProps = ImageProps &
-    ProductImageVariants & {
-        /** @prop Will apply `sizes`, `width`, and `height` */
-        size?: "preview" | "full";
-    };
+export type ProductImageProps = ImageProps & {
+    /** @prop Will apply `sizes`, `width`, and `height` */
+    size?: "preview" | "full";
+    isBordered?: boolean;
+    isBgStriped?: boolean;
+};
 
 export function ProductImage(props: ProductImageProps) {
-    const { src, alt, size, isBgStriped, isBordered, isZoomed, className } = props;
+    const { size, isBgStriped, isBordered, className, ...rest } = props;
 
     const getDimensions = (axis: "width" | "height") => {
         switch (size) {
@@ -33,31 +32,20 @@ export function ProductImage(props: ProductImageProps) {
     return (
         <Image
             as={NextImage}
-            src={src}
-            alt={alt}
+            unoptimized={isImageUnoptimized}
+            src={props.src}
+            alt={props.alt}
             width={getDimensions("width")}
             height={getDimensions("height")}
             sizes={size ? imageSizes[size] : props.sizes}
             classNames={{
-                wrapper: imageWrapper({ isBgStriped, isBordered, className }),
+                wrapper: [
+                    isBgStriped && "data-[loaded=true]:bg-stripe-gradient",
+                    isBordered && "ring-1 ring-divider",
+                    className,
+                ],
             }}
-            isZoomed={isZoomed}
-            unoptimized={isImageUnoptimized}
-            {...props}
+            {...rest}
         />
     );
 }
-
-const imageWrapper = tv({
-    variants: {
-        /** @prop Use when image bg is transparent */
-        isBgStriped: {
-            true: "data-[loaded=true]:bg-stripe-gradient",
-        },
-        isBordered: {
-            true: "ring-1 ring-default/40",
-        },
-    },
-});
-
-export type ProductImageVariants = VariantProps<typeof imageWrapper>;
