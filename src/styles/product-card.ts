@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-export const cardRoot = tv({
+const cardRoot = tv({
     base: "!transition-none",
     variants: {
         isCarouselItem: {
@@ -17,7 +17,7 @@ export const cardRoot = tv({
     },
 });
 
-export const cardTitle = tv({
+const cardTitle = tv({
     base: [
         "absolute z-10 ml-1 rounded-[10px] border-1 border-white/10",
         "bg-white/10 py-1 shadow-small backdrop-contrast-75",
@@ -34,14 +34,7 @@ export const cardTitle = tv({
     },
 });
 
-export const cardImage = tv({
-    base: "data-[loaded=true]:bg-stripe-gradient",
-});
-
 export const card = {
     root: cardRoot,
     title: cardTitle,
-    image: cardImage,
 };
-
-export default card;

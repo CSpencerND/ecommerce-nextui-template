@@ -6,13 +6,12 @@ import { Pagination } from "@nextui-org/pagination";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { useHydrated } from "@/hooks/use-hydrated";
 import { useCallback, useEffect, useState } from "react";
 
 import useEmblaCarousel, { type EmblaCarouselType } from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-import card from "@/styles/product-card";
+import { card } from "@/styles";
 import { cn } from "@nextui-org/react";
 
 export type CarouselProps = React.PropsWithChildren & {
