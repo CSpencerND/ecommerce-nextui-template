@@ -9,6 +9,7 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
     title: {
@@ -51,7 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             {children}
                         </main>
                     </div>
-                    <ProductDrawer />
+                    <Suspense>
+                        <ProductDrawer />
+                    </Suspense>
+                    <TailwindIndicator />
                 </Providers>
             </body>
         </html>
