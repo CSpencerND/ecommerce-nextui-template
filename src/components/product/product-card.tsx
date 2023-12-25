@@ -55,11 +55,9 @@ export const ProductCard = (
     );
 };
 
-type ProductCardFooter = React.ComponentPropsWithoutRef<typeof CardFooter> & {
-    title: string;
-};
-
-export const ProductCardFooter = (props: ProductCardFooter) => {
+export const ProductCardFooter = (
+    props: React.ComponentPropsWithoutRef<typeof CardFooter> & { title: string },
+) => {
     return (
         <CardFooter {...props}>
             <h3>{props.title}</h3>
