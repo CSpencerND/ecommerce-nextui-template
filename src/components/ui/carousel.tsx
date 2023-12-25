@@ -1,7 +1,7 @@
 "use client";
 
+import { ProductCard, ProductCardBody, ProductCardFooter } from "@/components/product";
 import { Button, ButtonGroup } from "@nextui-org/button";
-import { Card, CardFooter } from "@nextui-org/card";
 import { Pagination } from "@nextui-org/pagination";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -11,7 +11,6 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel, { type EmblaCarouselType } from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-import { card } from "@/styles";
 import { cn } from "@nextui-org/react";
 
 export type CarouselProps = React.PropsWithChildren & {
@@ -95,29 +94,29 @@ export function Carousel(props: CarouselProps) {
 }
 
 export type CarouselItemProps = React.PropsWithChildren & {
-    className?: string;
-    title?: string;
+    title: string;
     index: number;
 };
 
-export function CarouselItem({ children, className, title, index }: CarouselItemProps) {
+export function CarouselItem({ children, title, index }: CarouselItemProps) {
     return (
-        <Card
+        <ProductCard
             aria-label={`Carousel Item ${index + 1}`}
             as="li"
             disableAnimation
             shadow="none"
             isFooterBlurred
-            className={card.root({ class: ["box-content flex-none", className] })}
+            isFooterAbsolute
+            className="flex-none"
         >
-            {children}
-
-            {title ? (
-                <CardFooter className={card.title()}>
-                    <h3 className="truncate text-medium font-bold text-white">{title}</h3>
-                </CardFooter>
-            ) : null}
-        </Card>
+            <ProductCardBody>
+                {children}
+                <ProductCardFooter
+                    title={title}
+                    className="ml-1"
+                />
+            </ProductCardBody>
+        </ProductCard>
     );
 }
 

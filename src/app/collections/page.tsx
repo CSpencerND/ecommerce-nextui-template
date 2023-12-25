@@ -1,11 +1,16 @@
-import { ProductImage } from "@/components/product";
+import {
+    ProductCard,
+    ProductCardBody,
+    ProductCardFooter,
+    ProductImage,
+} from "@/components/product";
+
 import { MotionListItem } from "@/components/utility/motion";
-import { Card, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
 import { getCollections } from "@/actions";
 
-import { card, grid, prose, section, heading } from "@/styles";
+import { grid, heading, prose, section } from "@/styles";
 
 export default async function CollectionDirectoryPage() {
     const collections = await getCollections();
@@ -17,25 +22,29 @@ export default async function CollectionDirectoryPage() {
             </header>
             <menu className={grid()}>
                 {collections.map(({ image, name }, i) => (
-                    <Card
-                        as={MotionListItem}
-                        key={i}
+                    <MotionListItem
+                        key={`Collection ${i}`}
                         index={i}
-                        isFooterBlurred
-                        isPressable
-                        className={card.root()}
                     >
-                        <Link href={`/collections/${name.toLowerCase()}`}>
-                            <ProductImage
-                                src={image}
-                                alt={name}
-                                size="preview"
-                            />
-                            <CardFooter className={card.title()}>
-                                <h3 className="text-large">{name}</h3>
-                            </CardFooter>
-                        </Link>
-                    </Card>
+                        <ProductCard
+                            isFooterAbsolute
+                            isFooterBlurred
+                            isPressable
+                            isBodyLink
+                        >
+                            <ProductCardBody
+                                as={Link}
+                                href={`/collections/${name.toLowerCase()}`}
+                            >
+                                <ProductImage
+                                    src={image}
+                                    alt={name}
+                                    size="preview"
+                                />
+                                <ProductCardFooter title={name} />
+                            </ProductCardBody>
+                        </ProductCard>
+                    </MotionListItem>
                 ))}
             </menu>
         </section>

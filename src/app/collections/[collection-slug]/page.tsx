@@ -1,12 +1,18 @@
-import { ActiveImageProvider, ProductImageGroup } from "@/components/product";
-import { ProductLink } from "@/components/product/product-link";
+import {
+    ActiveImageProvider,
+    ProductCard,
+    ProductCardBody,
+    ProductCardFooter,
+    ProductImageGroup,
+    ProductLink,
+} from "@/components/product";
+
 import { ColorSelectorPreview } from "@/components/selectors";
 import { MotionListItem } from "@/components/utility/motion";
-import { Card, CardBody, CardFooter } from "@nextui-org/card";
 
 import { getCollection } from "@/actions";
 
-import { card, grid, prose, section, heading } from "@/styles";
+import { grid, heading, prose, section } from "@/styles";
 
 type CollectionPageProps = {
     params: { "collection-slug": string };
@@ -25,39 +31,42 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
             </header>
             <menu className={grid()}>
                 {products.map(({ name, images, colors }, i) => (
-                    <Card
-                        key={i}
-                        as={MotionListItem}
-                        isFooterBlurred
-                        className={card.root({ radius: "xl", class: "overflow-visible" })}
+                    <MotionListItem
+                        key={`Product ${i}`}
+                        index={i}
                     >
-                        <ActiveImageProvider>
-                            <CardBody
-                                as={ProductLink}
-                                href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
-                                data={products[i]}
-                                className="rounded-xlarge !outline-offset-[-10px] focus-visible:focus-ring"
-                            >
-                                <ProductImageGroup
-                                    images={images.map((image, j) => ({
-                                        src: image,
-                                        alt: `Product Image ${j + 1}`,
-                                    }))}
-                                    size="preview"
-                                    isBordered
-                                />
-                                <CardFooter className={card.title({ hasPadding: true })}>
-                                    <h3>{name}</h3>
-                                </CardFooter>
-                            </CardBody>
-                            <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
-                                <ColorSelectorPreview
-                                    colors={colors}
-                                    className="@[146px]:justify-between"
-                                />
-                            </div>
-                        </ActiveImageProvider>
-                    </Card>
+                        <ProductCard
+                            isFooterAbsolute
+                            isFooterBlurred
+                            isBodyLink
+                            hasPadding
+                        >
+                            <ActiveImageProvider>
+                                <ProductCardBody
+                                    as={ProductLink}
+                                    href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
+                                    data={products[i]}
+                                    className="rounded-xlarge"
+                                >
+                                    <ProductImageGroup
+                                        images={images.map((image, j) => ({
+                                            src: image,
+                                            alt: `Product Image ${j + 1}`,
+                                        }))}
+                                        size="preview"
+                                        isBordered
+                                    />
+                                    <ProductCardFooter title={name} />
+                                </ProductCardBody>
+                                <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
+                                    <ColorSelectorPreview
+                                        colors={colors}
+                                        className="@[146px]:justify-between"
+                                    />
+                                </div>
+                            </ActiveImageProvider>
+                        </ProductCard>
+                    </MotionListItem>
                 ))}
             </menu>
         </section>
