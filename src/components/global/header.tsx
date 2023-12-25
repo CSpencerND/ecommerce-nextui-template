@@ -14,9 +14,11 @@ import {
 
 import { siteConfig } from "@/site.config";
 
-type HeaderProps = {};
+type HeaderProps = {
+    themeSwitchType?: "toggle" | "menu";
+};
 
-export const Header: React.FC<HeaderProps> = () => (
+export const Header: React.FC<HeaderProps> = ({ themeSwitchType, ...props }) => (
     <Navbar isBordered>
         <NavbarBrand>
             <Link
@@ -67,7 +69,7 @@ export const Header: React.FC<HeaderProps> = () => (
                 </Button>
             </NavbarItem>
             <NavbarItem className="grid place-items-center">
-                <ThemeSwitch type="toggle" />
+                <ThemeSwitch type={themeSwitchType} />
             </NavbarItem>
             <NavbarMenuToggle className="lg:hidden" />
         </NavbarContent>

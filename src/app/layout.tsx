@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         className="relative flex h-svh flex-col"
                         vaul-drawer-wrapper=""
                     >
-                        <Header />
+                        <Header themeSwitchType="toggle" />
                         <main className="container mx-auto max-w-5xl flex-grow space-y-24 px-6 py-16">
                             {children}
                         </main>
