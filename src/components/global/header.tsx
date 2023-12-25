@@ -67,7 +67,7 @@ export const Header: React.FC<HeaderProps> = () => (
                 </Button>
             </NavbarItem>
             <NavbarItem className="grid place-items-center">
-                <ThemeSwitch type="menu" />
+                <ThemeSwitch type="toggle" />
             </NavbarItem>
             <NavbarMenuToggle className="lg:hidden" />
         </NavbarContent>
