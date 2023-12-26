@@ -57,7 +57,10 @@ const config: Config = {
         }),
         plugin(function ({ addUtilities, addVariant }) {
             addUtilities({
-                ".outline-debug": {
+                ".debug": {
+                    outline: "1px solid red",
+                },
+                ".debug-nested": {
                     outline: "1px solid red",
                     "*": {
                         outline: "1px solid red",
