@@ -27,7 +27,6 @@ export default async function CollectionDirectoryPage() {
                         index={i}
                     >
                         <ProductCard
-                            isFooterAbsolute
                             isFooterBlurred
                             isPressable
                             isBodyLink

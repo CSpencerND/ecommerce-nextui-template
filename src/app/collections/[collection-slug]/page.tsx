@@ -25,7 +25,11 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
     return (
         <section className={section()}>
-            <header className={prose({ class: "prose-invert px-6 max-lg:text-center" })}>
+            <header
+                className={prose({
+                    class: "prose-invert px-6 max-lg:text-center",
+                })}
+            >
                 <h1 className={heading()}>{name}</h1>
                 <p>{description}</p>
             </header>
@@ -36,7 +40,6 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                         index={i}
                     >
                         <ProductCard
-                            isFooterAbsolute
                             isFooterBlurred
                             isBodyLink
                             hasPadding

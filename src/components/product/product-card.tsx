@@ -13,12 +13,12 @@ const ProductCardComponent = extendVariants(Card, {
                 base: "rounded-xlarge",
             },
         },
-        isFooterAbsolute: {
+        isFooterBlurred: {
             true: {
                 footer: [
                     "absolute z-10 rounded-[10px] border-1 border-white/10",
-                    "bg-white/10 py-1 shadow-small backdrop-contrast-75",
-                    "*:truncate *:text-medium *:font-bold *:text-white",
+                    "py-1 shadow-small backdrop-contrast-75",
+                    "truncate text-medium font-bold text-white",
                 ],
             },
         },
