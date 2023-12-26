@@ -2,7 +2,7 @@
 module.exports = {
     tabWidth: 4,
     singleQuote: false,
-    printWidth: 96,
+    printWidth: 82,
     singleAttributePerLine: true,
     plugins: ["prettier-plugin-tailwindcss"],
     tailwindFunctions: ["clsx", "twMerge", "cn", "tv", "tw"],
