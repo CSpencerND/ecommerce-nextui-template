@@ -2,7 +2,7 @@
 
 import { ProductImage } from "./product-image";
 
-import { useDeepCompareMemo } from "@react-hookz/web/esm/useDeepCompareMemo";
+import { useDeepCompareMemo } from "@react-hookz/web";
 import { useActiveImage } from "./active-image-context";
 
 import type { ImageProps } from "@nextui-org/image";

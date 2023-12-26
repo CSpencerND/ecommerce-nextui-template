@@ -1,13 +1,14 @@
 "use client";
 
-import { Button } from "@nextui-org/button";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
+
+import { Button } from "@nextui-org/button";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import Link from "next/link";
 
 import { useActiveImage } from "@/components/product";
 import { useQueryParams } from "@/hooks/use-query-params";
-import { useMountEffect } from "@react-hookz/web/esm/useMountEffect";
+import { useMountEffect } from "@react-hookz/web";
 
 import { selector } from "./styles";
 
@@ -38,7 +39,10 @@ export function ColorSelector({ colors }: ColorSelectorProps) {
         >
             <menu className={selector.group()}>
                 {colors.map(({ name, code }, i) => {
-                    const queryString = createQueryString({ name: "color", value: name });
+                    const queryString = createQueryString({
+                        name: "color",
+                        value: name,
+                    });
                     const isActive = colorParams === name;
 
                     return (
@@ -84,7 +88,10 @@ export function ColorSelectorPreview({ colors, className }: ColorSelectorProps) 
             <menu
                 className={selector.group({
                     noWrap: true,
-                    class: ["gap-3 rounded-large bg-content2 p-2 shadow-small", className],
+                    class: [
+                        "gap-3 rounded-large bg-content2 p-2 shadow-small",
+                        className,
+                    ],
                 })}
             >
                 {colors.map(({ name, code }, i) => {
