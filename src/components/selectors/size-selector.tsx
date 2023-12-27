@@ -10,9 +10,9 @@ import { selector } from "./selector-styles";
 
 type SizeSelectorProps = {
     sizes: string[];
-};
+} & React.HTMLAttributes<HTMLMenuElement>;
 
-export function SizeSelector({ sizes }: SizeSelectorProps) {
+export function SizeSelector({ sizes, ...props }: SizeSelectorProps) {
     const { createQueryString, searchParams } = useQueryParams();
     const sizeParams = searchParams.get("size");
 
@@ -22,7 +22,10 @@ export function SizeSelector({ sizes }: SizeSelectorProps) {
             aria-label="Select A Size"
             type="single"
         >
-            <menu className={selector.group()}>
+            <menu
+                className={selector.group()}
+                {...props}
+            >
                 {sizes.map((size) => {
                     const queryString = createQueryString({
                         name: "size",

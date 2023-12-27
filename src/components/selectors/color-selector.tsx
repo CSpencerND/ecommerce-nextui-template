@@ -17,9 +17,9 @@ import type { Colors } from "@/types";
 type ColorSelectorProps = {
     colors: Colors;
     className?: string;
-};
+} & React.HTMLAttributes<HTMLMenuElement>;
 
-export function ColorSelector({ colors }: ColorSelectorProps) {
+export function ColorSelector({ colors, ...props }: ColorSelectorProps) {
     const { setActiveIndex } = useActiveImage();
     const { createQueryString, searchParams } = useQueryParams();
 
@@ -37,7 +37,10 @@ export function ColorSelector({ colors }: ColorSelectorProps) {
             aria-label="Select A Color"
             type="single"
         >
-            <menu className={selector.group()}>
+            <menu
+                className={selector.group()}
+                {...props}
+            >
                 {colors.map(({ name, code }, i) => {
                     const queryString = createQueryString({
                         name: "color",
