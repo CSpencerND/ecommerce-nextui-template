@@ -1,19 +1,17 @@
 import { ProductImage } from "@/components/product";
 
-// import {
-//     Carousel,
-//     CarouselContent,
-//     CarouselControls,
-//     CarouselItem,
-// } from "@/components/ui/carousel";
+import {
+    Carousel,
+    CarouselContent,
+    CarouselControls,
+    CarouselItem,
+} from "@/components/ui/carousel";
 
-import { Carousel, CarouselItem } from "@/components/ui/carousel/carousel-backup";
-
-// import {
-//     ProductCard,
-//     ProductCardBody,
-//     ProductCardFooter,
-// } from "@/components/product";
+import {
+    ProductCard,
+    ProductCardBody,
+    ProductCardFooter,
+} from "@/components/product";
 
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
@@ -76,65 +74,42 @@ export default async function HomePage() {
                 </div>
 
                 <Carousel
-                    numSlides={items.length}
-                    loop
-                    showControls
-                    className="lg:max-w-6xl"
+                    opts={{
+                        align: "start",
+                        skipSnaps: true,
+                        containScroll: false,
+                        loop: true,
+                    }}
+                    className="max-w-prose"
                 >
-                    {items.map(({ image, name }, i) => (
-                        <CarouselItem
-                            key={i}
-                            index={i}
-                            title={name}
-                        >
-                            <ProductImage
-                                src={image}
-                                alt={name}
-                                width={192}
-                                height={192}
-                                sizes="192px"
-                            />
-                        </CarouselItem>
-                    ))}
+                    <CarouselContent>
+                        {items.map(({ image, name }, i) => (
+                            <CarouselItem key={`Item ${i}`}>
+                                <ProductCard
+                                    isFooterBlurred
+                                    disableAnimation
+                                    shadow="none"
+                                    className="border-divider focus-visible:focus-ring"
+                                >
+                                    <ProductCardBody>
+                                        <ProductImage
+                                            src={image}
+                                            alt={name}
+                                            width={192}
+                                            height={192}
+                                            sizes="192px"
+                                        />
+                                        <ProductCardFooter
+                                            title={name}
+                                            className="ml-1"
+                                        />
+                                    </ProductCardBody>
+                                </ProductCard>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselControls numSlides={items.length} />
                 </Carousel>
-
-                {/* <Carousel */}
-                {/*     opts={{ */}
-                {/*         align: "start", */}
-                {/*         skipSnaps: true, */}
-                {/*         containScroll: false, */}
-                {/*         loop: true, */}
-                {/*     }} */}
-                {/*     className="max-w-prose" */}
-                {/* > */}
-                {/*     <CarouselContent> */}
-                {/*         {items.map(({ image, name }, i) => ( */}
-                {/*             <CarouselItem key={`Item ${i}`}> */}
-                {/*                 <ProductCard */}
-                {/*                     isFooterBlurred */}
-                {/*                     disableAnimation */}
-                {/*                     shadow="none" */}
-                {/*                     className="border-divider focus-visible:focus-ring" */}
-                {/*                 > */}
-                {/*                     <ProductCardBody> */}
-                {/*                         <ProductImage */}
-                {/*                             src={image} */}
-                {/*                             alt={name} */}
-                {/*                             width={192} */}
-                {/*                             height={192} */}
-                {/*                             sizes="192px" */}
-                {/*                         /> */}
-                {/*                         <ProductCardFooter */}
-                {/*                             title={name} */}
-                {/*                             className="ml-1" */}
-                {/*                         /> */}
-                {/*                     </ProductCardBody> */}
-                {/*                 </ProductCard> */}
-                {/*             </CarouselItem> */}
-                {/*         ))} */}
-                {/*     </CarouselContent> */}
-                {/*     <CarouselControls numSlides={items.length} /> */}
-                {/* </Carousel> */}
 
                 <div
                     className={prose({
