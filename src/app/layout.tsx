@@ -1,5 +1,7 @@
-import { Header, ProductDrawer } from "@/components/global";
+import { Header } from "@/components/global";
+import { ProductDrawer } from "@/components/product";
 import { TailwindIndicator } from "@/components/utility/tailwind-indicator";
+import { Suspense } from "react";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/site.config";
@@ -8,8 +10,8 @@ import "@/styles/globals.css";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
-import type { Metadata, Viewport } from "next";
-import { Suspense } from "react";
+import type { Metadata } from "next";
+// import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
     title: {
@@ -44,18 +46,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     }}
                 >
                     <div
-                        className="relative flex h-svh flex-col"
                         vaul-drawer-wrapper=""
+                        className="relative flex h-svh flex-col"
                     >
                         <Header themeSwitchType="toggle" />
                         <main className="container mx-auto max-w-5xl flex-grow space-y-24 px-6 py-16">
                             {children}
                         </main>
                     </div>
+                    <TailwindIndicator />
                     <Suspense>
                         <ProductDrawer />
                     </Suspense>
-                    <TailwindIndicator />
                 </Providers>
             </body>
         </html>

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import type { Maybe, Product } from "@/types";
 
-type DrawerStore = {
+type ProductDrawerStore = {
     data: Maybe<Product>;
     isOpen: boolean;
     setIsOpen: (isOpen: boolean) => void;
@@ -10,7 +10,7 @@ type DrawerStore = {
     onClose: () => void;
 };
 
-export const useDrawer = create<DrawerStore>()((set) => ({
+export const useProductDrawer = create<ProductDrawerStore>()((set) => ({
     data: null,
     isOpen: false,
     setIsOpen: (isOpen) => set({ isOpen: isOpen }),

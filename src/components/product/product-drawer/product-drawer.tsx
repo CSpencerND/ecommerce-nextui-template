@@ -12,17 +12,30 @@ import {
     DrawerDescription,
     DrawerFooter,
     DrawerTitle,
-    useDrawer,
 } from "@/components/ui/drawer";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useProductDrawer } from "@/components/product";
 
 import { prose } from "@/styles";
 
 export function ProductDrawer() {
+    const isOpen = useProductDrawer((s) => s.isOpen);
+    const onClose = useProductDrawer((s) => s.onClose);
+    const data = useProductDrawer((s) => s.data);
+
+    const router = useRouter();
     const searchParams = useSearchParams();
 
-    const data = useDrawer((s) => s.data);
+    useEffect(() => {
+        window.addEventListener("popstate", onClose);
+
+        return () => {
+            window.removeEventListener("popstate", onClose);
+        };
+    }, [onClose]);
+
     if (!data) return null;
     const { name, description, images, price, sizes, colors } = data;
 
@@ -32,7 +45,15 @@ export function ProductDrawer() {
     const isBuyDisabled = !selectedColor || !selectedSize;
 
     return (
-        <Drawer>
+        <Drawer
+            open={isOpen}
+            onOpenChange={(open) => {
+                if (open === false) {
+                    onClose();
+                    router.back();
+                }
+            }}
+        >
             <ProductProvider>
                 <DrawerBody>
                     <ProductImageGroup
@@ -51,10 +72,11 @@ export function ProductDrawer() {
                         </div>
                         <DrawerDescription>{description}</DrawerDescription>
                         <p>
-                            Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-                            reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit
-                            ex esse exercitation amet. Nisi anim cupidatat excepteur officia.
-                            Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
+                            Lorem ipsum dolor sit amet, officia excepteur ex
+                            fugiat reprehenderit enim labore culpa sint ad nisi
+                            Lorem pariatur mollit ex esse exercitation amet. Nisi
+                            anim cupidatat excepteur officia. Reprehenderit
+                            nostrud nostrud ipsum Lorem est aliquip amet voluptate
                         </p>
                     </div>
                 </DrawerBody>
@@ -81,7 +103,13 @@ export function ProductDrawer() {
                         </aside>
                     </VisuallyHidden>
 
-                    <div className="inline-flex gap-3 *:flex-1 *:font-semibold">
+                    <div
+                        className="inline-flex gap-3 *:flex-1 *:font-semibold"
+                        onClick={() => {
+                            if (!isBuyDisabled) return;
+                            alert("Select your options");
+                        }}
+                    >
                         <Button
                             color="primary"
                             variant="shadow"

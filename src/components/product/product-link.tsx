@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { forwardRef } from "react";
 
-import { useDrawer } from "@/components/ui/drawer";
+import { useProductDrawer } from "@/components/product";
 
 import type { Product } from "@/types";
 
@@ -14,7 +14,7 @@ type ProductLinkRef = React.ElementRef<typeof Link>;
 
 const ProductLink = forwardRef<ProductLinkRef, ProductLinkProps>(
     ({ href, data, ...props }, ref) => {
-        const onOpen = useDrawer((s) => s.onOpen);
+        const onOpen = useProductDrawer((s) => s.onOpen);
 
         return (
             <Link
