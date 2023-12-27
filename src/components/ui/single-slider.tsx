@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/button";
 import { ChevronUpIcon } from "lucide-react";
 
 import { cn } from "@nextui-org/system";
@@ -12,17 +11,15 @@ export function SingleSlider({ children }: React.PropsWithChildren) {
             className="group flex flex-col gap-3"
             data-show={show}
         >
-            <Button
-                size="sm"
-                variant="light"
-                disableRipple
-                onPress={() => setShow((prev) => !prev)}
+            <button
+                onClick={() => setShow((prev) => !prev)}
+                className="flex justify-center rounded-small py-1 focus-visible:focus-ring"
             >
                 <ChevronUpIcon
                     size={22}
-                    className="stroke-foreground-500 stroke-[4] group-data-[show=true]:rotate-180"
+                    className="stroke-foreground-500 stroke-[3] group-data-[show=true]:rotate-180"
                 />
-            </Button>
+            </button>
             <div
                 className={cn(
                     "grid transition-[grid-template-rows]",
