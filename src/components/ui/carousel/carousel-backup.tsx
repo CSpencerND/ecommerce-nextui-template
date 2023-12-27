@@ -1,6 +1,10 @@
 "use client";
 
-import { ProductCard, ProductCardBody, ProductCardFooter } from "@/components/product";
+import {
+    ProductCard,
+    ProductCardBody,
+    ProductCardFooter,
+} from "@/components/product";
 import { Button, ButtonGroup } from "@nextui-org/button";
 import { Pagination } from "@nextui-org/pagination";
 
@@ -35,7 +39,9 @@ export function Carousel(props: CarouselProps) {
         setSlide(snap);
     }, []);
 
-    const onKeyboardScroll = (e: React.KeyboardEvent<HTMLDivElement> | KeyboardEvent) => {
+    const onKeyboardScroll = (
+        e: React.KeyboardEvent<HTMLDivElement> | KeyboardEvent,
+    ) => {
         switch (e.key) {
             case "ArrowLeft":
                 emblaApi?.scrollPrev();
@@ -106,7 +112,6 @@ export function CarouselItem({ children, title, index }: CarouselItemProps) {
             disableAnimation
             shadow="none"
             isFooterBlurred
-            isFooterAbsolute
             className="flex-none"
         >
             <ProductCardBody>
@@ -125,7 +130,10 @@ export type CarouselControlsProps = {
     scrollPrevSlide?: () => void;
 };
 
-export function CarouselControls({ scrollPrevSlide, scrollNextSlide }: CarouselControlsProps) {
+export function CarouselControls({
+    scrollPrevSlide,
+    scrollNextSlide,
+}: CarouselControlsProps) {
     if (!scrollNextSlide || !scrollPrevSlide) return null;
 
     return (
