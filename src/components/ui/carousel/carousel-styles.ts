@@ -83,7 +83,7 @@ const dots = tv({
     variants: {
         isSelected: {
             true: {
-                icon: "fill-foreground",
+                icon: "fill-foreground stroke-foreground",
             },
             false: {
                 icon: "fill-content1",

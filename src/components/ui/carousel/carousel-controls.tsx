@@ -7,7 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import { useCarousel } from "./carousel-context";
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { controls, dots } from "./carousel-styles";
 
 import type { VariantProps } from "tailwind-variants";
@@ -98,11 +98,12 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = "CarouselNext";
 
-const Indicator = motion(CircleIcon);
+// const Indicator = motion(CircleIcon);
 
 const CarouselDots = ({ numSlides }: { numSlides: number }) => {
     const { scrollTo, selectedScrollSnap } = useCarousel();
-    const { base, button, icon, indicator } = dots();
+    const { base, button, icon } = dots();
+    // const { base, button, icon, indicator } = dots();
 
     return (
         <ButtonGroup
@@ -123,21 +124,48 @@ const CarouselDots = ({ numSlides }: { numSlides: number }) => {
                     }}
                     tabIndex={-1}
                 >
-                    {i === selectedScrollSnap && (
-                        <Indicator
-                            layoutId="indicator"
-                            size={16}
-                            className={indicator()}
-                        />
-                    )}
                     <CircleIcon
                         size={16}
-                        className={icon()}
+                        className={icon({ isSelected: i === selectedScrollSnap })}
                     />
                 </Button>
             ))}
         </ButtonGroup>
     );
+    // return (
+    //     <ButtonGroup
+    //         aria-hidden="true"
+    //         isIconOnly
+    //         variant="solid"
+    //         size="sm"
+    //         radius="full"
+    //         className={base()}
+    //     >
+    //         {Array.from({ length: numSlides }).map((_, i) => (
+    //             <Button
+    //                 key={i}
+    //                 onClick={() => scrollTo(i)}
+    //                 className={button()}
+    //                 style={{
+    //                     WebkitTapHighlightColor: "transparent",
+    //                 }}
+    //                 tabIndex={-1}
+    //             >
+    //                 {i === selectedScrollSnap && (
+    //                     <Indicator
+    //                         layoutId="indicator"
+    //                         size={16}
+    //                         className={indicator()}
+    //                     />
+    //                 )}
+    //                 <CircleIcon
+    //                     size={16}
+    //                     className={icon()}
+    //                 />
+    //             </Button>
+    //         ))}
+    //     </ButtonGroup>
+    // );
 };
 
 export { CarouselControls, CarouselDots, CarouselNext, CarouselPrevious };
