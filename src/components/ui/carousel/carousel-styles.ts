@@ -76,7 +76,7 @@ const controls = tv({
 const dots = tv({
     slots: {
         base: "overflow-clip rounded-full shadow-sm",
-        button: "relative z-[unset] overflow-auto bg-content2 hover:bg-content3",
+        button: "relative z-[unset] overflow-auto bg-content2 scrollbar-hide hover:bg-content3",
         icon: "stroke-content1 p-1",
         indicator: "absolute z-10 fill-foreground stroke-foreground p-1",
     },
