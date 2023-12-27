@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useQueryParams } from "@/hooks/use-query-params";
 
-import { selector } from "./styles";
+import { selector } from "./selector-styles";
 
 type SizeSelectorProps = {
     sizes: string[];
@@ -24,7 +24,10 @@ export function SizeSelector({ sizes }: SizeSelectorProps) {
         >
             <menu className={selector.group()}>
                 {sizes.map((size) => {
-                    const queryString = createQueryString({ name: "size", value: size });
+                    const queryString = createQueryString({
+                        name: "size",
+                        value: size,
+                    });
                     const isActive = sizeParams === size;
 
                     return (

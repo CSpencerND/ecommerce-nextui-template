@@ -10,7 +10,7 @@ import { useActiveImage } from "@/components/product";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web";
 
-import { selector } from "./styles";
+import { selector } from "./selector-styles";
 
 import type { Colors } from "@/types";
 
