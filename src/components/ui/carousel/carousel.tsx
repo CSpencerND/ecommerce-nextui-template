@@ -2,145 +2,33 @@
 
 import * as React from "react";
 
-import useEmblaCarousel, {
-    type EmblaCarouselType as CarouselApi,
-} from "embla-carousel-react";
-import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { ChevronLeftIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import {
     CarouselProvider,
     useCarousel,
+    type CarouselApi,
     type CarouselProps,
 } from "./carousel-context";
 
-import { carousel } from "./carousel-styles";
+import { cn } from "@nextui-org/system";
 
-const Carousel = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement> & CarouselProps
->(
-    (
-        {
-            orientation = "horizontal",
-            opts,
-            setApi,
-            plugins = [],
-            className,
-            children,
-            ...props
-        },
-        ref,
-    ) => {
-        const [carouselRef, api] = useEmblaCarousel(
-            {
-                ...opts,
-                axis: orientation === "horizontal" ? "x" : "y",
-            },
-            [WheelGesturesPlugin(), ...plugins],
-        );
-        const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-        const [canScrollNext, setCanScrollNext] = React.useState(false);
-
-        const [selectedScrollSnap, setSelectedScrollSnap] = React.useState(0);
-        const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
-
-        const onInit = React.useCallback((api: CarouselApi) => {
-            if (!api) return;
-
-            setScrollSnaps(api.scrollSnapList());
-        }, []);
-
-        const onSelect = React.useCallback((api: CarouselApi) => {
-            if (!api) return;
-
-            setSelectedScrollSnap(api.selectedScrollSnap());
-            setCanScrollPrev(api.canScrollPrev());
-            setCanScrollNext(api.canScrollNext());
-        }, []);
-
-        const scrollPrev = React.useCallback(() => {
-            api?.scrollPrev();
-        }, [api]);
-
-        const scrollNext = React.useCallback(() => {
-            api?.scrollNext();
-        }, [api]);
-
-        const scrollTo = React.useCallback(
-            (i: number) => {
-                api?.scrollTo(i);
-            },
-            [api],
-        );
-
-        const handleKeyDown = React.useCallback(
-            (event: React.KeyboardEvent<HTMLDivElement>) => {
-                if (event.key === "ArrowLeft") {
-                    event.preventDefault();
-                    scrollPrev();
-                } else if (event.key === "ArrowRight") {
-                    event.preventDefault();
-                    scrollNext();
-                }
-            },
-            [scrollPrev, scrollNext],
-        );
-
-        React.useEffect(() => {
-            if (!api || !setApi) {
-                return;
-            }
-
-            setApi(api);
-        }, [api, setApi]);
-
-        React.useEffect(() => {
-            if (!api) return;
-
-            onInit(api);
-            onSelect(api);
-            api.on("reInit", onSelect);
-            api.on("select", onSelect);
-
-            return () => {
-                api?.off("select", onInit);
-                api?.off("select", onSelect);
-            };
-        }, [api, onInit, onSelect]);
-
-        const { base, ...rest } = carousel({ orientation, className });
-
+const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
+    ({ children, className, ...props }, ref) => {
         return (
-            <CarouselProvider
-                value={{
-                    carouselRef,
-                    api: api,
-                    opts,
-                    orientation:
-                        orientation ||
-                        (opts?.axis === "y" ? "vertical" : "horizontal"),
-                    scrollPrev,
-                    scrollNext,
-                    canScrollPrev,
-                    canScrollNext,
-                    scrollSnaps,
-                    scrollTo,
-                    selectedScrollSnap,
-                    setSelectedScrollSnap,
-                    ...rest,
-                }}
+            <div
+                ref={ref}
+                className={cn(
+                    "group relative rounded-xlarge bg-content1 shadow-medium",
+                    className,
+                )}
+                role="region"
+                aria-roledescription="carousel"
+                {...props}
             >
-                <div
-                    ref={ref}
-                    onKeyDownCapture={handleKeyDown}
-                    className={base({ className })}
-                    role="region"
-                    aria-roledescription="carousel"
-                    {...props}
-                >
-                    {children}
-                </div>
-            </CarouselProvider>
+                <CarouselProvider {...props}>{children}</CarouselProvider>
+            </div>
         );
     },
 );
@@ -150,16 +38,17 @@ const CarouselContent = React.forwardRef<
     HTMLDivElement,
     React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-    const { carouselRef, orientation, wrapper, content } = useCarousel();
+    const { carouselRef, handleKeyDown } = useCarousel();
 
     return (
         <div
             ref={carouselRef}
-            className={wrapper()}
+            onKeyDownCapture={handleKeyDown}
+            className="overflow-clip rounded-xlarge px-3 py-6 focus-visible-within:ring-2"
         >
             <div
                 ref={ref}
-                className={content({ orientation, className })}
+                className={cn("-ml-4 flex rounded-large", className)}
                 {...props}
             />
         </div>
@@ -171,18 +60,127 @@ const CarouselItem = React.forwardRef<
     HTMLDivElement,
     React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-    const { orientation, item } = useCarousel();
-
     return (
         <div
             ref={ref}
             role="group"
             aria-roledescription="slide"
-            className={item({ orientation, className })}
+            className={cn("min-w-0 flex-none pl-4", className)}
             {...props}
         />
     );
 });
 CarouselItem.displayName = "CarouselItem";
 
-export { Carousel, CarouselContent, CarouselItem, type CarouselApi };
+const CarouselControls = React.forwardRef<
+    HTMLDivElement,
+    React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+    return (
+        <div
+            ref={ref}
+            role="complementary"
+            aria-roledescription="slide controls"
+            className={cn("mb-6 flex justify-center gap-3", className)}
+            {...props}
+        />
+    );
+});
+CarouselControls.displayName = "CarouselControls";
+
+const CarouselArrows = React.forwardRef<
+    React.ElementRef<typeof ButtonGroup>,
+    React.ComponentPropsWithoutRef<typeof ButtonGroup>
+>(({ className, ...props }, ref) => {
+    return (
+        <ButtonGroup
+            ref={ref}
+            aria-controls="carousel"
+            isIconOnly
+            size="sm"
+            radius="full"
+            variant="flat"
+            className={cn(
+                "divide-x divide-background/20 rounded-full shadow-sm",
+                className,
+            )}
+            {...props}
+        >
+            <CarouselPrev />
+            <CarouselNext />
+        </ButtonGroup>
+    );
+});
+CarouselArrows.displayName = "CarouselArrows";
+
+const CarouselPrev = () => {
+    const { canScrollPrev, scrollPrev } = useCarousel();
+    return (
+        <Button
+            disabled={!canScrollPrev}
+            onClick={scrollPrev}
+        >
+            <ChevronLeftIcon size={16} />
+            <span className="sr-only">Previous Slide</span>
+        </Button>
+    );
+};
+
+const CarouselNext = () => {
+    const { canScrollNext, scrollNext } = useCarousel();
+    return (
+        <Button
+            disabled={!canScrollNext}
+            onClick={scrollNext}
+        >
+            <ChevronRightIcon size={16} />
+            <span className="sr-only">Next Slide</span>
+        </Button>
+    );
+};
+
+const CarouselDots = ({ numSlides }: { numSlides: number }) => {
+    const { scrollTo, selectedScrollSnap } = useCarousel();
+
+    return (
+        <ButtonGroup
+            aria-hidden="true"
+            isIconOnly
+            variant="flat"
+            size="sm"
+            radius="full"
+            className="overflow-clip rounded-full shadow-sm"
+        >
+            {Array.from({ length: numSlides }).map((_, i) => (
+                <Button
+                    key={i}
+                    onClick={() => scrollTo(i)}
+                    className="relative z-[unset] overflow-auto scrollbar-hide"
+                    tabIndex={-1}
+                >
+                    <CircleIcon
+                        size={16}
+                        className={cn(
+                            "p-1",
+                            i === selectedScrollSnap
+                                ? "fill-foreground stroke-foreground"
+                                : "fill-content1 stroke-content1",
+                        )}
+                    />
+                </Button>
+            ))}
+        </ButtonGroup>
+    );
+};
+
+export {
+    Carousel,
+    CarouselArrows,
+    CarouselContent,
+    CarouselControls,
+    CarouselDots,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrev,
+    type CarouselApi,
+};

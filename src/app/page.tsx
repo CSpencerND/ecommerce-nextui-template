@@ -2,8 +2,10 @@ import { ProductImage } from "@/components/product";
 
 import {
     Carousel,
+    CarouselArrows,
     CarouselContent,
     CarouselControls,
+    CarouselDots,
     CarouselItem,
 } from "@/components/ui/carousel";
 
@@ -108,7 +110,10 @@ export default async function HomePage() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselControls numSlides={items.length} />
+                    <CarouselControls>
+                        <CarouselDots numSlides={items.length} />
+                        <CarouselArrows />
+                    </CarouselControls>
                 </Carousel>
 
                 <div

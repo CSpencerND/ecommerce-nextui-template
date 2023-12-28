@@ -1,4 +1,12 @@
-import { createContext, useContext } from "react";
+"use client";
+
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
 
 import useEmblaCarousel, {
     type EmblaCarouselType as CarouselApi,
@@ -6,32 +14,118 @@ import useEmblaCarousel, {
     type EmblaPluginType as CarouselPlugin,
 } from "embla-carousel-react";
 
-import type { CarouselStyles } from "./carousel-styles";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
-export type CarouselProps = {
+type CarouselProps = React.HTMLAttributes<HTMLDivElement> & {
     opts?: CarouselOptions;
     plugins?: CarouselPlugin[];
-    orientation?: "horizontal" | "vertical";
     setApi?: (api: CarouselApi) => void;
 };
 
-export type CarouselContextProps = {
+type CarouselContextProps = {
     carouselRef: ReturnType<typeof useEmblaCarousel>[0];
     api: ReturnType<typeof useEmblaCarousel>[1];
     scrollPrev: () => void;
     scrollNext: () => void;
     canScrollPrev: boolean;
     canScrollNext: boolean;
-    scrollSnaps: number[];
+    handleKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
     scrollTo: (i: number) => void;
     selectedScrollSnap: number;
     setSelectedScrollSnap: (i: number) => void;
-} & CarouselProps &
-    Omit<CarouselStyles, "base">;
+} & CarouselProps;
 
 const CarouselContext = createContext<CarouselContextProps | null>(null);
 
-export function useCarousel() {
+function CarouselProvider(props: CarouselProps) {
+    const { children, opts, plugins = [], setApi } = props;
+
+    const [carouselRef, api] = useEmblaCarousel({ ...opts }, [
+        WheelGesturesPlugin(),
+        ...plugins,
+    ]);
+
+    const [canScrollPrev, setCanScrollPrev] = useState(false);
+    const [canScrollNext, setCanScrollNext] = useState(false);
+
+    const [selectedScrollSnap, setSelectedScrollSnap] = useState(0);
+
+    const onSelect = useCallback((api: CarouselApi) => {
+        if (!api) return;
+
+        setSelectedScrollSnap(api.selectedScrollSnap());
+        setCanScrollPrev(api.canScrollPrev());
+        setCanScrollNext(api.canScrollNext());
+    }, []);
+
+    const scrollPrev = useCallback(() => {
+        api?.scrollPrev();
+    }, [api]);
+
+    const scrollNext = useCallback(() => {
+        api?.scrollNext();
+    }, [api]);
+
+    const scrollTo = useCallback(
+        (i: number) => {
+            api?.scrollTo(i);
+        },
+        [api],
+    );
+
+    const handleKeyDown = useCallback(
+        (event: React.KeyboardEvent<HTMLDivElement>) => {
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                scrollPrev();
+            } else if (event.key === "ArrowRight") {
+                event.preventDefault();
+                scrollNext();
+            }
+        },
+        [scrollPrev, scrollNext],
+    );
+
+    useEffect(() => {
+        if (!api || !setApi) return;
+
+        setApi(api);
+    }, [api, setApi]);
+
+    useEffect(() => {
+        if (!api) return;
+
+        onSelect(api);
+        api.on("reInit", onSelect);
+        api.on("select", onSelect);
+
+        return () => {
+            api?.off("select", onSelect);
+        };
+    }, [api, onSelect]);
+
+    return (
+        <CarouselContext.Provider
+            value={{
+                carouselRef,
+                api,
+                opts,
+                scrollNext,
+                scrollPrev,
+                canScrollNext,
+                canScrollPrev,
+                handleKeyDown,
+                selectedScrollSnap,
+                setSelectedScrollSnap,
+                scrollTo,
+            }}
+        >
+            {children}
+        </CarouselContext.Provider>
+    );
+}
+
+function useCarousel() {
     const context = useContext(CarouselContext);
 
     if (!context) {
@@ -41,16 +135,5 @@ export function useCarousel() {
     return context;
 }
 
-export function CarouselProvider({
-    children,
-    value,
-}: {
-    children: React.ReactNode;
-    value: CarouselContextProps;
-}) {
-    return (
-        <CarouselContext.Provider value={value}>
-            {children}
-        </CarouselContext.Provider>
-    );
-}
+export { CarouselContext, CarouselProvider, useCarousel };
+export type { CarouselApi, CarouselProps };
