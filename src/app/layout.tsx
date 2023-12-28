@@ -1,7 +1,5 @@
 import { Header } from "@/components/global";
-import { ProductDrawer } from "@/components/product";
 import { TailwindIndicator } from "@/components/utility/tailwind-indicator";
-import { Suspense } from "react";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/site.config";
@@ -55,9 +53,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         </main>
                     </div>
                     <TailwindIndicator />
-                    <Suspense>
-                        <ProductDrawer />
-                    </Suspense>
                 </Providers>
             </body>
         </html>
