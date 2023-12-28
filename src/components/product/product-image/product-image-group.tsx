@@ -3,7 +3,7 @@
 import { ProductImage } from "./product-image";
 
 import { useDeepCompareMemo } from "@react-hookz/web";
-import { useActiveImage } from "./active-image-context";
+import { useProductImage } from "./product-image-context";
 
 import type { ImageProps } from "@nextui-org/image";
 import type { ProductImageProps } from "./product-image";
@@ -13,7 +13,7 @@ export type ProductImageGroupProps = Omit<ProductImageProps, "src" | "alt"> & {
 };
 
 export function ProductImageGroup({ images, ...props }: ProductImageGroupProps) {
-    const { activeIndex } = useActiveImage();
+    const { activeIndex } = useProductImage();
 
     const imageComponents = useDeepCompareMemo(() => {
         return images.map((image) => (

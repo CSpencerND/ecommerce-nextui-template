@@ -1,7 +1,7 @@
 "use client";
 
-import { ActiveImageProvider } from "@/components/product";
+import { ProductImageProvider } from "@/components/product";
 
 export function ProductProvider({ children }: React.PropsWithChildren) {
-    return <ActiveImageProvider>{children}</ActiveImageProvider>;
+    return <ProductImageProvider>{children}</ProductImageProvider>;
 }

@@ -23,7 +23,7 @@ const ProductLink = forwardRef<ProductLinkRef, ProductLinkProps>(
                 onClick={(e) => {
                     e.preventDefault();
                     onOpen(data);
-                    window.history.pushState({}, "", href.toString());
+                    window.history.replaceState({}, "", href.toString());
                 }}
                 {...props}
             />

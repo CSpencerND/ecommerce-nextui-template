@@ -1,5 +1,5 @@
 import {
-    ActiveImageProvider,
+    ProductImageProvider,
     ProductCard,
     ProductCardBody,
     ProductCardFooter,
@@ -47,7 +47,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                             isBodyLink
                             hasPadding
                         >
-                            <ActiveImageProvider>
+                            <ProductImageProvider>
                                 <ProductCardBody
                                     as={ProductLink}
                                     href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
@@ -70,7 +70,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                                         className="@[146px]:justify-between"
                                     />
                                 </div>
-                            </ActiveImageProvider>
+                            </ProductImageProvider>
                         </ProductCard>
                     </MotionListItem>
                 ))}

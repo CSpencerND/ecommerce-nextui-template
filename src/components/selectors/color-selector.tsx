@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/button";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import Link from "next/link";
 
-import { useActiveImage } from "@/components/product";
+import { useProductImage } from "@/components/product";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { useMountEffect } from "@react-hookz/web";
 
@@ -20,7 +20,7 @@ type ColorSelectorProps = {
 } & React.HTMLAttributes<HTMLMenuElement>;
 
 export function ColorSelector({ colors, ...props }: ColorSelectorProps) {
-    const { setActiveIndex } = useActiveImage();
+    const { setActiveIndex } = useProductImage();
     const { createQueryString, searchParams } = useQueryParams();
 
     const colorParams = searchParams.get("color");
@@ -80,7 +80,7 @@ export function ColorSelector({ colors, ...props }: ColorSelectorProps) {
 }
 
 export function ColorSelectorPreview({ colors, className }: ColorSelectorProps) {
-    const { activeIndex, setActiveIndex } = useActiveImage();
+    const { activeIndex, setActiveIndex } = useProductImage();
 
     return (
         <ToggleGroup.Root

@@ -21,13 +21,13 @@ const Drawer = ({
         {...props}
     >
         <DrawerPrimitive.Portal>
-            <DrawerPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay/80" />
+            <DrawerPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay/60" />
             <DrawerPrimitive.Content
                 className={cn(
                     "fixed inset-x-0 bottom-0 z-50 mx-px mt-24",
                     "flex flex-col overflow-clip",
                     "h-auto max-h-[calc(100dvh-3rem)]",
-                    "rounded-t-xlarge bg-content1 shadow-small",
+                    "rounded-t-xlarge bg-content1/80 shadow-small backdrop-blur-md backdrop-saturate-150",
                 )}
             >
                 <div
