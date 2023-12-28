@@ -13,7 +13,6 @@ import { MotionListItem } from "@/components/utility/motion";
 import { getCollection } from "@/actions";
 
 import { grid, heading, prose, section } from "@/styles";
-import { match } from "assert";
 
 type CollectionPageProps = {
     params: { "collection-slug": string };
