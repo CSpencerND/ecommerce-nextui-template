@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
+    "@next/bundle-analyzer": "^14.0.4",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/lodash.uniqby": "^4.7.9",
@@ -49,6 +50,7 @@
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.16",
     "clsx": "^2.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",

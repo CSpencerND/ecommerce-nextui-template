@@ -5,20 +5,24 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "loremflickr.com",
-                pathname: "/**"
+                pathname: "/**",
             },
             {
                 protocol: "https",
                 hostname: "via.placeholder.com",
-                pathname: "/**"
+                pathname: "/**",
             },
             {
                 protocol: "https",
                 hostname: "picsum.photos",
-                pathname: "/**"
-            }
-        ]
-    }
-}
+                pathname: "/**",
+            },
+        ],
+    },
+};
 
-module.exports = nextConfig
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer(nextConfig);
