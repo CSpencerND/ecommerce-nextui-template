@@ -2,14 +2,17 @@ import { getFakeData, getProductsByCollection } from "@/faker";
 import * as data from "./data";
 
 export async function getHero() {
+    if (data.hero) return data.hero;
     return await getFakeData("hero");
 }
 
 export async function getFeatured() {
+    if (data.featured) return data.featured;
     return await getFakeData("featured");
 }
 
 export async function getCollections() {
+    if (data.collections) return data.collections;
     return await getFakeData("collection-directory");
 }
 

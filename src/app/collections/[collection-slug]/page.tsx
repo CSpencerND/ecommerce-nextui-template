@@ -13,6 +13,7 @@ import { MotionListItem } from "@/components/utility/motion";
 import { getCollection } from "@/actions";
 
 import { grid, heading, prose, section } from "@/styles";
+import { match } from "assert";
 
 type CollectionPageProps = {
     params: { "collection-slug": string };
@@ -20,8 +21,11 @@ type CollectionPageProps = {
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
     const collection = await getCollection();
-    const { name, description, products } = collection;
+    const { description, products } = collection;
     const collectionSlug = params["collection-slug"];
+    const collectionName = collectionSlug.replace(/\b\w/g, (match) =>
+        match.toUpperCase(),
+    );
 
     return (
         <section className={section()}>
@@ -30,7 +34,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                     class: "prose-invert px-6 max-lg:text-center",
                 })}
             >
-                <h1 className={heading()}>{name}</h1>
+                <h1 className={heading()}>{collectionName}</h1>
                 <p>{description}</p>
             </header>
             <menu className={grid()}>

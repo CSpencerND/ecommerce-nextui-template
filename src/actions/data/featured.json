@@ -1,0 +1,38 @@
+{
+    "items": [
+        {
+            "id": "101324558X",
+            "name": "Gloves",
+            "image": "https://picsum.photos/seed/UvkdvrBg/192/192"
+        },
+        {
+            "id": "154284388X",
+            "name": "Sausages",
+            "image": "https://picsum.photos/seed/gLwlU91hu/192/192"
+        },
+        {
+            "id": "0319258459",
+            "name": "Computer",
+            "image": "https://picsum.photos/seed/4i8G2/192/192"
+        },
+        {
+            "id": "1571266569",
+            "name": "Pants",
+            "image": "https://picsum.photos/seed/JqOVpZWTp/192/192"
+        },
+        {
+            "id": "0739593927",
+            "name": "Table",
+            "image": "https://picsum.photos/seed/NVSVjYk/192/192"
+        },
+        {
+            "id": "0132161982",
+            "name": "Towels",
+            "image": "https://picsum.photos/seed/8kp6m/192/192"
+        }
+    ],
+    "copy": {
+        "adjective": "Practical",
+        "description": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles"
+    }
+}
