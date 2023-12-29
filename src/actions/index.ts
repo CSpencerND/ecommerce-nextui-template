@@ -26,7 +26,6 @@ export async function getProductByHandle(slug: string) {
     const product = data.collection.products.find(
         (product) => product.name.toLowerCase() === slug,
     );
-    if (!product) throw new Error("Product Not Found");
 
     return product;
 }

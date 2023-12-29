@@ -10,9 +10,10 @@ import { prose, section } from "@/styles";
 export default async function ProductPage({
     params: { product_slug },
 }: {
-    params: { product_slug: string };
+    params: { collection_slug: string; product_slug: string };
 }) {
     const product = await getProductByHandle(product_slug);
+    if (!product) return null;
     const { name, description, images, sizes, colors, price } = product;
 
     return (
