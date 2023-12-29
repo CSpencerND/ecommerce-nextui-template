@@ -14,16 +14,14 @@ type ProductLinkRef = React.ElementRef<typeof Link>;
 
 const ProductLink = forwardRef<ProductLinkRef, ProductLinkProps>(
     ({ href, data, ...props }, ref) => {
-        const onOpen = useProductDrawer((s) => s.onOpen);
+        const setData = useProductDrawer((s) => s.setData);
 
         return (
             <Link
                 ref={ref}
                 href={href}
-                onClick={(e) => {
-                    e.preventDefault();
-                    onOpen(data);
-                    window.history.pushState({}, "", href.toString());
+                onClick={() => {
+                    setData(data);
                 }}
                 {...props}
             />
