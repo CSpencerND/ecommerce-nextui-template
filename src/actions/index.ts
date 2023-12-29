@@ -21,8 +21,6 @@ export async function getProduct() {
 }
 
 export async function getProductByHandle(slug: string) {
-    if (!data.collection) throw new Error("Collection Not Found");
-
     const product = data.collection.products.find(
         (product) => product.name.toLowerCase() === slug,
     );

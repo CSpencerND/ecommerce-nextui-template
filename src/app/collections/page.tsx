@@ -28,6 +28,7 @@ export default async function CollectionDirectoryPage() {
                     >
                         <ProductCard
                             isFooterBlurred
+                            isPressable
                             isBodyLink
                         >
                             <ProductCardBody

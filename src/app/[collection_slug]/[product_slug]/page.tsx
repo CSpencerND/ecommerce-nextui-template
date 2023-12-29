@@ -8,7 +8,7 @@ import { getProductByHandle } from "@/actions";
 import { prose, section } from "@/styles";
 
 export default async function ProductPage({
-    params: { product_slug },
+    params: { collection_slug, product_slug },
 }: {
     params: { collection_slug: string; product_slug: string };
 }) {
