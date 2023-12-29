@@ -28,7 +28,6 @@ export default async function CollectionDirectoryPage() {
                     >
                         <ProductCard
                             isFooterBlurred
-                            isPressable
                             isBodyLink
                         >
                             <ProductCardBody
@@ -40,7 +39,7 @@ export default async function CollectionDirectoryPage() {
                                     alt={name}
                                     size="preview"
                                 />
-                                <ProductCardFooter title={name} />
+                                <ProductCardFooter text={name} />
                             </ProductCardBody>
                         </ProductCard>
                     </MotionListItem>

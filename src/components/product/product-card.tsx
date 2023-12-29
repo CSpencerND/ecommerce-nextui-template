@@ -2,17 +2,10 @@
 
 import { Card, CardFooter } from "@nextui-org/card";
 import { extendVariants } from "@nextui-org/system";
+import { forwardRef } from "react";
 
 const ProductCardComponent = extendVariants(Card, {
     variants: {
-        radius: {
-            xl: {
-                base: "rounded-2xl",
-            },
-            "2xl": {
-                base: "rounded-xlarge",
-            },
-        },
         isFooterBlurred: {
             true: {
                 footer: [
@@ -29,40 +22,43 @@ const ProductCardComponent = extendVariants(Card, {
         },
         hasPadding: {
             true: {
-                footer: "bottom-4 w-[calc(100%-2rem)] ml-1",
                 base: "rounded-xlarge",
+                footer: "bottom-4 w-[calc(100%-2rem)] ml-1",
             },
             false: {
-                footer: "bottom-1 w-[calc(100%-0.5rem)]",
+                base: "rounded-2xl",
                 body: "p-0",
+                footer: "bottom-1 w-[calc(100%-0.5rem)]",
             },
         },
     },
-    defaultVariants: {
-        radius: "xl",
-        hasPadding: false,
-    },
 });
 
-export const ProductCard = (
-    props: React.ComponentPropsWithoutRef<typeof ProductCardComponent>,
-) => {
+export const ProductCard = forwardRef<
+    React.ElementRef<typeof ProductCardComponent>,
+    React.ComponentPropsWithRef<typeof ProductCardComponent>
+>(({ hasPadding, ...props }, ref) => {
     return (
         <ProductCardComponent
-            {...props}
+            ref={ref}
+            hasPadding={hasPadding ?? false}
             tabIndex={props.isBodyLink ? -1 : 0}
+            {...props}
         />
     );
-};
+});
+ProductCard.displayName = "ProductCard";
 
-export const ProductCardFooter = (
-    props: React.ComponentPropsWithoutRef<typeof CardFooter> & { title: string },
-) => {
-    return (
-        <CardFooter {...props}>
-            <h3>{props.title}</h3>
-        </CardFooter>
-    );
-};
+export const ProductCardFooter = ({
+    text,
+    ...props
+}: {
+    text: string;
+} & React.HTMLAttributes<HTMLDivElement>) => (
+    <CardFooter {...props}>
+        <h3>{text}</h3>
+    </CardFooter>
+);
+ProductCardFooter.displayName = "ProductCardFooter";
 
 export { CardBody as ProductCardBody } from "@nextui-org/card";

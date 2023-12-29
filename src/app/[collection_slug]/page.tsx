@@ -61,7 +61,7 @@ export default async function CollectionPage({
                                         size="preview"
                                         isBordered
                                     />
-                                    <ProductCardFooter title={name} />
+                                    <ProductCardFooter text={name} />
                                 </ProductCardBody>
                                 <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
                                     <ColorSelectorPreview

@@ -102,7 +102,7 @@ export default async function HomePage() {
                                             sizes="192px"
                                         />
                                         <ProductCardFooter
-                                            title={name}
+                                            text={name}
                                             className="ml-1"
                                         />
                                     </ProductCardBody>
