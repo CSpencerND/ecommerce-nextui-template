@@ -7,15 +7,12 @@ import { Card, CardBody } from "@nextui-org/card";
 import { getProductByHandle } from "@/actions";
 import { prose, section } from "@/styles";
 
-import type { SearchParams } from "@/types";
-
-type ProductPageProps = {
-    params: { "collection-slug": string; "product-slug": string };
-    searchParams: SearchParams<"color" | "size">;
-};
-
-export default async function ProductPage({ params, searchParams }: ProductPageProps) {
-    const product = await getProductByHandle(params["product-slug"]);
+export default async function ProductPage({
+    params: { product_slug },
+}: {
+    params: { product_slug: string };
+}) {
+    const product = await getProductByHandle(product_slug);
     const { name, description, images, sizes, colors, price } = product;
 
     return (

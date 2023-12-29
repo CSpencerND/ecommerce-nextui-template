@@ -14,15 +14,14 @@ import { getCollection } from "@/actions";
 
 import { grid, heading, prose, section } from "@/styles";
 
-type CollectionPageProps = {
-    params: { "collection-slug": string };
-};
-
-export default async function CollectionPage({ params }: CollectionPageProps) {
+export default async function CollectionPage({
+    params: { collection_slug },
+}: {
+    params: { collection_slug: string };
+}) {
     const collection = await getCollection();
     const { description, products } = collection;
-    const collectionSlug = params["collection-slug"];
-    const collectionName = collectionSlug.replace(/\b\w/g, (match) =>
+    const collectionName = collection_slug.replace(/\b\w/g, (match) =>
         match.toUpperCase(),
     );
 
@@ -50,7 +49,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                             <ProductImageProvider>
                                 <ProductCardBody
                                     as={ProductLink}
-                                    href={`/collections/${collectionSlug}/${name.toLowerCase()}`}
+                                    href={`/${collection_slug}/${name.toLowerCase()}`}
                                     data={products[i]}
                                     className="rounded-xlarge"
                                 >

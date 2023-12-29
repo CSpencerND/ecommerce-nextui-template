@@ -33,7 +33,7 @@ export default async function CollectionDirectoryPage() {
                         >
                             <ProductCardBody
                                 as={Link}
-                                href={`/collections/${name.toLowerCase()}`}
+                                href={`/${name.toLowerCase()}`}
                             >
                                 <ProductImage
                                     src={image}
