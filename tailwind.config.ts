@@ -67,11 +67,12 @@ const config: Config = {
                     },
                 },
                 ".focus-ring": {
-                    zIndex: "10",
+                    zIndex: "50",
                     outline: "2px solid transparent",
                     outlineOffset: "2px",
                     outlineWidth: "2px",
-                    outlineColor: "hsl(var(--nextui-focus) / var(--nextui-focus-opacity, 1))",
+                    outlineColor:
+                        "hsl(var(--nextui-focus) / var(--nextui-focus-opacity, 1))",
                 },
             });
 
