@@ -33,7 +33,11 @@ export default async function HomePage() {
 
     return (
         <>
-            <section className={section({ row: "lg" })}>
+            <section
+                className={section({
+                    row: "lg",
+                })}
+            >
                 <div
                     className={prose({
                         class: "relative isolate flex basis-3/4 flex-col items-center text-center lg:items-start lg:text-left",
@@ -56,18 +60,16 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <div>
-                    <Image
-                        unoptimized={isImageUnoptimized}
-                        src={banner}
-                        alt="banner"
-                        width={698}
-                        height={393}
-                        sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
-                        priority
-                        className="rounded-xlarge sm:max-w-prose lg:max-w-lg"
-                    />
-                </div>
+                <Image
+                    unoptimized={isImageUnoptimized}
+                    src={banner}
+                    alt="banner"
+                    width={698}
+                    height={393}
+                    sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
+                    priority
+                    className="rounded-xlarge lg:max-w-lg"
+                />
             </section>
 
             <section className={section({ row: "lg" })}>
