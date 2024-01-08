@@ -12,33 +12,38 @@ const DrawerTrigger = DrawerPrimitive.Trigger;
 const DrawerClose = DrawerPrimitive.Close;
 
 const Drawer = ({
+    className,
     shouldScaleBackground = true,
     children,
     ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
+}: {
+    className?: string;
+} & React.ComponentProps<typeof DrawerPrimitive.Root>) => (
     <DrawerPrimitive.Root
         shouldScaleBackground={shouldScaleBackground}
         {...props}
     >
         <DrawerPrimitive.Portal>
             <DrawerPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay/60" />
-            <DrawerPrimitive.Content
-                className={cn(
-                    "fixed inset-x-0 bottom-0 z-50 mx-px mt-24",
-                    "flex flex-col overflow-clip",
-                    "h-auto max-h-[calc(100dvh-3rem)]",
-                    "rounded-t-xlarge bg-content1/80 shadow-small backdrop-blur-md backdrop-saturate-150",
-                )}
-            >
-                <div
-                    data-drawer-thumb
-                    aria-hidden="true"
-                    className="flex justify-center py-2"
+            <div className="fixed inset-x-0 bottom-0 z-50 mx-px mt-24 flex justify-center">
+                <DrawerPrimitive.Content
+                    className={cn(
+                        "flex max-w-[25.5rem] flex-col overflow-clip",
+                        "h-auto max-h-[calc(100dvh-3rem)]",
+                        "rounded-t-xlarge bg-content1/80 shadow-small backdrop-blur-md backdrop-saturate-150",
+                        className,
+                    )}
                 >
-                    <div className="h-1 w-16 rounded-full bg-foreground-500 mix-blend-difference" />
-                </div>
-                {children}
-            </DrawerPrimitive.Content>
+                    <div
+                        data-drawer-thumb
+                        aria-hidden="true"
+                        className="flex justify-center py-2"
+                    >
+                        <div className="h-1 w-16 rounded-full bg-foreground-500 mix-blend-difference" />
+                    </div>
+                    {children}
+                </DrawerPrimitive.Content>
+            </div>
         </DrawerPrimitive.Portal>
     </DrawerPrimitive.Root>
 );
@@ -69,7 +74,7 @@ const DrawerBody = ({
     className,
     ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-    <ScrollShadow>
+    <ScrollShadow size={80}>
         <figure
             className={cn(
                 "flex flex-col gap-3 overflow-y-scroll px-6 pt-1",
