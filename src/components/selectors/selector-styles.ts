@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const selectorGroup = tv({
-    base: ["inline-flex gap-2", "focus-visible-within:ring-2"],
+    base: ["flex gap-2", "focus-visible-within:ring-2"],
     variants: {
         noWrap: {
             true: "flex-nowrap overflow-x-scroll scrollbar-hide [&>*]:min-w-0 [&>*]:flex-none",
