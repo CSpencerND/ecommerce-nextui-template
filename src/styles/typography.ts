@@ -1,11 +1,18 @@
 import { tv } from "tailwind-variants";
 
 export const prose = tv({
-    base: "prose dark:prose-invert prose-headings:text-balance prose-p:text-balance",
+    base: "prose dark:prose-invert prose-headings:text-balance",
     variants: {
         sm: {
             true: "prose-sm",
         },
+        wrap: {
+            pretty: "prose-p:text-pretty",
+            balance: "prose-p:text-balance",
+        },
+    },
+    defaultVariants: {
+        wrap: "pretty",
     },
 });
 
