@@ -37,12 +37,13 @@ const ProductCardComponent = extendVariants(Card, {
 export const ProductCard = forwardRef<
     React.ElementRef<typeof ProductCardComponent>,
     React.ComponentPropsWithRef<typeof ProductCardComponent>
->(({ hasPadding, ...props }, ref) => {
+>(({ hasPadding, shadow, ...props }, ref) => {
     return (
         <ProductCardComponent
             ref={ref}
             hasPadding={hasPadding ?? false}
             tabIndex={props.isBodyLink ? -1 : 0}
+            shadow={shadow ?? "md"}
             {...props}
         />
     );
