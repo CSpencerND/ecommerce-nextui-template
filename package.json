@@ -18,6 +18,7 @@
     "@nextui-org/switch": "2.0.25",
     "@nextui-org/system": "^2.0.15",
     "@nextui-org/theme": "^2.1.17",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@react-aria/ssr": "^3.9.1",
@@ -60,6 +61,7 @@
     "tailwind-merge": "^2.2.0",
     "tailwind-variants": "^0.1.19",
     "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.3.3"
   }
 }

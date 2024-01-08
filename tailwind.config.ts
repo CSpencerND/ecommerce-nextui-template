@@ -2,6 +2,7 @@ import { nextui } from "@nextui-org/react";
 import container from "@tailwindcss/container-queries";
 import typography from "@tailwindcss/typography";
 import plugin from "tailwindcss/plugin";
+import animate from "tailwindcss-animate";
 
 import { themeColorsDark, themeColorsDim, themeColorsLight } from "./src/theme";
 
@@ -36,6 +37,7 @@ const config: Config = {
     plugins: [
         container,
         typography,
+        animate,
         nextui({
             addCommonColors: true,
             themes: {
