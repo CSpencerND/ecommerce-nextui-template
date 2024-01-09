@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         className="relative flex h-svh flex-col"
                     >
                         <Header themeSwitchType="toggle" />
-                        <main className="container mx-auto max-w-5xl flex-grow space-y-24 px-6 py-16">
+                        <main className="container mx-auto max-w-5xl flex-grow space-y-16 px-6 py-12">
                             {children}
                         </main>
                     </div>
