@@ -91,7 +91,7 @@ const DrawerFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
     <footer
         className={cn(
-            "flex w-full flex-col rounded-t-xlarge px-6 pb-6 shadow-small",
+            "flex w-full flex-col rounded-t-2xl px-6 pb-6 shadow-small backdrop-blur-sm",
             className,
         )}
         {...props}

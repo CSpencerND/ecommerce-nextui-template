@@ -2,6 +2,7 @@
 
 import {
     ProductExhibit,
+    ProductExhibitWrapper,
     ProductImageGroup,
     ProductProvider,
 } from "@/components/product";
@@ -42,7 +43,7 @@ export default function ProductPageModal() {
 
     const isBuyDisabled = !selectedColor || !selectedSize;
 
-    if (isMobile) {
+    if (isMobile)
         return (
             <Drawer
                 open={true}
@@ -52,7 +53,6 @@ export default function ProductPageModal() {
                     }
                 }}
             >
-                {/* TODO: Replace the following with ProductExhibit and extend the composability of ProductExhibit to look like the following */}
                 <ProductProvider>
                     <DrawerBody>
                         <ProductImageGroup
@@ -109,7 +109,7 @@ export default function ProductPageModal() {
                         </VisuallyHidden>
 
                         <div
-                            className="inline-flex gap-3 *:flex-1 *:font-semibold"
+                            className="flex gap-3 *:flex-1 *:font-semibold"
                             onClick={() => {
                                 if (!isBuyDisabled) return;
                                 alert("Select your options");
@@ -134,7 +134,6 @@ export default function ProductPageModal() {
                 </ProductProvider>
             </Drawer>
         );
-    }
 
     return (
         <Modal
@@ -158,7 +157,9 @@ export default function ProductPageModal() {
                         />
                     </Button>
                 </div>
-                <ProductExhibit productData={data} />
+                <ProductExhibitWrapper>
+                    <ProductExhibit productData={data} />
+                </ProductExhibitWrapper>
             </ModalContent>
         </Modal>
     );
