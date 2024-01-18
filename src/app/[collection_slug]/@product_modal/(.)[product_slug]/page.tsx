@@ -2,7 +2,6 @@
 
 import {
     ProductExhibit,
-    ProductExhibitWrapper,
     ProductImageGroup,
     ProductProvider,
 } from "@/components/product";
@@ -157,9 +156,7 @@ export default function ProductPageModal() {
                         />
                     </Button>
                 </div>
-                <ProductExhibitWrapper>
-                    <ProductExhibit productData={data} />
-                </ProductExhibitWrapper>
+                <ProductExhibit productData={data} />
             </ModalContent>
         </Modal>
     );

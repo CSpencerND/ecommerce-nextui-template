@@ -1,4 +1,4 @@
-import { ProductExhibit, ProductExhibitWrapper } from "@/components/product";
+import { ProductExhibit } from "@/components/product";
 
 import { getProductByHandle } from "@/actions";
 import { section } from "@/styles";
@@ -17,9 +17,7 @@ export default async function ProductPage({
 
     return (
         <section className={section()}>
-            <ProductExhibitWrapper>
-                <ProductExhibit productData={product} />
-            </ProductExhibitWrapper>
+            <ProductExhibit productData={product} />
         </section>
     );
 }
