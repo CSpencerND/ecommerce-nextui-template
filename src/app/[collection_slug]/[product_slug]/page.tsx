@@ -1,4 +1,4 @@
-import { ProductExhibit } from "@/components/product";
+import { ProductShowcase } from "../product-components";
 
 import { getProductByHandle } from "@/actions";
 import { section } from "@/styles";
@@ -17,7 +17,7 @@ export default async function ProductPage({
 
     return (
         <section className={section()}>
-            <ProductExhibit productData={product} />
+            <ProductShowcase product={product} />
         </section>
     );
 }

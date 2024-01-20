@@ -1,10 +1,8 @@
 "use client";
 
-import {
-    ProductExhibit,
-    ProductImageGroup,
-    ProductProvider,
-} from "@/components/product";
+import { ProductShowcase } from "../../product-components";
+
+import { ProductImageGroup, ProductProvider } from "@/components/product";
 
 import {
     Drawer,
@@ -16,10 +14,9 @@ import {
 import { Modal, ModalContent } from "@nextui-org/modal";
 
 import { ColorSelector, SizeSelector } from "@/components/selectors";
-// import { SingleSlider } from "@/components/ui/single-slider";
 import { Button } from "@nextui-org/button";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { XIcon } from "lucide-react";
+// import { XIcon } from "lucide-react";
 
 import { useProductDrawer } from "@/components/product";
 import { useMediaQuery } from "@react-hookz/web";
@@ -28,14 +25,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { prose } from "@/styles";
 
 export default function ProductPageModal() {
-    const data = useProductDrawer((s) => s.data);
+    const product = useProductDrawer((s) => s.data);
 
     const router = useRouter();
     const searchParams = useSearchParams();
     const isMobile = useMediaQuery("(max-width: 767px)");
 
-    if (!data) return null;
-    const { name, description, images, price, sizes, colors } = data;
+    if (!product) return null;
+    const { name, description, images, price, sizes, colors } = product;
 
     const selectedColor = searchParams.get("color");
     const selectedSize = searchParams.get("size");
@@ -84,11 +81,6 @@ export default function ProductPageModal() {
                             <ColorSelector colors={colors} />
                             <SizeSelector sizes={sizes} />
                         </div>
-
-                        {/* <SingleSlider> */}
-                        {/*     <ColorSelector colors={colors} /> */}
-                        {/*     <SizeSelector sizes={sizes} /> */}
-                        {/* </SingleSlider> */}
 
                         <VisuallyHidden>
                             <aside className="text-small">
@@ -139,24 +131,25 @@ export default function ProductPageModal() {
             defaultOpen
             onClose={router.back}
             backdrop="blur"
-            hideCloseButton
+            // hideCloseButton
         >
-            <ModalContent className="max-w-fit rounded-2xlarge bg-transparent">
-                <div className="absolute right-3 top-3 z-50">
-                    <Button
-                        isIconOnly
-                        size="sm"
-                        variant="light"
-                        radius="full"
-                        onPress={router.back}
-                    >
-                        <XIcon
-                            size={22}
-                            className="stroke-foreground-500"
-                        />
-                    </Button>
-                </div>
-                <ProductExhibit productData={data} />
+            <ModalContent className="max-w-fit !rounded-2xlarge bg-transparent">
+                {/* <div className="absolute right-2 top-2 z-50"> */}
+                {/*     <Button */}
+                {/*         isIconOnly */}
+                {/*         size="sm" */}
+                {/*         variant="light" */}
+                {/*         radius="full" */}
+                {/*         onPress={router.back} */}
+                {/*     > */}
+                {/*         <XIcon */}
+                {/*             size={22} */}
+                {/*             className="stroke-foreground-500" */}
+                {/*         /> */}
+                {/*     </Button> */}
+                {/* </div> */}
+
+                <ProductShowcase product={product} />
             </ModalContent>
         </Modal>
     );
