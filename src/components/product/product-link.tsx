@@ -30,4 +30,5 @@ const ProductLink = forwardRef<ProductLinkRef, ProductLinkProps>(
 );
 ProductLink.displayName = "ProductLink";
 
-export { ProductLink, type ProductLinkProps };
+export { ProductLink };
+// export type { ProductLinkProps };

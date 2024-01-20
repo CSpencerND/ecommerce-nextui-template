@@ -15,7 +15,7 @@ const fadeInUp: Variants = {
     }),
 };
 
-export type MotionListItemProps = React.ComponentProps<typeof motion.li> & {
+type MotionListItemProps = React.ComponentProps<typeof motion.li> & {
     index: number;
 };
 

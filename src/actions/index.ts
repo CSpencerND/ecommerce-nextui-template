@@ -16,9 +16,9 @@ export async function getCollections() {
     return await getFakeData("collection-directory");
 }
 
-export async function getProduct() {
-    return await getFakeData("product");
-}
+// export async function getProduct() {
+//     return await getFakeData("product");
+// }
 
 export async function getProductByHandle(slug: string) {
     const product = data.collection.products.find(

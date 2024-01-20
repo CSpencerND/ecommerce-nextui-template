@@ -5,7 +5,12 @@ import { useSwitch, type SwitchProps } from "@nextui-org/switch";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 import { Button } from "@nextui-org/button";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/dropdown";
+import {
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+} from "@nextui-org/dropdown";
 import { SunMoonIcon, PaletteIcon, CheckIcon } from "lucide-react";
 
 import { useIsSSR } from "@react-aria/ssr";
@@ -13,7 +18,7 @@ import { useTheme } from "next-themes";
 
 import { cn } from "@nextui-org/system";
 
-export interface ThemeSwitchProps {
+interface ThemeSwitchProps {
     type?: "toggle" | "menu";
     className?: string;
     classNames?: SwitchProps["classNames"];
@@ -29,12 +34,19 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
         theme === "light" ? setTheme("dark") : setTheme("light");
     };
 
-    const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } =
-        useSwitch({
-            isSelected: theme === "light" || isSSR,
-            "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
-            onChange,
-        });
+    const {
+        Component,
+        slots,
+        isSelected,
+        getBaseProps,
+        getInputProps,
+        getWrapperProps,
+    } = useSwitch({
+        isSelected: theme === "light" || isSSR,
+        "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"
+            } mode`,
+        onChange,
+    });
 
     if (type === "toggle") {
         return (
@@ -83,7 +95,9 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
         <Dropdown
             placement="bottom-end"
             className="min-w-0"
-            classNames={{ content: "bg-opacity-60 backdrop-blur-lg backdrop-saturate-150" }}
+            classNames={{
+                content: "bg-opacity-60 backdrop-blur-lg backdrop-saturate-150",
+            }}
         >
             <DropdownTrigger>
                 <Button
@@ -91,7 +105,10 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
                     isIconOnly
                     aria-label="Open Theme Menu"
                 >
-                    <PaletteIcon size={22} className="stroke-foreground-600" />
+                    <PaletteIcon
+                        size={22}
+                        className="stroke-foreground-600"
+                    />
                 </Button>
             </DropdownTrigger>
             <DropdownMenu

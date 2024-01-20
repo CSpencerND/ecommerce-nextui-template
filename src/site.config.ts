@@ -3,17 +3,17 @@ import { faker } from "@faker-js/faker";
 /**
  * WARNING: Leave this true for testing purposes. Switch it to false for production.
  */
-export const isImageUnoptimized: boolean = true;
+const isImageUnoptimized: boolean = true;
 
 const PORT = 3000;
 const URL = "https://ecommerce-nextui-template.vercel.app";
 
-export const NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV;
 
-export const API_URL =
+const API_URL =
     NODE_ENV === "production" ? `${URL}/api` : `http://localhost:${PORT}/api`;
 
-export const siteConfig = {
+const siteConfig = {
     name: faker.science.chemicalElement().name,
     description: "Store Description",
     logo: "",
@@ -84,4 +84,11 @@ export const siteConfig = {
     },
 } as const;
 
-export type SiteConfig = typeof siteConfig;
+export {
+    isImageUnoptimized,
+    // NODE_ENV,
+    API_URL,
+    siteConfig,
+};
+
+// export type SiteConfig = typeof siteConfig;

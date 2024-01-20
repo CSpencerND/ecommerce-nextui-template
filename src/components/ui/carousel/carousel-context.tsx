@@ -139,4 +139,7 @@ function useCarousel() {
 }
 
 export { CarouselContext, CarouselProvider, useCarousel };
-export type { CarouselApi, CarouselProps };
+export type {
+    // CarouselApi,
+    CarouselProps,
+};

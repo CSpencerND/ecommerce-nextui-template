@@ -8,7 +8,7 @@ import { useProductImage } from "./product-image-context";
 import type { ImageProps } from "@nextui-org/image";
 import type { ProductImageProps } from "./product-image";
 
-export type ProductImageGroupProps = Omit<ProductImageProps, "src" | "alt"> & {
+type ProductImageGroupProps = Omit<ProductImageProps, "src" | "alt"> & {
     images: ImageProps[];
 };
 

@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-export const selectorGroup = tv({
+const selectorGroup = tv({
     base: ["flex gap-2", "focus-visible-within:ring-2"],
     variants: {
         noWrap: {
@@ -13,7 +13,7 @@ export const selectorGroup = tv({
     },
 });
 
-export const selectorItem = tv({
+const selectorItem = tv({
     base: [
         "aspect-square !rounded-icon !transition",
         "ring-2 ring-primary/0",
@@ -36,5 +36,3 @@ export const selector = {
     group: selectorGroup,
     item: selectorItem,
 };
-
-export default selector;

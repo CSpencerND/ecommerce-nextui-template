@@ -129,10 +129,10 @@ DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
 export {
     Drawer,
     DrawerBody,
-    DrawerClose,
+    // DrawerClose,
     DrawerDescription,
     DrawerFooter,
-    DrawerHeader,
+    // DrawerHeader,
     DrawerTitle,
-    DrawerTrigger,
+    // DrawerTrigger,
 };

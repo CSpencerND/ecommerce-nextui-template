@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 import type { ThemeProviderProps } from "next-themes/dist/types";
 
-export type ProvidersProps = React.PropsWithChildren<{
+type ProvidersProps = React.PropsWithChildren<{
     themeProps?: ThemeProviderProps;
 }>;
 

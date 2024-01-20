@@ -8,7 +8,7 @@ import { ChevronLeftIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 import {
     CarouselProvider,
     useCarousel,
-    type CarouselApi,
+    // type CarouselApi,
     type CarouselProps,
 } from "./carousel-context";
 
@@ -180,7 +180,7 @@ export {
     CarouselControls,
     CarouselDots,
     CarouselItem,
-    CarouselNext,
-    CarouselPrev,
-    type CarouselApi,
+    // CarouselNext,
+    // CarouselPrev,
+    // type CarouselApi,
 };
