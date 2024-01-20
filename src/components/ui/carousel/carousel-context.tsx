@@ -9,12 +9,15 @@ import {
 } from "react";
 
 import useEmblaCarousel, {
-    type EmblaCarouselType as CarouselApi,
-    type EmblaOptionsType as CarouselOptions,
-    type EmblaPluginType as CarouselPlugin,
+    type UseEmblaCarouselType,
 } from "embla-carousel-react";
 
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+
+type CarouselApi = UseEmblaCarouselType[1];
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
+type CarouselOptions = UseCarouselParameters[0];
+type CarouselPlugin = UseCarouselParameters[1];
 
 type CarouselProps = React.HTMLAttributes<HTMLDivElement> & {
     opts?: CarouselOptions;
