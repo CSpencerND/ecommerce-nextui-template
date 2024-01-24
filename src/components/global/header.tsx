@@ -1,3 +1,4 @@
+import { Cart } from "@/components/cart";
 import { ThemeSwitch } from "@/components/global/theme-switch";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
@@ -54,24 +55,39 @@ export const Header: React.FC<HeaderProps> = ({ themeSwitchType, ...props }) => 
                 </NavbarItem>
             ))}
         </NavbarContent>
-        <NavbarContent justify="end">
-            <NavbarItem className="flex max-sm:hidden">
-                <Link href="#">Login</Link>
+        <NavbarContent
+            justify="end"
+            className="gap-2"
+        >
+            {/* <NavbarItem className="flex max-sm:hidden"> */}
+            {/*     <Link href="#">Login</Link> */}
+            {/* </NavbarItem> */}
+            {/* <NavbarItem className="max-sm:hidden"> */}
+            {/*     <Button */}
+            {/*         as={Link} */}
+            {/*         color="primary" */}
+            {/*         href="#" */}
+            {/*         variant="flat" */}
+            {/*     > */}
+            {/*         Sign Up */}
+            {/*     </Button> */}
+            {/* </NavbarItem> */}
+            {/* <NavbarItem */}
+            {/*     as={Button} */}
+            {/*     isIconOnly */}
+            {/*     variant="light" */}
+            {/* > */}
+            {/*     <ThemeSwitch type={themeSwitchType} /> */}
+            {/* </NavbarItem> */}
+            <NavbarItem>
+                <Cart />
             </NavbarItem>
-            <NavbarItem className="max-sm:hidden">
-                <Button
-                    as={Link}
-                    color="primary"
-                    href="#"
-                    variant="flat"
-                >
-                    Sign Up
-                </Button>
-            </NavbarItem>
-            <NavbarItem className="grid place-items-center">
-                <ThemeSwitch type={themeSwitchType} />
-            </NavbarItem>
-            <NavbarMenuToggle className="lg:hidden" />
+            <NavbarMenuToggle
+                // as={Button}
+                // isIconOnly
+                // variant="light"
+                className="lg:hidden"
+            />
         </NavbarContent>
         <NavbarMenu>
             {siteConfig.navMenuItems.map(({ label, href }, i) => (

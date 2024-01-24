@@ -43,8 +43,9 @@ export function ThemeSwitch(props: ThemeSwitchProps) {
         getWrapperProps,
     } = useSwitch({
         isSelected: theme === "light" || isSSR,
-        "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"
-            } mode`,
+        "aria-label": `Switch to ${
+            theme === "light" || isSSR ? "dark" : "light"
+        } mode`,
         onChange,
     });
 
