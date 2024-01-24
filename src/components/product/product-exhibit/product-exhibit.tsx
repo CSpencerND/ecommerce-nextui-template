@@ -124,6 +124,7 @@ export function ProductExhibitButtons() {
                 className="flex gap-3"
                 onClick={() => {
                     if (!isBuyDisabled) return;
+                    // TODO: Change the alert to a little popover / tooltip that dismisses in 2 seconds
                     alert("Select your options");
                 }}
             >
