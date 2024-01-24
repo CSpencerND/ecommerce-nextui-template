@@ -120,25 +120,10 @@ export default async function HomePage() {
 
                 <div
                     className={prose({
-                        class: "flex flex-col items-center justify-center lg:hidden lg:items-start lg:text-left",
+                        class: "flex flex-col items-center justify-center lg:items-start",
                     })}
                 >
-                    <p className="max-lg:text-center">{copy.description}</p>
-                    <Button
-                        color="primary"
-                        variant="shadow"
-                        className="lg:self-end"
-                    >
-                        See More
-                    </Button>
-                </div>
-
-                <div
-                    className={prose({
-                        class: "flex flex-col items-start max-lg:hidden",
-                    })}
-                >
-                    <h1 className="m-0 bg-gradient-to-br from-default-900 to-default-300 bg-clip-text text-transparent">
+                    <h1 className={heading({ class: "max-lg:hidden" })}>
                         {copy.adjective}
                     </h1>
                     <p className="max-lg:text-center">{copy.description}</p>
