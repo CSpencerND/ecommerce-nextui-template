@@ -77,9 +77,8 @@ const CarouselControls = React.forwardRef<
     React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
     return (
-        <div
+        <nav
             ref={ref}
-            role="complementary"
             aria-roledescription="slide controls"
             className={cn("mb-6 flex justify-center gap-3", className)}
             {...props}
