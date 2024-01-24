@@ -120,13 +120,15 @@ export default async function HomePage() {
 
                 <div
                     className={prose({
-                        class: "flex flex-col items-center justify-center lg:items-start",
+                        class: "flex flex-col items-center lg:items-start",
                     })}
                 >
                     <h1 className={heading({ class: "max-lg:hidden" })}>
                         {copy.adjective}
                     </h1>
-                    <p className="max-lg:text-center">{copy.description}</p>
+                    <p className="max-lg:mt-0 max-lg:text-center">
+                        {copy.description}
+                    </p>
                     <Button
                         color="primary"
                         variant="shadow"
