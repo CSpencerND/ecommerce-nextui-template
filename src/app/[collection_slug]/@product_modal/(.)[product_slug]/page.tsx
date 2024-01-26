@@ -2,7 +2,11 @@
 
 import { ProductShowcase } from "../../product-components";
 
-import { ProductImageGroup, ProductProvider } from "@/components/product";
+import {
+    ProductImageGroup,
+    ProductProvider,
+    useProductDrawer,
+} from "@/components/product";
 
 import {
     Drawer,
@@ -11,6 +15,7 @@ import {
     DrawerFooter,
     DrawerTitle,
 } from "@/components/ui/drawer";
+
 import { Modal, ModalContent } from "@nextui-org/modal";
 
 import { ColorSelector, SizeSelector } from "@/components/selectors";
@@ -18,7 +23,6 @@ import { Button } from "@nextui-org/button";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 // import { XIcon } from "lucide-react";
 
-import { useProductDrawer } from "@/components/product";
 import { useMediaQuery } from "@react-hookz/web";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -131,7 +135,7 @@ export default function ProductPageModal() {
             defaultOpen
             onClose={router.back}
             backdrop="blur"
-            // hideCloseButton
+        // hideCloseButton
         >
             <ModalContent className="max-w-fit !rounded-2xlarge bg-transparent">
                 {/* <div className="absolute right-2 top-2 z-50"> */}

@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { forwardRef } from "react";
 
-import { useHydrated } from "@/hooks/use-hydrated";
+import { useHydrated } from "@/hooks";
 
 const fadeInUp: Variants = {
     animate: (i: number) => ({

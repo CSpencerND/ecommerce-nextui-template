@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { forwardRef } from "react";
 
-import { useProductDrawer } from "@/components/product";
+import { useProductDrawer } from "@/hooks";
 
 import type { Product } from "@/types";
 

@@ -6,8 +6,7 @@ import { Button } from "@nextui-org/button";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import Link from "next/link";
 
-import { useProductImage } from "@/components/product";
-import { useQueryParams } from "@/hooks/use-query-params";
+import { useProductImage, useQueryParams } from "@/hooks";
 import { useMountEffect } from "@react-hookz/web";
 
 import { selector } from "./selector-styles";

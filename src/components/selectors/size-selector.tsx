@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/button";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import Link from "next/link";
 
-import { useQueryParams } from "@/hooks/use-query-params";
+import { useQueryParams } from "@/hooks";
 
 import { selector } from "./selector-styles";
 
