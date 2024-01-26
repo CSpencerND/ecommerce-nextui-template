@@ -52,6 +52,7 @@ export default function ProductPageModal() {
                         router.back();
                     }
                 }}
+                preventScrollRestoration
             >
                 <ProductProvider>
                     <DrawerBody>
@@ -135,7 +136,7 @@ export default function ProductPageModal() {
             defaultOpen
             onClose={router.back}
             backdrop="blur"
-        // hideCloseButton
+            // hideCloseButton
         >
             <ModalContent className="max-w-fit !rounded-2xlarge bg-transparent">
                 {/* <div className="absolute right-2 top-2 z-50"> */}
