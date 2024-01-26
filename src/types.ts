@@ -15,3 +15,9 @@ export type SearchParams<Key extends string> = Record<
 export type Product = ApiType["product"];
 export type Colors = ApiType["product"]["colors"];
 // export type Sizes = ApiType["product"]["sizes"];
+
+export type CartItem = {
+    product: Product;
+    quantity: number;
+    subtotal: string;
+};
