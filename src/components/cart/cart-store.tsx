@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * TODO: Add a toast for each function
+ */
+
 // import toast from "react-hot-toast"
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
@@ -40,7 +44,7 @@ export const useCart = create(
                 /**
                  * TODO:
                  * Firt check if item is already in cart, if so,
-                 * increment the quantity or just send a toast stating so.
+                 * send a toast stating so. "Item already in cart".
                  */
                 set((state) => ({ items: [...state.items, newItem] }));
             },
