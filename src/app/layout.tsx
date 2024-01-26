@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Providers
                     themeProps={{
                         defaultTheme: "system",
-                        themes: ["light", "dark", "dim"],
+                        // themes: ["light", "dark", "dim"],
                     }}
                 >
                     <div

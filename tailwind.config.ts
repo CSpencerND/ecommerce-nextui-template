@@ -1,10 +1,16 @@
-import { nextui } from "@nextui-org/react";
+import { nextui } from "@nextui-org/theme";
+
 import container from "@tailwindcss/container-queries";
 import typography from "@tailwindcss/typography";
-import plugin from "tailwindcss/plugin";
 import animate from "tailwindcss-animate";
+import plugin from "tailwindcss/plugin";
 
-import { themeColorsDark, themeColorsDim, themeColorsLight } from "./src/theme";
+import {
+    themeColorsDark,
+    themeColorsDim,
+    themeColorsLight,
+    nextuiTailwindContentPath,
+} from "./nextui-config";
 
 import type { Config } from "tailwindcss";
 
@@ -14,6 +20,7 @@ const config: Config = {
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+        nextuiTailwindContentPath,
     ],
     theme: {
         extend: {

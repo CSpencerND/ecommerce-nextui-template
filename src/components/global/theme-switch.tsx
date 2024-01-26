@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * TODO: Revamp this shit
+ */
+
 import { MoonFilledIcon, SunFilledIcon } from "@/components/utility/icons";
 import { useSwitch, type SwitchProps } from "@nextui-org/switch";
 import { VisuallyHidden } from "@react-aria/visually-hidden";

@@ -1,7 +1,15 @@
-import { commonColors as common } from "@nextui-org/react";
+/**
+ * TODO: Clean this shit the fuck up!
+ */
+
+import { commonColors as common } from "@nextui-org/theme";
 import { readableColor } from "color2k";
 
-import type { SemanticBaseColors, ThemeColors, ConfigTheme } from "@nextui-org/react";
+import type {
+    SemanticBaseColors,
+    ThemeColors,
+    ConfigTheme,
+} from "@nextui-org/theme";
 
 const base: SemanticBaseColors = {
     light: {
