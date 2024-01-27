@@ -1,10 +1,6 @@
 "use client";
 
-/**
- * TODO: Add a toast for each function
- */
-
-// import toast from "react-hot-toast"
+import { toast } from "sonner";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -37,16 +33,20 @@ type CartStore = {
 
 export const useCart = create(
     persist<CartStore>(
-        (set) => ({
+        (set, get) => ({
             items: [],
 
             addItem: (newItem) => {
-                /**
-                 * TODO:
-                 * Firt check if item is already in cart, if so,
-                 * send a toast stating so. "Item already in cart".
-                 */
+                const isCurrentlyInCart = get().items.find(
+                    (item) => item.product.id === newItem.product.id,
+                );
+
+                if (isCurrentlyInCart) {
+                    return toast("Item already in cart.");
+                }
+
                 set((state) => ({ items: [...state.items, newItem] }));
+                toast.success("Item added to cart");
             },
 
             removeItem: (id) => {

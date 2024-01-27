@@ -1,4 +1,5 @@
 import { Header } from "@/components/global";
+import { Toaster } from "@/components/ui/sonner";
 import { TailwindIndicator } from "@/components/utility/tailwind-indicator";
 import { Providers } from "./providers";
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             {children}
                         </main>
                     </div>
+                    <Toaster />
                     <TailwindIndicator />
                 </Providers>
             </body>
