@@ -4,11 +4,11 @@ import { toast } from "sonner";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-import type { CartItem } from "@/types";
+import type { CartItem, Product } from "@/types";
 
 type CartStore = {
     items: CartItem[];
-    addItem: (data: CartItem) => void;
+    addItem: (newItem: Product) => void;
     removeItem: (id: string) => void;
     removeAll: () => void;
     // increment: (cartIndex: number) => void
@@ -38,15 +38,25 @@ export const useCart = create(
 
             addItem: (newItem) => {
                 const isCurrentlyInCart = get().items.find(
-                    (item) => item.product.id === newItem.product.id,
+                    (item) => item.product.id === newItem.id,
                 );
 
                 if (isCurrentlyInCart) {
                     return toast("Item already in cart.");
                 }
 
-                set((state) => ({ items: [...state.items, newItem] }));
+                set((state) => ({
+                    items: [
+                        ...state.items,
+                        {
+                            product: newItem,
+                            quantity: 1,
+                            subtotal: newItem.price,
+                        },
+                    ],
+                }));
                 toast.success("Item added to cart");
+                console.log(get().items);
             },
 
             removeItem: (id) => {

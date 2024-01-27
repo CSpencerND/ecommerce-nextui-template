@@ -1,5 +1,6 @@
 "use client";
 
+import { AddToCartButton } from "@/components/cart";
 import {
     ProductExhibitProvider,
     useProductExhibit,
@@ -7,7 +8,6 @@ import {
 
 import { ColorSelector, SizeSelector } from "@/components/selectors";
 
-import { Button } from "@nextui-org/button";
 import { Card, CardBody } from "@nextui-org/card";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -89,18 +89,14 @@ export function ProductExhibitDescription() {
 }
 
 export function ProductExhibitButtons() {
-    const {
-        productData: { colors, sizes },
-        selectedColor,
-        selectedSize,
-        isBuyDisabled,
-    } = useProductExhibit();
+    const { productData, selectedColor, selectedSize, isBuyDisabled } =
+        useProductExhibit();
 
     return (
         <div className="space-y-6">
             <div className="space-y-3">
-                <ColorSelector colors={colors} />
-                <SizeSelector sizes={sizes} />
+                <ColorSelector colors={productData.colors} />
+                <SizeSelector sizes={productData.sizes} />
             </div>
 
             <VisuallyHidden>
@@ -128,22 +124,20 @@ export function ProductExhibitButtons() {
                     alert("Select your options");
                 }}
             >
-                <Button
-                    color="primary"
-                    variant="shadow"
-                    fullWidth
+                {/* <Button */}
+                {/*     color="primary" */}
+                {/*     variant="shadow" */}
+                {/*     fullWidth */}
+                {/*     isDisabled={isBuyDisabled} */}
+                {/* > */}
+                {/*     Buy Now */}
+                {/* </Button> */}
+                <AddToCartButton
+                    item={productData}
                     isDisabled={isBuyDisabled}
                 >
-                    Buy Now
-                </Button>
-                <Button
-                    color="primary"
-                    variant="ghost"
-                    fullWidth
-                    isDisabled={isBuyDisabled}
-                >
-                    Add To Bag
-                </Button>
+                    Add To Cart
+                </AddToCartButton>
             </div>
         </div>
     );

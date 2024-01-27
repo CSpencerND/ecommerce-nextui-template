@@ -1,5 +1,6 @@
 "use client";
 
+import { AddToCartButton } from "@/components/cart";
 import { ProductShowcase } from "../../product-components";
 
 import {
@@ -29,14 +30,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { prose } from "@/styles";
 
 export default function ProductPageModal() {
-    const product = useProductDrawer((s) => s.data);
+    const productData = useProductDrawer((s) => s.data);
 
     const router = useRouter();
     const searchParams = useSearchParams();
     const isMobile = useMediaQuery("(max-width: 767px)");
 
-    if (!product) return null;
-    const { name, description, images, price, sizes, colors } = product;
+    if (!productData) return null;
+    const { name, description, images, price, sizes, colors } = productData;
 
     const selectedColor = searchParams.get("color");
     const selectedSize = searchParams.get("size");
@@ -118,13 +119,12 @@ export default function ProductPageModal() {
                             >
                                 Buy Now
                             </Button>
-                            <Button
-                                color="primary"
-                                variant="ghost"
+                            <AddToCartButton
+                                item={productData}
                                 isDisabled={isBuyDisabled}
                             >
-                                Add To Bag
-                            </Button>
+                                Add To Cart
+                            </AddToCartButton>
                         </div>
                     </DrawerFooter>
                 </ProductProvider>
@@ -154,7 +154,7 @@ export default function ProductPageModal() {
                 {/*     </Button> */}
                 {/* </div> */}
 
-                <ProductShowcase product={product} />
+                <ProductShowcase product={productData} />
             </ModalContent>
         </Modal>
     );
