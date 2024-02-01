@@ -91,7 +91,7 @@ export function ColorSelectorPreview({ colors, className }: ColorSelectorProps) 
                 className={selector.group({
                     noWrap: true,
                     class: [
-                        "gap-3 rounded-large bg-content2 p-2 shadow-small",
+                        "rounded-large bg-content2 p-2 shadow-small min-[146px]:justify-between",
                         className,
                     ],
                 })}

@@ -97,12 +97,9 @@ const CarouselArrows = React.forwardRef<
             aria-controls="carousel"
             isIconOnly
             size="sm"
-            radius="full"
+            radius="md"
             variant="flat"
-            className={cn(
-                "divide-x divide-background/20 rounded-full shadow-sm",
-                className,
-            )}
+            className={cn("divide-x divide-background/20 shadow-sm", className)}
             {...props}
         >
             <CarouselPrev />
@@ -147,8 +144,8 @@ const CarouselDots = ({ numSlides }: { numSlides: number }) => {
             isIconOnly
             variant="flat"
             size="sm"
-            radius="full"
-            className="overflow-clip rounded-full shadow-sm"
+            radius="md"
+            className="overflow-clip shadow-sm"
         >
             {Array.from({ length: numSlides }).map((_, i) => (
                 <Button

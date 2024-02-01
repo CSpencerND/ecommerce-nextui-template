@@ -9,16 +9,12 @@ import {
     CarouselItem,
 } from "@/components/ui/carousel";
 
-import {
-    ProductCard,
-    ProductCardBody,
-    ProductCardFooter,
-} from "@/components/product";
-
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
 
 import { heading, prose, section } from "@/styles";
 
@@ -61,6 +57,7 @@ export default async function HomePage() {
                 </div>
 
                 <Image
+                    as={NextImage}
                     unoptimized={isImageUnoptimized}
                     src={banner}
                     alt="banner"
@@ -68,7 +65,7 @@ export default async function HomePage() {
                     height={393}
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
                     priority
-                    className="rounded-xlarge lg:max-w-lg"
+                    className="rounded-f5 border border-divider lg:max-w-lg"
                 />
             </section>
 
@@ -84,31 +81,28 @@ export default async function HomePage() {
                         containScroll: false,
                         loop: true,
                     }}
-                    className="max-w-prose"
+                    className="rounded-f5 max-w-prose"
                 >
                     <CarouselContent>
                         {items.map(({ image, name }, i) => (
                             <CarouselItem key={`Item ${i}`}>
-                                <ProductCard
-                                    isFooterBlurred
-                                    disableAnimation
-                                    shadow="none"
-                                    className="border-divider focus-visible:focus-ring"
-                                >
-                                    <ProductCardBody>
-                                        <ProductImage
-                                            src={image}
-                                            alt={name}
-                                            width={192}
-                                            height={192}
-                                            sizes="192px"
-                                        />
-                                        <ProductCardFooter
-                                            text={name}
-                                            className="ml-1"
-                                        />
-                                    </ProductCardBody>
-                                </ProductCard>
+                                <div className="rounded-f4 relative overflow-clip border border-divider/5">
+                                    <Image
+                                        as={NextImage}
+                                        src={image}
+                                        alt={name}
+                                        width={192}
+                                        height={192}
+                                        sizes="192px"
+                                    />
+                                    <div className="p-f2 absolute inset-0 z-10 grid items-end rounded-[calc(var(--f4)+2px)] focus-visible:focus-ring">
+                                        <div className="p-f2 rounded-f3 h-fit border border-divider bg-black/20 backdrop-blur backdrop-saturate-150">
+                                            <h3 className="px-1 font-bold">
+                                                {name}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </CarouselItem>
                         ))}
                     </CarouselContent>

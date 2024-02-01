@@ -6,9 +6,10 @@ import animate from "tailwindcss-animate";
 import plugin from "tailwindcss/plugin";
 
 import {
-    themeColorsDark,
-    themeColorsDim,
-    themeColorsLight,
+    // themeColorsDark,
+    // themeColorsDim,
+    // themeColorsLight,
+    fibi,
     nextuiTailwindContentPath,
 } from "./nextui-config";
 
@@ -33,11 +34,38 @@ const config: Config = {
                 "gradient-conic":
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
+
+            padding: fibi,
+            margin: fibi,
+            width: fibi,
+            height: fibi,
+            maxWidth: fibi,
+            maxHeight: fibi,
+            size: fibi,
+
             borderRadius: {
                 xlarge: "26px",
                 "2xlarge": "38px",
                 icon: "22.37%",
+                ...fibi,
             },
+
+            // padding: {
+            //     xsmall: "3px",
+            //     small: "6px",
+            //     medium: "12px",
+            //     large: "24px",
+            //     xlarge: "36px",
+            // },
+
+            // borderRadius: {
+            //     xsmall: "3px",
+            //     small: "6px",
+            //     medium: "12px",
+            //     large: "24px",
+            //     xlarge: "36px",
+            //     icon: "22.37%",
+            // },
         },
     },
     darkMode: "class",
@@ -49,10 +77,10 @@ const config: Config = {
             addCommonColors: true,
             themes: {
                 dark: {
-                    colors: themeColorsDark,
+                    // colors: themeColorsDark,
                 },
                 light: {
-                    colors: themeColorsLight,
+                    // colors: themeColorsLight,
                     layout: {
                         boxShadow: {
                             small: "0px 0px 5px 0px rgb(0 0 0 / 0.02), 0px 2px 10px 0px rgb(0 0 0 / 0.06)",
@@ -61,7 +89,7 @@ const config: Config = {
                         },
                     },
                 },
-                dim: themeColorsDim,
+                // dim: themeColorsDim,
             },
         }),
         plugin(function ({ addUtilities, addVariant }) {

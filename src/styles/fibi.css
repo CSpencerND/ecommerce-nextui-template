@@ -1,0 +1,18 @@
+:root {
+    --base: 13px;
+    --ratio: 1.618;
+
+    --f1: calc(var(--base) / var(--ratio) / var(--ratio) / var(--ratio));
+    --f2: calc(var(--base) / var(--ratio) / var(--ratio));
+    --f3: calc(var(--base) / var(--ratio));
+    --f4: var(--base);
+    --f5: calc(var(--base) * var(--ratio));
+    --f6: calc(var(--base) * var(--ratio) * var(--ratio));
+    --f7: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio));
+    --f8: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+    --f9: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+    --f10: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+    --f11: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+    --f12: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+    --f13: calc(var(--base) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+}

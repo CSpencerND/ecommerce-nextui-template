@@ -1,8 +1,5 @@
 import {
     ProductImageProvider,
-    ProductCard,
-    ProductCardBody,
-    ProductCardFooter,
     ProductImageGroup,
     ProductLink,
 } from "@/components/product";
@@ -40,37 +37,35 @@ export default async function CollectionPage({
                     <MotionListItem
                         key={`Product ${i}`}
                         index={i}
+                        className="rounded-f5 p-f3 space-y-2 border border-divider/10 bg-content1"
                     >
-                        <ProductCard
-                            isFooterBlurred
-                            isBodyLink
-                            hasPadding
-                        >
-                            <ProductImageProvider>
-                                <ProductCardBody
-                                    as={ProductLink}
+                        <ProductImageProvider>
+                            <div className="relative">
+                                <ProductImageGroup
+                                    images={images.map((image, j) => ({
+                                        src: image,
+                                        alt: `Product Image ${j + 1}`,
+                                    }))}
+                                    size="preview"
+                                    shadow="sm"
+                                />
+                                <ProductLink
                                     href={`/${collection_slug}/${name.toLowerCase()}`}
                                     data={products[i]}
-                                    className="rounded-xlarge"
+                                    className="p-f2 rounded-f4 absolute inset-0 z-10 grid items-end focus-visible:focus-ring"
                                 >
-                                    <ProductImageGroup
-                                        images={images.map((image, j) => ({
-                                            src: image,
-                                            alt: `Product Image ${j + 1}`,
-                                        }))}
-                                        size="preview"
-                                        isBordered
-                                    />
-                                    <ProductCardFooter text={name} />
-                                </ProductCardBody>
-                                <div className="flex flex-col justify-center gap-3 px-3 pb-3 @container">
-                                    <ColorSelectorPreview
-                                        colors={colors}
-                                        className="@[146px]:justify-between"
-                                    />
-                                </div>
-                            </ProductImageProvider>
-                        </ProductCard>
+                                    <div className="p-f2 rounded-f3 h-fit border border-divider bg-black/20 backdrop-blur backdrop-saturate-150">
+                                        <h3 className="px-f1 font-bold">
+                                            {name}
+                                        </h3>
+                                    </div>
+                                </ProductLink>
+                            </div>
+                            <ColorSelectorPreview
+                                colors={colors}
+                                className="rounded-f4"
+                            />
+                        </ProductImageProvider>
                     </MotionListItem>
                 ))}
             </menu>

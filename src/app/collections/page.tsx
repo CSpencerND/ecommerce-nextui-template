@@ -1,12 +1,7 @@
-import {
-    ProductCard,
-    ProductCardBody,
-    ProductCardFooter,
-    ProductImage,
-} from "@/components/product";
-
 import { MotionListItem } from "@/components/utility/motion";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
 
 import { getCollections } from "@/actions";
 
@@ -25,24 +20,24 @@ export default async function CollectionDirectoryPage() {
                     <MotionListItem
                         key={`Collection ${i}`}
                         index={i}
+                        className="rounded-f4 relative border border-divider/10"
                     >
-                        <ProductCard
-                            isFooterBlurred
-                            isPressable
-                            isBodyLink
+                        <Image
+                            as={NextImage}
+                            src={image}
+                            alt="Collection Preview Image"
+                            width={192}
+                            height={192}
+                            sizes="192px"
+                        />
+                        <Link
+                            href={`/${name.toLowerCase()}`}
+                            className="p-f2 rounded-f4 absolute inset-0 z-10 grid items-end focus-visible:focus-ring"
                         >
-                            <ProductCardBody
-                                as={Link}
-                                href={`/${name.toLowerCase()}`}
-                            >
-                                <ProductImage
-                                    src={image}
-                                    alt={name}
-                                    size="preview"
-                                />
-                                <ProductCardFooter text={name} />
-                            </ProductCardBody>
-                        </ProductCard>
+                            <div className="p-f2 rounded-f3 h-fit border border-divider bg-black/20 backdrop-blur backdrop-saturate-150">
+                                <h3 className="px-f1 font-bold">{name}</h3>
+                            </div>
+                        </Link>
                     </MotionListItem>
                 ))}
             </menu>
