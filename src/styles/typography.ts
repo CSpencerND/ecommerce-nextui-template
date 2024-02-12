@@ -9,6 +9,7 @@ export const prose = tv({
         wrap: {
             pretty: "prose-p:text-pretty",
             balance: "prose-p:text-balance",
+            none: "",
         },
     },
     defaultVariants: {

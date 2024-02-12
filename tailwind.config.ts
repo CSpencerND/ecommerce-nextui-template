@@ -94,11 +94,31 @@ const config: Config = {
         }),
         plugin(function ({ addUtilities, addVariant }) {
             addUtilities({
+                ".main-grid": {
+                    "--gutter": "24px",
+                    "--max-width": "65ch",
+
+                    position: "relative",
+                    display: "grid",
+                    gridTemplateColumns:
+                        "1fr min(var(--max-width), calc(100% - calc(var(--gutter) * 2))) 1fr",
+                    gridColumnGap: "var(--gutter)",
+
+                    "& > *": {
+                        gridColumn: "2",
+                    },
+
+                    "& > .full-bleed": {
+                        width: "100%",
+                        gridColumn: "1 / -1",
+                    },
+                },
                 ".debug": {
                     outline: "1px solid red",
                 },
                 ".debug-nested": {
                     outline: "1px solid red",
+
                     "*": {
                         outline: "1px solid red",
                     },

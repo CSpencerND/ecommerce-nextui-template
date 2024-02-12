@@ -16,7 +16,7 @@ import { ArrowRight } from "lucide-react";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { heading, prose, section } from "@/styles";
+import { heading, prose } from "@/styles";
 
 import { getFeatured, getHero } from "@/actions";
 import { isImageUnoptimized } from "@/site.config";
@@ -29,14 +29,10 @@ export default async function HomePage() {
 
     return (
         <>
-            <section
-                className={section({
-                    row: "lg",
-                })}
-            >
+            <section className="space-y-9">
                 <div
                     className={prose({
-                        class: "relative isolate flex basis-3/4 flex-col items-center text-center lg:items-start lg:text-left",
+                        class: "relative isolate mx-auto items-center text-center",
                     })}
                 >
                     <h1 className={heading()}>{headline}</h1>
@@ -61,16 +57,16 @@ export default async function HomePage() {
                     unoptimized={isImageUnoptimized}
                     src={banner}
                     alt="banner"
-                    width={698}
-                    height={393}
+                    width={1600}
+                    height={900}
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
                     priority
-                    className="rounded-f5 border border-divider lg:max-w-lg"
+                    className="w-full rounded-f6 border border-divider"
                 />
             </section>
 
-            <section className={section({ row: "lg" })}>
-                <div className={prose({ class: "text-center lg:hidden" })}>
+            <section className="grid place-items-center space-y-9">
+                <div className={prose({ class: "text-center" })}>
                     <h1 className={heading()}>{copy.adjective}</h1>
                 </div>
 
@@ -81,12 +77,12 @@ export default async function HomePage() {
                         containScroll: false,
                         loop: true,
                     }}
-                    className="rounded-f5 max-w-prose"
+                    className="rounded-f5"
                 >
                     <CarouselContent>
                         {items.map(({ image, name }, i) => (
                             <CarouselItem key={`Item ${i}`}>
-                                <div className="rounded-f4 relative overflow-clip border border-divider/5">
+                                <div className="relative overflow-clip rounded-f4 border border-divider/5">
                                     <Image
                                         as={NextImage}
                                         src={image}
@@ -95,8 +91,8 @@ export default async function HomePage() {
                                         height={192}
                                         sizes="192px"
                                     />
-                                    <div className="p-f2 absolute inset-0 z-10 grid items-end rounded-[calc(var(--f4)+2px)] focus-visible:focus-ring">
-                                        <div className="p-f2 rounded-f3 h-fit border border-divider bg-black/20 backdrop-blur backdrop-saturate-150">
+                                    <div className="absolute inset-0 z-10 grid items-end rounded-[calc(var(--f4)+2px)] p-f2 focus-visible:focus-ring">
+                                        <div className="h-fit rounded-f3 border border-divider bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                             <h3 className="px-1 font-bold">
                                                 {name}
                                             </h3>
@@ -114,15 +110,11 @@ export default async function HomePage() {
 
                 <div
                     className={prose({
-                        class: "flex flex-col items-center lg:items-start",
+                        class: "flex flex-col items-center justify-center text-center",
+                        wrap: "balance",
                     })}
                 >
-                    <h1 className={heading({ class: "max-lg:hidden" })}>
-                        {copy.adjective}
-                    </h1>
-                    <p className="max-lg:mt-0 max-lg:text-center">
-                        {copy.description}
-                    </p>
+                    <p className="debug">{copy.description}</p>
                     <Button
                         color="primary"
                         variant="shadow"

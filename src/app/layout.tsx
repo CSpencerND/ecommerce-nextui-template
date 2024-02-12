@@ -37,19 +37,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className={`${GeistSans.variable} ${GeistMono.variable} dark`}
             suppressHydrationWarning
         >
-            <body className="min-h-screen bg-background text-foreground">
+            <body className="h-svh min-h-screen bg-background text-foreground">
                 <Providers
                     themeProps={{
                         defaultTheme: "system",
                         // themes: ["light", "dark", "dim"],
                     }}
                 >
+                    {/* NOTE: Do we need this div? */}
                     <div
                         vaul-drawer-wrapper=""
-                        className="relative flex h-svh flex-col"
+                    // className="layout"
                     >
-                        <Header themeSwitchType="toggle" />
-                        <main className="container mx-auto max-w-5xl flex-grow space-y-16 px-6 py-12">
+                        <Header
+                            themeSwitchType="toggle"
+                        // className="full-bleed"
+                        />
+                        <main
+                            // className="container mx-auto max-w-5xl flex-grow space-y-16 px-6 py-12 debug"
+                            className="main-grid space-y-16 py-12"
+                        >
                             {children}
                         </main>
                     </div>

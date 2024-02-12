@@ -15,12 +15,17 @@ import {
 
 import { siteConfig } from "@/site.config";
 
-type HeaderProps = {
+export const Header = ({
+    themeSwitchType,
+    className,
+}: {
     themeSwitchType?: "toggle" | "menu";
-};
-
-export const Header: React.FC<HeaderProps> = ({ themeSwitchType, ...props }) => (
-    <Navbar isBordered>
+    className?: string;
+}) => (
+    <Navbar
+        isBordered
+        className={className}
+    >
         <NavbarBrand>
             <Link
                 href="/"
@@ -43,12 +48,12 @@ export const Header: React.FC<HeaderProps> = ({ themeSwitchType, ...props }) => 
             {siteConfig.navItems.map(({ label, href }, i) => (
                 <NavbarItem
                     key={i}
-                    /* isActive={false} */
+                /* isActive={false} */
                 >
                     <Link
                         color="foreground"
                         href="#"
-                        /* aria-current="page" */
+                    /* aria-current="page" */
                     >
                         {label}
                     </Link>
@@ -97,8 +102,8 @@ export const Header: React.FC<HeaderProps> = ({ themeSwitchType, ...props }) => 
                             i === 2
                                 ? "primary"
                                 : i === siteConfig.navMenuItems.length - 1
-                                  ? "danger"
-                                  : "foreground"
+                                    ? "danger"
+                                    : "foreground"
                         }
                         className="w-full"
                         href="#"
