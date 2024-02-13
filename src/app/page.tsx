@@ -1,5 +1,3 @@
-import { ProductImage } from "@/components/product";
-
 import {
     Carousel,
     CarouselArrows,
@@ -33,6 +31,7 @@ export default async function HomePage() {
                 <div
                     className={prose({
                         class: "relative isolate mx-auto items-center text-center",
+                        wrap: "balance",
                     })}
                 >
                     <h1 className={heading()}>{headline}</h1>
@@ -57,11 +56,11 @@ export default async function HomePage() {
                     unoptimized={isImageUnoptimized}
                     src={banner}
                     alt="banner"
-                    width={1600}
-                    height={900}
+                    width={1024}
+                    height={576}
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
                     priority
-                    className="w-full rounded-f6 border border-divider"
+                    className="!rounded-f5 border border-divider"
                 />
             </section>
 
@@ -110,11 +109,11 @@ export default async function HomePage() {
 
                 <div
                     className={prose({
-                        class: "flex flex-col items-center justify-center text-center",
+                        class: "grid place-items-center text-center",
                         wrap: "balance",
                     })}
                 >
-                    <p className="debug">{copy.description}</p>
+                    <p>{copy.description}</p>
                     <Button
                         color="primary"
                         variant="shadow"
