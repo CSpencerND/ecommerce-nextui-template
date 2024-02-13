@@ -44,10 +44,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         // themes: ["light", "dark", "dim"],
                     }}
                 >
-                    {/* NOTE: Do we need this div? */}
                     <div vaul-drawer-wrapper="">
                         <Header themeSwitchType="toggle" />
-                        <main className="space-y-16 py-12 main-grid">
+                        <main className="space-y-14 py-12 main-grid">
                             {children}
                         </main>
                     </div>
