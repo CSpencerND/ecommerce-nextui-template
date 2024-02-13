@@ -14,7 +14,7 @@ import { ArrowRight } from "lucide-react";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { heading, prose } from "@/styles";
+import { heading, prose, section } from "@/styles";
 
 import { getFeatured, getHero } from "@/actions";
 import { isImageUnoptimized } from "@/site.config";
@@ -27,7 +27,7 @@ export default async function HomePage() {
 
     return (
         <>
-            <section className="space-y-9">
+            <section className={section()}>
                 <div
                     className={prose({
                         class: "relative isolate mx-auto items-center text-center",

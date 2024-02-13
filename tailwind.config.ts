@@ -37,6 +37,7 @@ const config: Config = {
 
             padding: fibi,
             margin: fibi,
+            gap: fibi,
             width: fibi,
             height: fibi,
             maxWidth: fibi,

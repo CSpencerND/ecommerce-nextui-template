@@ -20,7 +20,7 @@ export default async function CollectionDirectoryPage() {
                     <MotionListItem
                         key={`Collection ${i}`}
                         index={i}
-                        className="rounded-f4 relative border border-divider/10"
+                        className="relative rounded-f4 border border-divider/10"
                     >
                         <Image
                             as={NextImage}
@@ -32,9 +32,9 @@ export default async function CollectionDirectoryPage() {
                         />
                         <Link
                             href={`/${name.toLowerCase()}`}
-                            className="p-f2 rounded-f4 absolute inset-0 z-10 grid items-end focus-visible:focus-ring"
+                            className="absolute inset-0 z-10 grid items-end rounded-f4 p-f2 focus-visible:focus-ring"
                         >
-                            <div className="p-f2 rounded-f3 h-fit border border-divider bg-black/20 backdrop-blur backdrop-saturate-150">
+                            <div className="h-fit rounded-f3 border border-divider bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                 <h3 className="px-f1 font-bold">{name}</h3>
                             </div>
                         </Link>

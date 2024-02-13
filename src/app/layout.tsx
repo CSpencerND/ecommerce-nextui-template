@@ -45,18 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     }}
                 >
                     {/* NOTE: Do we need this div? */}
-                    <div
-                        vaul-drawer-wrapper=""
-                    // className="layout"
-                    >
-                        <Header
-                            themeSwitchType="toggle"
-                        // className="full-bleed"
-                        />
-                        <main
-                            // className="container mx-auto max-w-5xl flex-grow space-y-16 px-6 py-12 debug"
-                            className="main-grid space-y-16 py-12"
-                        >
+                    <div vaul-drawer-wrapper="">
+                        <Header themeSwitchType="toggle" />
+                        <main className="space-y-16 py-12 main-grid">
                             {children}
                         </main>
                     </div>
