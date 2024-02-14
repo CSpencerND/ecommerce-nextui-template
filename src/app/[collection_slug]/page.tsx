@@ -26,7 +26,8 @@ export default async function CollectionPage({
         <section className={section()}>
             <header
                 className={prose({
-                    class: "prose-invert px-6 max-lg:text-center",
+                    class: "text-center",
+                    wrap: "balance",
                 })}
             >
                 <h1 className={heading()}>{collectionName}</h1>
@@ -37,7 +38,7 @@ export default async function CollectionPage({
                     <MotionListItem
                         key={`Product ${i}`}
                         index={i}
-                        className="space-y-2 rounded-f5 border border-divider/10 bg-content1 p-f3"
+                        className="relative space-y-[var(--f3)] rounded-f5 border border-divider/10 bg-content1 p-f3"
                     >
                         <ProductImageProvider>
                             <div className="relative">

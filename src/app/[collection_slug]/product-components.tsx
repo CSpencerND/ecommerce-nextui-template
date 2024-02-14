@@ -12,7 +12,7 @@ export function ProductShowcase({ product }: { product: Product }) {
     return (
         <ProductExhibit
             productData={product}
-            className="gap-6 overflow-clip max-lg:max-w-[calc(384px+48px)] lg:max-h-[calc(384px+48px)] lg:flex-row"
+            className="gap-f5 overflow-clip max-lg:max-w-[calc(384px+48px)] lg:max-h-[calc(384px+48px)] lg:flex-row"
         >
             <ProductImageGroup
                 images={product.images.map((image, i) => ({

@@ -18,16 +18,16 @@ export type ProductImageProps = ImageProps & {
 export function ProductImage(props: ProductImageProps) {
     const { size, isBgStriped, isBordered, className, ...rest } = props;
 
-    const getDimensions = (axis: "width" | "height") => {
-        switch (size) {
-            case "preview":
-                return 192;
-            case "full":
-                return 384;
-            default:
-                return props[axis];
-        }
-    };
+    // const getDimensions = (axis: "width" | "height") => {
+    //     switch (size) {
+    //         case "preview":
+    //             return 192;
+    //         case "full":
+    //             return 384;
+    //         default:
+    //             return props[axis];
+    //     }
+    // };
 
     return (
         <Image
@@ -35,15 +35,18 @@ export function ProductImage(props: ProductImageProps) {
             unoptimized={isImageUnoptimized}
             src={props.src}
             alt={props.alt}
-            width={getDimensions("width")}
-            height={getDimensions("height")}
+            // width={getDimensions("width")}
+            // height={getDimensions("height")}
+            fill
             sizes={size ? imageSizes[size] : props.sizes}
             classNames={{
                 wrapper: [
+                    "!max-w-none",
                     isBgStriped && "data-[loaded=true]:bg-stripe-gradient",
                     isBordered && "ring-1 ring-divider",
                     className,
                 ],
+                img: "!static",
             }}
             {...rest}
         />
