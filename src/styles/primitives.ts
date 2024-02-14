@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const section = tv({
-    base: "gap-f6 flex flex-col items-center justify-center",
+    base: "flex flex-col items-center justify-center gap-f6",
     variants: {
         row: {
             sm: "sm:flex-row",
@@ -12,5 +12,5 @@ export const section = tv({
 });
 
 export const grid = tv({
-    base: "gap-f4 md:gap-f5 grid grid-cols-2 sm:grid-cols-3",
+    base: "grid gap-f4 min-[375px]:grid-cols-2 sm:grid-cols-3 md:gap-f5",
 });

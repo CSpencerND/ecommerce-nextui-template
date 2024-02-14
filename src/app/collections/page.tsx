@@ -11,8 +11,8 @@ export default async function CollectionDirectoryPage() {
     const collections = await getCollections();
 
     return (
-        <section className={section()}>
-            <header className={prose({ class: "px-6 max-lg:text-center" })}>
+        <section className="space-y-[var(--f6)]">
+            <header className={prose({ class: "text-center" })}>
                 <h1 className={heading()}>Collection Directory</h1>
             </header>
             <menu className={grid()}>
@@ -26,9 +26,12 @@ export default async function CollectionDirectoryPage() {
                             as={NextImage}
                             src={image}
                             alt="Collection Preview Image"
-                            width={192}
-                            height={192}
+                            fill
                             sizes="192px"
+                            classNames={{
+                                wrapper: "!max-w-none",
+                                img: "!static",
+                            }}
                         />
                         <Link
                             href={`/${name.toLowerCase()}`}
