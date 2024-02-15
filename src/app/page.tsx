@@ -90,7 +90,7 @@ export default async function HomePage() {
                                         height={192}
                                         sizes="192px"
                                     />
-                                    <div className="absolute inset-0 z-10 grid items-end rounded-[calc(var(--f4)+2px)] p-f2 focus-visible:focus-ring">
+                                    <div className="absolute inset-0 z-10 grid items-end p-f2">
                                         <div className="h-fit rounded-f3 border border-divider bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                             <h3 className="px-1 font-bold">
                                                 {name}

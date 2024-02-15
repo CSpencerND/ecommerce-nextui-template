@@ -1,5 +1,6 @@
 import { nextui } from "@nextui-org/theme";
 
+import goldenRatio from "./tailwindcss-golden-ratio";
 import container from "@tailwindcss/container-queries";
 import typography from "@tailwindcss/typography";
 import animate from "tailwindcss-animate";
@@ -35,20 +36,20 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
 
-            padding: fibi,
-            margin: fibi,
-            gap: fibi,
-            width: fibi,
-            height: fibi,
-            maxWidth: fibi,
-            maxHeight: fibi,
-            size: fibi,
+            // padding: fibi,
+            // margin: fibi,
+            // gap: fibi,
+            // width: fibi,
+            // height: fibi,
+            // maxWidth: fibi,
+            // maxHeight: fibi,
+            // size: fibi,
 
             borderRadius: {
                 xlarge: "26px",
                 "2xlarge": "38px",
                 icon: "22.37%",
-                ...fibi,
+                // ...fibi,
             },
 
             // padding: {
@@ -68,12 +69,44 @@ const config: Config = {
             //     icon: "22.37%",
             // },
         },
+
+        goldenRatio: {
+            /**
+             * Use a prefix instead of overwriting existing spacing utilities
+             * @type {Boolean|String}
+             * default: true|'gr-'
+             * example: 'golden-ratio-' would generate classes like mt-golden-ratio-2);
+             */
+            prefix: "f",
+
+            /**
+             * The spacing unit
+             * @type {String}
+             * default: 'rem'
+             */
+            spacerUnit: "px",
+
+            /**
+             * The starting point for spacing
+             * @type {Number}
+             * default: 1.5
+             * example: `m-gr-6` will be `1.5rem`. You have 1-5 for smaller values and 7-11 for larger values
+             */
+            spacerBase: 34,
+
+            /**
+             * Use css variables for generated values
+             * @type {Boolean}
+             */
+            useCssVars: true,
+        },
     },
     darkMode: "class",
     plugins: [
         container,
         typography,
         animate,
+        goldenRatio,
         nextui({
             addCommonColors: true,
             themes: {

@@ -38,7 +38,7 @@ export default async function CollectionPage({
                     <MotionListItem
                         key={`Product ${i}`}
                         index={i}
-                        className="relative space-y-[var(--f3)] rounded-f5 border border-divider/10 bg-content1 p-f3"
+                        className="space-y-f3 relative rounded-f5 border border-divider/10 bg-content1 p-f3"
                     >
                         <ProductImageProvider>
                             <div className="relative">

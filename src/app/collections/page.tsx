@@ -11,7 +11,7 @@ export default async function CollectionDirectoryPage() {
     const collections = await getCollections();
 
     return (
-        <section className="space-y-[var(--f6)]">
+        <section className="space-y-f6">
             <header className={prose({ class: "text-center" })}>
                 <h1 className={heading()}>Collection Directory</h1>
             </header>
