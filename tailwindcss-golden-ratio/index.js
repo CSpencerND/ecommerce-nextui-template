@@ -203,9 +203,13 @@ const config = {
         };
     },
 
-    borderSpacing: (theme) => ({
+    borderRadius: (theme) => ({
         ...theme("spacing"),
     }),
+
+    // borderSpacing: (theme) => ({
+    //     ...theme("spacing"),
+    // }),
 
     // borderWidth: (theme) => ({
     //     ...theme("spacing"),
@@ -227,9 +231,9 @@ const config = {
         ...theme("spacing"),
     }),
 
-    lineHeight: (theme) => ({
-        ...theme("spacing"),
-    }),
+    // lineHeight: (theme) => ({
+    //     ...theme("spacing"),
+    // }),
 
     margin: (theme) => ({
         ...theme("spacing"),
@@ -259,9 +263,9 @@ const config = {
         ...theme("spacing"),
     }),
 
-    ringOffsetWidth: (theme) => ({
-        ...theme("spacing"),
-    }),
+    // ringOffsetWidth: (theme) => ({
+    //     ...theme("spacing"),
+    // }),
 
     // ringWidth: (theme) => ({
     //     ...theme("spacing"),
@@ -284,23 +288,19 @@ const config = {
     //     ...theme("spacing"),
     // }),
 
-    translate: (theme) => ({
-        ...theme("spacing"),
-    }),
+    // translate: (theme) => ({
+    //     ...theme("spacing"),
+    // }),
 
-    textIndent: (theme) => ({
-        ...theme("spacing"),
-    }),
+    // textIndent: (theme) => ({
+    //     ...theme("spacing"),
+    // }),
 
-    textUnderlineOffset: (theme) => ({
-        ...theme("spacing"),
-    }),
+    // textUnderlineOffset: (theme) => ({
+    //     ...theme("spacing"),
+    // }),
 
     width: (theme) => ({
-        ...theme("spacing"),
-    }),
-
-    borderRadius: (theme) => ({
         ...theme("spacing"),
     }),
 };
