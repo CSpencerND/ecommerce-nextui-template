@@ -3,32 +3,62 @@
         {
             "id": "101324558X",
             "name": "Gloves",
-            "image": "https://picsum.photos/seed/UvkdvrBg/192/192"
+            "image": {
+                "src": "https://picsum.photos/seed/UvkdvrBg/192/192",
+                "alt": "banner",
+                "height": 192,
+                "width": 192
+            }
         },
         {
             "id": "154284388X",
             "name": "Sausages",
-            "image": "https://picsum.photos/seed/gLwlU91hu/192/192"
+            "image": {
+                "src": "https://picsum.photos/seed/gLwlU91hu/192/192",
+                "alt": "banner",
+                "height": 192,
+                "width": 192
+            }
         },
         {
             "id": "0319258459",
             "name": "Computer",
-            "image": "https://picsum.photos/seed/4i8G2/192/192"
+            "image": {
+                "src": "https://picsum.photos/seed/4i8G2/192/192",
+                "alt": "banner",
+                "height": 192,
+                "width": 192
+            }
         },
         {
             "id": "1571266569",
             "name": "Pants",
-            "image": "https://picsum.photos/seed/JqOVpZWTp/192/192"
+            "image": {
+                "src": "https://picsum.photos/seed/JqOVpZWTp/192/192",
+                "alt": "banner",
+                "height": 192,
+                "width": 192
+            }
         },
         {
             "id": "0739593927",
             "name": "Table",
-            "image": "https://picsum.photos/seed/NVSVjYk/192/192"
+            "image": {
+                "src": "https://picsum.photos/seed/NVSVjYk/192/192",
+                "alt": "banner",
+                "height": 192,
+                "width": 192
+            }
         },
         {
             "id": "0132161982",
             "name": "Towels",
-            "image": "https://picsum.photos/seed/8kp6m/192/192"
+            "image": {
+                "src": "https://picsum.photos/seed/8kp6m/192/192",
+                "alt": "banner",
+                "height": 192,
+                "width": 192
+            }
         }
     ],
     "copy": {

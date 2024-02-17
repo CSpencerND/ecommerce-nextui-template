@@ -22,7 +22,7 @@ import { isImageUnoptimized } from "@/site.config";
 export default async function HomePage() {
     const [hero, featured] = await Promise.all([getHero(), getFeatured()]);
 
-    const { descriptor, banner, headline } = hero;
+    const { descriptor, image, headline } = hero;
     const { items, copy } = featured;
 
     return (
@@ -51,17 +51,16 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <Image
-                    as={NextImage}
-                    unoptimized={isImageUnoptimized}
-                    src={banner}
-                    alt="banner"
-                    width={1024}
-                    height={576}
-                    sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
-                    priority
-                    className="!rounded-f5 border border-divider"
-                />
+                <div className="relative aspect-video size-full overflow-clip rounded-f5 border border-divider">
+                    <NextImage
+                        unoptimized={isImageUnoptimized}
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
+                        priority
+                    />
+                </div>
             </section>
 
             <section className="grid place-items-center space-y-9">
@@ -84,10 +83,10 @@ export default async function HomePage() {
                                 <div className="relative overflow-clip rounded-f4 border border-divider/5">
                                     <Image
                                         as={NextImage}
-                                        src={image}
-                                        alt={name}
-                                        width={192}
-                                        height={192}
+                                        src={image.src}
+                                        alt={image.alt}
+                                        width={image.width}
+                                        height={image.height}
                                         sizes="192px"
                                     />
                                     <div className="absolute inset-0 z-10 grid items-end p-f2">

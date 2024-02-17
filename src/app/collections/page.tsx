@@ -24,7 +24,7 @@ export default async function CollectionDirectoryPage() {
                     >
                         <Image
                             as={NextImage}
-                            src={image}
+                            src={image.src}
                             alt="Collection Preview Image"
                             fill
                             sizes="192px"

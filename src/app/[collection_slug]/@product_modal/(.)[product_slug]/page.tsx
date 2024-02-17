@@ -59,7 +59,7 @@ export default function ProductPageModal() {
                     <DrawerBody>
                         <ProductImageGroup
                             images={images.map((image, i) => ({
-                                src: image,
+                                src: image.src,
                                 alt: `Product Image ${i + 1}`,
                             }))}
                             size="full"

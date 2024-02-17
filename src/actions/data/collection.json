@@ -38,10 +38,30 @@
             ],
             "price": "$165.00",
             "images": [
-                "https://picsum.photos/seed/K8T2EekgN8/384/384",
-                "https://picsum.photos/seed/RI1Je/384/384",
-                "https://picsum.photos/seed/5OAgdwFAr/384/384",
-                "https://picsum.photos/seed/mqBQ0IBAA/384/384"
+                {
+                    "src": "https://picsum.photos/seed/K8T2EekgN8/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/RI1Je/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/5OAgdwFAr/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/mqBQ0IBAA/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                }
             ]
         },
         {
@@ -79,10 +99,30 @@
             ],
             "price": "$88.00",
             "images": [
-                "https://picsum.photos/seed/Dhglsi2z/384/384",
-                "https://picsum.photos/seed/Ds8P7te/384/384",
-                "https://picsum.photos/seed/DXGUxq15t/384/384",
-                "https://picsum.photos/seed/MJHzFoX/384/384"
+                {
+                    "src": "https://picsum.photos/seed/Dhglsi2z/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/Ds8P7te/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/DXGUxq15t/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/MJHzFoX/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                }
             ]
         },
         {
@@ -120,10 +160,30 @@
             ],
             "price": "$711.00",
             "images": [
-                "https://picsum.photos/seed/9GLW8quy/384/384",
-                "https://picsum.photos/seed/HDxWbbYW/384/384",
-                "https://picsum.photos/seed/7DKSdDJ/384/384",
-                "https://picsum.photos/seed/MCr5V/384/384"
+                {
+                    "src": "https://picsum.photos/seed/9GLW8quy/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/HDxWbbYW/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/7DKSdDJ/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                },
+                {
+                    "src": "https://picsum.photos/seed/MCr5V/384/384",
+                    "alt": "product image",
+                    "height": 384,
+                    "width": 384
+                }
             ]
         }
     ]

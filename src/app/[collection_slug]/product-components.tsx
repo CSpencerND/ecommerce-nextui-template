@@ -16,7 +16,7 @@ export function ProductShowcase({ product }: { product: Product }) {
         >
             <ProductImageGroup
                 images={product.images.map((image, i) => ({
-                    src: image,
+                    src: image.src,
                     alt: `Product Image ${i}`,
                 }))}
                 size="full"

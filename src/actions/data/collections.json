@@ -2,31 +2,61 @@
     {
         "id": "1075614015",
         "name": "Health",
-        "image": "https://picsum.photos/seed/7DzDSIVT/192/192"
+        "image": {
+            "src": "https://picsum.photos/seed/7DzDSIVT/192/192",
+            "alt": "banner",
+            "height": 192,
+            "width": 192
+        }
     },
     {
         "id": "0077571533",
         "name": "Kids",
-        "image": "https://picsum.photos/seed/tS7rIi/192/192"
+        "image": {
+            "src": "https://picsum.photos/seed/tS7rIi/192/192",
+            "alt": "banner",
+            "height": 192,
+            "width": 192
+        }
     },
     {
         "id": "187680209X",
         "name": "Tools",
-        "image": "https://picsum.photos/seed/3zZLA/192/192"
+        "image": {
+            "src": "https://picsum.photos/seed/3zZLA/192/192",
+            "alt": "banner",
+            "height": 192,
+            "width": 192
+        }
     },
     {
         "id": "1296826317",
         "name": "Jewelery",
-        "image": "https://picsum.photos/seed/j9mg7/192/192"
+        "image": {
+            "src": "https://picsum.photos/seed/j9mg7/192/192",
+            "alt": "banner",
+            "height": 192,
+            "width": 192
+        }
     },
     {
         "id": "1978194749",
         "name": "Automotive",
-        "image": "https://picsum.photos/seed/bZi86Fe/192/192"
+        "image": {
+            "src": "https://picsum.photos/seed/bZi86Fe/192/192",
+            "alt": "banner",
+            "height": 192,
+            "width": 192
+        }
     },
     {
         "id": "1265580499",
         "name": "Shoes",
-        "image": "https://picsum.photos/seed/UaNaPHf/192/192"
+        "image": {
+            "src": "https://picsum.photos/seed/UaNaPHf/192/192",
+            "alt": "banner",
+            "height": 192,
+            "width": 192
+        }
     }
 ]

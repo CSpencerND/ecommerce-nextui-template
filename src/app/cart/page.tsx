@@ -41,7 +41,7 @@ export default function CartPage() {
                             className="grid grid-cols-[auto_1fr] gap-3 pb-0"
                         >
                             <ProductImage
-                                src={product.images[0]}
+                                src={product.images[0]?.src}
                                 size="preview"
                                 isBordered
                             />

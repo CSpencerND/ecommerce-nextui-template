@@ -26,7 +26,9 @@ export type ApiType = {
     [K in keyof typeof fakerFunctions]: ReturnType<(typeof fakerFunctions)[K]>;
 };
 
-export async function getFakeData<T extends keyof ApiType>(apiSlug: T): Promise<ApiType[T]> {
+export async function getFakeData<T extends keyof ApiType>(
+    apiSlug: T,
+): Promise<ApiType[T]> {
     const data = await fetch(`${API_URL}/${apiSlug}`);
     return data.json();
 }
@@ -37,10 +39,15 @@ function getHero() {
     return {
         headline: faker.company.catchPhrase(),
         descriptor: faker.lorem.paragraph(),
-        banner: faker.image.urlPicsumPhotos({
-            width: 800,
-            height: 450,
-        }),
+        image: {
+            src: faker.image.urlPicsumPhotos({
+                width: 1024,
+                height: 576,
+            }),
+            alt: "banner",
+            height: 1024,
+            width: 576,
+        },
     };
 }
 
@@ -48,10 +55,15 @@ function getFeatured() {
     const getData = () => ({
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.product(),
-        image: faker.image.urlPicsumPhotos({
+        image: {
+            src: faker.image.urlPicsumPhotos({
+                height: 192,
+                width: 192,
+            }),
+            alt: "featured product",
             height: 192,
             width: 192,
-        }),
+        },
     });
 
     return {
@@ -67,16 +79,30 @@ function getCollectionDirectory() {
     const getData = () => ({
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.department(),
-        image: faker.image.urlPicsumPhotos({
+        image: {
+            src: faker.image.urlPicsumPhotos({
+                height: 192,
+                width: 192,
+            }),
+            alt: "collection preview image",
             height: 192,
             width: 192,
-        }),
+        },
     });
 
     return getMultiple(getData, "name", 6);
 }
 
 function getProduct() {
+    const urls = faker.helpers.multiple(
+        () =>
+            faker.image.urlPicsumPhotos({
+                height: 384,
+                width: 384,
+            }),
+        { count: 4 },
+    );
+
     return {
         id: faker.commerce.isbn({ separator: "", variant: 10 }),
         name: faker.commerce.product(),
@@ -84,14 +110,12 @@ function getProduct() {
         colors: fakerColors,
         sizes: fakerSizes,
         price: faker.commerce.price({ symbol: "$" }),
-        images: faker.helpers.multiple(
-            () =>
-                faker.image.urlPicsumPhotos({
-                    height: 384,
-                    width: 384,
-                }),
-            { count: 4 },
-        ),
+        images: urls.map((url) => ({
+            src: url,
+            alt: "product image",
+            height: 384,
+            width: 384,
+        })),
     };
 }
 

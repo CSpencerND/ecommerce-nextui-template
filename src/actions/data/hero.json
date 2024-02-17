@@ -1,5 +1,10 @@
 {
     "headline": "Compatible regional info-mediaries",
     "descriptor": "Arbitro adaugeo quia cito cometes laudantium. Nam iure ambitus tepesco ad uterque. Despecto cena compello suppono.",
-    "banner": "https://picsum.photos/seed/ao6APQ/800/450"
+    "image": {
+        "src": "https://picsum.photos/seed/ao6APQ/1024/576",
+        "alt": "banner",
+        "height": 1024,
+        "width": 576
+    }
 }
