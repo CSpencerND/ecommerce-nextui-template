@@ -4,7 +4,7 @@
     "image": {
         "src": "https://picsum.photos/seed/ao6APQ/1024/576",
         "alt": "banner",
-        "height": 1024,
-        "width": 576
+        "width": 1024,
+        "height": 576
     }
 }

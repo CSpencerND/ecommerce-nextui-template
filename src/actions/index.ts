@@ -1,43 +1,83 @@
-import { getFakeData, getProductsByCollection } from "@/faker";
 import * as data from "./data";
 
 export async function getHero() {
-    if (data.hero) return data.hero;
-    return await getFakeData("hero");
+    return data.hero;
 }
 
 export async function getFeatured() {
-    if (data.featured) return data.featured;
-    return await getFakeData("featured");
+    return data.featured;
 }
 
 export async function getCollections() {
-    if (data.collections) return data.collections;
-    return await getFakeData("collection-directory");
+    return data.collections;
 }
 
-// export async function getProduct() {
-//     return await getFakeData("product");
-// }
-
 export async function getProductByHandle(slug: string) {
-    const product = data.collection.products.find(
+    return data.collection.products.find(
         (product) => product.name.toLowerCase() === slug,
     );
-
-    return product;
 }
 
 export async function getCollection() {
-    if (data.collection) return data.collection;
-
-    const [collection, products] = await Promise.all([
-        getFakeData("collection"),
-        getProductsByCollection(),
-    ]);
-
-    return {
-        ...collection,
-        products,
-    };
+    return data.collection;
 }
+
+// export async function getHero() {
+//     return await db.hero.findFirst({
+//         select: {
+//             headline: true,
+//             description: true,
+//             image: {
+//                 select: {
+//                     src: true,
+//                     alt: true,
+//                     height: true,
+//                     width: true,
+//                 },
+//             },
+//         },
+//     });
+// }
+
+// export async function getFeatured() {
+//     const data = await db.collection.findFirst({
+//         where: {
+//             isFeatured: true,
+//         },
+//         select: {
+//             id: true,
+//             description: true,
+//             tagline: true,
+//             name: true,
+//             products: {
+//                 select: {
+//                     name: true,
+//                     images: {
+//                         take: 1,
+//                         select: {
+//                             width: true,
+//                             height: true,
+//                             alt: true,
+//                             src: true,
+//                         },
+//                     },
+//                 },
+//             },
+//         },
+//     });
+//
+//     if (!data) return null;
+//
+//     const { name, tagline, description, products } = data;
+//     const items = products.map((p) => ({
+//         name: p.name,
+//         image: p.images[0],
+//     }));
+//
+//     return {
+//         name,
+//         tagline,
+//         description,
+//         items,
+//     };
+// }
