@@ -47,20 +47,25 @@ export default async function HomePage() {
                     </Button>
                     <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute -z-10 h-3/4 w-full transform-gpu bg-gradient-to-b from-secondary to-cyan-600/60 opacity-40 blur-3xl"
+                        className="pointer-events-none absolute top-0 -z-10 h-3/4 w-full bg-gradient-to-b from-secondary to-cyan-600/60 opacity-40 blur-3xl"
                     />
                 </div>
 
-                <div className="relative aspect-video size-full overflow-clip rounded-f5 border border-divider">
-                    <NextImage
-                        unoptimized={isImageUnoptimized}
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
-                        priority
-                    />
-                </div>
+                <Image
+                    as={NextImage}
+                    unoptimized={isImageUnoptimized}
+                    src={image.src}
+                    alt={image.alt}
+                    height={image.height}
+                    width={image.width}
+                    isBlurred
+                    sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
+                    priority
+                    classNames={{
+                        wrapper:
+                            "aspect-video size-full overflow-clip rounded-f5 border border-divider",
+                    }}
+                />
             </section>
 
             <section className="grid place-items-center space-y-9">
@@ -88,6 +93,10 @@ export default async function HomePage() {
                                         width={image.width}
                                         height={image.height}
                                         sizes="192px"
+                                        classNames={{
+                                            wrapper:
+                                                "aspect-square size-full overflow-clip rounded-f5 border border-divider",
+                                        }}
                                     />
                                     <div className="absolute inset-0 z-10 grid items-end p-f2">
                                         <div className="h-fit rounded-f3 border border-divider bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
