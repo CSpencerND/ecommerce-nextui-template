@@ -1,0 +1,85 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Image {
+    id     String @id @default(cuid())
+    src    String
+    alt    String @default("")
+    height Int
+    width  Int
+
+    hero       Hero?
+    collection Collection?
+    product    Product?    @relation(fields: [productId], references: [id])
+    productId  String?
+    variant    Variant?
+}
+
+model Hero {
+    id          String @id @default(cuid())
+    headline    String
+    description String
+    image       Image  @relation(fields: [imageId], references: [id])
+    imageId     String @unique
+}
+
+model Collection {
+    id          String    @id @default(cuid())
+    name        String
+    tagline     String?
+    description String?
+    products    Product[]
+    isFeatured  Boolean
+    image       Image     @relation(fields: [imageId], references: [id])
+    imageId     String    @unique
+}
+
+model Product {
+    id           String     @id @default(cuid())
+    name         String
+    description  String
+    price        Float
+    images       Image[]
+    collection   Collection @relation(fields: [collectionId], references: [id])
+    collectionId String
+    options      Option[]
+    variants     Variant[]
+}
+
+model Option {
+    id       String    @id @default(cuid())
+    color    Color?
+    size     Size?
+    product  Product[]
+    variants Variant[]
+}
+
+model Variant {
+    id        String   @id @default(cuid())
+    product   Product  @relation(fields: [productId], references: [id])
+    productId String   @unique
+    attibutes Option[]
+    image     Image    @relation(fields: [imageId], references: [id])
+    imageId   String   @unique
+}
+
+model Color {
+    name     String
+    code     String
+    option   Option @relation(fields: [optionId], references: [id])
+    optionId String @id @unique
+}
+
+model Size {
+    name     String
+    code     String
+    option   Option @relation(fields: [optionId], references: [id])
+    optionId String @id @unique
+}
