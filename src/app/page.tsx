@@ -96,11 +96,11 @@ export default async function HomePage() {
                                         isBlurred
                                         classNames={{
                                             wrapper:
-                                                "aspect-square size-full overflow-clip rounded-f5 border border-divider",
+                                                "aspect-square size-full overflow-clip",
                                         }}
                                     />
                                     <div className="absolute inset-0 z-10 grid items-end p-f2">
-                                        <div className="h-fit rounded-f3 border border-divider bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
+                                        <div className="h-fit rounded-f3 border border-divider/10 bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                             <h3 className="px-1 font-bold">
                                                 {name}
                                             </h3>
