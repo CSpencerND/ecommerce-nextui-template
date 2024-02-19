@@ -28,6 +28,7 @@ export default async function CollectionDirectoryPage() {
                             alt={image.alt}
                             fill
                             sizes="192px"
+                            isBlurred
                             classNames={{
                                 wrapper: "aspect-square size-full rounded-f4",
                             }}
