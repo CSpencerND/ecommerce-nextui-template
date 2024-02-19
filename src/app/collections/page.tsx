@@ -20,7 +20,7 @@ export default async function CollectionDirectoryPage() {
                     <MotionListItem
                         key={`Collection ${i}`}
                         index={i}
-                        className="relative aspect-square rounded-f4 border border-divider"
+                        className="relative aspect-square rounded-f4 border border-divider shadow-small"
                     >
                         <Image
                             as={NextImage}
