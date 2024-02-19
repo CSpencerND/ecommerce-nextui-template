@@ -38,7 +38,7 @@ export default async function CollectionPage({
                     <MotionListItem
                         key={`Product ${i}`}
                         index={i}
-                        className="relative space-y-f3 rounded-f5 border border-divider/10 bg-content1 p-f3"
+                        className="relative space-y-f3 rounded-f5 bg-content1 p-f3 shadow-small"
                     >
                         <ProductImageProvider>
                             <div className="relative">
@@ -53,9 +53,9 @@ export default async function CollectionPage({
                                 <ProductLink
                                     href={`/${collection_slug}/${name.toLowerCase()}`}
                                     data={products[i]}
-                                    className="absolute inset-0 z-10 grid items-end rounded-f4 p-f2 focus-visible:focus-ring"
+                                    className="absolute inset-0 z-10 grid items-end rounded-[calc(var(--fibo-4)_+_var(--ring-gap))] p-f2 focus-visible:focus-ring"
                                 >
-                                    <div className="h-fit rounded-f3 border border-divider bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
+                                    <div className="h-fit rounded-f3 border border-divider/10 bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                         <h3 className="px-f1 font-bold">
                                             {name}
                                         </h3>
