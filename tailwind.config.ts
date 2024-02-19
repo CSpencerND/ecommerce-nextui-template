@@ -158,10 +158,12 @@ const config: Config = {
                     },
                 },
                 ".focus-ring": {
+                    "--ring-gap": "2px",
+
                     zIndex: "50",
-                    outline: "2px solid transparent",
-                    outlineOffset: "2px",
-                    outlineWidth: "2px",
+                    outline: "var(--ring-gap) solid transparent",
+                    outlineOffset: "var(--ring-gap)",
+                    outlineWidth: "var(--ring-gap)",
                     outlineColor:
                         "hsl(var(--nextui-focus) / var(--nextui-focus-opacity, 1))",
                 },
