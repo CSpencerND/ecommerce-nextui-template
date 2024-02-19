@@ -56,11 +56,11 @@ export default async function HomePage() {
                     unoptimized={isImageUnoptimized}
                     src={image.src}
                     alt={image.alt}
-                    height={image.height}
                     width={image.width}
-                    isBlurred
+                    height={image.height}
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
                     priority
+                    isBlurred
                     classNames={{
                         wrapper:
                             "aspect-video size-full overflow-clip rounded-f5 border border-divider",
@@ -93,6 +93,7 @@ export default async function HomePage() {
                                         width={image.width}
                                         height={image.height}
                                         sizes="192px"
+                                        isBlurred
                                         classNames={{
                                             wrapper:
                                                 "aspect-square size-full overflow-clip rounded-f5 border border-divider",
