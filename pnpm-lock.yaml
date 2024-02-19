@@ -86,9 +86,6 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
-  plaiceholder:
-    specifier: ^3.0.0
-    version: 3.0.0(sharp@0.33.2)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -4934,14 +4931,6 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
-
-  /plaiceholder@3.0.0(sharp@0.33.2):
-    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
-    peerDependencies:
-      sharp: '>= 0.30.6'
-    dependencies:
-      sharp: 0.33.2
-    dev: false
 
   /postcss-import@15.1.0(postcss@8.4.35):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
