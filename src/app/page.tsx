@@ -74,11 +74,11 @@ export default async function HomePage() {
                     <h1 className={heading()}>{copy.adjective}</h1>
                 </div>
 
-                <div className="aspect-video max-h-48 w-full overflow-clip rounded-f5 bg-content1 shadow-medium focus-visible-within:focus-ring md:max-h-52">
-                    <div
-                        // as="ul"
-                        // orientation="horizontal"
-                        className="carousel size-full max-md:scrollbar-hide"
+                <div className="overflow-clip rounded-f5 bg-content1 shadow-medium focus-visible-within:focus-ring">
+                    <ScrollShadow
+                        as="ul"
+                        orientation="horizontal"
+                        className="carousel max-md:scrollbar-hide"
                     >
                         {items.map(({ image, name, id }) => (
                             <li
@@ -91,22 +91,21 @@ export default async function HomePage() {
                                     alt={image.alt}
                                     width={image.width}
                                     height={image.height}
-                                    // fill
                                     sizes="192px"
                                     isBlurred
                                     classNames={{
                                         wrapper:
-                                            "aspect-square size-full rounded-f4",
+                                            "aspect-square size-full rounded-f4 -z-10",
                                     }}
                                 />
-                                <div className="absolute inset-0 z-10 grid items-end p-f2">
+                                <div className="absolute inset-0 grid items-end p-f2">
                                     <div className="h-fit rounded-f3 border border-divider/10 bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                         <h3 className="px-1 font-bold">{name}</h3>
                                     </div>
                                 </div>
                             </li>
                         ))}
-                    </div>
+                    </ScrollShadow>
                 </div>
 
                 <div
