@@ -171,7 +171,7 @@ const config: Config = {
 
             addComponents({
                 ".carousel": {
-                    "--carousel-gap": "var(--fibo-4, 8px)",
+                    "--carousel-gap": "var(--fibo-3, 8px)",
 
                     scrollSnapType: "x proximity",
                     scrollBehavior: "smooth",
