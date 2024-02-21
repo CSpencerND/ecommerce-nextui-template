@@ -41,12 +41,9 @@ export default async function CollectionPage({
                         className="relative space-y-f3 rounded-f5 bg-content1 p-f3 shadow-small"
                     >
                         <ProductImageProvider>
-                            <div className="relative">
+                            <div className="relative aspect-square rounded-f4 shadow-small">
                                 <ProductImageGroup
-                                    images={images.map((image, j) => ({
-                                        src: image.src,
-                                        alt: `Product Image ${j + 1}`,
-                                    }))}
+                                    images={images}
                                     size="preview"
                                     shadow="sm"
                                 />
