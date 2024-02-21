@@ -31,7 +31,7 @@ export default async function HomePage() {
             <section className={section()}>
                 <div
                     className={prose({
-                        class: "relative isolate mx-auto items-center text-center",
+                        class: "relative isolate mx-auto items-center space-y-f5 text-center",
                         wrap: "balance",
                     })}
                 >
@@ -69,7 +69,7 @@ export default async function HomePage() {
                 />
             </section>
 
-            <section className="grid place-items-center space-y-9">
+            <section className="grid place-items-center space-y-f5">
                 <div className={prose({ class: "text-center" })}>
                     <h1 className={heading()}>{copy.adjective}</h1>
                 </div>
