@@ -126,10 +126,10 @@ const config: Config = {
                 // dim: themeColorsDim,
             },
         }),
-        plugin(function ({ addUtilities, addVariant }) {
+        plugin(function ({ addUtilities, addComponents, addVariant }) {
             addUtilities({
                 ".main-grid": {
-                    "--gutter": "24px",
+                    "--gutter": "21px",
                     "--max-width": "65ch",
 
                     position: "relative",
@@ -166,6 +166,30 @@ const config: Config = {
                     outlineWidth: "var(--ring-gap)",
                     outlineColor:
                         "hsl(var(--nextui-focus) / var(--nextui-focus-opacity, 1))",
+                },
+            });
+
+            addComponents({
+                ".carousel": {
+                    "--carousel-gap": "var(--fibo-3, 8px)",
+
+                    scrollSnapType: "x proximity",
+                    scrollBehavior: "smooth",
+                    display: "inline-flex",
+                    overflowX: "scroll",
+                    gap: "var(--carousel-gap)",
+                    padding: "var(--carousel-gap)",
+
+                    "&-item": {
+                        boxSizing: "content-box",
+                        flex: "none",
+                        scrollSnapAlign: "start",
+                        scrollMarginInline: "var(--carousel-gap)",
+
+                        "&:last-child": {
+                            marginRight: "50%",
+                        },
+                    },
                 },
             });
 

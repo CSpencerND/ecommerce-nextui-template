@@ -203,6 +203,10 @@ const config = {
         };
     },
 
+    basis: (theme) => ({
+        ...theme("spacing"),
+    }),
+
     borderRadius: (theme) => ({
         ...theme("spacing"),
     }),
