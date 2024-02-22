@@ -179,14 +179,12 @@ const config: Config = {
                     overflowX: "scroll",
                     gap: "var(--carousel-gap)",
                     padding: "var(--carousel-gap)",
-                    paddingRight: "100%",
 
                     "&-item": {
                         boxSizing: "content-box",
                         flex: "none",
                         scrollSnapAlign: "start",
                         scrollMarginInline: "var(--carousel-gap)",
-                        scrollSnapStop: "always",
                     },
                 },
             });
