@@ -77,7 +77,6 @@ export default async function HomePage() {
                 <div className="overflow-clip rounded-f5 bg-content1 shadow-medium focus-visible-within:focus-ring">
                     <ScrollShadow
                         as="ul"
-                        size={80}
                         orientation="horizontal"
                         className="carousel max-md:scrollbar-hide"
                     >
