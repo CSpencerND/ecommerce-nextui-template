@@ -173,22 +173,20 @@ const config: Config = {
                 ".carousel": {
                     "--carousel-gap": "var(--fibo-3, 8px)",
 
-                    scrollSnapType: "x proximity",
+                    scrollSnapType: "x mandatory",
                     scrollBehavior: "smooth",
                     display: "inline-flex",
                     overflowX: "scroll",
                     gap: "var(--carousel-gap)",
                     padding: "var(--carousel-gap)",
+                    paddingRight: "100%",
 
                     "&-item": {
                         boxSizing: "content-box",
                         flex: "none",
                         scrollSnapAlign: "start",
                         scrollMarginInline: "var(--carousel-gap)",
-
-                        "&:last-child": {
-                            marginRight: "50%",
-                        },
+                        scrollSnapStop: "always",
                     },
                 },
             });
