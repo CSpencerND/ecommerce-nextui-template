@@ -1,4 +1,8 @@
-/** @type {import('next').NextConfig} */
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
     images: {
         remotePatterns: [
@@ -19,10 +23,16 @@ const nextConfig = {
             },
         ],
     },
+    experimental: {
+        optimizePackageImports: ["@nextui-org/*", "tailwind-variants"],
+        webVitalsAttribution: ["CLS", "LCP", "FCP", "FID"],
+    },
 };
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-    enabled: process.env.ANALYZE === "true",
-});
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+//     enabled: process.env.ANALYZE === "true",
+// });
 
-module.exports = withBundleAnalyzer(nextConfig);
+// module.exports = withBundleAnalyzer(nextConfig);
+
+module.exports = nextConfig;
