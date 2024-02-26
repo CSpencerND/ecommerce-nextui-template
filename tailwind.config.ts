@@ -191,17 +191,17 @@ const config: Config = {
                     display: "grid",
                     gap: "var(--fibo-4)",
 
-                    "@media not all and (min-width: 375px)": {
-                        gridTemplateColumns: "2",
+                    "@media (width >= 375px)": {
+                        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
                     },
 
-                    "@media not all and (min-width: 640px)": {
-                        gridTemplateColumns: "3",
+                    "@media (width >= 640px)": {
+                        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
                         gap: "var(--fibo-5)",
                     },
                 },
                 ".std-section": {
-                    display: "block flex",
+                    display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
