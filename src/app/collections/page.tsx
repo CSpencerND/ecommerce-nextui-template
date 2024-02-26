@@ -5,7 +5,7 @@ import NextImage from "next/image";
 
 import { getCollections } from "@/actions";
 
-import { grid, heading, prose, section } from "@/styles";
+import { heading, prose } from "@/styles";
 
 export default async function CollectionDirectoryPage() {
     const collections = await getCollections();
@@ -15,7 +15,7 @@ export default async function CollectionDirectoryPage() {
             <header className={prose({ class: "text-center" })}>
                 <h1 className={heading()}>Collection Directory</h1>
             </header>
-            <menu className={grid()}>
+            <menu className="std-grid">
                 {collections.map(({ image, name }, i) => (
                     <MotionListItem
                         key={`Collection ${i}`}

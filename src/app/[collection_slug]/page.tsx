@@ -9,7 +9,7 @@ import { MotionListItem } from "@/components/utility/motion";
 
 import { getCollection } from "@/actions";
 
-import { grid, heading, prose, section } from "@/styles";
+import { heading, prose } from "@/styles";
 
 export default async function CollectionPage({
     params: { collection_slug },
@@ -23,7 +23,7 @@ export default async function CollectionPage({
     );
 
     return (
-        <section className={section()}>
+        <section className="std-section">
             <header
                 className={prose({
                     class: "text-center",
@@ -33,7 +33,7 @@ export default async function CollectionPage({
                 <h1 className={heading()}>{collectionName}</h1>
                 <p>{description}</p>
             </header>
-            <menu className={grid()}>
+            <menu className="std-grid">
                 {products.map(({ name, images, colors }, i) => (
                     <MotionListItem
                         key={`Product ${i}`}

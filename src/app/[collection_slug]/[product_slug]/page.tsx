@@ -1,7 +1,6 @@
 import { ProductShowcase } from "../product-components";
 
 import { getProductByHandle } from "@/actions";
-import { section } from "@/styles";
 
 import type { SearchParams } from "@/types";
 
@@ -16,7 +15,7 @@ export default async function ProductPage({
     if (!product) return null;
 
     return (
-        <section className={section()}>
+        <section className="std-section">
             <ProductShowcase product={product} />
         </section>
     );

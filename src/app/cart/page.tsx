@@ -6,7 +6,7 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
 
 import { useCart } from "@/hooks";
-import { heading, prose, section } from "@/styles";
+import { heading, prose } from "@/styles";
 
 export default function CartPage() {
     const items = useCart((s) => s.items);
@@ -16,7 +16,7 @@ export default function CartPage() {
 
     if (!items || items.length === 0) {
         return (
-            <section className={section()}>
+            <section className="std-section">
                 <div className={prose()}>
                     <h1 className={heading()}>Your Cart Is Empty</h1>
                 </div>
@@ -25,7 +25,7 @@ export default function CartPage() {
     }
 
     return (
-        <section className={section()}>
+        <section className="std-section">
             <div className={prose()}>
                 <h1 className={heading()}>In Your Cart</h1>
             </div>

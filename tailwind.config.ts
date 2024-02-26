@@ -187,6 +187,26 @@ const config: Config = {
                         scrollMarginInline: "var(--carousel-gap)",
                     },
                 },
+                ".std-grid": {
+                    display: "grid",
+                    gap: "var(--fibo-4)",
+
+                    "@media not all and (min-width: 375px)": {
+                        gridTemplateColumns: "2",
+                    },
+
+                    "@media not all and (min-width: 640px)": {
+                        gridTemplateColumns: "3",
+                        gap: "var(--fibo-5)",
+                    },
+                },
+                ".std-section": {
+                    display: "block flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "var(--fibo-6)",
+                },
             });
 
             /** HACK: Experimental - May not work as expected */
