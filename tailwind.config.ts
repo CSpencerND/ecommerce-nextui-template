@@ -191,11 +191,11 @@ const config: Config = {
                     display: "grid",
                     gap: "var(--fibo-4)",
 
-                    "@media (width >= 375px)": {
+                    "@media (min-width: 375px)": {
                         gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
                     },
 
-                    "@media (width >= 640px)": {
+                    "@media (min-width: 640px)": {
                         gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
                         gap: "var(--fibo-5)",
                     },
