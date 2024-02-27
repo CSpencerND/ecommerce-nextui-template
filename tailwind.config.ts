@@ -203,8 +203,6 @@ const config: Config = {
                 ".std-section": {
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
                     gap: "var(--fibo-6)",
                 },
             });
