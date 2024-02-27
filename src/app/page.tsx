@@ -28,7 +28,7 @@ export default async function HomePage() {
 
     return (
         <>
-            <section className="std-section">
+            <section className="space-y-f6">
                 <div
                     className={prose({
                         class: "relative isolate mx-auto items-center space-y-f5 text-center",

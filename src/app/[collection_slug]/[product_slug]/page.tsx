@@ -15,7 +15,7 @@ export default async function ProductPage({
     if (!product) return null;
 
     return (
-        <section className="std-section">
+        <section className="space-y-f6">
             <ProductShowcase product={product} />
         </section>
     );

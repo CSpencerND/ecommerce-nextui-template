@@ -16,7 +16,7 @@ export default function CartPage() {
 
     if (!items || items.length === 0) {
         return (
-            <section className="std-section">
+            <section className="space-y-f6">
                 <div className={prose()}>
                     <h1 className={heading()}>Your Cart Is Empty</h1>
                 </div>
@@ -25,7 +25,7 @@ export default function CartPage() {
     }
 
     return (
-        <section className="std-section">
+        <section className="space-y-f6">
             <div className={prose()}>
                 <h1 className={heading()}>In Your Cart</h1>
             </div>
