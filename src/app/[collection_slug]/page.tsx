@@ -1,3 +1,6 @@
+import NextImage from "next/image";
+import { Image } from "@nextui-org/image";
+
 import {
     ProductImageProvider,
     ProductImageGroup,
@@ -23,7 +26,7 @@ export default async function CollectionPage({
     );
 
     return (
-        <section className="std-section">
+        <section className="space-y-f6">
             <header
                 className={prose({
                     class: "text-center",
@@ -43,9 +46,21 @@ export default async function CollectionPage({
                         <ProductImageProvider>
                             <div className="relative aspect-square rounded-f4 shadow-small">
                                 <ProductImageGroup
-                                    images={images}
-                                    size="preview"
-                                    shadow="sm"
+                                    images={images.map(({ alt, src, id }) => (
+                                        <Image
+                                            as={NextImage}
+                                            key={id}
+                                            src={src}
+                                            alt={alt}
+                                            fill
+                                            sizes="192px"
+                                            isBlurred
+                                            classNames={{
+                                                wrapper:
+                                                    "aspect-square size-full rounded-f4",
+                                            }}
+                                        />
+                                    ))}
                                 />
                                 <ProductLink
                                     href={`/${collection_slug}/${name.toLowerCase()}`}
