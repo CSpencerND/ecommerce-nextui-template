@@ -7,19 +7,16 @@
 //     CarouselItem,
 // } from "@/components/ui/carousel";
 
-import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { ArrowRight } from "lucide-react";
 
 import { MImage } from "@/components/ui/image";
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
 
 import { heading, prose } from "@/styles";
 
 import { getFeatured, getHero } from "@/actions";
-import { isImageUnoptimized } from "@/site.config";
 
 export default async function HomePage() {
     const [hero, featured] = await Promise.all([getHero(), getFeatured()]);
