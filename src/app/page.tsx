@@ -53,26 +53,14 @@ export default async function HomePage() {
                     />
                 </div>
 
-                {/* <MImage */}
-                {/*     image={image} */}
-                {/*     radius="lg" */}
-                {/*     ratio="video" */}
-                {/*     sizes="(min-width: 640px) 698px, calc(100vw - 48px)" */}
-                {/* /> */}
-
-                <Image
-                    as={NextImage}
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
+                <MImage
+                    image={image}
+                    radius="lg"
+                    ratio="video"
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
+                    fill
                     priority
-                    isBlurred
-                    classNames={{
-                        wrapper:
-                            "aspect-video size-full overflow-clip rounded-f5 border border-divider",
-                    }}
+                    disableMaxWidth
                 />
             </section>
 
@@ -92,19 +80,9 @@ export default async function HomePage() {
                                 key={id}
                                 className="carousel-item relative isolate aspect-square overflow-clip rounded-f4 border border-divider/5 shadow-small"
                             >
-                                {/* <MImage */}
-                                {/*     image={image} */}
-                                {/*     sizes="192px" */}
-                                {/* /> */}
-
-                                <Image
-                                    as={NextImage}
-                                    src={image.src}
-                                    alt={image.alt}
-                                    width={image.width}
-                                    height={image.height}
+                                <MImage
+                                    image={image}
                                     sizes="192px"
-                                    isBlurred
                                 />
 
                                 <div className="absolute inset-0 z-10 grid items-end p-f2">

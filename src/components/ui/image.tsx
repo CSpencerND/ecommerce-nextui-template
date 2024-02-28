@@ -1,3 +1,4 @@
+import { Image as NuiImage } from "@nextui-org/image";
 import NextImage from "next/image";
 
 import { tv } from "tailwind-variants";
@@ -10,6 +11,8 @@ export function MImage({
     ratio,
     radius,
     isBordered,
+    disableMaxWidth,
+    priority,
 }: {
     image: {
         src: string;
@@ -23,16 +26,30 @@ export function MImage({
     ratio?: "video" | "square";
     radius?: "sm" | "md" | "lg" | "xl";
     isBordered?: boolean;
+    disableMaxWidth?: boolean;
+    priority?: boolean;
 }) {
     return (
-        <NextImage
+        <NuiImage
+            as={NextImage}
             src={image.src}
             alt={image.src}
             width={fill ? undefined : image.width}
             height={fill ? undefined : image.height}
             fill={fill}
             sizes={sizes}
-            className={img({ radius, ratio, isBordered, class: className })}
+            priority={priority}
+            isBlurred
+            classNames={{
+                wrapper: img({
+                    radius,
+                    ratio,
+                    isBordered,
+                    disableMaxWidth,
+                    class: className,
+                }),
+                img: img({ radius, ratio }),
+            }}
         />
     );
 }
@@ -40,10 +57,10 @@ export function MImage({
 const img = tv({
     variants: {
         radius: {
-            sm: "rounded-f3",
-            md: "rounded-f4",
-            lg: "rounded-f5",
-            xl: "rounded-f6",
+            sm: "!rounded-f3",
+            md: "!rounded-f4",
+            lg: "!rounded-f5",
+            xl: "!rounded-f6",
         },
         ratio: {
             video: "aspect-video",
@@ -54,11 +71,16 @@ const img = tv({
             true: "border border-divider/10",
             false: {},
         },
+        disableMaxWidth: {
+            true: "!max-w-none",
+            false: {},
+        },
     },
     defaultVariants: {
         radius: "md",
-        isBordered: true,
         ratio: undefined,
+        isBordered: true,
+        disableMaxWidth: false,
     },
 });
 
