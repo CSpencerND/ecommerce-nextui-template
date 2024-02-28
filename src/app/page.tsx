@@ -53,29 +53,27 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <MImage
-                    image={image}
-                    radius="lg"
-                    ratio="video"
-                    sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
-                // className=""
-                />
-
-                {/* <Image */}
-                {/*     as={NextImage} */}
-                {/*     unoptimized={isImageUnoptimized} */}
-                {/*     src={image.src} */}
-                {/*     alt={image.alt} */}
-                {/*     width={image.width} */}
-                {/*     height={image.height} */}
+                {/* <MImage */}
+                {/*     image={image} */}
+                {/*     radius="lg" */}
+                {/*     ratio="video" */}
                 {/*     sizes="(min-width: 640px) 698px, calc(100vw - 48px)" */}
-                {/*     priority */}
-                {/*     isBlurred */}
-                {/*     classNames={{ */}
-                {/*         wrapper: */}
-                {/*             "aspect-video size-full overflow-clip rounded-f5 border border-divider", */}
-                {/*     }} */}
                 {/* /> */}
+
+                <Image
+                    as={NextImage}
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
+                    priority
+                    isBlurred
+                    classNames={{
+                        wrapper:
+                            "aspect-video size-full overflow-clip rounded-f5 border border-divider",
+                    }}
+                />
             </section>
 
             <section className="grid place-items-center space-y-f5">
@@ -94,19 +92,21 @@ export default async function HomePage() {
                                 key={id}
                                 className="carousel-item relative isolate aspect-square overflow-clip rounded-f4 border border-divider/5 shadow-small"
                             >
-                                <MImage
-                                    image={image}
-                                    sizes="192px"
-                                />
-                                {/* <Image */}
-                                {/*     as={NextImage} */}
-                                {/*     src={image.src} */}
-                                {/*     alt={image.alt} */}
-                                {/*     width={image.width} */}
-                                {/*     height={image.height} */}
+                                {/* <MImage */}
+                                {/*     image={image} */}
                                 {/*     sizes="192px" */}
-                                {/*     isBlurred */}
                                 {/* /> */}
+
+                                <Image
+                                    as={NextImage}
+                                    src={image.src}
+                                    alt={image.alt}
+                                    width={image.width}
+                                    height={image.height}
+                                    sizes="192px"
+                                    isBlurred
+                                />
+
                                 <div className="absolute inset-0 z-10 grid items-end p-f2">
                                     <div className="h-fit rounded-f3 border border-divider/10 bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                         <h3 className="px-1 font-bold">{name}</h3>
