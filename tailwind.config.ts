@@ -130,7 +130,7 @@ const config: Config = {
             addUtilities({
                 ".main-grid": {
                     "--gutter": "21px",
-                    "--max-width": "65ch",
+                    "--max-width": "768px",
 
                     position: "relative",
                     display: "grid",
