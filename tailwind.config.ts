@@ -179,12 +179,20 @@ const config: Config = {
                     overflowX: "scroll",
                     gap: "var(--carousel-gap)",
                     padding: "var(--carousel-gap)",
+                    paddingRight: "37.5%",
+                    // paddingRight: "calc(192px * 1.5 / 768 * 100%)", // 37.5%
+
+                    "@apply max-md:scrollbar-hide": {},
 
                     "&-item": {
                         boxSizing: "content-box",
                         flex: "none",
                         scrollSnapAlign: "start",
                         scrollMarginInline: "var(--carousel-gap)",
+
+                        "&:last-child": {
+                            scrollSnapAlign: "center",
+                        },
                     },
                 },
                 ".std-grid": {
