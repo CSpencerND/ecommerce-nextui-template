@@ -3,6 +3,9 @@
 import { AddToCartButton } from "@/components/cart";
 import { ProductShowcase } from "../../product-components";
 
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
+
 import {
     ProductImageGroup,
     ProductProvider,
@@ -58,12 +61,20 @@ export default function ProductPageModal() {
                 <ProductProvider>
                     <DrawerBody>
                         <ProductImageGroup
-                            images={images.map((image, i) => ({
-                                src: image.src,
-                                alt: `Product Image ${i + 1}`,
-                            }))}
-                            size="full"
-                            isBordered
+                            images={images.map(({ alt, src }, i) => (
+                                <Image
+                                    as={NextImage}
+                                    key={i}
+                                    src={src}
+                                    alt={alt}
+                                    fill
+                                    isBlurred
+                                    classNames={{
+                                        wrapper:
+                                            "aspect-square size-full rounded-f4",
+                                    }}
+                                />
+                            ))}
                         />
 
                         <div className={prose({ sm: true, class: "pb-6 pt-3" })}>
@@ -136,7 +147,7 @@ export default function ProductPageModal() {
             defaultOpen
             onClose={router.back}
             backdrop="blur"
-            // hideCloseButton
+        // hideCloseButton
         >
             <ModalContent className="max-w-fit !rounded-2xlarge bg-transparent">
                 {/* <div className="absolute right-2 top-2 z-50"> */}

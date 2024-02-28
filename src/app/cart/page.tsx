@@ -1,6 +1,6 @@
 "use client";
 
-import { Image } from "@/components/ui/image";
+import { MImage } from "@/components/ui/image";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
@@ -40,11 +40,9 @@ export default function CartPage() {
                             key={i}
                             className="grid grid-cols-[auto_1fr] gap-3 pb-0"
                         >
-                            <Image
-                                src={product.images[0]?.src!}
-                                alt={product.images[0]?.alt!}
-                                aspect="square"
-                                isBordered
+                            <MImage
+                                image={product.images[0]!}
+                                fill
                             />
                             <div className={prose({ sm: true })}>
                                 <h3>{product.name}</h3>
