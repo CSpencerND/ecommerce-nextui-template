@@ -12,6 +12,7 @@ import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { ArrowRight } from "lucide-react";
 
+import { MImage } from "@/components/ui/image";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 
@@ -28,7 +29,7 @@ export default async function HomePage() {
 
     return (
         <>
-            <section className="space-y-f6">
+            <section className="std-section">
                 <div
                     className={prose({
                         class: "relative isolate mx-auto items-center space-y-f5 text-center",
@@ -52,21 +53,29 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <Image
-                    as={NextImage}
-                    unoptimized={isImageUnoptimized}
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
+                <MImage
+                    image={image}
+                    radius="lg"
+                    ratio="video"
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
-                    priority
-                    isBlurred
-                    classNames={{
-                        wrapper:
-                            "aspect-video size-full overflow-clip rounded-f5 border border-divider",
-                    }}
+                // className=""
                 />
+
+                {/* <Image */}
+                {/*     as={NextImage} */}
+                {/*     unoptimized={isImageUnoptimized} */}
+                {/*     src={image.src} */}
+                {/*     alt={image.alt} */}
+                {/*     width={image.width} */}
+                {/*     height={image.height} */}
+                {/*     sizes="(min-width: 640px) 698px, calc(100vw - 48px)" */}
+                {/*     priority */}
+                {/*     isBlurred */}
+                {/*     classNames={{ */}
+                {/*         wrapper: */}
+                {/*             "aspect-video size-full overflow-clip rounded-f5 border border-divider", */}
+                {/*     }} */}
+                {/* /> */}
             </section>
 
             <section className="grid place-items-center space-y-f5">
@@ -78,22 +87,26 @@ export default async function HomePage() {
                     <ScrollShadow
                         as="ul"
                         orientation="horizontal"
-                        className="carousel max-md:scrollbar-hide"
+                        className="carousel"
                     >
                         {items.map(({ image, name, id }) => (
                             <li
                                 key={id}
                                 className="carousel-item relative isolate aspect-square overflow-clip rounded-f4 border border-divider/5 shadow-small"
                             >
-                                <Image
-                                    as={NextImage}
-                                    src={image.src}
-                                    alt={image.alt}
-                                    width={image.width}
-                                    height={image.height}
+                                <MImage
+                                    image={image}
                                     sizes="192px"
-                                    isBlurred
                                 />
+                                {/* <Image */}
+                                {/*     as={NextImage} */}
+                                {/*     src={image.src} */}
+                                {/*     alt={image.alt} */}
+                                {/*     width={image.width} */}
+                                {/*     height={image.height} */}
+                                {/*     sizes="192px" */}
+                                {/*     isBlurred */}
+                                {/* /> */}
                                 <div className="absolute inset-0 z-10 grid items-end p-f2">
                                     <div className="h-fit rounded-f3 border border-divider/10 bg-black/20 p-f2 backdrop-blur backdrop-saturate-150">
                                         <h3 className="px-1 font-bold">{name}</h3>

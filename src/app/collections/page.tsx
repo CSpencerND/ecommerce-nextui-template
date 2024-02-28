@@ -1,7 +1,6 @@
+import { MImage } from "@/components/ui/image";
 import { MotionListItem } from "@/components/utility/motion";
 import Link from "next/link";
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
 
 import { getCollections } from "@/actions";
 
@@ -11,7 +10,7 @@ export default async function CollectionDirectoryPage() {
     const collections = await getCollections();
 
     return (
-        <section className="space-y-f6">
+        <section className="std-section">
             <header className={prose({ class: "text-center" })}>
                 <h1 className={heading()}>Collection Directory</h1>
             </header>
@@ -20,18 +19,24 @@ export default async function CollectionDirectoryPage() {
                     <MotionListItem
                         key={`Collection ${i}`}
                         index={i}
-                        className="relative aspect-square rounded-f4 border border-divider shadow-small"
+                        className="relative aspect-square shadow-small"
                     >
-                        <Image
-                            as={NextImage}
-                            src={image.src}
-                            alt={image.alt}
+                        {/* <Image */}
+                        {/*     as={NextImage} */}
+                        {/*     src={image.src} */}
+                        {/*     alt={image.alt} */}
+                        {/*     fill */}
+                        {/*     sizes="192px" */}
+                        {/*     isBlurred */}
+                        {/*     classNames={{ */}
+                        {/*         wrapper: "aspect-square size-full rounded-f4", */}
+                        {/*     }} */}
+                        {/* /> */}
+
+                        <MImage
+                            image={image}
                             fill
-                            sizes="192px"
-                            isBlurred
-                            classNames={{
-                                wrapper: "aspect-square size-full rounded-f4",
-                            }}
+                        // sizes="192px"
                         />
                         <Link
                             href={`/${name.toLowerCase()}`}

@@ -26,7 +26,7 @@ export default async function CollectionPage({
     );
 
     return (
-        <section className="space-y-f6">
+        <section className="std-section">
             <header
                 className={prose({
                     class: "text-center",

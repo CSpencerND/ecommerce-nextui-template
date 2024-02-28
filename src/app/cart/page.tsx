@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductImage } from "@/components/product";
+import { Image } from "@/components/ui/image";
 import { Button } from "@nextui-org/button";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
@@ -25,7 +25,7 @@ export default function CartPage() {
     }
 
     return (
-        <section className="space-y-f6">
+        <section className="std-section">
             <div className={prose()}>
                 <h1 className={heading()}>In Your Cart</h1>
             </div>
@@ -40,9 +40,10 @@ export default function CartPage() {
                             key={i}
                             className="grid grid-cols-[auto_1fr] gap-3 pb-0"
                         >
-                            <ProductImage
-                                src={product.images[0]?.src}
-                                size="preview"
+                            <Image
+                                src={product.images[0]?.src!}
+                                alt={product.images[0]?.alt!}
+                                aspect="square"
                                 isBordered
                             />
                             <div className={prose({ sm: true })}>
