@@ -1,5 +1,4 @@
-import NextImage from "next/image";
-import { Image } from "@nextui-org/image";
+import { Image } from "@/components/ui/image";
 
 import {
     ProductImageProvider,
@@ -46,19 +45,12 @@ export default async function CollectionPage({
                         <ProductImageProvider>
                             <div className="relative aspect-square rounded-f4 shadow-small">
                                 <ProductImageGroup
-                                    images={images.map(({ alt, src, id }) => (
+                                    images={images.map((image) => (
                                         <Image
-                                            as={NextImage}
-                                            key={id}
-                                            src={src}
-                                            alt={alt}
+                                            key={image.id}
+                                            data={image}
                                             fill
-                                            sizes="192px"
-                                            isBlurred
-                                            classNames={{
-                                                wrapper:
-                                                    "aspect-square size-full rounded-f4",
-                                            }}
+                                            ratio="square"
                                         />
                                     ))}
                                 />

@@ -1,4 +1,4 @@
-import { MImage } from "@/components/ui/image";
+import { Image } from "@/components/ui/image";
 import { MotionListItem } from "@/components/utility/motion";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ export default async function CollectionDirectoryPage() {
 
     return (
         <section className="std-section">
-            <header className={prose({ class: "text-center" })}>
+            <header className={prose({ class: "self-center text-center" })}>
                 <h1 className={heading()}>Collection Directory</h1>
             </header>
             <menu className="std-grid">
@@ -21,23 +21,13 @@ export default async function CollectionDirectoryPage() {
                         index={i}
                         className="relative aspect-square shadow-small"
                     >
-                        {/* <Image */}
-                        {/*     as={NextImage} */}
-                        {/*     src={image.src} */}
-                        {/*     alt={image.alt} */}
-                        {/*     fill */}
-                        {/*     sizes="192px" */}
-                        {/*     isBlurred */}
-                        {/*     classNames={{ */}
-                        {/*         wrapper: "aspect-square size-full rounded-f4", */}
-                        {/*     }} */}
-                        {/* /> */}
-
-                        <MImage
-                            image={image}
+                        <Image
+                            data={image}
                             fill
-                        // sizes="192px"
+                            ratio="square"
+                            sizes="192px"
                         />
+
                         <Link
                             href={`/${name.toLowerCase()}`}
                             className="absolute inset-0 z-10 grid items-end rounded-[calc(var(--fibo-4)_+_var(--ring-gap))] p-f2 focus-visible:focus-ring"

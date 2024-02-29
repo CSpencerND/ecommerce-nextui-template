@@ -12,7 +12,7 @@ import { Link } from "@nextui-org/link";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { ArrowRight } from "lucide-react";
 
-import { MImage } from "@/components/ui/image";
+import { Image } from "@/components/ui/image";
 
 import { heading, prose } from "@/styles";
 
@@ -50,8 +50,8 @@ export default async function HomePage() {
                     />
                 </div>
 
-                <MImage
-                    image={image}
+                <Image
+                    data={image}
                     radius="lg"
                     ratio="video"
                     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
@@ -66,7 +66,7 @@ export default async function HomePage() {
                     <h1 className={heading()}>{copy.adjective}</h1>
                 </div>
 
-                <div className="overflow-clip rounded-f5 bg-content1 shadow-medium focus-visible-within:focus-ring">
+                <div className="w-full overflow-clip rounded-f5 bg-content1 shadow-medium focus-visible-within:focus-ring">
                     <ScrollShadow
                         as="ul"
                         orientation="horizontal"
@@ -75,11 +75,13 @@ export default async function HomePage() {
                         {items.map(({ image, name, id }) => (
                             <li
                                 key={id}
-                                className="carousel-item relative isolate aspect-square overflow-clip rounded-f4 border border-divider/5 shadow-small"
+                                className="carousel-item relative size-36 rounded-f4 shadow-small sm:size-44 md:size-48"
                             >
-                                <MImage
-                                    image={image}
+                                <Image
+                                    data={image}
                                     sizes="192px"
+                                    fill
+                                    ratio="square"
                                 />
 
                                 <div className="absolute inset-0 z-10 grid items-end p-f2">
@@ -127,17 +129,8 @@ export default async function HomePage() {
             {/*                 <CarouselItem key={`Item ${i}`}> */}
             {/*                     <div className="relative overflow-clip rounded-f4 border border-divider/5"> */}
             {/*                         <Image */}
-            {/*                             as={NextImage} */}
-            {/*                             src={image.src} */}
-            {/*                             alt={image.alt} */}
-            {/*                             width={image.width} */}
-            {/*                             height={image.height} */}
+            {/*                             data={image} */}
             {/*                             sizes="192px" */}
-            {/*                             isBlurred */}
-            {/*                             classNames={{ */}
-            {/*                                 wrapper: */}
-            {/*                                     "aspect-square size-full overflow-clip", */}
-            {/*                             }} */}
             {/*                         /> */}
             {/*                         <div className="absolute inset-0 z-10 grid items-end p-f2"> */}
             {/*                             <div className="h-fit rounded-f3 border border-divider/10 bg-black/20 p-f2 backdrop-blur backdrop-saturate-150"> */}
@@ -170,7 +163,7 @@ export default async function HomePage() {
             {/*             See More */}
             {/*         </Button> */}
             {/*     </div> */}
-            {/* </section > */}
+            {/* </section> */}
         </>
     );
 }
