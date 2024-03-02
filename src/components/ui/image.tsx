@@ -19,6 +19,7 @@ export function Image({
         alt: string;
         width?: number | `${number}`;
         height?: number | `${number}`;
+        id: string;
     };
     fill?: boolean;
     sizes?: string;

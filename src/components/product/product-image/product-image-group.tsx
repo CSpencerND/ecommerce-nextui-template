@@ -1,12 +1,26 @@
 "use client";
 
-// import { useDeepCompareMemo } from "@react-hookz/web";
+import { Image } from "@/components/ui/image";
+
 import { useProductImage } from "./product-image-context";
 
-export function ProductImageGroup({ images }: { images: JSX.Element[] }) {
+type ImageProps = React.ComponentPropsWithoutRef<typeof Image>;
+
+export function ProductImageGroup(
+    props: {
+        data: ImageProps["data"][];
+    } & Omit<ImageProps, "data">,
+) {
+    const { data, ...rest } = props;
     const { activeIndex } = useProductImage();
 
-    // const imagesMemo = useDeepCompareMemo(() => images, [images]);
+    const images = data.map((image) => (
+        <Image
+            key={image.id}
+            data={image}
+            {...rest}
+        />
+    ));
 
     return images[activeIndex] ?? null;
 }
