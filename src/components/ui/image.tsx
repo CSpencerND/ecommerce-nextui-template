@@ -1,7 +1,21 @@
 import { Image as NuiImage } from "@nextui-org/image";
 import NextImage from "next/image";
 
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
+
+export type ImageProps = {
+    data: {
+        src: string;
+        alt: string;
+        width?: number | `${number}`;
+        height?: number | `${number}`;
+        id: string;
+    };
+    fill?: boolean;
+    sizes?: string;
+    priority?: boolean;
+    className?: string;
+} & VariantProps<typeof imgClasses>;
 
 export function Image({
     data,
@@ -13,23 +27,7 @@ export function Image({
     isBordered,
     disableMaxWidth,
     priority,
-}: {
-    data: {
-        src: string;
-        alt: string;
-        width?: number | `${number}`;
-        height?: number | `${number}`;
-        id: string;
-    };
-    fill?: boolean;
-    sizes?: string;
-    className?: string;
-    ratio?: "video" | "square";
-    radius?: "sm" | "md" | "lg" | "xl";
-    isBordered?: boolean;
-    disableMaxWidth?: boolean;
-    priority?: boolean;
-}) {
+}: ImageProps) {
     const { wrapper, img } = imgClasses({
         radius,
         ratio,
@@ -89,71 +87,3 @@ const imgClasses = tv({
         disableMaxWidth: false,
     },
 });
-
-/**
- * hero
- *
- * <Image
- *     as={NextImage}
- *     unoptimized={isImageUnoptimized}
- *     src={image.src}
- *     alt={image.alt}
- *     width={image.width}
- *     height={image.height}
- *     sizes="(min-width: 640px) 698px, calc(100vw - 48px)"
- *     priority
- *     isBlurred
- *     classNames={{
- *         wrapper:
- *             "aspect-video size-full overflow-clip rounded-f5 border border-divider",
- *     }}
- * />
- */
-
-/**
- * hero
- *
- * <Image
- *     as={NextImage}
- *     src={image.src}
- *     alt={image.alt}
- *     width={image.width}
- *     height={image.height}
- *     sizes="192px"
- *     isBlurred
- * />
- */
-
-/**
- *collection-dir
- *
- * <Image
- *     as={NextImage}
- *     src={image.src}
- *     alt={image.alt}
- *     fill
- *     sizes="192px"
- *     isBlurred
- *     classNames={{
- *         wrapper: "aspect-square size-full rounded-f4",
- *     }}
- * />
- */
-
-/**
- * collection-slug
- *
- * <Image
- *     as={NextImage}
- *     key={id}
- *     src={src}
- *     alt={alt}
- *     fill
- *     sizes="192px"
- *     isBlurred
- *     classNames={{
- *         wrapper:
- *             "aspect-square size-full rounded-f4",
- *     }}
- * />
- */
