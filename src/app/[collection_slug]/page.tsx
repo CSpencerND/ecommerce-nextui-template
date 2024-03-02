@@ -44,11 +44,7 @@ export default async function CollectionPage({
                     >
                         <ProductImageProvider>
                             <div className="relative aspect-square rounded-f4 shadow-small">
-                                <ProductImageGroup
-                                    data={images}
-                                    fill
-                                    ratio="square"
-                                />
+                                <ProductImageGroup data={images} />
                                 <ProductLink
                                     href={`/${collection_slug}/${name.toLowerCase()}`}
                                     data={products[i]}

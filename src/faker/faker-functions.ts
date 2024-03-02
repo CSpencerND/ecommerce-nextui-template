@@ -47,6 +47,7 @@ function getHero() {
             alt: "banner",
             height: 1024,
             width: 576,
+            id: faker.commerce.isbn({ separator: "", variant: 10 }),
         },
     };
 }
@@ -63,6 +64,7 @@ function getFeatured() {
             alt: "featured product",
             height: 192,
             width: 192,
+            id: faker.commerce.isbn({ separator: "", variant: 10 }),
         },
     });
 
@@ -87,6 +89,7 @@ function getCollectionDirectory() {
             alt: "collection preview image",
             height: 192,
             width: 192,
+            id: faker.commerce.isbn({ separator: "", variant: 10 }),
         },
     });
 
@@ -115,6 +118,7 @@ function getProduct() {
             alt: "product image",
             height: 384,
             width: 384,
+            id: faker.commerce.isbn({ separator: "", variant: 10 }),
         })),
     };
 }

@@ -3,9 +3,6 @@
 import { AddToCartButton } from "@/components/cart";
 import { ProductShowcase } from "../../product-components";
 
-import { Image } from "@nextui-org/image";
-import NextImage from "next/image";
-
 import {
     ProductImageGroup,
     ProductProvider,
@@ -60,23 +57,7 @@ export default function ProductPageModal() {
             >
                 <ProductProvider>
                     <DrawerBody>
-                        <ProductImageGroup
-                            images={images.map(({ alt, src }, i) => (
-                                <Image
-                                    as={NextImage}
-                                    key={i}
-                                    src={src}
-                                    alt={alt}
-                                    fill
-                                    isBlurred
-                                    classNames={{
-                                        wrapper:
-                                            "aspect-square size-full rounded-f4",
-                                    }}
-                                />
-                            ))}
-                        />
-
+                        <ProductImageGroup data={images} />
                         <div className={prose({ sm: true, class: "pb-6 pt-3" })}>
                             <div className="flex items-center justify-between *:m-0">
                                 <DrawerTitle>{name}</DrawerTitle>

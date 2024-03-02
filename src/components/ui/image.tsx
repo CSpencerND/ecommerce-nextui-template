@@ -9,7 +9,7 @@ export type ImageProps = {
         alt: string;
         width?: number | `${number}`;
         height?: number | `${number}`;
-        id: string;
+        id?: string;
     };
     fill?: boolean;
     sizes?: string;

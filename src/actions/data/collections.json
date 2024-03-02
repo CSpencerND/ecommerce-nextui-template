@@ -6,7 +6,8 @@
             "src": "https://picsum.photos/seed/7DzDSIVT/192/192",
             "alt": "banner",
             "height": 192,
-            "width": 192
+            "width": 192,
+            "id": "10756140iasjf15"
         }
     },
     {
@@ -16,7 +17,8 @@
             "src": "https://picsum.photos/seed/tS7rIi/192/192",
             "alt": "banner",
             "height": 192,
-            "width": 192
+            "width": 192,
+            "id": "10756140laaif15"
         }
     },
     {
@@ -26,7 +28,8 @@
             "src": "https://picsum.photos/seed/3zZLA/192/192",
             "alt": "banner",
             "height": 192,
-            "width": 192
+            "width": 192,
+            "id": "1075a90jnbazaif15"
         }
     },
     {
@@ -36,7 +39,8 @@
             "src": "https://picsum.photos/seed/j9mg7/192/192",
             "alt": "banner",
             "height": 192,
-            "width": 192
+            "width": 192,
+            "id": "1075aknbjfbytaif15"
         }
     },
     {
@@ -46,7 +50,8 @@
             "src": "https://picsum.photos/seed/bZi86Fe/192/192",
             "alt": "banner",
             "height": 192,
-            "width": 192
+            "width": 192,
+            "id": "1075a90jnbaza093um"
         }
     },
     {
@@ -56,7 +61,8 @@
             "src": "https://picsum.photos/seed/UaNaPHf/192/192",
             "alt": "banner",
             "height": 192,
-            "width": 192
+            "width": 192,
+            "id": "83hgsd0jnbazaif15"
         }
     }
 ]

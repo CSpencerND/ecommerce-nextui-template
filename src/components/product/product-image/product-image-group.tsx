@@ -11,9 +11,9 @@ type ImageGroupProps = {
 export function ProductImageGroup({ data, ...props }: ImageGroupProps) {
     const { activeIndex } = useProductImage();
 
-    const images = data.map((image) => (
+    const images = data.map((image, i) => (
         <Image
-            key={image.id}
+            key={image.id ?? i}
             data={image}
             {...props}
         />
