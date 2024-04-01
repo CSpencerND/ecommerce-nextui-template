@@ -36,38 +36,12 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
 
-            // padding: fibi,
-            // margin: fibi,
-            // gap: fibi,
-            // width: fibi,
-            // height: fibi,
-            // maxWidth: fibi,
-            // maxHeight: fibi,
-            // size: fibi,
-
             borderRadius: {
                 xlarge: "26px",
                 "2xlarge": "38px",
                 icon: "22.37%",
                 // ...fibi,
             },
-
-            // padding: {
-            //     xsmall: "3px",
-            //     small: "6px",
-            //     medium: "12px",
-            //     large: "24px",
-            //     xlarge: "36px",
-            // },
-
-            // borderRadius: {
-            //     xsmall: "3px",
-            //     small: "6px",
-            //     medium: "12px",
-            //     large: "24px",
-            //     xlarge: "36px",
-            //     icon: "22.37%",
-            // },
         },
 
         goldenRatio: {

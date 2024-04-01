@@ -2,9 +2,9 @@
 module.exports = {
     tabWidth: 4,
     singleQuote: false,
-    printWidth: 82,
+    printWidth: 89,
     singleAttributePerLine: true,
     plugins: ["prettier-plugin-tailwindcss"],
     tailwindFunctions: ["clsx", "twMerge", "cn", "tv", "tw"],
-    tailwindConfig: "./tailwind.config.ts"
+    tailwindConfig: "./tailwind.config.ts",
 };

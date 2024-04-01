@@ -19,7 +19,7 @@ export default async function CollectionDirectoryPage() {
                     <MotionListItem
                         key={`Collection ${i}`}
                         index={i}
-                        className="relative aspect-square shadow-small"
+                        className="relative aspect-square"
                     >
                         <Image
                             data={image}
