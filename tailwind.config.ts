@@ -58,7 +58,7 @@ const config: Config = {
              * @type {String}
              * default: 'rem'
              */
-            spacerUnit: "px",
+            spacerUnit: "em",
 
             /**
              * The starting point for spacing
@@ -66,7 +66,7 @@ const config: Config = {
              * default: 1.5
              * example: `m-gr-6` will be `1.5rem`. You have 1-5 for smaller values and 7-11 for larger values
              */
-            spacerBase: 34,
+            spacerBase: 2.058, // 2.321
 
             /**
              * Use css variables for generated values
